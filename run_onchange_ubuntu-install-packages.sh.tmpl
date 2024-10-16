@@ -11,4 +11,8 @@ command -v {{ .command }} >/dev/null 2>&1 || (sudo snap install {{ .name }} --cl
 command -v {{ .command }} >/dev/null 2>&1 || (curl -sS {{ .url }} | sh)
 {{ end -}}
 
+{{ range .packages.ubuntu.ppas -}}
+command -v {{ .command }} >/dev/null 2>&1 || (sudo add-apt-repository {{ .url }} -y && sudo apt update && sudo apt install {{ .name }})
+{{ end -}}
+
 {{ end -}}

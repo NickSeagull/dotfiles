@@ -3,12 +3,17 @@ packages:
     apts:
     - 'git'
     - 'zsh'
-    - 'neovim'
 
     snaps:
       - name: 'zellij'
         command: 'zellij'
 
+      - name: 'nvim'
+        command: 'nvim'
+
     curls:
       - url: 'https://starship.rs/install.sh'
         command: 'starship'
+
+
+    ppas: []
