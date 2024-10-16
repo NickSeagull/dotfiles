@@ -1,0 +1,14 @@
+packages:
+  ubuntu:
+    apts:
+    - 'git'
+    - 'zsh'
+    - 'neovim'
+
+    snaps:
+      - name: 'zellij'
+        command: 'zellij'
+
+    curls:
+      - url: 'https://starship.rs/install.sh'
+        command: 'starship'
