@@ -1,5 +1,5 @@
 #!/bin/zsh
-{{ if eq .chezmoi.osRelease.id "ubuntu" }}
+{{ if ne .chezmoi.os "windows" }}
 source ~/.zshrc
 {{ end }}
 

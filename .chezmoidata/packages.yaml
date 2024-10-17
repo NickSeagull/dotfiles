@@ -17,3 +17,17 @@ packages:
 
 
     ppas: []
+
+  macos:
+    brews:
+    - 'neovim'
+    - 'zellij'
+    - 'starship'
+    - 'lazygit'
+
+    casks:
+    - 'kitty'
+    
+
+    curls: []
+
