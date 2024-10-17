@@ -1,0 +1,5 @@
+{{ if eq .chezmoi.os "windows" -}}
+{{ range .packages.windows.wingets -}}
+winget install {{ . }}
+{{ end -}}
+{{ end -}}

@@ -29,7 +29,13 @@ packages:
     casks:
     - 'kitty'
     - 'font-iosevka-nerd-font'
-    
+
 
     curls: []
 
+  windows:
+    wingets:
+    - 'Neovim.Neovim'
+    - 'Alacritty.Alacritty'
+    - 'Starship.Starship'
+    - 'DEVCOM.JetBrainsMonoNerdFont'
