@@ -1,0 +1,10 @@
+{{ if eq .chezmoi.os "windows" -}}
+{{ range .packages.windows.modules -}}
+Import-Module {{ . }}
+{{ end -}}
+
+Clear-Host
+
+Invoke-Expression (&starship init powershell)
+function cmcd { Set-Location $(chezmoi source-path) }
+{{ end -}}

@@ -2,4 +2,7 @@
 {{ range .packages.windows.wingets -}}
 winget install {{ . }}
 {{ end -}}
+{{ range .packages.windows.modules -}}
+Install-Module -Name {{ . }} -Scope CurrentUser
+{{ end -}}
 {{ end -}}

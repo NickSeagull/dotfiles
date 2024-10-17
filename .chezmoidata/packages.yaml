@@ -39,3 +39,7 @@ packages:
     - 'Alacritty.Alacritty'
     - 'Starship.Starship'
     - 'DEVCOM.JetBrainsMonoNerdFont'
+
+    modules:
+    - 'PSReadLine'
+
