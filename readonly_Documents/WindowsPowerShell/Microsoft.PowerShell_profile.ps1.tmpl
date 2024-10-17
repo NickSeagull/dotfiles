@@ -5,6 +5,8 @@ Import-Module {{ . }}
 
 Clear-Host
 
+Set-PSReadLineOption -EditMode Emacs
+
 Invoke-Expression (&starship init powershell)
 function cmcd { Set-Location $(chezmoi source-path) }
 {{ end -}}

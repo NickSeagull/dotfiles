@@ -1,8 +1,8 @@
 {{ if eq .chezmoi.os "windows" -}}
 {{ range .packages.windows.wingets -}}
-winget install {{ . }}
+winget install {{ . }} --no-upgrade
 {{ end -}}
 {{ range .packages.windows.modules -}}
-Install-Module -Name {{ . }} -Scope CurrentUser
+Install-Module -Name {{ . }} -Scope CurrentUser -Force
 {{ end -}}
 {{ end -}}
