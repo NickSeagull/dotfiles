@@ -24,6 +24,7 @@ packages:
     - 'zellij'
     - 'starship'
     - 'lazygit'
+    - 'ghcup'
 
     casks:
     - 'kitty'
