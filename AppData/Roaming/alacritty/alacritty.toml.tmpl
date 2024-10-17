@@ -1,0 +1,3 @@
+{{- if eq .chezmoi.os "windows" }}
+{{ template "alacritty.toml.tmpl" . }}
+{{- end }}

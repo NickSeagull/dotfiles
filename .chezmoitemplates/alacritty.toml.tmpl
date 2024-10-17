@@ -1,0 +1,21 @@
+import = [
+    "~/.config/alacritty/themes/themes/ayu_dark.toml"
+]
+
+{{- if eq .chezmoi.os "linux" }}
+[shell]
+program = "/bin/zsh"
+args = ["-l"]
+{{- end }}
+
+{{- if eq .chezmoi.os "windows" }}
+working_directory = {{ .chezmoi.homeDir | quote }}
+[shell]
+program = "powershell.exe"
+args = ["-NoLogo"]
+{{- end }}
+
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
+size = 12.0
