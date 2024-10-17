@@ -27,6 +27,7 @@ packages:
 
     casks:
     - 'kitty'
+    - 'font-iosevka-nerd-font'
     
 
     curls: []

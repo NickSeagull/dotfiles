@@ -1,0 +1,3 @@
+[".config/kitty/theme.conf"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/dexpota/kitty-themes/master/themes/ayu.conf"
