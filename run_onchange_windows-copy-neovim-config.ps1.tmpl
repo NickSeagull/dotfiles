@@ -1,0 +1,6 @@
+{{ if eq .chezmoi.os "windows" -}}
+# Copy the contents from {{ .chezmoi.homeDir }}/.config/nvim to $HOME\AppData\Local\nvim
+$source = "{{ .chezmoi.homeDir }}\.config\nvim"
+$destination = "$env:LOCALAPPDATA\nvim"
+Copy-Item -Path $source -Destination $destination -Recurse -Force
+{{ end -}}

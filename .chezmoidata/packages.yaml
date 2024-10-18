@@ -39,6 +39,8 @@ packages:
     - 'Alacritty.Alacritty'
     - 'Starship.Starship'
     - 'DEVCOM.JetBrainsMonoNerdFont'
+    - 'JesseDuffield.lazygit'
+    - 'Schniz.fnm'
 
     modules:
     - 'PSReadLine'
