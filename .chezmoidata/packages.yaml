@@ -27,8 +27,8 @@ packages:
     - 'ghcup'
 
     casks:
-    - 'kitty'
-    - 'font-iosevka-nerd-font'
+    - 'alacritty'
+    - 'font-jetbrains-mono-nerd-font'
 
 
     curls: []
