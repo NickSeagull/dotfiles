@@ -18,4 +18,11 @@ args = ["-NoLogo"]
 
 [font]
 normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+{{- if eq .chezmoi.os "windows" }}
+size = 12.0
+{{- else }}
 size = 16.0
+{{- end }}
+
+[window]
+padding = { x = 20, y = 15 }
