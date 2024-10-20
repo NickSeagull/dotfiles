@@ -15,6 +15,9 @@ packages:
       - url: 'https://starship.rs/install.sh'
         command: 'starship'
 
+      - url: 'https://fnm.vercel.app/install'
+        command: 'fnm'
+
 
     ppas: []
 
