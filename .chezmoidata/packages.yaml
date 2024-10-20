@@ -41,6 +41,9 @@ packages:
     - 'DEVCOM.JetBrainsMonoNerdFont'
     - 'JesseDuffield.lazygit'
     - 'Schniz.fnm'
+    - 'LLVM.LLVM'
+    - 'Obsidian.Obsidian'
+    - 'zig.zig'
 
     modules:
     - 'PSReadLine'

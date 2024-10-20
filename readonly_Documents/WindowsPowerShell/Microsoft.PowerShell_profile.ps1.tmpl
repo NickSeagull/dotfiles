@@ -6,6 +6,7 @@ Import-Module {{ . }}
 Clear-Host
 
 $env:Path += ";C:\Users\nikit\AppData\Roaming\fnm\aliases\default"
+fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression
 
 Set-PSReadLineOption -EditMode Emacs
 
