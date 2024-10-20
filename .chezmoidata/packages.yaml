@@ -47,6 +47,7 @@ packages:
     - 'LLVM.LLVM'
     - 'Obsidian.Obsidian'
     - 'zig.zig'
+    - 'BurntSushi.ripgrep.MSVC'
 
     modules:
     - 'PSReadLine'
