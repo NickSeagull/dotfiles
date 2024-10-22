@@ -1,54 +1,54 @@
 packages:
   ubuntu:
     apts:
-    - 'git'
-    - 'zsh'
+      - "git"
+      - "zsh"
 
     snaps:
-      - name: 'zellij'
-        command: 'zellij'
+      - name: "zellij"
+        command: "zellij"
 
-      - name: 'nvim'
-        command: 'nvim'
+      - name: "nvim"
+        command: "nvim"
 
     curls:
-      - url: 'https://starship.rs/install.sh'
-        command: 'starship'
+      - url: "https://starship.rs/install.sh"
+        command: "starship"
 
-      - url: 'https://fnm.vercel.app/install'
-        command: 'fnm'
-
+      - url: "https://fnm.vercel.app/install"
+        command: "fnm"
 
     ppas: []
 
   macos:
     brews:
-    - 'neovim'
-    - 'zellij'
-    - 'starship'
-    - 'lazygit'
-    - 'ghcup'
+      - "neovim"
+      - "zellij"
+      - "starship"
+      - "lazygit"
+      - "ghcup"
+      - "rg" # Ripgrep
+      - "fnm" # Fast Node Manager
+      - "black" # Python formatter
 
     casks:
-    - 'alacritty'
-    - 'font-jetbrains-mono-nerd-font'
-
+      - "alacritty"
+      - "font-jetbrains-mono-nerd-font"
 
     curls: []
 
   windows:
     wingets:
-    - 'Neovim.Neovim'
-    - 'Alacritty.Alacritty'
-    - 'Starship.Starship'
-    - 'DEVCOM.JetBrainsMonoNerdFont'
-    - 'JesseDuffield.lazygit'
-    - 'Schniz.fnm'
-    - 'LLVM.LLVM'
-    - 'Obsidian.Obsidian'
-    - 'zig.zig'
-    - 'BurntSushi.ripgrep.MSVC'
+      - "Neovim.Neovim"
+      - "Alacritty.Alacritty"
+      - "Starship.Starship"
+      - "DEVCOM.JetBrainsMonoNerdFont"
+      - "JesseDuffield.lazygit"
+      - "Schniz.fnm"
+      - "LLVM.LLVM"
+      - "Obsidian.Obsidian"
+      - "zig.zig"
+      - "BurntSushi.ripgrep.MSVC"
 
     modules:
-    - 'PSReadLine'
-
+      - "PSReadLine"

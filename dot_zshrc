@@ -4,9 +4,11 @@ export PATH="$PATH:$HOME/.ghcup/bin"
 . "$HOME/.cargo/env"
 eval "$(starship init zsh)"
 
+alias cmcd="chezmoi cd"
+
 # fnm - fast node manager
-FNM_PATH="/home/nick/.local/share/fnm"
+FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/nick/.local/share/fnm:$PATH"
+  export PATH="$HOME/.local/share/fnm:$PATH"
   eval "`fnm env`"
 fi
