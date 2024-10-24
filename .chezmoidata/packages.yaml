@@ -27,6 +27,7 @@ packages:
       - "starship"
       - "lazygit"
       - "ghcup"
+      - "ffmpeg"
       - "rg" # Ripgrep
       - "fnm" # Fast Node Manager
       - "black" # Python formatter
