@@ -3,6 +3,16 @@ packages:
     apts:
       - "git"
       - "zsh"
+      - "build-essential" 
+      - "curl"
+      - "libffi-dev"
+      - "libffi8"
+      - "libgmp-dev"
+      - "libgmp10"
+      - "libncurses-dev"
+      - "libncurses5"
+      - "libtinfo5"
+      - "pkg-config"
 
     snaps:
       - name: "zellij"
