@@ -13,6 +13,7 @@ packages:
       - "libncurses5"
       - "libtinfo5"
       - "pkg-config"
+      - "ripgrep"
 
     snaps:
       - name: "zellij"
