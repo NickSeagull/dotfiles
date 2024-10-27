@@ -14,6 +14,7 @@ packages:
       - "libtinfo5"
       - "pkg-config"
       - "ripgrep"
+      - "sl"     # CHOOCHOO MOTHERFUCKER
 
     snaps:
       - name: "zellij"
