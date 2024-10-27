@@ -3,14 +3,14 @@ general.import = [
 ]
 
 {{- if eq .chezmoi.os "linux" }}
-[shell]
+[terminal.shell]
 program = "/bin/zsh"
 args = ["-l"]
 {{- end }}
 
 {{- if eq .chezmoi.os "windows" }}
-working_directory = {{ .chezmoi.homeDir | quote }}
-[shell]
+general.working_directory = {{ .chezmoi.homeDir | quote }}
+[terminal.shell]
 program = "powershell.exe"
 args = ["-NoLogo"]
 {{- end }}

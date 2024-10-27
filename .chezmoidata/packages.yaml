@@ -3,7 +3,7 @@ packages:
     apts:
       - "git"
       - "zsh"
-      - "build-essential" 
+      - "build-essential"
       - "curl"
       - "libffi-dev"
       - "libffi8"
@@ -61,6 +61,8 @@ packages:
       - "Obsidian.Obsidian"
       - "zig.zig"
       - "BurntSushi.ripgrep.MSVC"
+      - "LGUG2Z.komorebi"
+      - "LGUG2Z.whkd"
 
     modules:
       - "PSReadLine"
