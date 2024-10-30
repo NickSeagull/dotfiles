@@ -1,0 +1,21 @@
+export PATH="$PATH:/snap/bin"
+export PATH="$PATH:$HOME/.ghcup/bin"
+
+. "$HOME/.cargo/env"
+eval "$(starship init zsh)"
+
+alias cmcd="chezmoi cd"
+
+export OPENAI_API_KEY={{ (bitwardenFields "item" "OpenAI work GPT4 key").Credential}}
+export GROQ_API_KEY={{ (bitwardenFields "item" "Groq API Key 2").Credential}}
+
+# fnm - fast node manager
+FNM_PATH="$HOME/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$HOME/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
+function unlock_bw() {
+  export BW_SESSION=$(bw unlock --raw)
+}

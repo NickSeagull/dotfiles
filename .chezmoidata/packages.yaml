@@ -43,6 +43,7 @@ packages:
       - "lazygit"
       - "ghcup"
       - "ffmpeg"
+      - "bitwarden-cli"
       - "rg" # Ripgrep
       - "fnm" # Fast Node Manager
       - "black" # Python formatter
