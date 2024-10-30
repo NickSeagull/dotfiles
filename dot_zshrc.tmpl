@@ -6,8 +6,6 @@ eval "$(starship init zsh)"
 
 alias cmcd="chezmoi cd"
 
-export OPENAI_API_KEY={{ (bitwardenFields "item" "OpenAI work GPT4 key").Credential}}
-export GROQ_API_KEY={{ (bitwardenFields "item" "Groq API Key 2").Credential}}
 
 # fnm - fast node manager
 FNM_PATH="$HOME/.local/share/fnm"

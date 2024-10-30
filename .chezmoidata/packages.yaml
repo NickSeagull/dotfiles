@@ -14,7 +14,7 @@ packages:
       - "libtinfo5"
       - "pkg-config"
       - "ripgrep"
-      - "sl"     # CHOOCHOO MOTHERFUCKER
+      - "sl" # CHOOCHOO MOTHERFUCKER
 
     snaps:
       - name: "zellij"
@@ -51,6 +51,10 @@ packages:
     casks:
       - "alacritty"
       - "font-jetbrains-mono-nerd-font"
+
+    appstore:
+      - name: "Keynote"
+        id: 409183694
 
     curls: []
 

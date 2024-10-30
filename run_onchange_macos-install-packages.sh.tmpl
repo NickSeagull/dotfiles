@@ -8,5 +8,8 @@ brew {{ . | quote }}
 {{ range .packages.macos.casks -}}
 cask {{ . | quote }}
 {{ end -}}
+{{ range .packages.macos.appstore -}}
+mas {{ .name | quote }}, id: {{ .id }}
+{{ end -}}
 EOF
 {{ end -}}

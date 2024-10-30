@@ -1,3 +1,4 @@
+{{ if eq .chezmoi.os "windows" -}}
 - name: 1Password
   identifier:
     kind: Exe
@@ -1549,3 +1550,4 @@
   - kind: Class
     id: VISIOQ
     matching_strategy: Equals
+{{ end -}}
