@@ -73,6 +73,7 @@ packages:
       - "LGUG2Z.komorebi"
       - "LGUG2Z.whkd"
       - "Audacity.Audacity"
+      - "Hashicorp.Vagrant"
 
     modules:
       - "PSReadLine"
