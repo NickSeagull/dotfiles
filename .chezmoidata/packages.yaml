@@ -74,6 +74,7 @@ packages:
       - "LGUG2Z.whkd"
       - "Audacity.Audacity"
       - "Hashicorp.Vagrant"
+      - "Oracle.VirtualBox"
 
     modules:
       - "PSReadLine"
