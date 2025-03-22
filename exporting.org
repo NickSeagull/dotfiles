@@ -1,0 +1,24 @@
+#+TITLE: Exporting to Org Mode
+
+Here's an example script on how to export. Ideally this should be converted into an automatic script that exports automatically
+
+#+begin_src elisp
+(require 'package)
+(package-initialize)
+(require 'ox-hugo)
+
+;; Adjust paths to match your repo
+(setq org-hugo-base-dir "./website/src/content/docs")
+(find-file "./index.org")
+(org-hugo-export-wim-to-md :all-subtrees)
+#+end_src
+
+
+I should keep reading
+
+https://lotusdocs.dev/docs/quickstart/#create-a-new-lotus-docs-site
+
+
+and
+
+https://ox-hugo.scripter.co/doc/usage/

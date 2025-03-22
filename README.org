@@ -18,6 +18,8 @@ This repository contains the full stack of my computational ecosystem:
 There are no standalone config files.
 Every component is an *Org document* — part code, part memory, part invocation.
 
+Better check those in [[nickseagull.dev][nickseagull.dev.]]
+
 * System Ontology
 
 This is not a traditional dotfiles repo.

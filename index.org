@@ -1,0 +1,22 @@
+#+TITLE: Welcome
+#+OPTIONS: toc:nil num:nil
+
+* Welcome to nickseagull.dev
+
+This site is an experimentation platform and portal into my development environment, notes, tools, and thoughts.
+
+Everything you see here — from system configuration to personal wiki and blog — is written in Emacs Org-mode, and published directly from source.
+
+- 🧬 Dotfiles and system setup for all my machines
+- 🧠 Notes, ideas, and references (a digital garden)
+- 🛠️ Scripts and utilities I use daily
+- 🌐 Blog posts and writing
+
+All content lives in the same unified system.
+There is no separation between code, config, and knowledge.
+
+Feel free to explore, browse, or adapt anything you find useful.
+
+#+BEGIN_QUOTE
+This site is built from the same files I use to run my machines and organize my thoughts.
+#+END_QUOTE
