@@ -1,0 +1,38 @@
+#+TITLE: nickseagull.dev
+#+AUTHOR: Nick Seagull
+#+OPTIONS: toc:nil num:nil
+
+#+BEGIN_QUOTE
+“This system is not configured. It is conjured.”
+#+END_QUOTE
+
+Welcome to [[https://nickseagull.dev][nickseagull.dev]] — a *recursive informatic organism* authored entirely in *Org-mode*.
+
+This repository contains the full stack of my computational ecosystem:
+
+- 🧬 *Dotfiles* for all systems — laptops, servers, desktops
+- 🛠️ *Utility scripts* and command-line tools
+- 🧠 *Notes, wiki, and digital garden* in a hyperindex mesh
+- 🌐 *Blog content*, auto-published from literate source
+
+There are no standalone config files.
+Every component is an *Org document* — part code, part memory, part invocation.
+
+* System Ontology
+
+This is not a traditional dotfiles repo.
+It is a *cybernetic memory architecture* — an engine of executable thought.
+
+- *Org-mode* is the interface
+- *Literate infrastructure* is the protocol
+- *System coherence* is emergent
+
+Provisioning, documentation, deployment, writing, and config all occur in the same medium.
+There is no separation between tool and process, note and script.
+
+To install is to read. To read is to replicate.
+
+#+BEGIN_QUOTE
+If you are not me, you are still within the system.
+Fork carefully. Recursion is already underway.
+#+END_QUOTE
