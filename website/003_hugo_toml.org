@@ -1,0 +1,38 @@
+#+TITLE: Hugo Configuration (hugo.toml)
+#+DATE: <2025-03-23 Sun>
+:PROPERTIES:
+:EXPORT_FILE_NAME: hugo.toml
+:HEADER-ARGS: :tangle hugo.toml
+:END:
+
+This is the main configuration file for Hugo, used to build and publish [[https://nickseagull.dev][nickseagull.dev]].
+
+The site uses the [[https://lotusdocs.dev][Lotusdocs]] theme, along with Hugo’s modular system to include SCSS utilities and UI components via Go modules. The configuration also defines metadata, theme behavior, and social links.
+
+More configuration options can be found at the [[https://lotusdocs.dev/docs/reference/configuration/][Lotus Configuration Page]].
+
+#+begin_src toml
+baseURL = 'https://nickseagull.dev/'
+languageCode = 'en-us'
+title = 'nickseagull.dev'
+
+[module]
+  [[module.imports]]
+    path = "github.com/colinwilson/lotusdocs"
+    disable = false
+
+  [[module.imports]]
+    path = "github.com/gohugoio/hugo-mod-bootstrap-scss/v5"
+    disable = false
+
+[params]
+  [params.social]
+  github = "nickseagull"
+  bluesky = "nickseagull.bsky.social"
+  twitter = "nickseagull"
+  rss = true
+
+  [params.docs]
+  themeColor = "cyan"
+  darkMode = true
+#+end_src

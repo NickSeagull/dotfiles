@@ -1,0 +1,13 @@
+#+TITLE: About the infrastructure to generate the site
+#+DATE: <2025-03-23 Sun>
+:PROPERTIES:
+:WEIGHT: 100
+:END:
+
+The site is written using Org-mode.
+
+All content lives in `.org` files that serve multiple purposes: they act as a personal knowledge base, documentation, configuration hub, and code generator. Many files include source blocks that can be *tangled* into actual scripts or config files — this allows me to maintain a single source of truth across systems.
+
+For static site generation, I use **Hugo**.
+
+Although I’m not a fan of Go, Hugo performs reliably, is fast, and — most importantly — I don’t have to touch any Go code to add or publish content. Hopefully, it stays that way.

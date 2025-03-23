@@ -1,0 +1,22 @@
+#+TITLE: Go Modules for Hugo
+#+DATE: <2025-03-23 Sun>
+:PROPERTIES:
+:END:
+
+This file defines the Go module configuration used by Hugo to manage theme and asset dependencies.
+
+Hugo uses Go Modules to fetch and manage external components like themes and SCSS toolkits. This allows for reproducible builds and version control of UI dependencies.
+
+The module name is arbitrary (`website`), and the `require` block lists indirect dependencies brought in by the theme system.
+
+#+begin_src text :tangle ./go.mod
+module website
+
+go 1.24.0
+
+require (
+	github.com/colinwilson/lotusdocs v0.2.0 // indirect
+	github.com/gohugoio/hugo-mod-bootstrap-scss/v5 v5.20300.20400 // indirect
+)
+#+end_src
+

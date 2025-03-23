@@ -7,3 +7,4 @@ hugo.exe
 hugo.darwin
 hugo.linux
 /website/.hugo_build.lock
+/website/go.mod

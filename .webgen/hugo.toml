@@ -9,3 +9,14 @@ title = 'nickseagull.dev'
     [[module.imports]]
         path = "github.com/gohugoio/hugo-mod-bootstrap-scss/v5"
         disable = false
+
+[params]
+    [params.social]
+    github = "nickseagull"
+    bluesky = "nickseagull.bsky.social"
+    twitter = "nickseagull"
+    rss = true
+
+    [params.docs]
+    themeColor = "cyan"
+    darkMode = true
