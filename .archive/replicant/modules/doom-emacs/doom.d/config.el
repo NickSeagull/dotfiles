@@ -73,3 +73,32 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(defun ns/org-file-has-tangle-blocks-p (file)
+  "Return non-nil if FILE contains any Babel src block with a :tangle path or yes."
+  (with-temp-buffer
+    (insert-file-contents file)
+    (goto-char (point-min))
+    (re-search-forward "#\\+BEGIN_SRC.*:tangle\\s-+\\([^ \t\n]+\\)" nil t)))
+
+(defun ns/org-babel-auto-tangle ()
+  "Auto-tangle current Org file on save if it contains any tangleable blocks."
+  (when (and (buffer-file-name)
+             (string= (file-name-extension (buffer-file-name)) "org")
+             (ns/org-file-has-tangle-blocks-p (buffer-file-name)))
+    (org-babel-tangle)))
+
+(after! org-mode
+  (add-hook! org-mode
+    (lambda ()
+      (add-hook! after-save-hook #'ns/org-babel-auto-tangle nil t))))
+
+(defun ns/tangle-org-files-in-dir (directory)
+  "Recursively tangle Org files in DIRECTORY that contain Babel blocks with
+:tangle."
+  (interactive "DDirectory: ")
+  (let ((org-files (directory-files-recursively directory "\\.org$")))
+    (dolist (file org-files)
+      (when (ns/org-file-has-tangle-blocks-p file)
+        (with-current-buffer (find-file-noselect file)
+          (org-babel-tangle))))))
