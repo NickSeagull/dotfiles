@@ -1,8 +1,6 @@
 #+TITLE: About the infrastructure to generate the site
 #+DATE: <2025-03-23 Sun>
-:PROPERTIES:
-:WEIGHT: 100
-:END:
+#+hugo_section: docs/website
 
 The site is written using Org-mode.
 

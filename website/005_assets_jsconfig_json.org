@@ -1,5 +1,6 @@
 #+TITLE: JavaScript Module Resolution (jsconfig.json)
 #+DATE: <2025-03-23 Sun>
+#+hugo_section: docs/website
 
 This file defines JavaScript module resolution settings for the assets pipeline, specifically for code editors like VS Code that support `jsconfig.json`.
 

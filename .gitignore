@@ -9,6 +9,7 @@
 !/website/archetypes/.gitkeep
 /website/assets/*
 !/website/assets/.gitkeep
+/website/content/**/*.md
 hugo_stats.json
 hugo.exe
 hugo.darwin

@@ -1,5 +1,6 @@
 #+TITLE: Welcome
 #+OPTIONS: toc:nil num:nil
+#+hugo_section: docs
 
 * Welcome to nickseagull.dev
 

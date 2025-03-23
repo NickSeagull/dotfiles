@@ -1,6 +1,8 @@
 #+TITLE: nickseagull.dev
 #+AUTHOR: Nick Seagull
 #+OPTIONS: toc:nil num:nil
+#+hugo_section: docs
+
 
 #+BEGIN_QUOTE
 “This system is not configured. It is conjured.”

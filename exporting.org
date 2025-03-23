@@ -1,4 +1,5 @@
 #+TITLE: Exporting to Org Mode
+#+hugo_section: docs
 
 Here's an example script on how to export. Ideally this should be converted into an automatic script that exports automatically
 

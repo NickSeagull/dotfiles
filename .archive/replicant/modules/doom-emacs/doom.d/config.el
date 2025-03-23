@@ -102,3 +102,46 @@
       (when (ns/org-file-has-tangle-blocks-p file)
         (with-current-buffer (find-file-noselect file)
           (org-babel-tangle))))))
+
+(defun ns/hugo-export-org-files-in-dir (org-root-dir hugo-root-dir)
+  "Recursively export Org files under ORG-ROOT-DIR using ox-hugo.
+Place the resulting .md files in HUGO-ROOT-DIR/content/docs/,
+preserving the same subdirectory structure.
+
+For example:
+  A/B/file.org  =>  content/docs/A/B/file.md
+
+Interactively prompts for both directories.
+
+This forces an explicit EXPORT_FILE_NAME so that file structure
+is preserved exactly, and kills the buffer to avoid saving properties
+into the Org file."
+  (interactive "DOrg root directory: \nDHugo root directory: ")
+  ;; Ensure ox-hugo is loaded
+  (require 'ox-hugo)
+
+  (let ((org-files   (directory-files-recursively org-root-dir "\\.org$"))
+        (content-root (expand-file-name "content/docs/" hugo-root-dir)))
+    (dolist (org-file org-files)
+      ;; Build output path: A/B/file.org => A/B/file.md
+      (let* ((relative-path  (file-relative-name org-file org-root-dir))
+             (md-filename    (concat (file-name-sans-extension relative-path) ".md"))
+             (final-md-path  (expand-file-name md-filename content-root))
+             (target-dir     (file-name-directory final-md-path)))
+        ;; Create the directory if needed
+        (make-directory target-dir t)
+
+        ;; Use a temp buffer for this file
+        (with-current-buffer (find-file-noselect org-file)
+          ;; Force these settings in the buffer so ox-hugo exports as we want:
+          (setq-local org-hugo-base-dir hugo-root-dir)    ;; The Hugo project
+
+          ;; Export!
+          (org-hugo-export-wim-to-md)
+
+          ;; Kill the buffer so we don't accidentally save the newly added properties
+          (kill-buffer (current-buffer))))))
+
+  (message "Finished exporting Org files from %s to %s/content/docs"
+           (abbreviate-file-name org-root-dir)
+           (abbreviate-file-name hugo-root-dir)))

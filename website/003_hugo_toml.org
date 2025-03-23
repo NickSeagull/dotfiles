@@ -1,5 +1,6 @@
 #+TITLE: Hugo Configuration (hugo.toml)
 #+DATE: <2025-03-23 Sun>
+#+hugo_section: docs/website
 
 This is the main configuration file for Hugo, used to build and publish [[https://nickseagull.dev][nickseagull.dev]].
 

@@ -1,5 +1,6 @@
 #+TITLE: Go Modules for Hugo
 #+DATE: <2025-03-23 Sun>
+#+hugo_section: docs/website
 
 This file defines the Go module configuration used by Hugo to manage theme and asset dependencies.
 

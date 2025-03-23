@@ -1,5 +1,6 @@
 #+TITLE: Hugo Archetype: default.md
 #+DATE: <2025-03-23 Sun>
+#+hugo_section: docs/website
 
 This file defines the default [[https://gohugo.io/content-management/archetypes/][archetype]] used by Hugo when creating new content with `hugo new`.
 
