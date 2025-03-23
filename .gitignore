@@ -7,6 +7,8 @@
 /website/hugo.toml
 /website/archetypes/*
 !/website/archetypes/.gitkeep
+/website/assets/*
+!/website/assets/.gitkeep
 hugo_stats.json
 hugo.exe
 hugo.darwin
