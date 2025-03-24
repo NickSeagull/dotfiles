@@ -13,6 +13,7 @@
       protobuf
       golangci-lint
       google-cloud-sdk
+      dotnet-sdk_9
     ];
 
     username = "nick";
