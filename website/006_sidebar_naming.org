@@ -1,0 +1,39 @@
+#+TITLE: Sidebar Naming
+#+DATE: <2025-03-24 Mon>
+#+hugo_section: docs/website
+
+This file defines content for two documentation pages used by Hugo under the `docs/` section of the site.
+
+Hugo follows the philosophy that *everything is a page*, meaning that both leaf and branch sections must be explicitly represented by a Markdown file to appear correctly in the site structure — especially when generating sidebars, menus, or hierarchical content layouts.
+
+To support this, we generate `_index.md` pages for both the root of the docs section and its subfolders.
+
+---
+
+* Root Docs Page
+
+This represents the root of the `/docs/` section and is required to register it as a branch page in Hugo’s content tree.
+
+#+BEGIN_SRC markdown :tangle ./content/docs/_index.md
+---
+title: "Docs"
+date: 2025-03-24T11:30:49Z
+draft: true
+---
+#+END_SRC
+
+---
+
+* Website Section
+
+This page acts as a named node in the documentation sidebar under `/docs/website/`.
+
+Even if it has no content, it must exist so the folder appears with a proper label and structure.
+
+#+BEGIN_SRC markdown :tangle ./content/docs/website/_index.md
+---
+title: "Website"
+date: 2025-03-24T11:30:49Z
+draft: true
+---
+#+END_SRC
