@@ -1,9 +1,7 @@
 #+TITLE: Welcome
 #+OPTIONS: toc:nil num:nil
 #+hugo_section: docs
-:PROPERTIES:
-:EXPORT_HUGO_WEIGHT: 100
-:END:
+#+hugo_weight: 100
 
 * Welcome to nickseagull.dev
 
