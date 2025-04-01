@@ -1,5 +1,14 @@
+#+TITLE: Index Page
+#+DATE: <2025-03-23 Sun>
+#+hugo_section: docs/website
+
+This is the main splash page for the documentation site, using the Starlight theme.
+
+We begin with frontmatter metadata, which defines the page’s title, description, template type, and hero section.
+
+#+begin_src yaml :tangle ./src/content/docs/index.mdx
 ---
-title: Welcome to Starlight
+title: nickseagull.dev
 description: Get started building your docs site with Starlight.
 template: splash
 hero:
@@ -15,8 +24,17 @@ hero:
       icon: external
       variant: minimal
 ---
+#+end_src
 
+We import some reusable UI components from Starlight to display a grid of cards.
+
+#+begin_src mdx :tangle ./src/content/docs/index.mdx
 import { Card, CardGrid } from '@astrojs/starlight/components';
+#+end_src
+
+Below we define a section titled “Next steps” with four cards offering suggestions to the user.
+
+#+begin_src mdx :tangle ./src/content/docs/index.mdx
 
 ## Next steps
 
@@ -34,3 +52,4 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 		Learn more in [the Starlight Docs](https://starlight.astro.build/).
 	</Card>
 </CardGrid>
+#+end_src
