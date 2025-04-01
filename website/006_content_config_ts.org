@@ -1,0 +1,23 @@
+#+TITLE: Content Collections
+#+DATE: <2025-03-23 Sun>
+#+hugo_section: docs/website
+
+This file defines the content collections used by Astro’s content module.
+
+We configure a single collection named ~docs~, using Starlight’s built-in loader and schema. This enables automatic type-safe content handling and integration with Starlight’s documentation system.
+
+We begin by importing the necessary helpers.
+
+#+begin_src typescript :tangle ./src/content.config.ts
+import { defineCollection } from 'astro:content';
+import { docsLoader } from '@astrojs/starlight/loaders';
+import { docsSchema } from '@astrojs/starlight/schema';
+#+end_src
+
+Now we declare the collections map. The key ~docs~ corresponds to the content directory ~src/content/docs~.
+
+#+begin_src typescript :tangle ./src/content.config.ts
+export const collections = {
+  docs: defineCollection({ loader: docsLoader(), schema: docsSchema() }),
+};
+#+end_src

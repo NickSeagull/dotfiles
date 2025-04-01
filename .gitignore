@@ -39,6 +39,7 @@ pnpm-debug.log*
 
 public/notes/
 src/content/docs/notes
+src/content/*.ts
 src/assets/
 src/.obsidian/
 package.json
