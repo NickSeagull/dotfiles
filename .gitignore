@@ -44,5 +44,6 @@ src/assets/
 src/.obsidian/
 package.json
 astro.config.mjs
+tsconfig.json
 
 processor/data/*

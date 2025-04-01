@@ -1,0 +1,25 @@
+#+TITLE: TypeScript Config
+#+DATE: <2025-03-23 Sun>
+#+hugo_section: docs/website
+
+This file defines the TypeScript configuration for the Astro project.
+
+We extend Astro’s strict default settings for type checking.
+
+#+begin_src json :tangle ./tsconfig.json
+{
+  "extends": "astro/tsconfigs/strict",
+#+end_src
+
+We include all source files and Astro’s generated types.
+
+#+begin_src json :tangle ./tsconfig.json
+  "include": [".astro/types.d.ts", "**/*"],
+#+end_src
+
+The build output directory is excluded from type checking.
+
+#+begin_src json :tangle ./tsconfig.json
+  "exclude": ["dist"]
+}
+#+end_src
