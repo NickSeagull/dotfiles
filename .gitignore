@@ -9,7 +9,7 @@
 !/website/archetypes/.gitkeep
 /website/assets/*
 !/website/assets/.gitkeep
-/website/content
+/website/src/content
 hugo_stats.json
 hugo.exe
 hugo.darwin
@@ -42,5 +42,6 @@ public/notes/
 src/content/docs/notes
 src/assets/
 src/.obsidian/
+package.json
 
 processor/data/*
