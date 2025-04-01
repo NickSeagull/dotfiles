@@ -1,0 +1,58 @@
+#+TITLE: Astro Config
+#+DATE: <2025-03-23 Sun>
+#+hugo_section: docs/website
+
+This file defines the Astro configuration for the documentation website.
+
+We use the Starlight theme integration, which provides a default layout, sidebar navigation, and social links for GitHub. This configuration is used by Astro at build and development time.
+
+We begin by enabling TypeScript type checking via JSDoc comments.
+
+#+begin_src javascript :tangle ./astro.config.mjs
+// @ts-check
+#+end_src
+
+We import Astro’s configuration utilities and the Starlight theme integration.
+
+#+begin_src javascript :tangle ./astro.config.mjs
+import { defineConfig } from 'astro/config';
+import starlight from '@astrojs/starlight';
+#+end_src
+
+Reference to Astro’s official configuration documentation.
+
+#+begin_src javascript :tangle ./astro.config.mjs
+// https://astro.build/config
+#+end_src
+
+Now we export the full configuration. Starlight is passed as an integration, with title, GitHub link, and a multi-section sidebar.
+
+#+begin_src javascript :tangle ./astro.config.mjs
+export default defineConfig({
+  integrations: [
+    starlight({
+      title: 'My Docs',
+      social: {
+        github: 'https://github.com/withastro/starlight',
+      },
+      sidebar: [
+        {
+          label: 'Guides',
+          items: [
+            // Each item here is one entry in the navigation menu.
+            { label: 'Example Guide', slug: 'guides/example' },
+          ],
+        },
+        {
+          label: 'Reference',
+          autogenerate: { directory: 'reference' },
+        },
+        {
+          label: 'Website',
+          autogenerate: { directory: 'website' },
+        },
+      ],
+    }),
+  ],
+});
+#+end_src

@@ -43,5 +43,6 @@ src/content/docs/notes
 src/assets/
 src/.obsidian/
 package.json
+astro.config.mjs
 
 processor/data/*
