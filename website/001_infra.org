@@ -8,6 +8,6 @@ All content lives in =.org= files that serve multiple purposes: they act as a pe
 
 For static site generation, I use *Astro* with *Starlight*.
 
-While exporting I use my elisp function =ns/tangle-org-files-in-dir=. Setting
+While exporting I use my elisp function =ns/hugo-export-org-files-in-dir=. Setting
 the Org root to the root of this repo, and the Hugo root to the =src= folder
-in this folder (website).
+in this folder (website). Also, I will use =ns/tangle-org-files-in-dir= to generate all source files out of the source blocks.
