@@ -12,11 +12,20 @@
     maple-mono
     fontconfig
 
+    aider-chat # aidermacs
+
     nixfmt-classic # :lang nix
     ispell # spellcheck
     shellcheck # for checking bash files
     sqlite # org-roam
     hugo
+
+    nodejs # debugger
+    lldb # debugger
+    gdb # debugger
+    unzip # debugger
+    delve # debugger (go)
+
   ];
 
   fonts.fontconfig.enable = true;
@@ -33,7 +42,10 @@
   };
   home.sessionPath = [ "${config.xdg.configHome}/emacs/bin" ];
 
-  programs.emacs.enable = true;
+  programs.emacs = {
+    enable = true;
+    extraPackages = epkgs: with epkgs; [ realgud-lldb vterm ];
+  };
 
   xdg.configFile."emacs".source = builtins.fetchGit {
     url = "https://github.com/doomemacs/doomemacs.git";

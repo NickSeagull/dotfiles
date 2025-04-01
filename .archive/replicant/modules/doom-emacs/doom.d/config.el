@@ -146,3 +146,33 @@ into the Org file."
   (message "Finished exporting Org files from %s to %s/content/docs"
            (abbreviate-file-name org-root-dir)
            (abbreviate-file-name hugo-root-dir)))
+
+
+;; accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word)))
+
+(after! treemacs
+  (setq treemacs-position 'right))
+
+(use-package! aidermacs
+  :bind
+  (("C-c a" . aidermacs-transient-menu))
+  :custom
+  ;; See the Configuration section below
+  (aidermacs-use-architect-mode t)
+  (aidermacs-default-model "gpt-4o"))
+
+;; Add dap-hydra to go mode on SPC m D
+(add-hook! go-mode
+  (map! :localleader
+        :map go-mode-map
+        "D" #'dap-hydra))
+
+
+(setq dap-auto-configure-features '(sessions locals controls tooltip))
