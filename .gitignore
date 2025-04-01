@@ -9,7 +9,6 @@
 !/website/archetypes/.gitkeep
 /website/assets/*
 !/website/assets/.gitkeep
-/website/src/content
 hugo_stats.json
 hugo.exe
 hugo.darwin
@@ -45,5 +44,6 @@ src/.obsidian/
 package.json
 astro.config.mjs
 tsconfig.json
+website/src/content/**/*.md
 
 processor/data/*
