@@ -42,6 +42,7 @@ src/content/docs/notes
 src/content/*.ts
 src/assets/
 src/.obsidian/
+0_meta/**/*.css
 package.json
 astro.config.mjs
 tsconfig.json

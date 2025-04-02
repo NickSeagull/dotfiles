@@ -1,12 +1,12 @@
 #+TITLE: Index Page
 #+DATE: <2025-03-23 Sun>
-#+hugo_section: docs/0_meta
+#+hugo_section: docs/0_meta/0a_website_generation
 
 This is the main splash page for the documentation site, using the Starlight theme.
 
 We begin with frontmatter metadata, which defines the page’s title, description, template type, and hero section.
 
-#+begin_src yaml :tangle ./src/content/docs/index.mdx
+#+begin_src yaml :tangle ../src/content/docs/index.mdx
 ---
 title: nickseagull.dev
 description: Get started building your docs site with Starlight.
@@ -16,29 +16,25 @@ hero:
   image:
     file: ../../assets/houston.webp
   actions:
-    - text: About this website
-      link: /0_meta/001_infra/
+    - text: Enter RAMSYS
+      link: /0_meta/readme
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
-      variant: minimal
 ---
 #+end_src
 
 We import some components from Starlight to display a grid of cards.
 
-#+begin_src mdx :tangle ./src/content/docs/index.mdx
+#+begin_src mdx :tangle ../src/content/docs/index.mdx
 import { Card, CardGrid } from '@astrojs/starlight/components';
 #+end_src
 
 Below we define a section titled “Next steps” with four cards offering suggestions to the user.
 
-#+begin_src mdx :tangle ./src/content/docs/index.mdx
+#+begin_src mdx :tangle ../src/content/docs/index.mdx
 
 ## Next steps
 
-<CardGrid stagger>
+<CardGrid>
 	<Card title="Update content" icon="pencil">
 		Edit `src/content/docs/index.mdx` to see this page change.
 	</Card>

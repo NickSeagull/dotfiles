@@ -1,6 +1,6 @@
 #+TITLE: Package JSON
 #+DATE: <2025-03-23 Sun>
-#+hugo_section: docs/0_meta
+#+hugo_section: docs/0_meta/0a_website_generation
 
 This file defines the Node.js project configuration used by Astro to manage dependencies, scripts, and project metadata.
 
@@ -8,26 +8,26 @@ Astro uses a `package.json` file to declare metadata, specify package versions, 
 
 The project is named arbitrarily but consistently across systems.
 
-#+begin_src json :tangle ./package.json
+#+begin_src json :tangle ../package.json
 {
   "name": "website",
 #+end_src
 
 We declare this package as an ECMAScript Module project.
 
-#+begin_src json :tangle ./package.json
+#+begin_src json :tangle ../package.json
   "type": "module",
 #+end_src
 
 The version is not yet stable and is in early development.
 
-#+begin_src json :tangle ./package.json
+#+begin_src json :tangle ../package.json
   "version": "0.0.1",
 #+end_src
 
 We define common scripts for local development and deployment.
 
-#+begin_src json :tangle ./package.json
+#+begin_src json :tangle ../package.json
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -39,25 +39,31 @@ We define common scripts for local development and deployment.
 
 Here we declare the main runtime dependencies used in the project.
 
-#+begin_src json :tangle ./package.json
+#+begin_src json :tangle ../package.json
   "dependencies": {
 #+end_src
 
 We use the Starlight theme for documentation websites.
 
-#+begin_src json :tangle ./package.json
+#+begin_src json :tangle ../package.json
     "@astrojs/starlight": "^0.32.5",
 #+end_src
 
 Astro is the core web framework driving the project.
 
-#+begin_src json :tangle ./package.json
+#+begin_src json :tangle ../package.json
     "astro": "^5.5.3",
+#+end_src
+
+For the main font, we use Monaspace Krypton:
+
+#+begin_src json :tangle ../package.json
+    "@fontsource/monaspace-krypton": "*",
 #+end_src
 
 We use `sharp` for efficient image processing.
 
-#+begin_src json :tangle ./package.json
+#+begin_src json :tangle ../package.json
     "sharp": "^0.32.5"
   }
 }
