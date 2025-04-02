@@ -31,13 +31,13 @@ Now we export the full configuration. Starlight is passed as an integration, wit
 export default defineConfig({
   integrations: [
     starlight({
-      title: 'My Docs',
+      title: 'RAMSYS',
       social: {
         github: 'https://github.com/withastro/starlight',
       },
       sidebar: [
         {
-          label: 'Website',
+          label: '0 - Foundations & Meta',
           autogenerate: { directory: 'website' },
         },
       ],
