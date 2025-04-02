@@ -12,4 +12,4 @@ While exporting I use my elisp function =ns/hugo-export-org-files-in-dir=. Setti
 the Org root to the root of this repo, and the Hugo root to the =src= folder
 in this folder (0_meta). Also, I will use =ns/tangle-org-files-in-dir= to generate all source files out of the source blocks.
 
-I also setup an =after-save-hook= for this that performs this.
+I also setup an =after-save-hook= for this that performs this automatically.
