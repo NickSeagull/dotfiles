@@ -26,7 +26,7 @@ hero:
 ---
 #+end_src
 
-We import some reusable UI components from Starlight to display a grid of cards.
+We import some components from Starlight to display a grid of cards.
 
 #+begin_src mdx :tangle ./src/content/docs/index.mdx
 import { Card, CardGrid } from '@astrojs/starlight/components';

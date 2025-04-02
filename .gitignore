@@ -47,5 +47,6 @@ astro.config.mjs
 tsconfig.json
 website/src/content/**/*.md
 website/src/content/**/*.mdx
+website/src/content.config.ts
 
 processor/data/*
