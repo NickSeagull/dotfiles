@@ -137,7 +137,7 @@ Skips killing the current buffer if it's one of the exported files."
 Hugo project is assumed to be at `org-directory/website/src/`."
   (interactive)
   (let* ((org-root-dir (expand-file-name org-directory))
-         (hugo-root-dir (expand-file-name "website/src/" org-root-dir)))
+         (hugo-root-dir (expand-file-name "0_meta/src/" org-root-dir)))
     (ns/tangle-org-files-in-dir org-root-dir)
     (ns/hugo-export-org-files-in-dir org-root-dir hugo-root-dir)))
 

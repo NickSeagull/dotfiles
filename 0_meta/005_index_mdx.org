@@ -1,6 +1,6 @@
 #+TITLE: Index Page
 #+DATE: <2025-03-23 Sun>
-#+hugo_section: docs/website
+#+hugo_section: docs/0_meta
 
 This is the main splash page for the documentation site, using the Starlight theme.
 
@@ -17,7 +17,7 @@ hero:
     file: ../../assets/houston.webp
   actions:
     - text: About this website
-      link: /website/001_infra/
+      link: /0_meta/001_infra/
       icon: right-arrow
     - text: Read the Starlight docs
       link: https://starlight.astro.build

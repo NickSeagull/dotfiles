@@ -1,14 +1,14 @@
 ### Hugo ###
-/website/public/
-/website/resources/_gen/
-/website/assets/jsconfig.json
-/website/.hugo_build.lock
-/website/go.mod
-/website/hugo.toml
-/website/archetypes/*
-!/website/archetypes/.gitkeep
-/website/assets/*
-!/website/assets/.gitkeep
+/0_meta/public/
+/0_meta/resources/_gen/
+/0_meta/assets/jsconfig.json
+/0_meta/.hugo_build.lock
+/0_meta/go.mod
+/0_meta/hugo.toml
+/0_meta/archetypes/*
+!/0_meta/archetypes/.gitkeep
+/0_meta/assets/*
+!/0_meta/assets/.gitkeep
 hugo_stats.json
 hugo.exe
 hugo.darwin
@@ -45,8 +45,8 @@ src/.obsidian/
 package.json
 astro.config.mjs
 tsconfig.json
-website/src/content/**/*.md
-website/src/content/**/*.mdx
-website/src/content.config.ts
+0_meta/src/content/**/*.md
+0_meta/src/content/**/*.mdx
+0_meta/src/content.config.ts
 
 processor/data/*
