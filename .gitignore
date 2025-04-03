@@ -43,6 +43,8 @@ src/content/*.ts
 src/assets/
 src/.obsidian/
 0_meta/**/*.css
+0_meta/**/*.js
+0_meta/**/*.jsx
 package.json
 astro.config.mjs
 tsconfig.json
