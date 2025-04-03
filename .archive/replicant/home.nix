@@ -4,6 +4,7 @@
       bitwarden-cli
       nixpkgs-fmt
       libvterm
+      git
 
       # work
       go

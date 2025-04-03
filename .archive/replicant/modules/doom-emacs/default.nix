@@ -49,7 +49,7 @@
 
   xdg.configFile."emacs".source = builtins.fetchGit {
     url = "https://github.com/doomemacs/doomemacs.git";
-    rev = "466490c252d06f42a9c165f361de74a6e6abad8d";
+    rev = "b1e6dec47a2d0fa5fd8f7ab55b5f1012d16cb48b";
   };
   xdg.configFile."doom".source = ./doom.d; # Note! This must match $DOOMDIR
 }
