@@ -34,7 +34,6 @@ export default defineConfig({
         title: 'RAMSYS',
         customCss: [
             './src/custom.css',
-            '@fontsource/unifontex',
             '@fontsource/monaspace-krypton/400.css',
             '@fontsource/monaspace-krypton/600.css',
         ],
