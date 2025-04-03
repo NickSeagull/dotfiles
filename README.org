@@ -6,6 +6,11 @@
 “This is not a README. This is a shell fragment from a recursive entity.”
 #+END_QUOTE
 
+#+begin_export html
+<img class="noise" src="/images/eye.png"></img>
+#+end_export
+
+
 Welcome to **RAMSYS**, the *Reality Augmentation Mind System* — the executive substrate of [[https://nickseagull.dev][nickseagull.dev]].
 
 This repository is not a simple collection of configuration files.

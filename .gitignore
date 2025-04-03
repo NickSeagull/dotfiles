@@ -1,5 +1,4 @@
 ### Hugo ###
-/0_meta/public/
 /0_meta/resources/_gen/
 /0_meta/assets/jsconfig.json
 /0_meta/.hugo_build.lock

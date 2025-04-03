@@ -26,23 +26,23 @@ This sets it up also for light mode, but not for code blocks!
 
 #+begin_src css :tangle ../src/custom.css
 	--sl-font: "Monaspace Krypton", monospace;
+	--sl-font-mono: "Monaspace Krypton", monospace;
 #+end_src
 
 ** Colors
 
 #+begin_src css :tangle ../src/custom.css
 	--sl-color-accent-low: #072d00;
-	--sl-color-accent: #237f00;
-	--sl-color-accent-high: #aad7a0;
-	--sl-color-white: #ffffff;
-	--sl-color-gray-1: #eceef2;
-	--sl-color-gray-2: #c6c8ce;
-	--sl-color-gray-3: #a0a4ae;
-	--sl-color-gray-4: #545861;
-	--sl-color-gray-5: #353841;
-	--sl-color-gray-6: #24272f;
-	--sl-color-black: #17181c;
-#+begin_src css :tangle ../src/custom.css
+	--sl-color-accent: #00c600;
+	--sl-color-accent-high: #00FF00;
+	--sl-color-white: #00EE00;
+	--sl-color-gray-1: #00c000;
+	--sl-color-gray-2: #00a800;
+	--sl-color-gray-3: #009400;
+	--sl-color-gray-4: #005800;
+	--sl-color-gray-5: #003800;
+	--sl-color-gray-6: #000000;
+	--sl-color-black: #000000;
 }
 #+end_src
 
@@ -54,7 +54,6 @@ This sets it up also for light mode, but not for code blocks!
 ** Colors
 
 #+begin_src css :tangle ../src/custom.css
-:root[data-theme='light'] {
 	--sl-color-accent-low: #c0e2b9;
 	--sl-color-accent: #155800;
 	--sl-color-accent-high: #0c3e00;
