@@ -9,7 +9,7 @@
     # Font / icon config
     emacs-all-the-icons-fonts
     nerd-fonts.symbols-only
-    maple-mono
+    maple-mono.NF
     fontconfig
 
     # AI tooling

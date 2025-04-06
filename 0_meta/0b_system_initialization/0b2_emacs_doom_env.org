@@ -24,7 +24,7 @@ First, we define the packages to install for Emacs to function properly, includi
     # Font / icon config
     emacs-all-the-icons-fonts
     nerd-fonts.symbols-only
-    maple-mono
+    maple-mono.NF
     fontconfig
 
     # AI tooling
