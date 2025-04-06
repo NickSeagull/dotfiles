@@ -55,5 +55,3 @@ processor/data/*
 
 .orgids
 
-/.hm/*
-!/.hm/.gitkeep
