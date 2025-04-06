@@ -8,26 +8,26 @@ We use the Starlight theme integration, which provides a default layout, sidebar
 
 We begin by enabling TypeScript type checking via JSDoc comments.
 
-#+begin_src javascript :tangle ../astro.config.mjs
+#+begin_src javascript :tangle ../../.webgen/astro.config.mjs
 // @ts-check
 #+end_src
 
 We import Astro’s configuration utilities and the Starlight theme integration.
 
-#+begin_src javascript :tangle ../astro.config.mjs
+#+begin_src javascript :tangle ../../.webgen/astro.config.mjs
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 #+end_src
 
 Reference to Astro’s official configuration documentation.
 
-#+begin_src javascript :tangle ../astro.config.mjs
+#+begin_src javascript :tangle ../../.webgen/astro.config.mjs
 // https://astro.build/config
 #+end_src
 
 Now we export the full configuration. Starlight is passed as an integration, with title, GitHub link, and a multi-section sidebar.
 
-#+begin_src javascript :tangle ../astro.config.mjs
+#+begin_src javascript :tangle ../../.webgen/astro.config.mjs
 export default defineConfig({
   integrations: [
     starlight({

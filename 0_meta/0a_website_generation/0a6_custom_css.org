@@ -8,7 +8,7 @@ This file defines the color theme and styling of the website.
 
 We set the code blocks separately, as Starlight uses [[https://expressive-code.com/][Expressive Code]] for code blocks.
 
-#+begin_src css :tangle ../src/custom.css
+#+begin_src css :tangle ../../.webgen/src/custom.css
 code {
 	--ec-codeFontFml: "Monaspace Krypton", monospace;
 }
@@ -16,7 +16,7 @@ code {
 
 * Dark Mode
 
-#+begin_src css :tangle ../src/custom.css
+#+begin_src css :tangle ../../.webgen/src/custom.css
 :root {
 #+end_src
 
@@ -24,14 +24,14 @@ code {
 
 This sets it up also for light mode, but not for code blocks!
 
-#+begin_src css :tangle ../src/custom.css
+#+begin_src css :tangle ../../.webgen/src/custom.css
 	--sl-font: "Monaspace Krypton", monospace;
 	--sl-font-mono: "Monaspace Krypton", monospace;
 #+end_src
 
 ** Colors
 
-#+begin_src css :tangle ../src/custom.css
+#+begin_src css :tangle ../../.webgen/src/custom.css
 	--sl-color-accent-low: #072d00;
 	--sl-color-accent: #00c600;
 	--sl-color-accent-high: #00FF00;
@@ -47,13 +47,13 @@ This sets it up also for light mode, but not for code blocks!
 #+end_src
 
 * Light Mode
-#+begin_src css :tangle ../src/custom.css
+#+begin_src css :tangle ../../.webgen/src/custom.css
 :root[data-theme='light'] {
 #+end_src
 
 ** Colors
 
-#+begin_src css :tangle ../src/custom.css
+#+begin_src css :tangle ../../.webgen/src/custom.css
 	--sl-color-accent-low: #c0e2b9;
 	--sl-color-accent: #155800;
 	--sl-color-accent-high: #0c3e00;
@@ -68,7 +68,7 @@ This sets it up also for light mode, but not for code blocks!
 	--sl-color-black: #ffffff;
 #+end_src
 
-#+begin_src css :tangle ../src/custom.css
+#+begin_src css :tangle ../../.webgen/src/custom.css
 }
 #+end_src
 

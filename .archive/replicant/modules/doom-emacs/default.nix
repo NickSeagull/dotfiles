@@ -26,6 +26,7 @@
     unzip # debugger
     delve # debugger (go)
 
+    copilot-language-server
   ];
 
   fonts.fontconfig.enable = true;

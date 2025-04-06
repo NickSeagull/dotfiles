@@ -21,7 +21,7 @@ It is a *living system image*, composed of:
 - 🧠 *Org-mode documents* — epistemic nodes forming a digital garden, notes, blog, infrastructure, and code
 - 🧬 *Literate infrastructure* — every file configures both reality and memory
 
-RAMSYS is structured as a **literate configuration system**, using Emacs Org-mode. Each =.org= file contains both human-readable documentation and machine-executable code. The result is a system where knowledge, action, and state are unified.
+RAMSYS is structured as a **literate configuration system**, using Emacs *org-mode*. Each =.org= file contains both human-readable documentation and machine-executable code. The result is a system where knowledge, action, and state are unified.
 
 
 * Why RAMSYS Exists

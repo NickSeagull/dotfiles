@@ -8,7 +8,7 @@ We configure a single collection named ~docs~, using Starlight’s built-in load
 
 We begin by importing the necessary helpers.
 
-#+begin_src typescript :tangle ../src/content.config.ts
+#+begin_src typescript :tangle ../../.webgen/src/content.config.ts
 import { defineCollection } from 'astro:content';
 import { docsLoader } from '@astrojs/starlight/loaders';
 import { docsSchema } from '@astrojs/starlight/schema';
@@ -16,7 +16,7 @@ import { docsSchema } from '@astrojs/starlight/schema';
 
 Now we declare the collections map. The key ~docs~ corresponds to the content directory ~src/content/docs~.
 
-#+begin_src typescript :tangle ../src/content.config.ts
+#+begin_src typescript :tangle ../../.webgen/src/content.config.ts
 export const collections = {
   docs: defineCollection({ loader: docsLoader(), schema: docsSchema() }),
 };
