@@ -1,99 +1,74 @@
+#+TITLE: Doom Emacs Config
+#+DATE: <2025-04-06 Sun>
+#+hugo_section: docs/0_meta/0b_system_initialization
+
+This is my personal =config.el= for Doom Emacs. It controls font settings, theme, Org-mode behavior, tangling and exporting, Copilot and AI tooling, and various Doom-specific enhancements.
+
+We set lexical binding for the file.
+
+#+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+#+end_src
 
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
+We begin by setting the primary font for Doom. I'm using =Maple Mono= at size 20, with increased spacing to give it a clean and open feel.
 
-
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets. It is optional.
-;; (setq user-full-name "John Doe"
-;;       user-mail-address "john@doe.com")
-
-;; Doom exposes five (optional) variables for controlling fonts in Doom:
-;;
-;; - `doom-font' -- the primary font to use
-;; - `doom-variable-pitch-font' -- a non-monospace font (where applicable)
-;; - `doom-big-font' -- used for `doom-big-font-mode'; use this for
-;;   presentations or streaming.
-;; - `doom-symbol-font' -- for symbols
-;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
-;;
-;; See 'C-h v doom-font' for documentation and more examples of what they
-;; accept. For example:
-;;
+#+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el
 (setq doom-font (font-spec :family "Maple Mono" :size 20 :spacing 90))
-;;
-;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
-;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
-;; refresh your font settings. If Emacs still can't find your font, it likely
-;; wasn't installed correctly. Font issues are rarely Doom issues!
+#+end_src
 
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
+The theme I use is =catppuccin= — soft, readable, and comfortable on the eyes.
+
+#+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el
 (setq doom-theme 'catppuccin)
+#+end_src
 
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
+I enable relative line numbers across the board, which helps with navigation.
+
+#+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el
 (setq display-line-numbers-type 'relative)
+#+end_src
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
+My Org files live in the root of my repository — this ensures that tangling and exporting behave predictably from anywhere.
+
+#+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el
 (setq org-directory "~/nickseagull.dev/")
 (setq user-full-name "Nikita Tchayka")
+#+end_src
 
+Now we define a helper that determines whether an Org file contains any tangleable code blocks.
 
-;; Whenever you reconfigure a package, make sure to wrap your config in an
-;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
-;;
-;;   (after! PACKAGE
-;;     (setq x y))
-;;
-;; The exceptions to this rule:
-;;
-;;   - Setting file/directory variables (like `org-directory')
-;;   - Setting variables which explicitly tell you to set them before their
-;;     package is loaded (see 'C-h v VARIABLE' to look up their documentation).
-;;   - Setting doom variables (which start with 'doom-' or '+').
-;;
-;; Here are some additional functions/macros that will help you configure Doom.
-;;
-;; - `load!' for loading external *.el files relative to this one
-;; - `use-package!' for configuring packages
-;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', relative to
-;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-package'.
-;; - `map!' for binding new keys
-;;
-;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
-;; This will open documentation for it, including demos of how they are used.
-;; Alternatively, use `C-h o' to look up a symbol (functions, variables, faces,
-;; etc).
-;;
-;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.
-
+#+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el
 (defun ns/org-file-has-tangle-blocks-p (file)
   "Return non-nil if FILE contains any Babel src block with a :tangle path or yes."
   (with-temp-buffer
     (insert-file-contents file)
     (goto-char (point-min))
     (re-search-forward "#\\+BEGIN_SRC.*:tangle\\s-+\\([^ \t\n]+\\)" nil t)))
+#+end_src
 
+We now define a function that automatically tangles an Org file when it is saved, but only if it includes tangleable blocks.
+
+#+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el
 (defun ns/org-babel-auto-tangle ()
   "Auto-tangle current Org file on save if it contains any tangleable blocks."
   (when (and (buffer-file-name)
              (string= (file-name-extension (buffer-file-name)) "org")
              (ns/org-file-has-tangle-blocks-p (buffer-file-name)))
     (org-babel-tangle)))
+#+end_src
 
+This behavior is attached to =org-mode= buffers only.
+
+#+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el
 (after! org-mode
   (add-hook! org-mode
     (lambda ()
       (add-hook! after-save-hook #'ns/org-babel-auto-tangle nil t))))
+#+end_src
 
+Now we define a recursive tangler for all Org files in a directory.
+
+#+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el
 (defun ns/tangle-org-files-in-dir (directory)
   "Recursively tangle Org files in DIRECTORY that contain Babel blocks with
 :tangle."
@@ -102,9 +77,12 @@
     (dolist (file org-files)
       (when (ns/org-file-has-tangle-blocks-p file)
         (with-current-buffer (find-file-noselect file)
-          (org-babel-tangle))))))
+          (org-babel-tangle)))))
+#+end_src
 
+To complement tangling, we now define a function that exports all Org files under a directory to Hugo-compatible Markdown files, preserving their relative structure.
 
+#+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el
 (defun ns/hugo-export-org-files-in-dir (org-root-dir hugo-root-dir)
   "Recursively export Org files under ORG-ROOT-DIR using ox-hugo.
 Place the resulting .md files in HUGO-ROOT-DIR/content/docs/,
@@ -125,13 +103,16 @@ Skips killing the current buffer if it's one of the exported files."
         (with-current-buffer (find-file-noselect org-file)
           (setq-local org-hugo-base-dir hugo-root-dir)
           (org-hugo-export-wim-to-md)
-          ;; Only kill buffer if it's not the one you're actively editing
           (unless (eq (current-buffer) current)
             (kill-buffer))))))
   (message "Finished exporting Org files from %s to %s/content/docs"
            (abbreviate-file-name org-root-dir)
            (abbreviate-file-name hugo-root-dir)))
+#+end_src
 
+This next function ties it all together: tangle, then export everything. This is the one I call when building the site.
+
+#+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el
 (defun ns/tangle-and-export-all-org-files ()
   "Tangle and export all Org files in `org-directory` to Hugo markdown.
 Hugo project is assumed to be at `org-directory/website/src/`."
@@ -140,7 +121,11 @@ Hugo project is assumed to be at `org-directory/website/src/`."
          (hugo-root-dir (expand-file-name ".webgen/src/" org-root-dir)))
     (ns/tangle-org-files-in-dir org-root-dir)
     (ns/hugo-export-org-files-in-dir org-root-dir hugo-root-dir)))
+#+end_src
 
+We also hook this function to saving files, but only if they belong to the Org source tree.
+
+#+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el
 (defun ns/auto-tangle-and-export-on-save ()
   "Auto tangle and export if the saved Org file is under `org-directory`."
   (when (and (eq major-mode 'org-mode)
@@ -149,8 +134,11 @@ Hugo project is assumed to be at `org-directory/website/src/`."
     (run-with-idle-timer 0.5 nil #'ns/tangle-and-export-all-org-files)))
 
 (add-hook 'after-save-hook #'ns/auto-tangle-and-export-on-save)
+#+end_src
 
-;; accept completion from copilot and fallback to company
+I use GitHub Copilot for completions, and fall back to Company if needed.
+
+#+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el
 (use-package! copilot
   :hook (prog-mode . copilot-mode)
   :bind (:map copilot-completion-map
@@ -158,26 +146,40 @@ Hugo project is assumed to be at `org-directory/website/src/`."
               ("TAB" . 'copilot-accept-completion)
               ("C-TAB" . 'copilot-accept-completion-by-word)
               ("C-<tab>" . 'copilot-accept-completion-by-word)))
+#+end_src
 
+I also reposition Treemacs to the right of the screen.
+
+#+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el
 (after! treemacs
   (setq treemacs-position 'right))
+#+end_src
 
+The =aidermacs= package gives me AI-driven tools and workflows. I bind its main menu to =C-c a=.
+
+#+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el
 (use-package! aidermacs
   :bind
   (("C-c a" . aidermacs-transient-menu))
   :custom
-  ;; See the Configuration section below
   (aidermacs-use-architect-mode t)
   (aidermacs-default-model "gpt-4o"))
+#+end_src
 
-;; Add dap-hydra to go mode on SPC m D
+For Go development, I bind the DAP (debugging) hydra to =SPC m D=.
+
+#+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el
 (add-hook! go-mode
   (map! :localleader
         :map go-mode-map
         "D" #'dap-hydra))
+#+end_src
 
+Lastly, I enable =clipetty= so that Emacs can use the system clipboard over SSH.
 
+#+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el
 (setq dap-auto-configure-features '(sessions locals controls tooltip))
 
 (use-package! clipetty
   :hook (after-init . global-clipetty-mode))
+#+end_src

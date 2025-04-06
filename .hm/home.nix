@@ -27,6 +27,7 @@
     homeDirectory = "/home/nick/";
     stateVersion = "24.11";
   };
+
   programs = {
     git = {
       enable = true;
