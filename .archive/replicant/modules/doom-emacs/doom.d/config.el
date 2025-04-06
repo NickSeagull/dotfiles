@@ -178,3 +178,6 @@ Hugo project is assumed to be at `org-directory/website/src/`."
 
 
 (setq dap-auto-configure-features '(sessions locals controls tooltip))
+
+(use-package! clipetty
+  :hook (after-init . global-clipetty-mode))

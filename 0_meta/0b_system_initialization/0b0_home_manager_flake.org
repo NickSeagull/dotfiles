@@ -1,0 +1,68 @@
+#+TITLE: Home Manager Flake
+#+DATE: <2025-04-06 Sun>
+#+hugo_section: docs/0_meta/0b_system_initialization
+
+This file is the root of the =Home Manager= flake.
+
+It defines the entrypoint for the configuration of my personal user environment, including Doom Emacs, fonts, shell settings, and more.
+
+It lives in the hidden =.hm= directory at the root of the repository.
+
+We begin by specifying the inputs:
+
+#+begin_src nix :tangle ../../.hm/flake.nix
+{
+  inputs = {
+    nixpkgs.url = "nixpkgs/nixos-unstable";
+
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+#+end_src
+
+This pulls in the unstable =nixpkgs= channel, and the =home-manager= overlay. By making it follow =nixpkgs=, I ensure that the system and the home environment are built using the same version of the package collection.
+
+We now define the =outputs=. These include the configuration for the =nick= user on =x86_64-linux=:
+
+#+begin_src nix :tangle ../../.hm/flake.nix
+  outputs = { nixpkgs, home-manager, ... }:
+    let
+      lib = nixpkgs.lib;
+      system = "x86_64-linux";
+      pkgs = import nixpkgs { inherit system; };
+    in
+    {
+#+end_src
+
+Now we declare the Home Manager configuration itself:
+
+#+begin_src nix :tangle ../../.hm/flake.nix
+      homeConfigurations = {
+        nick =
+          home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            modules = [
+              ./emacs/default.nix
+              ./home.nix
+            ];
+          };
+      };
+    };
+}
+#+end_src
+
+This flake does not output a NixOS system configuration — only the Home Manager environment. This separation is intentional: I keep my system configuration elsewhere.
+
+The list of modules includes:
+- =emacs/default.nix= :: my Emacs (Doom) environment
+- =home.nix= :: general user configuration
+
+Together, they define the tools I use daily.
+
+The flake can be activated with:
+
+#+begin_src sh
+home-manager switch --flake .hm#nick
+#+end_src

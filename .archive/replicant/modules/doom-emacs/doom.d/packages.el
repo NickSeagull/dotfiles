@@ -54,3 +54,5 @@
   :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
 
 (package! aidermacs)
+
+(package! clipetty)
