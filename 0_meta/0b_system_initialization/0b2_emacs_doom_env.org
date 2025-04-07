@@ -44,8 +44,8 @@ First, we define the packages to install for Emacs to function properly, includi
     unzip
     delve
 
-    # LSP / CoPilot
-    copilot-language-server
+    # Required for Treemacs
+    python3Full
   ];
 #+end_src
 

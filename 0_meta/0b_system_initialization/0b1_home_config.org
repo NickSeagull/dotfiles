@@ -28,16 +28,6 @@ Next, we define the =home= block: the user, their home directory, their package 
       bitwarden-cli
       nixpkgs-fmt
       libvterm
-      git
-
-      # work
-      go
-      gopls
-      pre-commit
-      buf
-      protobuf
-      golangci-lint
-      dotnet-sdk_9
     ];
 
     username = "nick";
@@ -50,8 +40,6 @@ I install a few core development tools, such as:
 
 - =bitwarden-cli=: for secrets and password access
 - =nixpkgs-fmt=: to format Nix code
-- =go= and friends: for backend development
-- =dotnet-sdk_9=: for cross-language interop and future work
 
 These packages are managed declaratively — no manual installation needed.
 

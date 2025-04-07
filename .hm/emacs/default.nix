@@ -29,8 +29,8 @@
     unzip
     delve
 
-    # LSP / CoPilot
-    copilot-language-server
+    # Required for Treemacs
+    python3Full
   ];
 
   fonts.fontconfig.enable = true;

@@ -55,3 +55,7 @@ processor/data/*
 
 .orgids
 
+
+/.workspaces/*
+
+!/*/**/.gitkeep

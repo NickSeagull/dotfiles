@@ -11,16 +11,6 @@
       bitwarden-cli
       nixpkgs-fmt
       libvterm
-      git
-
-      # work
-      go
-      gopls
-      pre-commit
-      buf
-      protobuf
-      golangci-lint
-      dotnet-sdk_9
     ];
 
     username = "nick";
