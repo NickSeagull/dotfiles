@@ -35,6 +35,7 @@ pkgs.mkShell {
     go
     git
     dotnet-sdk_9
+    nodePackages.prettier
   ];
 #+end_src
 
