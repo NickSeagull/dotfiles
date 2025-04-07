@@ -36,7 +36,7 @@
     (dolist (file org-files)
       (when (ns/org-file-has-tangle-blocks-p file)
         (with-current-buffer (find-file-noselect file)
-          (org-babel-tangle)))))
+          (org-babel-tangle))))))
 
 (defun ns/hugo-export-org-files-in-dir (org-root-dir hugo-root-dir)
   "Recursively export Org files under ORG-ROOT-DIR using ox-hugo.

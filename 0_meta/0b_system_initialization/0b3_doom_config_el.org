@@ -77,7 +77,7 @@ Now we define a recursive tangler for all Org files in a directory.
     (dolist (file org-files)
       (when (ns/org-file-has-tangle-blocks-p file)
         (with-current-buffer (find-file-noselect file)
-          (org-babel-tangle)))))
+          (org-babel-tangle))))))
 #+end_src
 
 To complement tangling, we now define a function that exports all Org files under a directory to Hugo-compatible Markdown files, preserving their relative structure.
