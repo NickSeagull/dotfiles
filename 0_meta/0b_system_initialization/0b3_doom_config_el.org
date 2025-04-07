@@ -19,7 +19,10 @@ We begin by setting the primary font for Doom. I'm using =Maple Mono= at size 20
 The theme I use is =catppuccin= — soft, readable, and comfortable on the eyes.
 
 #+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el
-(setq doom-theme 'catppuccin)
+(let ((eink (getenv "EINK_MODE")))
+  (if (string= eink "1")
+      (setq doom-theme 'doom-one-light)
+    (setq doom-theme 'catppuccin)))
 #+end_src
 
 I enable relative line numbers across the board, which helps with navigation.

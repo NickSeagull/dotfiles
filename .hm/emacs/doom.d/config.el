@@ -2,7 +2,10 @@
 
 (setq doom-font (font-spec :family "Maple Mono" :size 20 :spacing 90))
 
-(setq doom-theme 'catppuccin)
+(let ((eink (getenv "EINK_MODE")))
+  (if (string= eink "1")
+      (setq doom-theme 'doom-one-light)
+    (setq doom-theme 'catppuccin)))
 
 (setq display-line-numbers-type 'relative)
 
