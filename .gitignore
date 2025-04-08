@@ -1,19 +1,4 @@
 !/*/**/.gitkeep
-### Hugo ###
-/.webgen/resources/_gen/
-/.webgen/assets/jsconfig.json
-/.webgen/.hugo_build.lock
-/.webgen/go.mod
-/.webgen/hugo.toml
-/.webgen/archetypes/*
-!/.webgen/archetypes/.gitkeep
-/.webgen/assets/*
-!/.webgen/assets/.gitkeep
-hugo_stats.json
-hugo.exe
-hugo.darwin
-hugo.linux
-
 ### ASTRO ###
 # build output
 dist/
@@ -36,22 +21,6 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
-
-public/notes/
-src/content/docs/notes
-src/content/*.ts
-src/assets/
-src/.obsidian/
-.webgen/**/*.css
-.webgen/**/*.js
-.webgen/**/*.jsx
-package.json
-astro.config.mjs
-tsconfig.json
-.webgen/src/content/**/*.md
-.webgen/src/content/**/*.mdx
-.webgen/src/content.config.ts
-
 processor/data/*
 
 .orgids

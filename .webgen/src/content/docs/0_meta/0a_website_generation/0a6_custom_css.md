@@ -1,0 +1,83 @@
++++
+title = "Styling"
+author = ["Nikita Tchayka"]
+date = 2025-04-04T00:00:00+01:00
+draft = false
++++
+
+This file defines the color theme and styling of the website.
+
+
+## Code Editor code family {#code-editor-code-family}
+
+We set the code blocks separately, as Starlight uses [Expressive Code](https://expressive-code.com/) for code blocks.
+
+```css
+code {
+	--ec-codeFontFml: "Monaspace Krypton", monospace;
+}
+```
+
+
+## Dark Mode {#dark-mode}
+
+```css
+:root {
+```
+
+
+### Font Family {#font-family}
+
+This sets it up also for light mode, but not for code blocks!
+
+```css
+	--sl-font: "Monaspace Krypton", monospace;
+	--sl-font-mono: "Monaspace Krypton", monospace;
+```
+
+
+### Colors {#colors}
+
+```css
+	--sl-color-accent-low: #072d00;
+	--sl-color-accent: #00c600;
+	--sl-color-accent-high: #00FF00;
+	--sl-color-white: #00EE00;
+	--sl-color-gray-1: #00c000;
+	--sl-color-gray-2: #00a800;
+	--sl-color-gray-3: #009400;
+	--sl-color-gray-4: #005800;
+	--sl-color-gray-5: #003800;
+	--sl-color-gray-6: #000000;
+	--sl-color-black: #000000;
+}
+```
+
+
+## Light Mode {#light-mode}
+
+```css
+:root[data-theme='light'] {
+```
+
+
+### Colors {#colors}
+
+```css
+	--sl-color-accent-low: #c0e2b9;
+	--sl-color-accent: #155800;
+	--sl-color-accent-high: #0c3e00;
+	--sl-color-white: #17181c;
+	--sl-color-gray-1: #24272f;
+	--sl-color-gray-2: #353841;
+	--sl-color-gray-3: #545861;
+	--sl-color-gray-4: #888b96;
+	--sl-color-gray-5: #c0c2c7;
+	--sl-color-gray-6: #eceef2;
+	--sl-color-gray-7: #f5f6f8;
+	--sl-color-black: #ffffff;
+```
+
+```css
+}
+```
