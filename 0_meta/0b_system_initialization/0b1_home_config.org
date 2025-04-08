@@ -28,6 +28,7 @@ Next, we define the =home= block: the user, their home directory, their package 
       bitwarden-cli
       nixpkgs-fmt
       libvterm
+      gnumake
 
       # Work stuff
       golangci-lint
@@ -41,6 +42,7 @@ Next, we define the =home= block: the user, their home directory, their package 
       git
       dotnet-sdk_9
       nodePackages.prettier
+      nodejs_22
     ];
 
     username = "nick";

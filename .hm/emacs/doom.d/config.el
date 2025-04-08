@@ -103,6 +103,8 @@ Hugo project is assumed to be at `org-directory/website/src/`."
   (aidermacs-use-architect-mode t)
   (aidermacs-default-model "gpt-4o"))
 
+(setq copilot-max-char -1)
+
 (add-hook! go-mode
   (map! :localleader
         :map go-mode-map

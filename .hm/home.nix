@@ -11,6 +11,7 @@
       bitwarden-cli
       nixpkgs-fmt
       libvterm
+      gnumake
 
       # Work stuff
       golangci-lint
@@ -24,6 +25,7 @@
       git
       dotnet-sdk_9
       nodePackages.prettier
+      nodejs_22
     ];
 
     username = "nick";

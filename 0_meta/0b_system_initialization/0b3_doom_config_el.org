@@ -169,6 +169,13 @@ The =aidermacs= package gives me AI-driven tools and workflows. I bind its main 
   (aidermacs-default-model "gpt-4o"))
 #+end_src
 
+I keep using GitHub copilot, but sometimes it gives me warnings about the fact that the source files I edit are too large.
+(I know, don't ask). So I just remove the limit here:
+
+#+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el
+(setq copilot-max-char -1)
+#+end_src
+
 For Go development, I bind the DAP (debugging) hydra to =SPC m D=.
 
 #+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el

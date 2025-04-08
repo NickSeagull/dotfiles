@@ -11,7 +11,7 @@
 
   networking.hostName = "ramsys";
   time.timeZone = "Atlantic/Canary";
-  networking.firewall.allowedTCPPorts = [ 22 4321 ];
+  networking.firewall.allowedTCPPorts = [ 22 4321 8081 ];
   services.xserver.enable = true;
   services.xserver.xkb.layout = "us";
   services.printing.enable = true;
