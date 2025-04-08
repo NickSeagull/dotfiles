@@ -11,6 +11,19 @@
       bitwarden-cli
       nixpkgs-fmt
       libvterm
+
+      # Work stuff
+      golangci-lint
+      golangci-lint-langserver
+      pre-commit
+      nixfmt-classic
+      google-cloud-sdk
+      buf
+      protobuf
+      go
+      git
+      dotnet-sdk_9
+      nodePackages.prettier
     ];
 
     username = "nick";

@@ -23,7 +23,6 @@ It is a *living system image*, composed of:
 
 RAMSYS is structured as a **literate configuration system**, using Emacs *org-mode*. Each =.org= file contains both human-readable documentation and machine-executable code. The result is a system where knowledge, action, and state are unified.
 
-
 * Why RAMSYS Exists
 
 The goal of RAMSYS is **total synthesis**:

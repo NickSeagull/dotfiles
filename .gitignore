@@ -1,3 +1,4 @@
+!/*/**/.gitkeep
 ### Hugo ###
 /.webgen/resources/_gen/
 /.webgen/assets/jsconfig.json
@@ -56,6 +57,9 @@ processor/data/*
 .orgids
 
 
-/.workspaces/*
+/.workspaces/NeoHaskell
+/.workspaces/blp/*
+!/.workspaces/blp/.gitkeep
+
 
 !/*/**/.gitkeep
