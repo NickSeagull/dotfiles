@@ -121,6 +121,7 @@ Hugo project is assumed to be at `org-directory/website/src/`."
   (add-to-list 'copilot-indentation-alist '(org-mode 2))
   (add-to-list 'copilot-indentation-alist '(text-mode 2))
   (add-to-list 'copilot-indentation-alist '(closure-mode 2))
+  (add-to-list 'copilot-indentation-alist '(go-mode 4))
   (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2)))
 
 (add-hook! go-mode
