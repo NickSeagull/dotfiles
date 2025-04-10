@@ -172,11 +172,28 @@ The `aidermacs` package gives me AI-driven tools and workflows. I bind its main 
   (aidermacs-default-model "gpt-4o"))
 ```
 
-I keep using GitHub copilot, but sometimes it gives me warnings about the fact that the source files I edit are too large.
-(I know, don't ask). So I just remove the limit here:
+I keep using GitHub Copilot:
 
 ```emacs-lisp
-(setq copilot-max-char -1)
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word)
+              ("C-n" . 'copilot-next-completion)
+              ("C-p" . 'copilot-previous-completion))
+
+  :config
+  (setq copilot-max-char -1)  ;; sometimes it gives me warnings about the fact that the source files I edit are too large. Just removing the limit
+
+  ;; I get a bunch of warnings regarding indentation in Go, so I just make it explicit
+  (add-to-list 'copilot-indentation-alist '(prog-mode 2))
+  (add-to-list 'copilot-indentation-alist '(org-mode 2))
+  (add-to-list 'copilot-indentation-alist '(text-mode 2))
+  (add-to-list 'copilot-indentation-alist '(closure-mode 2))
+  (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2)))
 ```
 
 For Go development, I bind the DAP (debugging) hydra to `SPC m D`.
