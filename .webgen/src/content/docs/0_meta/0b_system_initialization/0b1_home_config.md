@@ -42,6 +42,7 @@ Next, we define the `home` block: the user, their home directory, their package 
       buf
       protobuf
       go
+      gopls
       git
       dotnet-sdk_9
       nodePackages.prettier

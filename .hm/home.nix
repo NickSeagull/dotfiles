@@ -22,6 +22,7 @@
       buf
       protobuf
       go
+      gopls
       git
       dotnet-sdk_9
       nodePackages.prettier
