@@ -17,7 +17,7 @@ template: splash
 hero:
   tagline: Congrats on setting up a new Starlight project!
   image:
-    file: ../../.webgen/assets/portrait.png
+    file: ../../assets/portrait.png
   actions:
     - text: Enter RAMSYS
       link: /0_meta/readme
