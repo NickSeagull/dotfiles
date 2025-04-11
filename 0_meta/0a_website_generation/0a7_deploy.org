@@ -1,0 +1,44 @@
+#+TITLE: Deploy
+#+DATE: <2025-04-11 Fri>
+#+hugo_section: docs/0_meta/0a_website_generation
+
+I deploy this site to GitHub pages. Astro has some [[https://docs.astro.build/en/guides/deploy/github/][great docs]] on how to do this, so I just replicate.
+
+#+begin_src javascript :tangle ../../.github/workflows/deploy.yml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**.org'
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v4
+      - name: Install, build, and upload your site
+        uses: withastro/action@v3
+        with:
+          path: ./.webgen
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+#+end_src

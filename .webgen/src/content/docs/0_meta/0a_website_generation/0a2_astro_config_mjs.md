@@ -32,6 +32,7 @@ Now we export the full configuration. Starlight is passed as an integration, wit
 
 ```javascript
 export default defineConfig({
+  site: 'https://nickseagull.dev',
   integrations: [
     starlight({
         title: 'RAMSYS',
