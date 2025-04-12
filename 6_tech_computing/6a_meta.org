@@ -1,0 +1,5 @@
+#+TITLE: Technology and Computing
+#+DATE: <2025-04-12 Sat>
+#+hugo_section: docs/6_tech_computing
+
+The technical domain: software development, programming languages, infrastructure, dev tools, and systems design. Here live projects like NeoHaskell, and my broader reflections on computation as a medium and craft.

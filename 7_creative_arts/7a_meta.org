@@ -1,0 +1,5 @@
+#+TITLE: Creative Arts and Design
+#+DATE: <2025-04-12 Sat>
+#+hugo_section: docs/7_creative_arts
+
+Aesthetic expression in sound, image, and interaction. This category includes music production, digital art, UI/UX experimentation, and aesthetic theory. It’s a space for both creative output and the study of form and feeling.

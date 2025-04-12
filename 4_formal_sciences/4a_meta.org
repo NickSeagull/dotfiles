@@ -1,0 +1,5 @@
+#+TITLE: Formal Sciences
+#+DATE: <2025-04-12 Sat>
+#+hugo_section: docs/4_formal_sciences
+
+The abstract scaffolding of thought: mathematics, logic, systems theory, and theoretical computer science. These are the precise symbolic languages used to model structure, prove consistency, and explore formal relationships beyond empirical constraints.

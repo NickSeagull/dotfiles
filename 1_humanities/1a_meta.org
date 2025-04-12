@@ -1,0 +1,5 @@
+#+TITLE: Humanities
+#+DATE: <2025-04-12 Sat>
+#+hugo_section: docs/1_humanities
+
+The realm of meaning-making, interpretation, and cultural expression. This includes philosophy, ethics, literature, history, theology, aesthetics, and art criticism. These notes explore how humans understand themselves and the world through stories, symbols, and values.
