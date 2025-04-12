@@ -1,9 +1,10 @@
-#+TITLE: Applied Sciences
-#+DATE: <2025-04-12 Sat>
-#+hugo_section: docs/5_applied_sciences
++++
+title = "Applied Sciences"
+author = ["Nikita Tchayka"]
+date = 2025-04-12T00:00:00+01:00
+draft = false
++++
 
-#+begin_export html
 <img class="noise" src="/images/applied_sciences.png"></img>
-#+end_export
 
 Engineering, medicine, architecture, and all fields where theory meets real-world function. This category explores practical implementations of knowledge, problem-solving in constrained systems, and how ideas become tools or machines.

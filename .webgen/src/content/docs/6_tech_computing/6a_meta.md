@@ -1,9 +1,10 @@
-#+TITLE: Technology and Computing
-#+DATE: <2025-04-12 Sat>
-#+hugo_section: docs/6_tech_computing
++++
+title = "Technology and Computing"
+author = ["Nikita Tchayka"]
+date = 2025-04-12T00:00:00+01:00
+draft = false
++++
 
-#+begin_export html
 <img class="noise" src="/images/technology.png"></img>
-#+end_export
 
 The technical domain: software development, programming languages, infrastructure, dev tools, and systems design. Here live projects like NeoHaskell, and my broader reflections on computation as a medium and craft.
