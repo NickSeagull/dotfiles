@@ -103,7 +103,7 @@ Now, the core declaration of enabled modules using \`doom!\`:
        ;;biblio
        ;;collab
        (debugger +lsp)
-       ;;direnv
+       direnv
        docker
        ;;editorconfig
        ;;ein

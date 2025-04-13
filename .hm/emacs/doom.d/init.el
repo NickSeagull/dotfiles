@@ -75,7 +75,7 @@
        ;;biblio
        ;;collab
        (debugger +lsp)
-       ;;direnv
+       direnv
        docker
        ;;editorconfig
        ;;ein

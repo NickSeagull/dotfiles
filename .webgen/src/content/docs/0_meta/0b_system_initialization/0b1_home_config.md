@@ -32,6 +32,7 @@ Next, we define the `home` block: the user, their home directory, their package 
       nixpkgs-fmt
       libvterm
       gnumake
+      xclip
 
       # Work stuff
       golangci-lint
@@ -74,6 +75,12 @@ Now, we configure some essential programs:
     home-manager = { enable = true; };
     fish = { enable = true; };
     emacs = { enable = true; };
+    direnv = {
+      enable = true;
+      nix-direnv = {
+        enable = true;
+      };
+    };
   };
 }
 ```

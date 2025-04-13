@@ -12,6 +12,7 @@
       nixpkgs-fmt
       libvterm
       gnumake
+      xclip
 
       # Work stuff
       golangci-lint
@@ -43,5 +44,11 @@
     home-manager = { enable = true; };
     fish = { enable = true; };
     emacs = { enable = true; };
+    direnv = {
+      enable = true;
+      nix-direnv = {
+        enable = true;
+      };
+    };
   };
 }
