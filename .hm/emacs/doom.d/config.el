@@ -129,6 +129,12 @@ Hugo project is assumed to be at `org-directory/website/src/`."
         :map go-mode-map
         "D" #'dap-hydra))
 
+(after! projectile
+  (projectile-register-project-type 'go '("go.mod")
+    :compile "go build -gcflags='-e' ./..."
+    :test "go test ./pkg/..."
+    :run "go run main.go"))
+
 (setq dap-auto-configure-features '(sessions locals controls tooltip))
 
 (use-package! clipetty

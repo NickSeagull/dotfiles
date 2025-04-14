@@ -205,6 +205,16 @@ For Go development, I bind the DAP (debugging) hydra to =SPC m D=.
         "D" #'dap-hydra))
 #+end_src
 
+Also, I prefer customizing the Go compilation command to this one:
+
+#+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el
+(after! projectile
+  (projectile-register-project-type 'go '("go.mod")
+    :compile "go build -gcflags='-e' ./..."
+    :test "go test ./pkg/..."
+    :run "go run main.go"))
+#+end_src
+
 Lastly, I enable =clipetty= so that Emacs can use the system clipboard over SSH.
 
 #+begin_src emacs-lisp :tangle ../../.hm/emacs/doom.d/config.el

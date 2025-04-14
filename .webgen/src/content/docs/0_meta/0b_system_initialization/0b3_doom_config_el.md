@@ -206,6 +206,16 @@ For Go development, I bind the DAP (debugging) hydra to `SPC m D`.
         "D" #'dap-hydra))
 ```
 
+Also, I prefer customizing the Go compilation command to this one:
+
+```emacs-lisp
+(after! projectile
+  (projectile-register-project-type 'go '("go.mod")
+    :compile "go build -gcflags='-e' ./..."
+    :test "go test ./pkg/..."
+    :run "go run main.go"))
+```
+
 Lastly, I enable `clipetty` so that Emacs can use the system clipboard over SSH.
 
 ```emacs-lisp
