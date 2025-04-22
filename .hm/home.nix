@@ -1,4 +1,10 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, ... }:
+let
+  gdk = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
+    gke-gcloud-auth-plugin
+    kubectl
+  ]);
+in {
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -13,13 +19,15 @@
       libvterm
       gnumake
       xclip
+      browsh
+      firefox  # required for browsh
 
       # Work stuff
       golangci-lint
       golangci-lint-langserver
       pre-commit
       nixfmt-classic
-      google-cloud-sdk
+      gdk
       buf
       protobuf
       go

@@ -19,16 +19,26 @@ Given that `/etc/nixos/configuration.nix` is protected, I just put the config he
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
     ];
+
+  nixpkgs.config.allowUnfree = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "ramsys";
   time.timeZone = "Atlantic/Canary";
-  networking.firewall.allowedTCPPorts = [ 22 4321 8081 ];
-  services.xserver.enable = true;
+  networking.firewall.allowedTCPPorts = [ 22 4321 8081 3000 ];
+
+  virtualisation.docker = {
+    enable = true;
+  };
+
+  services.coder= {
+    enable = true;
+    listenAddress = "0.0.0.0:3000";
+  };
   services.xserver.xkb.layout = "us";
   services.printing.enable = true;
   users.users.nick = {

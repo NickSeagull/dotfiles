@@ -14,7 +14,13 @@ As always, this file is generated from this very Org document via Org Babel tang
 First, we allow unfree packages. I make no attempt to live a purely free software life. Practicality comes first.
 
 ```nix
-{ lib, pkgs, ... }: {
+{ lib, pkgs, ... }:
+let
+  gdk = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
+    gke-gcloud-auth-plugin
+    kubectl
+  ]);
+in {
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -33,13 +39,15 @@ Next, we define the `home` block: the user, their home directory, their package 
       libvterm
       gnumake
       xclip
+      browsh
+      firefox  # required for browsh
 
       # Work stuff
       golangci-lint
       golangci-lint-langserver
       pre-commit
       nixfmt-classic
-      google-cloud-sdk
+      gdk
       buf
       protobuf
       go
