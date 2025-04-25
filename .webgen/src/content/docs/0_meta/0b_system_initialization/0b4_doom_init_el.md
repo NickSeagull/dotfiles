@@ -138,7 +138,7 @@ Now, the core declaration of enabled modules using \`doom!\`:
        ;;csharp
        ;;data
        ;;(dart +flutter)
-       ;;dhall
+       dhall
        ;;elixir
        ;;elm
        emacs-lisp
@@ -157,7 +157,7 @@ Now, the core declaration of enabled modules using \`doom!\`:
        ;;idris
        ;;json
        ;;(java +lsp)
-       ;;javascript
+       (javascript +lsp)
        ;;julia
        ;;kotlin
        ;;latex

@@ -29,7 +29,7 @@ Given that `/etc/nixos/configuration.nix` is protected, I just put the config he
 
   networking.hostName = "ramsys";
   time.timeZone = "Atlantic/Canary";
-  networking.firewall.allowedTCPPorts = [ 22 4321 8081 3000 ];
+  networking.firewall.allowedTCPPorts = [ 22 4321 8081 3000 5173 ];
 
   virtualisation.docker = {
     enable = true;

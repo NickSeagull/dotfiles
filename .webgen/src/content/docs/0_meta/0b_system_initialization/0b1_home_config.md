@@ -41,6 +41,7 @@ Next, we define the `home` block: the user, their home directory, their package 
       xclip
       browsh
       firefox  # required for browsh
+      eza
 
       # Work stuff
       golangci-lint

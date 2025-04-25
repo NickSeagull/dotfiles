@@ -110,7 +110,7 @@
        ;;csharp
        ;;data
        ;;(dart +flutter)
-       ;;dhall
+       dhall
        ;;elixir
        ;;elm
        emacs-lisp
@@ -129,7 +129,7 @@
        ;;idris
        ;;json
        ;;(java +lsp)
-       ;;javascript
+       (javascript +lsp)
        ;;julia
        ;;kotlin
        ;;latex

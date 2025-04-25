@@ -21,6 +21,7 @@ in {
       xclip
       browsh
       firefox  # required for browsh
+      eza
 
       # Work stuff
       golangci-lint
