@@ -36,7 +36,7 @@ Given that `/etc/nixos/configuration.nix` is protected, I just put the config he
   };
 
   services.coder= {
-    enable = true;
+    enable = false;   # eventually re-enable
     listenAddress = "0.0.0.0:3000";
   };
   services.xserver.xkb.layout = "us";
@@ -55,6 +55,7 @@ Given that `/etc/nixos/configuration.nix` is protected, I just put the config he
   ];
 
   services.openssh.enable = true;
+  services.openssh.forwardX11 = true;
 
   programs.mosh.enable = true;
   programs.mosh.openFirewall = true;

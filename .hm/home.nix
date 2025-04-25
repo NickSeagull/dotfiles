@@ -24,6 +24,7 @@ in {
       eza
 
       # Work stuff
+      typescript-language-server
       golangci-lint
       golangci-lint-langserver
       pre-commit
