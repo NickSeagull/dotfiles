@@ -1,8 +1,0 @@
-{{ if eq .chezmoi.os "windows" -}}
-echo "Copying neovim config"
-# Copy the contents from {{ .chezmoi.homeDir }}/.config/nvim to $HOME\AppData\Local\nvim
-$source = "{{ .chezmoi.homeDir }}\.config\nvim"
-$destination = "$env:LOCALAPPDATA\nvim"
-Remove-Item -Recurse -Force $destination
-Copy-Item -Path $source -Destination $destination -Recurse -Force
-{{ end -}}

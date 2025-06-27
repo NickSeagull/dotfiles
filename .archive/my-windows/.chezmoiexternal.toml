@@ -1,7 +1,0 @@
-[".config/kitty/theme.conf"]
-type = "file"
-url = "https://raw.githubusercontent.com/dexpota/kitty-themes/master/themes/ayu.conf"
-
-[".config/alacritty/themes/themes/ayu_dark.toml"]
-type = "file"
-url = "https://github.com/alacritty/alacritty-theme/raw/refs/heads/master/themes/ayu_dark.toml"

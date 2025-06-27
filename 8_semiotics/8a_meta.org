@@ -1,5 +1,0 @@
-#+TITLE: Semiotics and Language
-#+DATE: <2025-04-12 Sat>
-#+hugo_section: docs/8_semiotics
-
-This is the space for linguistics, conlangs, semiotics, grammar theory, communication, and the symbolic logic of programming languages. It explores the construction and interpretation of meaning through signs, syntax, and structure.
