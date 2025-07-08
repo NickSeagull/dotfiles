@@ -1,0 +1,22 @@
+# ⌥ es $mod
+alt - return : open -a Terminal
+
+# foco
+alt - h : yabai -m window --focus west
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
+
+# mover
+alt - shift - h : yabai -m window --swap west
+alt - shift - j : yabai -m window --swap south
+alt - shift - k : yabai -m window --swap north
+alt - shift - l : yabai -m window --swap east
+
+# modos comunes
+alt - f     : yabai -m window --toggle zoom-fullscreen
+alt - space : yabai -m window --toggle float
+
+# workspaces (spaces)
+alt - {1-9}          : yabai -m space --focus "{1-9}"
+alt - shift - {1-9}  : yabai -m window --space "{1-9}"

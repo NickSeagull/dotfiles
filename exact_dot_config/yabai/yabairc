@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+yabai -m config layout               bsp
+yabai -m config window_gap           8
+yabai -m config top_padding          4
+yabai -m config bottom_padding       4
+yabai -m config left_padding         4
+yabai -m config right_padding        4
+yabai -m config mouse_modifier       alt
+yabai -m config mouse_action1        move
+yabai -m config mouse_action2        resize
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
