@@ -12,6 +12,9 @@ yabai -m config bottom_padding       4
 yabai -m config left_padding         4
 yabai -m config right_padding        4
 
+# Configure external bar (SketchyBar)
+yabai -m config external_bar         all:32:0
+
 # Configure mouse support
 yabai -m config mouse_modifier       alt
 yabai -m config mouse_action1        move
