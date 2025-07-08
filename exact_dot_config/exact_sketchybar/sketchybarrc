@@ -23,7 +23,8 @@ sketchybar --bar \
   y_offset=5 \
   shadow=off \
   font_smoothing=on \
-  notch_width=200
+  notch_width=200 \
+  display=all
 
 # Default item settings
 sketchybar --default \
