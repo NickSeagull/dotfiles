@@ -30,8 +30,8 @@ sketchybar --bar \
 sketchybar --default \
   padding_left=5 \
   padding_right=5 \
-  icon.font="SF Pro:Semibold:15.0" \
-  label.font="SF Pro:Semibold:15.0" \
+  icon.font="JetBrainsMonoNF-Bold:15.0" \
+  label.font="JetBrainsMonoNF-Bold:15.0" \
   icon.color=0xffffffff \
   label.color=0xffffffff \
   icon.padding_left=4 \
@@ -43,7 +43,7 @@ sketchybar --default \
 sketchybar --add item apple_logo left \
   --set apple_logo \
   icon="" \
-  icon.font="SF Pro:Black:16.0" \
+  icon.font="JetBrainsMonoNF-ExtraBold:16.0" \
   icon.color=0xffffffff \
   padding_right=15 \
   label.drawing=off \
@@ -58,7 +58,7 @@ do
     --set space.$sid \
     space=$sid \
     icon=$sid \
-    icon.font="SF Pro:Bold:16.0" \
+    icon.font="JetBrainsMonoNF-Bold:16.0" \
     icon.padding_left=8 \
     icon.padding_right=8 \
     background.color=0x33ffffff \
@@ -85,7 +85,7 @@ sketchybar --add item window_title center \
   script="$PLUGIN_DIR/window_title.sh" \
   icon.drawing=off \
   label.color=0xffffffff \
-  label.font="SF Pro:Bold:14.0" \
+  label.font="JetBrainsMonoNF-Bold:14.0" \
   --subscribe window_title front_app_switched
 
 # Right side - Clock
