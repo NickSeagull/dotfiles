@@ -1,0 +1,112 @@
+#!/bin/bash
+
+# This is a basic but functional SketchyBar configuration
+# Based on the official documentation and community examples
+
+# Load colors and fonts
+source "$HOME/.config/sketchybar/colors.sh"
+source "$HOME/.config/sketchybar/icons.sh"
+
+# Bar Configuration
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+
+# Bar appearance
+sketchybar --bar \
+  height=32 \
+  blur_radius=30 \
+  position=top \
+  sticky=off \
+  padding_left=10 \
+  padding_right=10 \
+  color=0x15ffffff \
+  corner_radius=9 \
+  y_offset=5 \
+  shadow=off \
+  font_smoothing=on \
+  notch_width=200
+
+# Default item settings
+sketchybar --default \
+  padding_left=5 \
+  padding_right=5 \
+  icon.font="SF Pro:Semibold:15.0" \
+  label.font="SF Pro:Semibold:15.0" \
+  icon.color=0xffffffff \
+  label.color=0xffffffff \
+  icon.padding_left=4 \
+  icon.padding_right=4 \
+  label.padding_left=4 \
+  label.padding_right=4
+
+# Left side - Apple Logo
+sketchybar --add item apple_logo left \
+  --set apple_logo \
+  icon="" \
+  icon.font="SF Pro:Black:16.0" \
+  icon.color=0xffffffff \
+  padding_right=15 \
+  label.drawing=off \
+  click_script="sketchybar --set apple_logo popup.drawing=toggle"
+
+# Left side - Spaces (yabai integration)
+SPACE_SIDS=(1 2 3 4 5 6 7 8 9 10)
+
+for sid in "${SPACE_SIDS[@]}"
+do
+  sketchybar --add space space.$sid left \
+    --set space.$sid \
+    space=$sid \
+    icon=$sid \
+    icon.font="SF Pro:Bold:16.0" \
+    icon.padding_left=8 \
+    icon.padding_right=8 \
+    background.color=0x33ffffff \
+    background.corner_radius=5 \
+    background.height=24 \
+    background.drawing=off \
+    label.drawing=off \
+    script="$PLUGIN_DIR/space.sh" \
+    click_script="yabai -m space --focus $sid"
+done
+
+sketchybar --add item space_separator left \
+  --set space_separator \
+  icon="" \
+  icon.color=0x99ffffff \
+  icon.padding_left=4 \
+  icon.padding_right=4 \
+  label.drawing=off \
+  background.drawing=off
+
+# Center - Window Title
+sketchybar --add item window_title center \
+  --set window_title \
+  script="$PLUGIN_DIR/window_title.sh" \
+  icon.drawing=off \
+  label.color=0xffffffff \
+  label.font="SF Pro:Bold:14.0" \
+  --subscribe window_title front_app_switched
+
+# Right side - Clock
+sketchybar --add item clock right \
+  --set clock \
+  update_freq=10 \
+  icon="" \
+  icon.color=0xffffffff \
+  script="$PLUGIN_DIR/clock.sh"
+
+# Right side - Battery
+sketchybar --add item battery right \
+  --set battery \
+  script="$PLUGIN_DIR/battery.sh" \
+  update_freq=120 \
+  --subscribe battery system_woke power_source_change
+
+# Right side - Volume
+sketchybar --add item volume right \
+  --set volume \
+  script="$PLUGIN_DIR/volume.sh" \
+  --subscribe volume volume_change
+
+# Finalizing the setup
+sketchybar --update 
