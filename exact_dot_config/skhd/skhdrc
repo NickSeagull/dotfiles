@@ -1,22 +1,51 @@
-# ⌥ es $mod
-alt - return : open -a Terminal
+# ⌥ is $mod
+alt - return : open -a Ghostty
 
-# foco
+# focus
 alt - h : yabai -m window --focus west
 alt - j : yabai -m window --focus south
 alt - k : yabai -m window --focus north
 alt - l : yabai -m window --focus east
 
-# mover
-alt - shift - h : yabai -m window --swap west
-alt - shift - j : yabai -m window --swap south
-alt - shift - k : yabai -m window --swap north
-alt - shift - l : yabai -m window --swap east
+# move
+shift + alt - h : yabai -m window --swap west
+shift + alt - j : yabai -m window --swap south
+shift + alt - k : yabai -m window --swap north
+shift + alt - l : yabai -m window --swap east
 
-# modos comunes
+# common modes
 alt - f     : yabai -m window --toggle zoom-fullscreen
 alt - space : yabai -m window --toggle float
 
-# workspaces (spaces)
-alt - {1-9}          : yabai -m space --focus "{1-9}"
-alt - shift - {1-9}  : yabai -m window --space "{1-9}"
+# displays
+ctrl + alt - h : yabai -m display --focus west
+ctrl + alt - j : yabai -m display --focus south
+ctrl + alt - k : yabai -m display --focus north
+ctrl + alt - l : yabai -m display --focus east
+
+# move window to display
+shift + ctrl + alt - h : yabai -m window --display west; yabai -m display --focus west
+shift + ctrl + alt - j : yabai -m window --display south; yabai -m display --focus south
+shift + ctrl + alt - k : yabai -m window --display north; yabai -m display --focus north
+shift + ctrl + alt - l : yabai -m window --display east; yabai -m display --focus east
+
+# workspaces (spaces) - focus or create if doesn't exist
+alt - 1 : yabai -m space --focus 1 || yabai -m space --create
+alt - 2 : yabai -m space --focus 2 || yabai -m space --create
+alt - 3 : yabai -m space --focus 3 || yabai -m space --create
+alt - 4 : yabai -m space --focus 4 || yabai -m space --create
+alt - 5 : yabai -m space --focus 5 || yabai -m space --create
+alt - 6 : yabai -m space --focus 6 || yabai -m space --create
+alt - 7 : yabai -m space --focus 7 || yabai -m space --create
+alt - 8 : yabai -m space --focus 8 || yabai -m space --create
+alt - 9 : yabai -m space --focus 9 || yabai -m space --create
+
+shift + alt - 1 : yabai -m window --space 1; yabai -m space --focus 1
+shift + alt - 2 : yabai -m window --space 2; yabai -m space --focus 2
+shift + alt - 3 : yabai -m window --space 3; yabai -m space --focus 3
+shift + alt - 4 : yabai -m window --space 4; yabai -m space --focus 4
+shift + alt - 5 : yabai -m window --space 5; yabai -m space --focus 5
+shift + alt - 6 : yabai -m window --space 6; yabai -m space --focus 6
+shift + alt - 7 : yabai -m window --space 7; yabai -m space --focus 7
+shift + alt - 8 : yabai -m window --space 8; yabai -m space --focus 8
+shift + alt - 9 : yabai -m window --space 9; yabai -m space --focus 9
