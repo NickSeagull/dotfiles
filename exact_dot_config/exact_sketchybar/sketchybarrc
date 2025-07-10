@@ -67,7 +67,8 @@ do
     background.drawing=off \
     label.drawing=off \
     script="$PLUGIN_DIR/space.sh" \
-    click_script="yabai -m space --focus $sid"
+    click_script="yabai -m space --focus $sid" \
+    --subscribe space.$sid space_change
 done
 
 sketchybar --add item space_separator left \

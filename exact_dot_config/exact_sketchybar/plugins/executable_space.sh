@@ -6,6 +6,9 @@ source "$HOME/.config/sketchybar/icons.sh"
 SPACE_SIDS=(1 2 3 4 5 6 7 8 9 10)
 
 if [ "$SENDER" = "space_change" ]; then
+  # Get the current focused space from yabai
+  FOCUSED_WORKSPACE=$(yabai -m query --spaces --space | jq -r '.index')
+  
   # Update all spaces
   for sid in "${SPACE_SIDS[@]}"
   do

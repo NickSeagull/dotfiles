@@ -15,6 +15,9 @@ yabai -m config right_padding        4
 # Configure external bar (SketchyBar)
 yabai -m config external_bar         all:32:0
 
+# Signal to update SketchyBar when spaces change
+yabai -m signal --add event=space_changed action="sketchybar --trigger space_change"
+
 # Configure mouse support
 yabai -m config mouse_modifier       alt
 yabai -m config mouse_action1        move
