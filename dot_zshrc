@@ -1,7 +1,7 @@
 function brew() {
 /opt/homebrew/bin/brew "$@"
  if [[ "$1" == "install" || "$1" == "remove" || "$1" == "uninstall" ]]; then
-  /opt/homebrew/bin/brew bundle dump --force --file=~/.Brewfile
+  /opt/homebrew/bin/brew bundle dump --force --file=$(chezmoi cd && pwd)/dot_Brewfile
  fi
 }
 

@@ -1,0 +1,7 @@
+{{- if ne .chezmoi.os "darwin" }}
+# Only install these macOS-specific configurations on macOS
+exact_dot_config/exact_sketchybar/
+exact_dot_config/skhd/
+exact_dot_config/yabai/
+dot_Brewfile
+{{- end }} 
