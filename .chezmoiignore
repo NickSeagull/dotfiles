@@ -4,4 +4,5 @@ exact_dot_config/exact_sketchybar/
 exact_dot_config/skhd/
 exact_dot_config/yabai/
 dot_Brewfile
+dot_hammerspoon
 {{- end }} 

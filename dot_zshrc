@@ -7,5 +7,7 @@ function brew() {
  fi
 }
 
+export PATH="$HOME/.dotnet:$PATH"
+
 eval "$(fnm env --use-on-cd --shell zsh)"
 eval "$(starship init zsh)"

@@ -1,2 +1,5 @@
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+# Add .NET Core SDK tools
+export PATH="$PATH:/Users/nick/.dotnet/tools"
+export PATH="$PATH:/Users/nick/Library/Python/3.9/bin"
