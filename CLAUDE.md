@@ -15,7 +15,7 @@ This is a chezmoi dotfiles repository that manages personal configuration files 
 - **Ignore rules**: `.chezmoiignore` conditionally excludes macOS-specific configs on non-macOS systems
 
 ### Core Components
-- **Brewfile management**: `dot_Brewfile` contains Homebrew packages, casks, and VS Code extensions
+- **Brewfile management**: `dot_Brewfile` contains Homebrew packages, casks, and VS Code extensions with automatic syncing
 - **Neovim config**: LazyVim-based setup in `exact_dot_config/exact_nvim/`
 - **Shell setup**: Zsh configuration with Starship prompt and fnm (Node.js manager)
 - **Hammerspoon**: Lua-based macOS automation in `dot_hammerspoon/`
@@ -40,35 +40,58 @@ chezmoi diff
 chezmoi update
 ```
 
-### Homebrew Integration
-The repository includes a custom `brew()` function in `dot_zshrc` that automatically updates the Brewfile when packages are installed/removed:
+### Development Commands
 ```bash
-brew install package_name  # Automatically updates dot_Brewfile
-brew remove package_name   # Automatically updates dot_Brewfile
+# Homebrew package management (auto-updates dot_Brewfile)
+brew install <package>
+brew remove <package>
+
+# Node.js version management
+fnm use        # Switch to project's Node version
+fnm install    # Install Node version
+
+# Neovim
+nvim           # Launch Neovim with LazyVim config
 ```
 
-### Development Environment
-- **Node.js**: Managed via fnm (Fast Node Manager)
-- **Editor**: Neovim with LazyVim configuration
-- **Shell**: Zsh with Starship prompt
+### Testing and Validation
+```bash
+# Verify chezmoi configuration
+chezmoi verify
+
+# Check what files chezmoi manages
+chezmoi managed
+
+# Preview changes before applying
+chezmoi diff
+chezmoi apply --dry-run
+```
 
 ## File Patterns
 
 ### Conditional Installation
 Files are conditionally installed based on OS using `.chezmoiignore`:
-- macOS-specific configs (Hammerspoon, Brewfile) are excluded on non-macOS systems
+- macOS-specific configs (Hammerspoon, Brewfile, sketchybar, skhd, yabai) are excluded on non-macOS systems
 - Use `{{- if ne .chezmoi.os "darwin" }}` template syntax for OS conditions
 
-### Neovim Configuration
+### Critical Paths
+- Shell environment: `dot_zshrc`, `dot_zprofile`
+- Homebrew packages: `dot_Brewfile` (auto-synced via custom brew function)
+- Neovim configuration: `exact_dot_config/exact_nvim/`
+- Environment variable `CHEZMOI_DIR` is set to `$HOME/.local/share/chezmoi`
+
+## Neovim Configuration
+
 The Neovim setup follows LazyVim structure:
-- `init.lua`: Entry point
-- `lua/config/`: Core configuration (keymaps, options, autocmds)
-- `lua/plugins/`: Plugin configurations
-- Uses lazy.nvim for plugin management
+- Entry point: `init.lua` → loads `lua/config/lazy.lua`
+- Core configs: `lua/config/` (keymaps, options, autocmds, lazy.lua)
+- Plugin specs: `lua/plugins/` (extras.lua, hls.lua)
+- Uses lazy.nvim with LazyVim distribution
+- Auto-updates plugins with checker enabled
 
-## Important Notes
+## Important Implementation Details
 
-- The repository manages system-level configurations, so changes affect the entire development environment
-- Brewfile automatically syncs with actual installed packages via the custom brew function
-- Neovim config is based on LazyVim starter template
-- Shell configuration includes Node.js version management via fnm
+- The custom `brew()` function in `dot_zshrc` wraps Homebrew to auto-update `dot_Brewfile` on install/remove operations
+- Shell PATH includes: Homebrew (`/opt/homebrew/bin`), .NET tools, Python 3.9 user bin
+- fnm (Fast Node Manager) is configured with `--use-on-cd` for automatic Node version switching
+- Neovim lazy.nvim bootstrap clones from stable branch if not present
