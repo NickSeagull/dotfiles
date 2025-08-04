@@ -11,3 +11,5 @@ export PATH="$HOME/.dotnet:$PATH"
 
 eval "$(fnm env --use-on-cd --shell zsh)"
 eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
+
