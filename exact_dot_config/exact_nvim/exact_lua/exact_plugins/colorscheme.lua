@@ -3,7 +3,7 @@ return {
   {
     "NLKNguyen/papercolor-theme",
     lazy = false,
-    priority = 1000,
+    priority = 900, -- Lower priority so auto-dark-mode loads first
     config = function()
       -- Set PaperColor options for higher contrast
       vim.g.PaperColor_Theme_Options = {
@@ -25,9 +25,24 @@ return {
         }
       }
       
-      -- Set light background and apply colorscheme
-      vim.o.background = "light"
-      vim.cmd.colorscheme("PaperColor")
+      -- Only set default theme if auto-dark-mode is not handling it
+      local is_ssh = vim.env.SSH_CLIENT ~= nil or vim.env.SSH_TTY ~= nil
+      local is_mac = vim.fn.has("mac") == 1
+      
+      if is_ssh or not is_mac then
+        -- Default to light mode for SSH or non-macOS
+        vim.o.background = "light"
+        vim.cmd.colorscheme("PaperColor")
+      end
     end,
+  },
+  -- Tokyo Night theme for dark mode
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 900,
+    opts = {
+      style = "night",
+    },
   },
 }
