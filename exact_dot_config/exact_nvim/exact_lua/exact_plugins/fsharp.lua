@@ -46,6 +46,7 @@ return {
       vim.g["fsharp#exclude_project_directories"] = { ".git" }
       vim.g["fsharp#workspace_mode_peek_deep_level"] = 2
       vim.g["fsharp#show_signature_on_cursor_move"] = 0 -- Disable to avoid duplicates with LazyVim
+      vim.g["fsharp#lsp_codelens"] = 0 -- Disable code lens to avoid "unresolved lens" issues
       
       -- Configure fsautocomplete path for Ionide
       vim.g["fsharp#fsautocomplete_command"] = { "fsautocomplete", "--adaptive-lsp-server-enabled" }
@@ -82,6 +83,22 @@ return {
       vim.list_extend(opts.ensure_installed, {
         "fsharp",
       })
+    end,
+  },
+
+  -- Disable code lens for F# in LazyVim to prevent "unresolved lens" issues
+  {
+    "neovim/nvim-lspconfig",
+    opts = function(_, opts)
+      -- Disable code lens refresh for F# files
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "fsharp",
+        callback = function()
+          -- Disable automatic code lens refresh
+          vim.b.codelens_enabled = false
+        end,
+      })
+      return opts
     end,
   },
 
