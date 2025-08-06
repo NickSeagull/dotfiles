@@ -50,6 +50,10 @@ return {
       -- Configure fsautocomplete path for Ionide
       vim.g["fsharp#fsautocomplete_command"] = { "fsautocomplete", "--adaptive-lsp-server-enabled" }
       
+      -- Enable Fantomas formatting through Ionide
+      vim.g["fsharp#fantomas_executable"] = "fantomas"
+      vim.g["fsharp#fantomas_extra_args"] = ""
+      
       -- Enable additional F# features
       vim.g["fsharp#fsi_command"] = "dotnet fsi"
       vim.g["fsharp#fsi_keymap"] = "custom"
@@ -79,6 +83,47 @@ return {
         "fsharp",
       })
     end,
+  },
+
+  -- Configure formatting for F# files using conform.nvim (LazyVim's formatter)
+  {
+    "stevearc/conform.nvim",
+    optional = true,
+    opts = {
+      formatters_by_ft = {
+        fsharp = { "fantomas" },
+      },
+      formatters = {
+        fantomas = {
+          -- Fantomas formats files in place, doesn't support stdin/stdout
+          command = function()
+            local handle = io.popen("dotnet tool list 2>/dev/null | grep -q fantomas && echo 'found'")
+            local result = handle:read("*a")
+            handle:close()
+            if result:match("found") then
+              return "dotnet"
+            else
+              return "fantomas"
+            end
+          end,
+          args = function(_, ctx)
+            local handle = io.popen("dotnet tool list 2>/dev/null | grep -q fantomas && echo 'found'")
+            local result = handle:read("*a")
+            handle:close()
+            if result:match("found") then
+              -- When using dotnet tool
+              return { "fantomas", ctx.filename }
+            else
+              -- When using fantomas directly
+              return { ctx.filename }
+            end
+          end,
+          stdin = false,
+          tmpfile_format = false,
+          exit_codes = { 0, 99 }, -- 99 means file was already formatted
+        },
+      },
+    },
   },
 
   -- DAP support for F# debugging with netcoredbg
