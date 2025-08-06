@@ -194,4 +194,40 @@ return {
       end
     end,
   },
+
+  -- Disable LSP progress notifications for F# to reduce noise
+  {
+    "folke/noice.nvim",
+    opts = function(_, opts)
+      -- Add routes to filter out F# typechecking messages
+      opts.routes = opts.routes or {}
+      table.insert(opts.routes, {
+        filter = {
+          event = "lsp",
+          kind = "progress",
+          cond = function(message)
+            local client = vim.tbl_get(message.opts, "progress", "client")
+            -- Filter out Ionide/F# LSP progress messages
+            return client and (client == "ionide" or client == "fsautocomplete" or client == "FSharp.Compiler.Service")
+          end,
+        },
+        opts = { skip = true },
+      })
+      -- Also filter out messages containing "typechecking" or "parsing"
+      table.insert(opts.routes, {
+        filter = {
+          event = "lsp",
+          any = {
+            { find = "typechecking" },
+            { find = "Typechecking" },
+            { find = "parsing" },
+            { find = "Parsing" },
+            { find = "FSharp.Compiler.Service" },
+          },
+        },
+        opts = { skip = true },
+      })
+      return opts
+    end,
+  },
 }
