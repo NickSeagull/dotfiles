@@ -85,9 +85,27 @@ Files are conditionally installed based on OS using `.chezmoiignore`:
 The Neovim setup follows LazyVim structure:
 - Entry point: `init.lua` → loads `lua/config/lazy.lua`
 - Core configs: `lua/config/` (keymaps, options, autocmds, lazy.lua)
-- Plugin specs: `lua/plugins/` (extras.lua, hls.lua)
+- Plugin specs: `lua/plugins/` (extras.lua, hls.lua, fsharp.lua)
 - Uses lazy.nvim with LazyVim distribution
 - Auto-updates plugins with checker enabled
+
+### Language-Specific Setup
+
+#### F# Development
+The F# setup (`lua/plugins/fsharp.lua`) requires fsautocomplete LSP:
+```bash
+# Install fsautocomplete globally
+dotnet tool install -g fsautocomplete
+
+# Verify installation
+fsautocomplete --version
+```
+
+Key features:
+- FsAutoComplete LSP with .NET 9 support
+- Ionide-vim integration for F# Interactive
+- Debugging support via netcoredbg
+- Tree-sitter syntax highlighting
 
 ## Important Implementation Details
 

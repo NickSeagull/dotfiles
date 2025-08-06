@@ -4,7 +4,10 @@
       "Bash(find:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(chezmoi apply:*)"
+      "Bash(chezmoi apply:*)",
+      "Bash(dotnet tool list:*)",
+      "WebFetch(domain:fsprojects.github.io)",
+      "Bash(git push:*)"
     ],
     "deny": []
   }
