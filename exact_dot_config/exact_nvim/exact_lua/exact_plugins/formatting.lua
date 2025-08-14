@@ -7,6 +7,8 @@
 --
 -- The formatter will automatically use the project's prettier if available,
 -- otherwise it will fall back to the global installation.
+--
+-- LazyVim handles format on save automatically. Toggle with <leader>uf
 
 return {
   -- Configure conform.nvim for formatting
@@ -27,28 +29,11 @@ return {
         scss = { "prettier" },
         yaml = { "prettier" },
       },
-      -- Enable format on save
-      format_on_save = {
-        -- Enable format on save
-        timeout_ms = 500,
-        lsp_fallback = true,
-      },
       -- Configure formatters
       formatters = {
         prettier = {
-          -- Use prettier from node_modules if available, otherwise use global
-          command = function()
-            local util = require("conform.util")
-            local node_modules_prettier = util.find_executable({
-              "node_modules/.bin/prettier",
-            }, "prettier")
-            if node_modules_prettier then
-              return node_modules_prettier
-            end
-            return "prettier"
-          end,
-          args = { "--stdin-filepath", "$FILENAME" },
-          stdin = true,
+          -- Simpler configuration that should work with most setups
+          prepend_args = { "--stdin-filepath", "$FILENAME" },
         },
       },
     },
