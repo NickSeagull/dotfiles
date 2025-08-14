@@ -1,0 +1,37 @@
+#+TITLE: Emacs Configuration
+#+PROPERTY: header-args:emacs-lisp :tangle yes :comments link
+
+* Basic Settings
+
+** User Interface
+
+Clean up the UI by removing unnecessary elements.
+
+#+begin_src emacs-lisp
+  ;; Remove startup message
+  (setq inhibit-startup-message t)
+
+  ;; Disable visual bells
+  (setq visible-bell nil)
+
+  ;; Remove UI elements
+  (scroll-bar-mode -1)        ; Disable visible scrollbar
+  (tool-bar-mode -1)          ; Disable the toolbar
+  (tooltip-mode -1)           ; Disable tooltips
+  (set-fringe-mode 10)        ; Give some breathing room
+  (menu-bar-mode -1)          ; Disable the menu bar
+
+  ;; Line numbers
+  (column-number-mode)
+  (global-display-line-numbers-mode t)
+#+end_src
+
+** UTF-8
+
+#+begin_src emacs-lisp
+  ;; UTF-8 everywhere
+  (prefer-coding-system 'utf-8)
+  (set-default-coding-systems 'utf-8)
+  (set-terminal-coding-system 'utf-8)
+  (set-keyboard-coding-system 'utf-8)
+#+end_src

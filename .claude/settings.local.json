@@ -10,8 +10,10 @@
       "Bash(git push:*)",
       "Bash(ls:*)",
       "WebFetch(domain:www.lazyvim.org)",
-      "Bash(sudo chown:*)"
+      "Bash(sudo chown:*)",
+      "Bash(mkdir:*)"
     ],
-    "deny": []
+    "deny": [],
+    "defaultMode": "acceptEdits"
   }
 }
