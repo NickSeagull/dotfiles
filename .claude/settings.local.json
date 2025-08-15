@@ -11,7 +11,9 @@
       "Bash(ls:*)",
       "WebFetch(domain:www.lazyvim.org)",
       "Bash(sudo chown:*)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(git pull:*)",
+      "Bash(git rebase:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"
