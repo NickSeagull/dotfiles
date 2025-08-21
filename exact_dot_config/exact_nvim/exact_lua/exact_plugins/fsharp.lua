@@ -47,30 +47,55 @@ return {
       vim.g["fsharp#workspace_mode_peek_deep_level"] = 2
       vim.g["fsharp#show_signature_on_cursor_move"] = 0 -- Disable to avoid duplicates with LazyVim
       vim.g["fsharp#lsp_codelens"] = 0 -- Disable code lens to avoid "unresolved lens" issues
-      
+
       -- Configure fsautocomplete path for Ionide
       vim.g["fsharp#fsautocomplete_command"] = { "fsautocomplete", "--adaptive-lsp-server-enabled" }
-      
+
       -- Enable Fantomas formatting through Ionide
       vim.g["fsharp#fantomas_executable"] = "fantomas"
       vim.g["fsharp#fantomas_extra_args"] = ""
-      
+
       -- Enable additional F# features
       vim.g["fsharp#fsi_command"] = "dotnet fsi"
       vim.g["fsharp#fsi_keymap"] = "custom"
       vim.g["fsharp#fsi_window_command"] = "botright 10new"
-      
+
       -- F# specific keymaps
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "fsharp",
         callback = function()
           local opts = { buffer = true, silent = true }
           -- F# Interactive keymaps
-          vim.keymap.set("n", "<leader>fi", ":FsiShow<CR>", vim.tbl_extend("force", opts, { desc = "Show F# Interactive" }))
-          vim.keymap.set("n", "<leader>fq", ":FsiQuit<CR>", vim.tbl_extend("force", opts, { desc = "Quit F# Interactive" }))
-          vim.keymap.set("n", "<leader>fe", "<Plug>(FSharpSendLine)", vim.tbl_extend("force", opts, { desc = "Send line to FSI" }))
-          vim.keymap.set("v", "<leader>fe", "<Plug>(FSharpSendSelection)", vim.tbl_extend("force", opts, { desc = "Send selection to FSI" }))
-          vim.keymap.set("n", "<leader>fd", ":FSharpShowDeclaration<CR>", vim.tbl_extend("force", opts, { desc = "Show F# declaration" }))
+          vim.keymap.set(
+            "n",
+            "<leader>fi",
+            ":FsiShow<CR>",
+            vim.tbl_extend("force", opts, { desc = "Show F# Interactive" })
+          )
+          vim.keymap.set(
+            "n",
+            "<leader>fq",
+            ":FsiQuit<CR>",
+            vim.tbl_extend("force", opts, { desc = "Quit F# Interactive" })
+          )
+          vim.keymap.set(
+            "n",
+            "<leader>fe",
+            "<Plug>(FSharpSendLine)",
+            vim.tbl_extend("force", opts, { desc = "Send line to FSI" })
+          )
+          vim.keymap.set(
+            "v",
+            "<leader>fe",
+            "<Plug>(FSharpSendSelection)",
+            vim.tbl_extend("force", opts, { desc = "Send selection to FSI" })
+          )
+          vim.keymap.set(
+            "n",
+            "<leader>fd",
+            ":FSharpShowDeclaration<CR>",
+            vim.tbl_extend("force", opts, { desc = "Show F# declaration" })
+          )
         end,
       })
     end,
@@ -231,3 +256,4 @@ return {
     end,
   },
 }
+

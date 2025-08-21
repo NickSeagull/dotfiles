@@ -20,3 +20,14 @@ vim.keymap.set("n", "<leader>cl", function()
   vim.fn.setreg("+", path_with_line)
   vim.notify("Copied: " .. path_with_line)
 end, { desc = "Copy path:line" })
+
+-- LSP go to definition in splits
+vim.keymap.set("n", "gv", function()
+  vim.cmd("vsplit")
+  vim.lsp.buf.definition()
+end, { desc = "Goto Definition (vsplit)" })
+
+vim.keymap.set("n", "gs", function()
+  vim.cmd("split")
+  vim.lsp.buf.definition()
+end, { desc = "Goto Definition (split)" })
