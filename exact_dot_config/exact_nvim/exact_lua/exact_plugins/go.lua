@@ -57,6 +57,22 @@ return {
               semanticTokens = true,
             },
           },
+          -- Add debouncing for gopls diagnostics
+          flags = {
+            debounce_text_changes = 1000, -- 1 second debounce
+          },
+        },
+      },
+      -- Global diagnostic configuration with debouncing
+      diagnostics = {
+        update_in_insert = false, -- Don't update diagnostics in insert mode
+        virtual_text = {
+          spacing = 4,
+          source = "if_many",
+        },
+        float = {
+          source = "always",
+          border = "rounded",
         },
       },
     },
