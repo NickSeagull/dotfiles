@@ -1,6 +1,9 @@
 {
   description = "Home Manager configuration of nick";
 
+  # Usage: home-manager switch --flake .#$(nix eval --impure --raw --expr 'builtins.currentSystem')
+  # Or create an alias: alias hms='home-manager switch --flake .#$(nix eval --impure --raw --expr "builtins.currentSystem")'
+
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -13,16 +16,16 @@
 
   outputs =
     { nixpkgs, home-manager, flake-utils, ... }:
+    let
+      systems = flake-utils.lib.defaultSystems;
+      forEachSystem = f: nixpkgs.lib.genAttrs systems f;
+    in
     {
-      homeConfigurations = {
-        "nick" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      homeConfigurations = forEachSystem (system: 
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
           modules = [ ./home.nix ];
-        };
-        "nick@darwin" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."aarch64-darwin";
-          modules = [ ./home.nix ];
-        };
-      };
+        }
+      );
     };
 }
