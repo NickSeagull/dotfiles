@@ -5,7 +5,7 @@
   home.homeDirectory = "/home/nick";
 
   home.packages = with pkgs; [
-    nixpkgs-fmt
+    nixfmt-rfc-style
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -27,6 +27,19 @@
     # EDITOR = "emacs";
   };
 
+  services = {
+    emacs = {
+      enable = true;
+      startWithUserSession = true;
+    };
+  };
+
+  programs = {
+    emacs = {
+      enable = true;
+    };
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   # This value determines the Home Manager release that your configuration is
@@ -37,6 +50,5 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
-
 
 }
