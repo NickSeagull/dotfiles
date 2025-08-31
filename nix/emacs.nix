@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
@@ -53,4 +58,5 @@
     url = "https://github.com/doomemacs/doomemacs.git";
     rev = "1dae2bf916ea631ab0d129218cf69ece94a11e4f";
   };
+
 }
