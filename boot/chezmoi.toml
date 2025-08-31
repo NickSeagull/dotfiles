@@ -1,0 +1,9 @@
+progress = true
+
+[git]
+autoPush = true
+
+[bitwarden]
+autoAdd = true
+autoCommit = true
+unlock = true
