@@ -10,13 +10,15 @@
     # Added FiraCode as an example, it's not used in the config example.
     emacs-all-the-icons-fonts
     fontconfig
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    nerd-fonts.jetbrains-mono
 
     nixfmt-rfc-style # :lang nix
   ];
 
   # Required to autoload fonts from packages installed via Home Manager
-  fonts.fontconfig.enable = true;
+  fonts = {
+    fontconfig.enable = true;
+  };
 
   home.file = {
   };
