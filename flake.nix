@@ -15,16 +15,25 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, flake-utils, ... }:
+    {
+      nixpkgs,
+      home-manager,
+      flake-utils,
+      ...
+    }:
     let
       systems = flake-utils.lib.defaultSystems;
       forEachSystem = f: nixpkgs.lib.genAttrs systems f;
     in
     {
-      homeConfigurations = forEachSystem (system: 
+      homeConfigurations = forEachSystem (
+        system:
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
-          modules = [ ./home.nix ];
+          modules = [
+            ./.hm/hm.nix
+            ./home.nix
+          ];
         }
       );
     };
