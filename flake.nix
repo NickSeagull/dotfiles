@@ -31,8 +31,8 @@
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
           modules = [
-            ./.hm/hm.nix
-            ./home.nix
+            ./nix/hm.nix
+            ./nix/emacs.nix
           ];
         }
       );
