@@ -33,7 +33,7 @@
     DOOMDIR = "${config.xdg.configHome}/doom";
     EMACSDIR = "${config.xdg.configHome}/emacs";
     DOOMLOCALDIR = "${config.xdg.dataHome}/doom";
-    DOOMPROFILELOADFILE = "${config.xdg.stateHome}/doom-profiles-load.el";
+    DOOMPROFILELOADFILE = "${config.xdg.dataHome}/doom/profiles.30.el";
   };
   home.sessionPath = [ "${config.xdg.configHome}/emacs/bin" ];
 
@@ -54,9 +54,11 @@
   xdg.configFile."doom".source = ../doom;
 
   # Note! This must match $EMACSDIR
-  xdg.configFile."emacs".source = builtins.fetchGit {
-    url = "https://github.com/doomemacs/doomemacs.git";
-    rev = "1dae2bf916ea631ab0d129218cf69ece94a11e4f";
-  };
+  # We need to use a writable copy of Doom Emacs, not the Nix store version
+  home.activation.cloneDoomEmacs = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    if [ ! -d "$HOME/.config/emacs" ]; then
+      run ${pkgs.git}/bin/git clone --depth 1 https://github.com/doomemacs/doomemacs.git "$HOME/.config/emacs"
+    fi
+  '';
 
 }

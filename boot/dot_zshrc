@@ -13,3 +13,4 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 
+. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" && \
