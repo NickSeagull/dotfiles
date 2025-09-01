@@ -12,7 +12,6 @@ if ! nix flake --help &>/dev/null; then
   exit 1
 fi
 
-if ! command -v nix &>/dev/null; then
-  (cd .. && nix run home-manager -- switch --flake .#$(nix eval --impure --raw --expr 'builtins.currentSystem'))
+if ! command -v home-manager &>/dev/null; then
+  (cd "$HOME/.local/share/chezmoi" && nix run home-manager -- switch --flake .#$(nix eval --impure --raw --expr 'builtins.currentSystem'))
 fi
-

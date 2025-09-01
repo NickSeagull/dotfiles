@@ -2,7 +2,7 @@
 
 {
   home.username = "nick";
-  home.homeDirectory = "/home/nick";
+  home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/nick" else "/home/nick";
   programs.home-manager.enable = true;
 
   # This value determines the Home Manager release that your configuration is
