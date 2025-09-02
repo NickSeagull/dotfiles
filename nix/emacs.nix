@@ -29,7 +29,6 @@
   };
 
   home.sessionVariables = {
-    EDITOR = "emacsclient -c";
     DOOMDIR = "${config.xdg.configHome}/doom";
     EMACSDIR = "${config.xdg.configHome}/emacs";
     DOOMLOCALDIR = "${config.xdg.dataHome}/doom";
@@ -41,6 +40,13 @@
     emacs = {
       enable = true;
       startWithUserSession = true;
+      # Make emacsclient the default editor
+      defaultEditor = true;
+    
+      # Client configuration
+      client = {
+        enable = true;  # Enable desktop file for client
+      };
     };
   };
 

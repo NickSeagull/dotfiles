@@ -5,6 +5,8 @@
   home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/nick" else "/home/nick";
   programs.home-manager.enable = true;
 
+  launchd.enable = if pkgs.stdenv.isDarwin then true else false;
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
