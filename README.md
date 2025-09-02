@@ -1,16 +1,9 @@
 # dotfiles
 
+## Install on Windows
 
-
-
-
-## Notes 
-
-
-Restart emacs service on mac with:
-
-```bash
-launchctl kickstart -k gui/$(id -u)/org.nix-community.home.emacs
+```powershell
+iex "&{$(irm 'https://get.chezmoi.io/ps1')} init --apply 'https://github.com/NickSeagull/dotfiles.git'"
 ```
-
-
+```
+```
