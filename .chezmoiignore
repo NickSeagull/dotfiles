@@ -2,11 +2,18 @@
 dot_Brewfile
 dot_hammerspoon
 {{- end }}
+
 {{- if eq .chezmoi.os "windows" }}
 *.sh
-dot_zprofile
-dot_zshrc
+.zprofile
+.zshrc
+.Brewfile
+.config
 {{- end }}
+
+nix
+doom
 README.md
 CLAUDE.md
+flake.*
 
