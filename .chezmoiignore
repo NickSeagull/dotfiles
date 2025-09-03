@@ -11,6 +11,7 @@ dot_hammerspoon
 .config
 {{- end }}
 
+chezmoi.toml
 nix
 doom
 README.md
