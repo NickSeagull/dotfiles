@@ -1,10 +1,24 @@
 #Requires -RunAsAdministrator
 # PowerShell script to check and install WSL2 with Ubuntu if not already installed
 # This script runs once and sets up WSL2 with Ubuntu distribution
-
 param(
     [switch]$Force = $false
 )
+
+function Test-IsElevated {
+  return (New-Object Security.Principal.WindowsPrincipal(
+    [Security.Principal.WindowsIdentity]::GetCurrent()))
+    .IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+}
+
+if ((Test-IsElevated) -eq $false) {
+  Write-Warning "This script requires local admin privileges. Elevating..."
+  gsudo "& '$($MyInvocation.MyCommand.Source)'" $args
+  if ($LastExitCode -eq 999 ) {
+    Write-error 'Failed to elevate.'
+  }
+  return
+}
 
 $ErrorActionPreference = "Stop"
 
