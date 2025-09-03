@@ -2,7 +2,7 @@
 dot_Brewfile
 dot_hammerspoon
 {{- end }}
-{{- if .chezmoi.os "windows" }}
+{{- if eq .chezmoi.os "windows" }}
 *.sh
 dot_zprofile
 dot_zshrc
