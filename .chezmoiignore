@@ -13,7 +13,7 @@ dot_hammerspoon
 
 chezmoi.toml
 nix
-doom
+dot_doom.d/config.el
 README.md
 CLAUDE.md
 flake.*

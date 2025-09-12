@@ -1,18 +1,18 @@
 CHEZMOI_DIR=$HOME/.local/share/chezmoi
 
-function brew() {
-/opt/homebrew/bin/brew "$@"
- if [[ "$1" == "install" || "$1" == "remove" || "$1" == "uninstall" ]]; then
-  /opt/homebrew/bin/brew bundle dump --force --file=$CHEZMOI_DIR/dot_Brewfile
- fi
-}
+# function brew() {
+#  /opt/homebrew/bin/brew "$@"
+#  if [[ "$1" == "install" || "$1" == "remove" || "$1" == "uninstall" ]]; then
+#   /opt/homebrew/bin/brew bundle dump --force --file=$CHEZMOI_DIR/dot_Brewfile
+#  fi
+# }
 
 export PATH="$HOME/.dotnet:$PATH"
 export PATH="$HOME/.config/emacs/bin:$PATH"
 export EMACS_SOCKET_NAME="${TMPDIR%/}/emacs$(id -u)/server"
 
-eval "$(fnm env --use-on-cd --shell zsh)"
+# eval "$(fnm env --use-on-cd --shell zsh)"
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 
-. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" && \
+# . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" && \
