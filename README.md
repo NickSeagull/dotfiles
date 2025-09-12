@@ -13,5 +13,4 @@ Then restart terminal
 gsudo Set-ExecutionPolicy Unrestricted
 iex "&{$(irm 'https://get.chezmoi.io/ps1')} init --apply 'https://github.com/NickSeagull/dotfiles.git'"
 ```
-```
-```
+
