@@ -96,7 +96,7 @@ return {
     opts = function(_, opts)
       opts.ensure_installed = opts.ensure_installed or {}
       vim.list_extend(opts.ensure_installed, {
-        "pyright",
+        "basedpyright",
         "ruff",
         "ruff-lsp",
         "debugpy",
@@ -112,31 +112,14 @@ return {
     optional = true,
     opts = {
       formatters_by_ft = {
-        python = function(bufnr)
-          if vim.fn.filereadable(vim.fn.getcwd() .. "/ruff.toml") == 1
-            or vim.fn.filereadable(vim.fn.getcwd() .. "/pyproject.toml") == 1 then
-            return { "ruff_fix", "ruff_format", "ruff_organize_imports" }
-          end
-          return { "ruff_format", "ruff_fix" }
-        end,
+        python = { "ruff_organize_imports", "ruff_format" },
       },
       formatters = {
-        ruff_fix = {
-          command = "ruff",
-          args = {
-            "check",
-            "--fix",
-            "--exit-zero",
-            "--stdin-filename",
-            "$FILENAME",
-            "-",
-          },
-          stdin = true,
-        },
         ruff_format = {
           command = "ruff",
           args = {
             "format",
+            "--force-exclude",
             "--stdin-filename",
             "$FILENAME",
             "-",
@@ -147,9 +130,10 @@ return {
           command = "ruff",
           args = {
             "check",
-            "--select=I",
+            "--select",
+            "I",
             "--fix",
-            "--exit-zero",
+            "--force-exclude",
             "--stdin-filename",
             "$FILENAME",
             "-",
@@ -201,50 +185,56 @@ return {
       return opts
     end,
     keys = {
-      { "<leader>tn", function() require("neotest").run.run() end, desc = "Run Nearest Test" },
-      { "<leader>tf", function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Run Test File" },
-      { "<leader>td", function() require("neotest").run.run({strategy = "dap"}) end, desc = "Debug Nearest Test" },
-      { "<leader>ts", function() require("neotest").run.stop() end, desc = "Stop Test" },
-      { "<leader>ta", function() require("neotest").run.attach() end, desc = "Attach to Test" },
-      { "<leader>to", function() require("neotest").output.open({ enter = true, auto_close = true }) end, desc = "Show Test Output" },
-      { "<leader>tO", function() require("neotest").output_panel.toggle() end, desc = "Toggle Test Output Panel" },
-      { "<leader>tS", function() require("neotest").summary.toggle() end, desc = "Toggle Test Summary" },
+      {
+        "<leader>tn",
+        function()
+          require("neotest").run.run()
+        end,
+        desc = "Run Nearest Test",
+      },
+      {
+        "<leader>tf",
+        function()
+          require("neotest").run.run(vim.fn.expand("%"))
+        end,
+        desc = "Run Test File",
+      },
+      {
+        "<leader>ts",
+        function()
+          require("neotest").run.stop()
+        end,
+        desc = "Stop Test",
+      },
+      {
+        "<leader>ta",
+        function()
+          require("neotest").run.attach()
+        end,
+        desc = "Attach to Test",
+      },
+      {
+        "<leader>to",
+        function()
+          require("neotest").output.open({ enter = true, auto_close = true })
+        end,
+        desc = "Show Test Output",
+      },
+      {
+        "<leader>tO",
+        function()
+          require("neotest").output_panel.toggle()
+        end,
+        desc = "Toggle Test Output Panel",
+      },
+      {
+        "<leader>tS",
+        function()
+          require("neotest").summary.toggle()
+        end,
+        desc = "Toggle Test Summary",
+      },
     },
-  },
-
-  -- DAP support for Python debugging
-  {
-    "mfussenegger/nvim-dap-python",
-    dependencies = {
-      "mfussenegger/nvim-dap",
-      "rcarriga/nvim-dap-ui",
-    },
-    ft = "python",
-    config = function()
-      local path = require("mason-registry").get_package("debugpy"):get_install_path()
-      require("dap-python").setup(path .. "/venv/bin/python")
-
-      -- Configure test debugging
-      require("dap-python").test_runner = "pytest"
-
-      -- Support for uv environments
-      local dap = require("dap")
-      dap.configurations.python = vim.list_extend(dap.configurations.python or {}, {
-        {
-          type = "python",
-          request = "launch",
-          name = "Launch file (uv)",
-          program = "${file}",
-          pythonPath = function()
-            local uv_python = vim.fn.getcwd() .. "/.venv/bin/python"
-            if vim.fn.filereadable(uv_python) == 1 then
-              return uv_python
-            end
-            return "python"
-          end,
-        },
-      })
-    end,
   },
 
   -- Virtual environment selector
@@ -301,3 +291,4 @@ return {
     },
   },
 }
+

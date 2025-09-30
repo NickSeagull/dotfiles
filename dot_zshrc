@@ -13,9 +13,14 @@ export PATH="$HOME/.config/emacs/bin:$PATH"
 export EMACS_SOCKET_NAME="${TMPDIR%/}/emacs$(id -u)/server"
 
 export PATH="/snap/bin:$PATH"
+export PATH="$HOME/.local/bin/:$PATH"
 
 # eval "$(fnm env --use-on-cd --shell zsh)"
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 
 # . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" && \
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
