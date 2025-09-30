@@ -31,3 +31,27 @@ vim.keymap.set("n", "gs", function()
   vim.cmd("split")
   vim.lsp.buf.definition()
 end, { desc = "Goto Definition (split)" })
+
+-- Python-specific keymaps
+vim.keymap.set("n", "<leader>pr", function()
+  local file = vim.fn.expand("%")
+  if vim.bo.filetype == "python" then
+    -- Check if we're in a uv project
+    if vim.fn.filereadable(vim.fn.getcwd() .. "/.venv/bin/python") == 1 then
+      vim.cmd("!uv run python " .. file)
+    else
+      vim.cmd("!python " .. file)
+    end
+  end
+end, { desc = "Run Python file" })
+
+vim.keymap.set("n", "<leader>pt", function()
+  if vim.bo.filetype == "python" then
+    -- Check if we're in a uv project
+    if vim.fn.filereadable(vim.fn.getcwd() .. "/.venv/bin/pytest") == 1 then
+      vim.cmd("!uv run pytest -xvs")
+    else
+      vim.cmd("!pytest -xvs")
+    end
+  end
+end, { desc = "Run Python tests" })
