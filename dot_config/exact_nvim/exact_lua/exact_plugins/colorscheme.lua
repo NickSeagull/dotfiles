@@ -20,17 +20,19 @@ return {
               visual_bg = { "#c0c0c0", "250" },
               -- Darker comments for better readability
               color08 = { "#5f5f5f", "241" },
-            }
-          }
-        }
+            },
+          },
+        },
       }
-      
+
       -- Only set default theme if auto-dark-mode is not handling it
+      local is_wsl = vim.env.WSLENV ~= nil
       local is_ssh = vim.env.SSH_CLIENT ~= nil or vim.env.SSH_TTY ~= nil
-      local is_mac = vim.fn.has("mac") == 1
-      
-      if is_ssh or not is_mac then
+      -- local is_mac = vim.fn.has("mac") == 1
+
+      if is_ssh and not is_wsl then
         -- Default to light mode for SSH or non-macOS
+        vim.opt.termguicolors = false -- honour the terminal palette
         vim.o.background = "light"
         vim.cmd.colorscheme("PaperColor")
       end

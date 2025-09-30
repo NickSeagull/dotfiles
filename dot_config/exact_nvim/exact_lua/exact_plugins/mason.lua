@@ -1,7 +1,7 @@
 return {
   -- Disable Mason's automatic installation behavior
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {
       -- Don't automatically install missing servers
       automatic_installation = false,
@@ -17,10 +17,10 @@ return {
       },
     },
   },
-  
+
   -- Disable mason-lspconfig's automatic setup
   {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     opts = {
       -- Don't automatically install servers that are configured
       automatic_installation = false,
@@ -28,7 +28,7 @@ return {
       ensure_installed = {},
     },
   },
-  
+
   -- Configure nvim-lspconfig to use system tools
   {
     "neovim/nvim-lspconfig",
@@ -50,3 +50,4 @@ return {
     },
   },
 }
+

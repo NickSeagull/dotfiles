@@ -1,7 +1,7 @@
 return {
   -- Ensure Mason doesn't auto-install F# tools
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = function(_, opts)
       -- Ensure F# tools are not in the ensure_installed list
       if opts.ensure_installed then
@@ -46,7 +46,7 @@ return {
       vim.g["fsharp#exclude_project_directories"] = { ".git" }
       vim.g["fsharp#workspace_mode_peek_deep_level"] = 2
       vim.g["fsharp#show_signature_on_cursor_move"] = 0 -- Disable to avoid duplicates with LazyVim
-      vim.g["fsharp#lsp_codelens"] = 0 -- Disable code lens to avoid "unresolved lens" issues
+      vim.g["fsharp#lsp_codelens"] = 0                  -- Disable code lens to avoid "unresolved lens" issues
 
       -- Configure fsautocomplete path for Ionide
       vim.g["fsharp#fsautocomplete_command"] = { "fsautocomplete", "--adaptive-lsp-server-enabled" }
@@ -256,4 +256,3 @@ return {
     end,
   },
 }
-

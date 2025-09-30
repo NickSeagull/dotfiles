@@ -1,7 +1,7 @@
 return {
   -- Ensure Mason doesn't auto-install Haskell tools
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = function(_, opts)
       -- Ensure haskell tools are not in the ensure_installed list
       if opts.ensure_installed then
@@ -17,7 +17,7 @@ return {
       end
     end,
   },
-  
+
   -- Configure LSP to use Nix-provided HLS
   {
     "neovim/nvim-lspconfig",
@@ -29,7 +29,8 @@ return {
           filetypes = { "haskell", "lhaskell" },
           root_dir = function(fname)
             -- Use lspconfig's built-in root pattern detection
-            return require("lspconfig.util").root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml", ".git")(fname)
+            return require("lspconfig.util").root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml",
+              "hie.yaml", ".git")(fname)
           end,
           settings = {
             haskell = {
@@ -51,7 +52,7 @@ return {
       },
     },
   },
-  
+
   -- Optional: Add Haskell-specific plugins that work well with Nix
   {
     "mrcjkb/haskell-tools.nvim",
