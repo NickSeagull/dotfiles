@@ -1,5 +1,8 @@
 CHEZMOI_DIR=$HOME/.local/share/chezmoi
 
+alias ls='eza --hyperlink'
+alias cat='bat'
+
 # function brew() {
 #  /opt/homebrew/bin/brew "$@"
 #  if [[ "$1" == "install" || "$1" == "remove" || "$1" == "uninstall" ]]; then
