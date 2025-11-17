@@ -11,6 +11,9 @@ alias cat='bat'
 # }
 export DOTNET_ROOT="$HOME/.dotnet"
 export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 export PATH="$HOME/.config/emacs/bin:$PATH"
 export EMACS_SOCKET_NAME="${TMPDIR%/}/emacs$(id -u)/server"
