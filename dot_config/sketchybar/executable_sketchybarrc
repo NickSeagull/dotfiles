@@ -58,7 +58,7 @@ done
 sketchybar --add event aerospace_workspace_change \
            --add item aerospace.workspace left \
            --set aerospace.workspace drawing=off \
-                                     updates=when_shown \
+                                     updates=on \
                                      script="$PLUGIN_DIR/aerospace.sh" \
            --subscribe aerospace.workspace aerospace_workspace_change
 
