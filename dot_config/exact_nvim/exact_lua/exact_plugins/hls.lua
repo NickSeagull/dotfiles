@@ -25,7 +25,7 @@ return {
       servers = {
         hls = {
           mason = false, -- Don't install via Mason
-          cmd = { "haskell-language-server-wrapper", "--lsp" },
+          cmd = { "haskell-language-server", "--lsp" },
           filetypes = { "haskell", "lhaskell" },
           root_dir = function(fname)
             -- Use lspconfig's built-in root pattern detection
