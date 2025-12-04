@@ -51,18 +51,21 @@ sketchybar --default "${default[@]}"
 
 ##### Adding AeroSpace Workspace Indicators #####
 # Display AeroSpace workspaces in the bar
+# Nerd Font icons: code, terminal, browser, calendar, AI, music, chat, misc
+WORKSPACE_IDS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "0")
+WORKSPACE_ICONS=("󰅩 1" "󰆍 2" "󰈹 3" "󰃭 4" "󰚩 5" "󰝚 6" "󰭹 7" "󰀻 8" "󰀻 9" "󰀻 0")
 
-WORKSPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "0")
-for i in "${!WORKSPACE_ICONS[@]}"
+for i in "${!WORKSPACE_IDS[@]}"
 do
-  sid="${WORKSPACE_ICONS[i]}"
+  sid="${WORKSPACE_IDS[i]}"
+  icon="${WORKSPACE_ICONS[i]}"
   space=(
-    icon="$sid"
-    icon.padding_left=6
-    icon.padding_right=6
+    icon="$icon"
+    icon.padding_left=8
+    icon.padding_right=8
     background.color=$ACCENT_COLOR
     background.corner_radius=5
-    background.height=20
+    background.height=24
     label.drawing=off
     click_script="aerospace workspace $sid"
   )
