@@ -21,9 +21,7 @@ require("lazy").setup({
     -- LazyVim extras should come after lazyvim.plugins
     { import = "lazyvim.plugins.extras.util.chezmoi" },
     { import = "lazyvim.plugins.extras.lang.kotlin" },
-    { import = "lazyvim.plugins.extras.lang.omnisharp" },
     { import = "lazyvim.plugins.extras.lang.typescript" },
-    { import = "lazyvim.plugins.extras.lang.go" },
     { import = "lazyvim.plugins.extras.lang.python" },
     { import = "lazyvim.plugins.extras.ui.treesitter-context" },
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
@@ -39,7 +37,7 @@ require("lazy").setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { "tokyonight", "habamax" } },
+  install = { colorscheme = { "freshcut-contrast", "habamax" } },
   checker = {
     enabled = true, -- check for plugin updates periodically
     notify = false, -- notify on update
