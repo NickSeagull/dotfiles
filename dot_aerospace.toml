@@ -6,6 +6,9 @@ config-version = 2
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = []
 
+# Callbacks to run when workspace changes (uncomment when sketchybar is configured)
+# exec-on-workspace-change = ['/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE']
+
 # Start AeroSpace at login
 start-at-login = true
 
