@@ -38,13 +38,25 @@ return {
       end
     end,
   },
-  -- Tokyo Night theme for dark mode
+  -- Rainglow themes (includes Freshcut Contrast for dark mode)
   {
-    "folke/tokyonight.nvim",
+    "rainglow/vim",
     lazy = false,
     priority = 900,
-    opts = {
-      style = "night",
-    },
+    config = function()
+      -- Make background transparent to show terminal transparency
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "freshcut-contrast",
+        callback = function()
+          vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+          vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
+          vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
+          vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
+          vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "NONE" })
+          vim.api.nvim_set_hl(0, "LineNr", { bg = "NONE" })
+          vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "NONE" })
+        end,
+      })
+    end,
   },
 }
