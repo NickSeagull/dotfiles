@@ -1,0 +1,38 @@
+{
+  "name": "Freshcut Contrast",
+  "source": "https://github.com/rainglow/vscode/blob/master/themes/freshcut-contrast.json",
+  "type": "dark",
+  "colors": {
+    "background": "#000000",
+    "foreground": "#f8f8f2",
+    "cursor": "#f8f8f0",
+    "selection": "#008097",
+    "comment": "#737b84",
+    "string": "#e9ee00",
+    "number": "#8fbe00",
+    "constant": "#00a8c6",
+    "keyword": "#c8d7e8",
+    "storage": "#00a8c6",
+    "storageType": "#4ecdc4",
+    "className": "#00a8c6",
+    "function": "#aee239",
+    "tag": "#4ecdc4",
+    "tagAttribute": "#00a8c6",
+    "libraryFunction": "#4ecdc4",
+    "invalid": "#cf433e",
+    "diffDeleted": "#e61f44",
+    "diffInserted": "#A6E22E",
+    "diffChanged": "#f7b83d",
+    "whitespace": "#262626",
+    "lineHighlight": "#080808"
+  },
+  "ui": {
+    "statusBar": "#4ecdc4",
+    "activityBar": "#050505",
+    "badge": "#4ecdc4",
+    "button": "#00a8c6",
+    "panel": "#1a1a1a",
+    "input": "#000000",
+    "terminal": "#000000"
+  }
+}

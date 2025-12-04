@@ -12,7 +12,23 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-sketchybar --bar position=top height=40 blur_radius=30 color=0x40000000
+# Freshcut Contrast theme colors
+BAR_COLOR=0xe6000000
+ACCENT_COLOR=0xff4ecdc4
+HIGHLIGHT_COLOR=0xff00a8c6
+TEXT_COLOR=0xfff8f8f2
+BORDER_COLOR=0xff737b84
+
+sketchybar --bar position=top \
+                 height=32 \
+                 margin=16 \
+                 y_offset=8 \
+                 corner_radius=10 \
+                 blur_radius=30 \
+                 color=$BAR_COLOR \
+                 border_width=1 \
+                 border_color=$BORDER_COLOR \
+                 notch_width=0
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -20,16 +36,16 @@ sketchybar --bar position=top height=40 blur_radius=30 color=0x40000000
 # https://felixkratz.github.io/SketchyBar/config/items
 
 default=(
-  padding_left=5
-  padding_right=5
-  icon.font="Hack Nerd Font:Bold:17.0"
-  label.font="Hack Nerd Font:Bold:14.0"
-  icon.color=0xffffffff
-  label.color=0xffffffff
-  icon.padding_left=4
-  icon.padding_right=4
-  label.padding_left=4
-  label.padding_right=4
+  padding_left=3
+  padding_right=3
+  icon.font="Monaspace Xenon NF:Bold:14.0"
+  label.font="Monaspace Xenon NF:Regular:12.0"
+  icon.color=$TEXT_COLOR
+  label.color=$TEXT_COLOR
+  icon.padding_left=3
+  icon.padding_right=3
+  label.padding_left=3
+  label.padding_right=3
 )
 sketchybar --default "${default[@]}"
 
@@ -42,11 +58,11 @@ do
   sid="${WORKSPACE_ICONS[i]}"
   space=(
     icon="$sid"
-    icon.padding_left=7
-    icon.padding_right=7
-    background.color=0x40ffffff
+    icon.padding_left=6
+    icon.padding_right=6
+    background.color=$ACCENT_COLOR
     background.corner_radius=5
-    background.height=25
+    background.height=20
     label.drawing=off
     click_script="aerospace workspace $sid"
   )

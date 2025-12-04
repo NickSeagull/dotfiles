@@ -12,10 +12,13 @@ if [ -z "$FOCUSED_WORKSPACE" ]; then
   fi
 fi
 
+# Freshcut Contrast colors
+ACCENT_COLOR=0xff4ecdc4
+
 # Update all workspace items
 for i in 1 2 3 4 5 6 7 8 9 0; do
   if [ "$i" = "$FOCUSED_WORKSPACE" ]; then
-    sketchybar --set space.$i background.drawing=on
+    sketchybar --set space.$i background.drawing=on background.color=$ACCENT_COLOR
   else
     sketchybar --set space.$i background.drawing=off
   fi
