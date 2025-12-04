@@ -1,0 +1,67 @@
+# The template does not set any default options, since Ghostty ships
+# with sensible defaults for all options. Users should only need to set
+# options that they want to change from the default.
+#
+# Run `ghostty +show-config --default --docs` to view a list of
+# all available config options and their default values.
+#
+# Additionally, each config option is also explained in detail
+# on Ghostty's website, at https://ghostty.org/docs/config.
+#
+# Ghostty can reload the configuration while running by using the menu
+# options or the bound key (default: Command + Shift + comma on macOS and
+# Control + Shift + comma on other platforms). Not all config options can be
+# reloaded while running; some only apply to new windows and others may require
+# a full restart to take effect.
+
+# Config syntax crash course
+# ==========================
+# # The config file consists of simple key-value pairs,
+# # separated by equals signs.
+font-family = Monaspace Xenon NF
+font-size = 18
+
+# Enable ligatures and stylistic sets
+# Monaspace supports these stylistic sets for various operators and symbols
+font-feature = +ss01, +ss02, +ss03, +ss04, +ss05, +ss06, +ss07, +ss08, +ss09, +liga, +calt
+
+#
+# # Spacing around the equals sign does not matter.
+# # All of these are identical:
+# key=value
+# key= value
+# key =value
+# key = value
+#
+# # Any line beginning with a # is a comment. It's not possible to put
+# # a comment after a config option, since it would be interpreted as a
+# # part of the value. For example, this will have a value of "#123abc":
+# background = #123abc
+background-opacity = 0.9
+theme = Gruvbox Dark Hard
+#
+# # Empty values are used to reset config keys to default.
+# key =
+#
+# # Some config options have unique syntaxes for their value,
+# # which is explained in the docs for that config option.
+# # Just for example:
+# resize-overlay-duration = 4s 200ms
+
+# Merges titlebar with contents
+macos-titlebar-style = native
+macos-titlebar-style = transparent
+
+# Old school terminal size
+window-width = 80
+window-height = 25
+
+# Add some nice looking padding
+window-padding-x = 24
+window-padding-y = 24
+
+# Don't hang around
+quit-after-last-window-closed = true
+
+# Fixes issues with Ctrl-R
+term = xterm-256color
