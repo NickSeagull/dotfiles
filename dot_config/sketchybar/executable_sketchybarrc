@@ -12,7 +12,7 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-# Freshcut Contrast theme colors
+# Freshcut Contrast theme colors (0xe6 = 90% opacity, lower = more transparent)
 BAR_COLOR=0xe6000000
 ACCENT_COLOR=0xff4ecdc4
 HIGHLIGHT_COLOR=0xff00a8c6
@@ -24,8 +24,8 @@ sketchybar --bar position=top \
                  margin=16 \
                  y_offset=8 \
                  corner_radius=10 \
-                 blur_radius=30 \
-                 color=$BAR_COLOR \
+                 blur_radius=0 \
+                 color=0xe6000000 \
                  border_width=1 \
                  border_color=$BORDER_COLOR \
                  notch_width=0
