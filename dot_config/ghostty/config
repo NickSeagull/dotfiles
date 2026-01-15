@@ -18,8 +18,8 @@
 # ==========================
 # # The config file consists of simple key-value pairs,
 # # separated by equals signs.
-font-family = Monaspace Xenon NF
-font-size = 18
+font-family = Iosevka Nerd Font
+font-size = 14
 
 # Enable ligatures and stylistic sets
 # Monaspace supports these stylistic sets for various operators and symbols
