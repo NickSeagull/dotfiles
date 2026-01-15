@@ -1,8 +1,0 @@
-[".config/emacs"]
-type = "git-repo"
-url = "https://github.com/doomemacs/doomemacs"
-exact = true
-refreshPeriod = "168h"
-[".config/emacs".clone]
-args = ["--depth", "1"]
-

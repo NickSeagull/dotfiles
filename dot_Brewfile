@@ -1,4 +1,3 @@
-tap "d12frosted/emacs-plus"
 tap "felixkratz/formulae"
 tap "koekeishiya/formulae"
 tap "nikitabobko/tap"
@@ -23,7 +22,6 @@ brew "starship"
 brew "tokei"
 brew "zellij"
 brew "zsh"
-brew "d12frosted/emacs-plus/emacs-plus@31", args: ["with-cacodemon-icon", "with-imagemagick", "with-xwidgets"]
 cask "aerospace"
 cask "claude"
 cask "cursor"

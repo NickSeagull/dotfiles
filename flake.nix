@@ -32,7 +32,6 @@
           pkgs = nixpkgs.legacyPackages.${system};
           modules = [
             ./nix/hm.nix
-            ./nix/emacs.nix
           ];
         }
       );
