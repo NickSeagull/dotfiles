@@ -4,7 +4,11 @@ config-version = 2
 
 # You can use it to add commands that run after AeroSpace startup.
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = []
+after-startup-command = [
+    # JankyBorders for focused window highlighting
+    # https://github.com/FelixKratz/JankyBorders
+    'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0x00000000 width=5.0'
+]
 
 # Callbacks to run when workspace changes
 exec-on-workspace-change = ['/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE']
