@@ -1,4 +1,12 @@
 return {
+  -- Add Haskell treesitter parser for syntax highlighting
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = { "haskell" },
+    },
+  },
+
   -- Ensure Mason doesn't auto-install Haskell tools
   {
     "mason-org/mason.nvim",
