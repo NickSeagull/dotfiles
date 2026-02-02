@@ -2,6 +2,7 @@ CHEZMOI_DIR=$HOME/.local/share/chezmoi
 
 alias ls='eza --hyperlink'
 alias cat='bat'
+alias cf='claude-flow'
 
 # function brew() {
 #  /opt/homebrew/bin/brew "$@"
