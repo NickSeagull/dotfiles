@@ -38,3 +38,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # opencode
 export PATH=/Users/nick/.opencode/bin:$PATH
+
+# platformio
+export PATH="$HOME/.platformio/penv/bin:$PATH"
