@@ -19,8 +19,10 @@
 # # The config file consists of simple key-value pairs,
 # # separated by equals signs.
 # font-family = Iosevka Nerd Font
-font-family = Terminess Nerd Font
-font-size = 11
+font-family = CozetteVector
+font-size = 13
+font-thicken = false
+freetype-load-flags = no-hinting,monochrome
 
 # Enable ligatures and stylistic sets
 # Monaspace supports these stylistic sets for various operators and symbols
