@@ -1,0 +1,33 @@
+
+  ZELLIJ CHEATSHEET                         Leader: Ctrl+g
+  ─────────────────────────────────────────────────────────
+  ALWAYS AVAILABLE
+    Alt+h/j/k/l  navigate panes    Alt+n  new pane
+    Alt+±         resize            Ctrl+g toggle command mode
+
+  COMMAND LAYER  (Ctrl+g, then key)
+  ─────────────────────────────────────────────────────────
+    h/j/k/l  navigate       n  new pane       d  detach
+    - split down            |  split right     q  quit
+    x close pane            f  fullscreen      w  float
+    z toggle frames         1-9  jump to tab   ?  this
+
+  SUB-MODES  (Ctrl+g, then letter to enter mode)
+  ─────────────────────────────────────────────────────────
+  p PANE              t TAB               r RESIZE
+    hjkl  focus         h/l prev/next       hjkl  grow
+    n new  x close      n new  x close      HJKL  shrink
+    - dn  | right       r rename            ± proportional
+    f full  w float     s sync  Tab last
+    e embed  c name     1-9 jump  b break
+
+  m MOVE              s SCROLL            o SESSION
+    hjkl  direction     j/k line            d detach
+    n/Tab cycle         d/u half-page       w session mgr
+    p reverse           C-f/C-b page
+                        / search  e edit
+                        G bottom
+
+  Esc or Ctrl+g  →  cancel, back to terminal
+  ─────────────────────────────────────────────────────────
+                                          press q to close

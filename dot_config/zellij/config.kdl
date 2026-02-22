@@ -57,6 +57,12 @@ keybinds clear-defaults=true {
         bind "z" { TogglePaneFrames; SwitchToMode "locked"; }
         bind "d" { Detach; }
         bind "q" { Quit; }
+        bind "?" {
+            Run "less" "$HOME/.config/zellij/cheatsheet.txt" {
+                close_on_exit true
+            }
+            SwitchToMode "locked"
+        }
 
         // hjkl pane/tab navigation
         bind "h" { MoveFocusOrTab "left"; }
