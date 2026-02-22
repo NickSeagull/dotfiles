@@ -1,0 +1,244 @@
+// Zellij — Spacemacs-inspired, SSH/mosh-optimized
+//
+// MENTAL MODEL:
+//   Locked (default) — terminal gets all keys, Zellij is invisible
+//   Ctrl+g           — enter command layer (like SPC in spacemacs)
+//   Alt+h/j/k/l      — quick pane nav, always available
+//
+// COMMAND LAYER (Normal mode, after Ctrl+g):
+//   p → Pane    t → Tab      r → Resize
+//   m → Move    s → Scroll   o → Session
+//   n → new pane   - → split ↓   | → split →
+//   x → close      f → fullscreen w → float
+//   h/j/k/l → navigate panes   1-9 → jump to tab
+//   Esc or Ctrl+g → cancel, back to locked
+
+// ── Options ──────────────────────────────────────────────────
+
+default_mode "locked"
+default_layout "compact"
+simplified_ui true
+pane_frames true
+theme "adaptive"
+show_startup_tips false
+session_serialization false
+
+// ── Keybindings ──────────────────────────────────────────────
+
+keybinds clear-defaults=true {
+
+    // LOCKED — full terminal passthrough
+    // Only Ctrl+g escapes to the command layer.
+    locked {
+        bind "Ctrl g" { SwitchToMode "normal"; }
+    }
+
+    // NORMAL — spacemacs-style command layer
+    // Mnemonic single-key access to sub-modes and quick actions.
+    normal {
+        // Sub-mode activation
+        bind "p" { SwitchToMode "pane"; }
+        bind "t" { SwitchToMode "tab"; }
+        bind "r" { SwitchToMode "resize"; }
+        bind "m" { SwitchToMode "move"; }
+        bind "s" { SwitchToMode "scroll"; }
+        bind "o" { SwitchToMode "session"; }
+
+        // Quick actions (execute → return to locked)
+        bind "n" { NewPane; SwitchToMode "locked"; }
+        bind "-" { NewPane "down"; SwitchToMode "locked"; }
+        bind "|" { NewPane "right"; SwitchToMode "locked"; }
+        bind "x" { CloseFocus; SwitchToMode "locked"; }
+        bind "f" { ToggleFocusFullscreen; SwitchToMode "locked"; }
+        bind "w" { ToggleFloatingPanes; SwitchToMode "locked"; }
+        bind "z" { TogglePaneFrames; SwitchToMode "locked"; }
+        bind "d" { Detach; }
+        bind "q" { Quit; }
+
+        // hjkl pane/tab navigation
+        bind "h" { MoveFocusOrTab "left"; }
+        bind "j" { MoveFocus "down"; }
+        bind "k" { MoveFocus "up"; }
+        bind "l" { MoveFocusOrTab "right"; }
+
+        // Jump to tab by number
+        bind "1" { GoToTab 1; SwitchToMode "locked"; }
+        bind "2" { GoToTab 2; SwitchToMode "locked"; }
+        bind "3" { GoToTab 3; SwitchToMode "locked"; }
+        bind "4" { GoToTab 4; SwitchToMode "locked"; }
+        bind "5" { GoToTab 5; SwitchToMode "locked"; }
+        bind "6" { GoToTab 6; SwitchToMode "locked"; }
+        bind "7" { GoToTab 7; SwitchToMode "locked"; }
+        bind "8" { GoToTab 8; SwitchToMode "locked"; }
+        bind "9" { GoToTab 9; SwitchToMode "locked"; }
+    }
+
+    // PANE — manage panes (Ctrl+g → p)
+    pane {
+        bind "h" { MoveFocus "left"; }
+        bind "j" { MoveFocus "down"; }
+        bind "k" { MoveFocus "up"; }
+        bind "l" { MoveFocus "right"; }
+        bind "n" { NewPane; SwitchToMode "locked"; }
+        bind "-" { NewPane "down"; SwitchToMode "locked"; }
+        bind "|" { NewPane "right"; SwitchToMode "locked"; }
+        bind "x" { CloseFocus; SwitchToMode "locked"; }
+        bind "f" { ToggleFocusFullscreen; SwitchToMode "locked"; }
+        bind "w" { ToggleFloatingPanes; SwitchToMode "locked"; }
+        bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "locked"; }
+        bind "c" { SwitchToMode "renamepane"; PaneNameInput 0; }
+        bind "p" { SwitchFocus; }
+        bind "z" { TogglePaneFrames; SwitchToMode "locked"; }
+    }
+
+    // TAB — manage tabs (Ctrl+g → t)
+    tab {
+        bind "h" { GoToPreviousTab; }
+        bind "l" { GoToNextTab; }
+        bind "j" { GoToNextTab; }
+        bind "k" { GoToPreviousTab; }
+        bind "n" { NewTab; SwitchToMode "locked"; }
+        bind "x" { CloseTab; SwitchToMode "locked"; }
+        bind "r" { SwitchToMode "renametab"; TabNameInput 0; }
+        bind "s" { ToggleActiveSyncTab; SwitchToMode "locked"; }
+        bind "b" { BreakPane; SwitchToMode "locked"; }
+        bind "[" { BreakPaneLeft; SwitchToMode "locked"; }
+        bind "]" { BreakPaneRight; SwitchToMode "locked"; }
+        bind "Tab" { ToggleTab; }
+        bind "1" { GoToTab 1; SwitchToMode "locked"; }
+        bind "2" { GoToTab 2; SwitchToMode "locked"; }
+        bind "3" { GoToTab 3; SwitchToMode "locked"; }
+        bind "4" { GoToTab 4; SwitchToMode "locked"; }
+        bind "5" { GoToTab 5; SwitchToMode "locked"; }
+        bind "6" { GoToTab 6; SwitchToMode "locked"; }
+        bind "7" { GoToTab 7; SwitchToMode "locked"; }
+        bind "8" { GoToTab 8; SwitchToMode "locked"; }
+        bind "9" { GoToTab 9; SwitchToMode "locked"; }
+    }
+
+    // RESIZE — hjkl to grow, HJKL to shrink (Ctrl+g → r)
+    resize {
+        bind "h" { Resize "Increase left"; }
+        bind "j" { Resize "Increase down"; }
+        bind "k" { Resize "Increase up"; }
+        bind "l" { Resize "Increase right"; }
+        bind "H" { Resize "Decrease left"; }
+        bind "J" { Resize "Decrease down"; }
+        bind "K" { Resize "Decrease up"; }
+        bind "L" { Resize "Decrease right"; }
+        bind "=" "+" { Resize "Increase"; }
+        bind "-" { Resize "Decrease"; }
+    }
+
+    // MOVE — reposition panes (Ctrl+g → m)
+    move {
+        bind "h" { MovePane "left"; }
+        bind "j" { MovePane "down"; }
+        bind "k" { MovePane "up"; }
+        bind "l" { MovePane "right"; }
+        bind "n" "Tab" { MovePane; }
+        bind "p" { MovePaneBackwards; }
+    }
+
+    // SCROLL — vim-style scrollback (Ctrl+g → s)
+    scroll {
+        bind "j" { ScrollDown; }
+        bind "k" { ScrollUp; }
+        bind "d" "Ctrl d" { HalfPageScrollDown; }
+        bind "u" "Ctrl u" { HalfPageScrollUp; }
+        bind "Ctrl f" { PageScrollDown; }
+        bind "Ctrl b" { PageScrollUp; }
+        bind "G" { ScrollToBottom; SwitchToMode "locked"; }
+        bind "e" { EditScrollback; SwitchToMode "locked"; }
+        bind "/" { SwitchToMode "entersearch"; SearchInput 0; }
+    }
+
+    // SEARCH — find in scrollback (Ctrl+g → s → /)
+    search {
+        bind "j" { ScrollDown; }
+        bind "k" { ScrollUp; }
+        bind "d" "Ctrl d" { HalfPageScrollDown; }
+        bind "u" "Ctrl u" { HalfPageScrollUp; }
+        bind "Ctrl f" { PageScrollDown; }
+        bind "Ctrl b" { PageScrollUp; }
+        bind "n" { Search "down"; }
+        bind "N" { Search "up"; }
+        bind "c" { SearchToggleOption "CaseSensitivity"; }
+        bind "w" { SearchToggleOption "Wrap"; }
+        bind "o" { SearchToggleOption "WholeWord"; }
+        bind "Esc" { SwitchToMode "scroll"; }
+    }
+
+    entersearch {
+        bind "Esc" "Ctrl c" { SwitchToMode "scroll"; }
+        bind "Enter" { SwitchToMode "search"; }
+    }
+
+    // SESSION — session management (Ctrl+g → o)
+    session {
+        bind "d" { Detach; }
+        bind "w" {
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                move_to_focused_tab true
+            }
+            SwitchToMode "locked"
+        }
+    }
+
+    renametab {
+        bind "Esc" { UndoRenameTab; SwitchToMode "tab"; }
+        bind "Ctrl c" { SwitchToMode "locked"; }
+    }
+
+    renamepane {
+        bind "Esc" { UndoRenamePane; SwitchToMode "pane"; }
+        bind "Ctrl c" { SwitchToMode "locked"; }
+    }
+
+    // ── Shared ───────────────────────────────────────────────
+
+    // Ctrl+g: universal cancel → locked (from any non-locked mode)
+    shared_except "locked" {
+        bind "Ctrl g" { SwitchToMode "locked"; }
+    }
+
+    // Alt+hjkl: quick pane navigation, always available
+    // (excluded from text-input modes to avoid eating keystrokes)
+    shared_except "entersearch" "renametab" "renamepane" {
+        bind "Alt h" { MoveFocusOrTab "left"; }
+        bind "Alt j" { MoveFocus "down"; }
+        bind "Alt k" { MoveFocus "up"; }
+        bind "Alt l" { MoveFocusOrTab "right"; }
+        bind "Alt n" { NewPane; }
+        bind "Alt =" "Alt +" { Resize "Increase"; }
+        bind "Alt -" { Resize "Decrease"; }
+    }
+
+    // Esc: return to locked from sub-modes
+    // (search → scroll handled explicitly above for vim-like Esc stacking)
+    shared_except "locked" "entersearch" "renametab" "renamepane" "search" {
+        bind "Esc" { SwitchToMode "locked"; }
+    }
+}
+
+// ── Theme ────────────────────────────────────────────────────
+// "Adaptive" — medium-dark UI backgrounds ensure readability
+// regardless of terminal light/dark mode. Accent colors from
+// your Freshcut Contrast palette.
+
+themes {
+    adaptive {
+        fg 220 220 230
+        bg 59 61 78
+        black 40 42 54
+        red 207 67 62
+        green 174 226 57
+        yellow 233 238 0
+        blue 0 168 198
+        magenta 200 215 232
+        orange 247 184 61
+        cyan 78 205 196
+        white 248 248 242
+    }
+}
