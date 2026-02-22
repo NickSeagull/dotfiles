@@ -24,6 +24,7 @@ show_startup_tips false
 session_name "main"
 attach_to_session true
 session_serialization true
+on_force_close "detach"
 
 // ── Keybindings ──────────────────────────────────────────────
 
