@@ -3,6 +3,7 @@ CHEZMOI_DIR=$HOME/.local/share/chezmoi
 alias ls='eza --hyperlink'
 alias cat='bat'
 alias cf='claude-flow'
+alias zj='zellij attach --create main'
 
 # function brew() {
 #  /opt/homebrew/bin/brew "$@"
