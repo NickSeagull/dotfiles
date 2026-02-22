@@ -5,6 +5,29 @@ alias cat='bat'
 alias cf='claude-flow'
 alias zj='zellij attach --create main'
 
+# worktrees — centralized in ~/.worktrees/<repo>/<branch>
+wt() {
+  local root=$(git rev-parse --show-toplevel 2>/dev/null) || return 1
+  local repo=$(basename "$root")
+  local base="$HOME/.worktrees/${repo}"
+  if [[ "$1" == "-d" ]]; then
+    git worktree remove "${base}/${2}" && echo "Removed ${2}"
+    return
+  fi
+  if [[ "$1" == "-l" ]]; then
+    git worktree list
+    return
+  fi
+  local name="${1:?usage: wt <branch> | wt -d <branch> | wt -l}"
+  if [ -d "${base}/${name}" ]; then
+    cd "${base}/${name}"
+  else
+    mkdir -p "$base"
+    git worktree add "${base}/${name}" -b "$name" 2>/dev/null || git worktree add "${base}/${name}" "$name"
+    cd "${base}/${name}"
+  fi
+}
+
 # function brew() {
 #  /opt/homebrew/bin/brew "$@"
 #  if [[ "$1" == "install" || "$1" == "remove" || "$1" == "uninstall" ]]; then
