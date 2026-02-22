@@ -3,7 +3,7 @@ CHEZMOI_DIR=$HOME/.local/share/chezmoi
 alias ls='eza --hyperlink'
 alias cat='bat'
 alias cf='claude-flow'
-alias zj='zellij attach --create main'
+zj() { zellij attach --create "${1:-main}"; }
 
 # worktrees — centralized in ~/.worktrees/<repo>/<branch>
 wt() {

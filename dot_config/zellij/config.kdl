@@ -21,7 +21,7 @@ simplified_ui true
 pane_frames true
 theme "adaptive"
 show_startup_tips false
-session_name "main"
+// session_name not set — managed by `zj` shell function
 attach_to_session true
 session_serialization true
 on_force_close "detach"
