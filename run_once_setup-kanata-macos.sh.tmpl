@@ -1,0 +1,51 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+# Kanata + Karabiner VirtualHIDDevice LaunchDaemon setup (macOS only)
+# This script runs once via chezmoi to install LaunchDaemon plists.
+# Manual steps still required afterwards — see README.md.
+set -euo pipefail
+
+PLIST_SRC="$HOME/.config/kanata/launchdaemons"
+PLIST_DST="/Library/LaunchDaemons"
+LOG_DIR="/Library/Logs/Kanata"
+
+echo "[kanata] Setting up LaunchDaemons for Kanata..."
+
+# Create log directory
+if [ ! -d "$LOG_DIR" ]; then
+  sudo mkdir -p "$LOG_DIR"
+  echo "[kanata] Created $LOG_DIR"
+fi
+
+# Copy plists to /Library/LaunchDaemons
+for plist in com.nick.kanata.plist com.nick.karabiner-vhiddaemon.plist com.nick.karabiner-vhidmanager.plist; do
+  if [ -f "$PLIST_SRC/$plist" ]; then
+    sudo cp "$PLIST_SRC/$plist" "$PLIST_DST/$plist"
+    sudo chown root:wheel "$PLIST_DST/$plist"
+    sudo chmod 644 "$PLIST_DST/$plist"
+    echo "[kanata] Installed $plist"
+  else
+    echo "[kanata] WARNING: $PLIST_SRC/$plist not found, skipping"
+  fi
+done
+
+# Bootstrap services (will fail gracefully if already bootstrapped)
+for svc in com.nick.karabiner-vhidmanager com.nick.karabiner-vhiddaemon com.nick.kanata; do
+  sudo launchctl bootstrap system "$PLIST_DST/$svc.plist" 2>/dev/null || true
+  sudo launchctl enable system/$svc 2>/dev/null || true
+  echo "[kanata] Bootstrapped $svc"
+done
+
+echo ""
+echo "[kanata] LaunchDaemons installed. MANUAL STEPS REMAINING:"
+echo "  1. System Settings > Privacy & Security > Input Monitoring"
+echo "     → Add /opt/homebrew/bin/kanata and your terminal app"
+echo "  2. System Settings > Privacy & Security > Accessibility"
+echo "     → Add /opt/homebrew/bin/kanata and your terminal app"
+echo "  3. System Settings > Keyboard > Modifier Keys"
+echo "     → Select 'Karabiner DriverKit VirtualHIDKeyboard' from dropdown"
+echo "  4. Reboot, or start services now:"
+echo "     sudo launchctl start com.nick.karabiner-vhidmanager"
+echo "     sudo launchctl start com.nick.karabiner-vhiddaemon"
+echo "     sudo launchctl start com.nick.kanata"
+{{- end }}
