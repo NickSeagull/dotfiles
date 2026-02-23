@@ -28,7 +28,8 @@ Multi-layered dotfiles repository managed by chezmoi, combining:
 - **Setup script**: `run_once_setup-kanata-macos.sh.tmpl` (installs plists, bootstraps services)
 - **Driver**: Karabiner-DriverKit-VirtualHIDDevice (manual .pkg install required)
 - **Cross-platform modifiers**: Template uses `.chezmoi.os` to output `lmet` (Cmd) on macOS, `lctl` (Ctrl) on Windows
-- **Layer keys**: e=primary modifier, a=Ctrl, q=primary+Shift, ;=Shift, CapsLock=Esc/Ctrl
+ **Layer keys**: e=primary modifier, a=Ctrl, q=primary+Shift, ;=Shift, CapsLock=Esc/Ctrl, z=Zellij nav, s=Utility
+ **Live reload**: User can press `s+p` (hold s, tap p) to live-reload the kanata config after changes are applied
 - **Approach**: nikivi-style simultaneous key layers (not homerow mods). Reference: `nikivi-keybindings-reference.md`
 
 #### Kanata macOS Manual Steps (cannot be automated)
@@ -145,3 +146,9 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply NickSeagull/dotfiles
 chezmoi apply --force
 ```
 This deploys changes from the source directory (`~/.local/share/chezmoi/`) to their target locations (e.g., `~/.config/`, `~/.zshrc`, etc.). Without this step, edits only exist in the source repo and are NOT active on the system.
+
+**Kanata config changes**: After editing `dot_config/kanata/kanata.kbd.tmpl`, also run:
+```bash
+kanata --check --cfg ~/.config/kanata/kanata.kbd
+```
+to validate syntax. Then tell the user to press `s+p` (hold s, tap p) to live-reload the config.
