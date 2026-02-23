@@ -222,6 +222,12 @@ keybinds clear-defaults=true {
         bind "Alt n" { NewPane; }
         bind "Alt =" "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
+        bind "Alt p" {
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                move_to_focused_tab true
+            }
+        }
     }
 
     // Esc: return to locked from sub-modes
