@@ -15,8 +15,8 @@
 )
 
 (defvar
-  tt 200  ;; tap timeout (ms)
-  ht 200  ;; hold timeout (ms)
+  tt 300  ;; tap timeout (ms) — time before hold activates
+  ht 250  ;; hold timeout (ms)
 )
 
 ;; Only intercept the keys we remap — everything else passes through
@@ -31,23 +31,23 @@
 (defalias
   ;; Caps Lock: tap = Escape, hold = Ctrl
   ;; Useful for vim escape and terminal Ctrl shortcuts
-  cap (tap-hold-press $tt $ht esc lctl)
+  cap (tap-hold-release $tt $ht esc lctl)
 
 {{ if eq .chezmoi.os "darwin" }}
   ;; macOS: primary modifier = Cmd (lmet)
-  emod (tap-hold-press $tt $ht e lmet)
-  qmod (tap-hold-press $tt $ht q (multi lmet lsft))
+  emod (tap-hold-release $tt $ht e lmet)
+  qmod (tap-hold-release $tt $ht q (multi lmet lsft))
 {{ else }}
   ;; Windows/Linux: primary modifier = Ctrl (lctl)
-  emod (tap-hold-press $tt $ht e lctl)
-  qmod (tap-hold-press $tt $ht q (multi lctl lsft))
+  emod (tap-hold-release $tt $ht e lctl)
+  qmod (tap-hold-release $tt $ht q (multi lctl lsft))
 {{ end }}
 
   ;; a: tap = a, hold = Ctrl (both platforms)
   ;; For terminal shortcuts: Ctrl+C (interrupt), Ctrl+A, Ctrl+R, etc.
-  amod (tap-hold-press $tt $ht a lctl)
+  amod (tap-hold-release $tt $ht a lctl)
 
   ;; ;: tap = ;, hold = Shift
   ;; Hold ; and press any letter for uppercase, or ; + number for symbols
-  semi (tap-hold-press $tt $ht ; lsft)
+  semi (tap-hold-release $tt $ht ; lsft)
 )
