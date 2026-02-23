@@ -1,0 +1,1854 @@
+{
+  "device_info": [
+    {
+      "descriptor": "io.github.sds100.keymapper.THIS_DEVICE",
+      "name": "Boox Keyboard"
+    }
+  ],
+  "keymap_db_version": 10,
+  "keymap_list": [
+    {
+      "id": 0,
+      "uid": "458adc27-4af4-4f0d-b2fa-14e1971eca8b",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "253fdc26-a9b3-42a5-a479-c0c77410a144"
+          },
+          {
+            "keyCode": 29,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "f09cdb73-e3f0-4bf4-9697-196d3f2f91cf"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "29",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "a899c00f-96a5-4a47-ad32-698b2b76e207"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "uid": "929d3497-6430-455f-ab80-90740914bc2e",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "4b54efee-5f93-412a-9b81-22672437948e"
+          },
+          {
+            "keyCode": 30,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "a427f16d-d299-43f4-813b-e281c2e20195"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "30",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "c205f928-e28f-486e-81a1-b26d0741a2df"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "uid": "e41d36bf-605f-4011-be80-0dbbc542a45d",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "549c8201-6642-4ff0-820c-43e5f63cd77a"
+          },
+          {
+            "keyCode": 31,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "50edf269-b4db-49dc-acd7-57e6a2867b5f"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "31",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "3421cb98-0148-44ef-8d30-d4f23963560f"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "uid": "72572a53-7be6-4146-9180-630b80721f4e",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "7c9792f4-ab1e-45c6-99c6-9fce89ac5f7f"
+          },
+          {
+            "keyCode": 32,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "aea21013-4822-45bc-bb39-31df67b2d22f"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "32",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "143058ee-1090-412b-ad2b-a27c6d891a3b"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "uid": "a86ed778-1e22-4fbe-a7eb-2e09c2895d28",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "b22524b0-f395-4577-a345-b7598ef62cb0"
+          },
+          {
+            "keyCode": 34,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "f5f51f18-feaf-4e72-86ee-de1677c243af"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "34",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "fc28527b-511a-4202-8407-61636d502408"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "uid": "7dd7feca-4d2b-4929-8d94-c5e22d2c6e73",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "dfa6a50f-568e-4a28-8fd9-5ef6b95466fa"
+          },
+          {
+            "keyCode": 35,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "e887acdf-29f6-4fde-8677-3d9de811771e"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "35",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "46a1f9ce-b221-4d14-9654-350473ee6d9f"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "uid": "0ac8715a-d6f6-45b1-a2ef-d51a01c7c666",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "df9392db-6837-4937-8bfe-2c407b045454"
+          },
+          {
+            "keyCode": 36,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "eca0e09a-c7bc-4339-a397-b3fc7f748170"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "36",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "6fe8bfed-46bc-48ad-aa05-18449cbc5c90"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "uid": "ef3e1141-93d9-4728-8d11-39735e03e41c",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "9fb7695c-74ab-4989-8a50-d042ea428859"
+          },
+          {
+            "keyCode": 37,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "3124d908-760b-4b5f-9ce9-f554582a4148"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "37",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "a074fcaa-e21d-4c42-9e3c-b403a46cdb5b"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "uid": "efb28bbb-1c77-4917-ac3e-2b92e4e30474",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "3e056350-60b8-4610-8b20-d0b5343197ee"
+          },
+          {
+            "keyCode": 38,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "78d788a2-9c05-4ee8-93df-4833de7fca57"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "38",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "30d8a4f8-2942-49b0-9f62-03fbbe156527"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "uid": "713d96e1-bf9e-4546-96e7-219406fb1b5a",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "08bc7fcd-ad40-4d5c-8a5f-8152c2985985"
+          },
+          {
+            "keyCode": 39,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "a8892ff3-548a-4f64-b61d-c3e08afe6de7"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "39",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "a7368998-af9a-4dda-a90c-df050661cfac"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "uid": "70f44041-2f22-4374-808d-00801a2e75cd",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "6335d1d7-8c92-45c6-8d94-3d2d552a9eb4"
+          },
+          {
+            "keyCode": 40,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "f3459f77-5890-4886-912e-67cf7b25d0d8"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "40",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "870b03b5-baa6-4b47-a6d0-581c30bba1ad"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "uid": "710de1a3-8368-4be5-bf2b-dca894600cf6",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "ca48dc72-8c79-42d1-8395-43d21beb5b82"
+          },
+          {
+            "keyCode": 41,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "494d7c97-b149-40d1-bde5-48998ce809ad"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "41",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "ca27c8fb-f26f-41ab-95ab-df98a048c454"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "uid": "21b7cb3f-f6cd-42cb-bced-09c596f2b449",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "dc891933-389c-4a00-867a-9c171eb3bee9"
+          },
+          {
+            "keyCode": 42,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "28614049-5fef-479f-b393-372d830e5552"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "42",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "d33c4566-0562-4176-83cd-14a057d25384"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "uid": "1c21a85a-1143-4ca5-93b3-6f42961f134b",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "07fc6111-171d-4d40-b4c2-247c93dc49bb"
+          },
+          {
+            "keyCode": 43,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "b605ebab-f2b2-4fdf-9896-9b005c2131c9"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "43",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "1117de88-6237-40ca-a4f3-45f4081ea16a"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "uid": "2c050e9a-bd2a-4c6e-b510-575c43623f28",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "548d472e-fa60-4210-a8c4-6a10ea340946"
+          },
+          {
+            "keyCode": 44,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "5c6347af-6218-4e83-b978-dd2a30c0f1c7"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "44",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "925fe831-7964-45db-be95-b52d0bf95272"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "uid": "e34d0aea-52ca-49ee-a9c7-b1422e914fd4",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "6e741788-cad7-4c1d-8ad7-4d11c819c30e"
+          },
+          {
+            "keyCode": 45,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "a2d85ae1-4fbd-4322-834c-63b0a8a0be50"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "45",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "c5b29185-52d8-4c4a-aa64-4aaf430ccbc3"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "uid": "1d01fe09-16b4-452f-b12e-8d1543d72d8f",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "1d84e10a-d055-4aee-aac1-79e491472bbe"
+          },
+          {
+            "keyCode": 46,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "385451a1-207c-4eeb-8a56-0759facd75cf"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "46",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "08a3a58f-3938-4bee-906a-ebf7a1ddf580"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "uid": "b7590f4c-615d-4e6a-8957-c74c73111865",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "43ae4d71-e74b-4f3c-a502-423ddeb59067"
+          },
+          {
+            "keyCode": 47,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "f3140e53-6af8-4cb4-b66b-5cf92d263ff9"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "47",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "9ea93640-9edf-414a-8c06-c266092afda6"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "uid": "70cf22fb-b3c7-454d-abd9-ea82664ab5ce",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "e9321ccc-831e-44e3-80b8-572652d8d97c"
+          },
+          {
+            "keyCode": 48,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "b895362c-f715-4b46-a5bb-6102d9fae863"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "48",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "6d13e221-6223-4d2c-a746-ff9b8d95a53b"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "uid": "1ed97e87-b1c0-45e9-8e75-c18d8c821011",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "aebd3622-3594-4bf9-9c98-7a0bccc91e81"
+          },
+          {
+            "keyCode": 49,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "555f133d-063d-48c6-bf62-cde3ae7353dd"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "49",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "b40aef8e-6e26-41cc-896a-2c15e7ffaaeb"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "uid": "8136e847-cfba-44f6-9fbd-d2d3a9c7efb9",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "b1fbc776-9c65-4dd5-ba37-6d960335447e"
+          },
+          {
+            "keyCode": 50,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "fa4f6a77-786b-4cf5-b134-9644881e15ae"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "50",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "a6fd9d12-b831-4cf9-a10f-6cb5e9e1c4fc"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "uid": "0e46ee99-e127-4156-adec-273044c50b0d",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "1760c12e-3897-433e-bd19-e184994f3073"
+          },
+          {
+            "keyCode": 51,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "0fd5dcea-62c6-422f-bed8-e459686bd4af"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "51",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "a6cd03d5-8088-4a84-aae4-33469fe83e11"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "uid": "6e0d096d-9919-41a3-b2b2-0d0f5f546119",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "ae5f51a5-f1e5-4a7f-9dd8-bde8e1dcc2b6"
+          },
+          {
+            "keyCode": 52,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "975d4b86-3c45-4e52-89f8-101e5749b6a0"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "52",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "1c08f45d-c551-4c3b-bd23-7bff9d998524"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "uid": "53feaef5-e3d7-4e88-8b78-492231feba14",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "c3a29b0c-72fb-4987-a3d4-8169c82ec50b"
+          },
+          {
+            "keyCode": 53,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "01752f5d-3438-490c-9f3b-67dc2f87b88b"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "53",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "825091b7-417d-4431-b4ad-b4ec5e3fbaee"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "uid": "2a35f48c-6c6c-4812-b89f-38806d9863f7",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "211bea7a-9bd7-4ef1-9cdc-91671fc94056"
+          },
+          {
+            "keyCode": 54,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "96a2fa4d-3a17-4d5e-8935-35fddd93de3a"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "54",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "296ea128-c447-4569-8ca0-8ce2773c5538"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "uid": "a3effb90-e460-4e03-8fa9-df055a43d8c7",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "7ec76824-2bbf-4dc1-91f8-68d8fce4e4f9"
+          },
+          {
+            "keyCode": 70,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "2b6a5ba4-e5b5-4af9-8907-7ad9df638f46"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "70",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "51d6a697-1c04-4756-beae-cd276e262f93"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "uid": "c9a67a67-0fef-4caa-a51b-bbb66be10ac2",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "11faf8f3-f9d1-40f1-89f9-1e53f51c5e3b"
+          },
+          {
+            "keyCode": 69,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "ea6bac2f-f497-43f0-9ad8-8a6f1e97eee2"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "69",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "ae73ec97-5901-4c60-88c4-f3a1fcd70e07"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "uid": "759f66cb-f82c-4106-8507-36de6b4cab30",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 33,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "84db43de-b366-4365-a6b3-280f1ffc067a"
+          },
+          {
+            "keyCode": 7,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "85834edd-0bf6-4822-8afe-d8259507fbfc"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "7",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "03d32b7d-af89-45c0-a5f8-98387a6c1cf0"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "uid": "39211d5f-b38f-4fc9-ad9a-4599d06f5b8f",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 54,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "ea3535b2-ad06-46db-9686-d797d2b9ef01"
+          },
+          {
+            "keyCode": 36,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "c7cf2d45-2603-47eb-b10a-f177f2ad4fab"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "36",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "2"
+            }
+          ],
+          "flags": 0,
+          "uid": "372cbcab-62a8-4738-a18b-7be93d65ccec"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "uid": "1253628b-7a4a-45bb-b3cf-445c60196780",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 54,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "7061bc82-026f-4bb9-ac51-b0f94bb61877"
+          },
+          {
+            "keyCode": 38,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "f1f105d6-4605-40a5-8c97-d46f1113400b"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "38",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "2"
+            }
+          ],
+          "flags": 0,
+          "uid": "cd9d425b-d9e0-4fd0-97b9-4c38aecccf89"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "uid": "8d024908-134f-4afb-a441-1e95556877bb",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 54,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "5377a1a8-f935-4d18-94f3-5520744c798f"
+          },
+          {
+            "keyCode": 39,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "9dc291c5-2968-4275-9812-a189bee8c57c"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "39",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "2"
+            }
+          ],
+          "flags": 0,
+          "uid": "31cc87bf-debc-4721-a5ed-003526d899f4"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "uid": "4f70e3fb-4e24-4a1b-8de1-b23ea857b7ef",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 54,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "444ee1c2-49bd-4696-8cbc-5012116ecb62"
+          },
+          {
+            "keyCode": 40,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "c99e3ecf-a9cb-4997-947a-f3f8405629a3"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "40",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "2"
+            }
+          ],
+          "flags": 0,
+          "uid": "fae695d9-5cde-4f22-852f-96360fee8f32"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "uid": "bd8e0da6-20cf-4b3c-adf5-de35eab219be",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 54,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "e4e7f852-8985-4897-a6d0-a292e1f084aa"
+          },
+          {
+            "keyCode": 42,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "f973dae7-cc2a-428e-8e37-7a237b96c92b"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "42",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "2"
+            }
+          ],
+          "flags": 0,
+          "uid": "ddde7d90-6695-4e91-9116-6ac8ce26573d"
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "uid": "55187cf1-b9e5-4c4b-917e-925b617e793b",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 54,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "82685741-74ff-440c-a94b-45e2419ff55f"
+          },
+          {
+            "keyCode": 44,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "a241ceb1-9365-4469-9cac-6f55f3b52c08"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "44",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "2"
+            }
+          ],
+          "flags": 0,
+          "uid": "05e1df7d-868a-47c5-803c-bca8d51678c8"
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "uid": "077ab986-bb23-41d3-9fcb-501ad3765754",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 54,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "ad415134-4575-4f92-a094-d527103de7f4"
+          },
+          {
+            "keyCode": 70,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "b508aba3-9cfa-4b7a-9a67-115128465908"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "70",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "2"
+            }
+          ],
+          "flags": 0,
+          "uid": "045aee8e-9aa9-449d-9f9e-d10366f9a5d0"
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "uid": "b8e64d0a-ea87-484e-a72c-0573cc3f04b7",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 54,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "9e23c098-fd12-4115-b1dc-8bd0f8845a04"
+          },
+          {
+            "keyCode": 69,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "a3257c49-b15a-4af6-a5e9-1022a1906fce"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "69",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "2"
+            }
+          ],
+          "flags": 0,
+          "uid": "cdd95cf9-17f8-45ce-a41d-9885ca68d1ca"
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "uid": "9f1f33e3-2c77-4cda-b368-a7c758ce2c7a",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 54,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "9de117f4-4d20-4529-8695-b625cabee977"
+          },
+          {
+            "keyCode": 62,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "d8eda79b-4515-483a-84b2-84133f62248d"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "35",
+          "extras": [
+            {
+              "id": "extra_meta_state",
+              "data": "4096"
+            }
+          ],
+          "flags": 0,
+          "uid": "9fc41119-5065-45fc-8667-431e5a3a72af"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "uid": "52333183-0a10-484c-ab47-3d3c5fb27cb1",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 115,
+            "clickType": 0,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "5710ed7e-1857-409f-99b9-1df1fed72546"
+          }
+        ],
+        "mode": 0,
+        "extras": [],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "111",
+          "extras": [],
+          "flags": 0,
+          "uid": "79abd76f-dfcf-4e12-b665-b4bc10cf13d1"
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "uid": "245b12b3-c970-496b-87f9-ca050dd6b09b",
+      "isEnabled": true,
+      "flags": 0,
+      "constraintList": [],
+      "constraintMode": 1,
+      "trigger": {
+        "keys": [
+          {
+            "keyCode": 115,
+            "clickType": 1,
+            "deviceId": "io.github.sds100.keymapper.THIS_DEVICE",
+            "flags": 0,
+            "uid": "72728e17-6e10-408e-a2d9-fe36fd2ea819"
+          }
+        ],
+        "mode": 0,
+        "extras": [
+          {
+            "id": "extra_long_press_delay",
+            "data": "300"
+          }
+        ],
+        "flags": 0
+      },
+      "actionList": [
+        {
+          "type": "KEY_EVENT",
+          "data": "113",
+          "extras": [],
+          "flags": 8,
+          "uid": "544e2915-b51e-48d6-be02-cc645c87b499"
+        }
+      ]
+    }
+  ]
+}
