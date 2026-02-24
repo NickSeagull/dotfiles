@@ -127,7 +127,7 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply NickSeagull/dotfiles
 - **Kanata config**: `dot_config/kanata/kanata.kbd.tmpl` (template) → `~/.config/kanata/kanata.kbd`
 - **Kanata plists**: `dot_config/kanata/launchdaemons/*.plist` → `/Library/LaunchDaemons/` (via run_once script)
 - **Ghostty config**: `dot_config/ghostty/config`
- **Kanata cheatsheet**: `KANATA-CHEATSHEET.md` (must be updated when kanata config changes)
+ **Kanata cheatsheet scripts**: `dot_config/kanata/scripts/executable_show-cheatsheet.sh` (macOS) and `dot_config/kanata/scripts/Show-Cheatsheet.ps1` (Windows) — must be updated when kanata config changes
 - **Environment variable**: `CHEZMOI_DIR=$HOME/.local/share/chezmoi`
 - **Bitwarden integration**: Enabled for secrets management
 ## Implementation Details
@@ -151,5 +151,5 @@ This deploys changes from the source directory (`~/.local/share/chezmoi/`) to th
 **Kanata config changes**: After editing `dot_config/kanata/kanata.kbd.tmpl`:
 1. Run `chezmoi apply --force` to deploy
 2. Run `kanata --check --cfg ~/.config/kanata/kanata.kbd` to validate syntax
-3. **Update `KANATA-CHEATSHEET.md`** to reflect any shortcut/layer/binding changes
+3. **Update cheatsheet scripts** (`dot_config/kanata/scripts/executable_show-cheatsheet.sh` and `Show-Cheatsheet.ps1`) to reflect any shortcut/layer/binding changes
 4. Tell the user to press `s+p` (hold s, tap p) to live-reload the config
