@@ -22,7 +22,7 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply NickSeagull/dotfiles
 
 ## Kanata (Keyboard Remapper) — macOS Manual Setup
 
-Kanata is installed automatically via Homebrew and configured via chezmoi templates.
+Kanata is installed via `cargo install kanata --features cmd` (not Homebrew, to enable the `cmd` shell execution feature).
 The `run_once_setup-kanata-macos.sh` script copies LaunchDaemon plists and bootstraps the services.
 However, several steps require **manual GUI interaction** on macOS:
 
@@ -40,12 +40,12 @@ Then complete these manual steps:
 
 2. **Grant Input Monitoring permission**
    - System Settings → Privacy & Security → Input Monitoring
-   - Click `+` and add `/opt/homebrew/bin/kanata` (use Shift+Cmd+G to type the path)
+   - Click `+` and add `~/.cargo/bin/kanata` (use Shift+Cmd+G to type the path)
    - Also add your terminal app (e.g., Ghostty)
 
 3. **Grant Accessibility permission**
    - System Settings → Privacy & Security → Accessibility
-   - Click `+` and add `/opt/homebrew/bin/kanata` and your terminal app
+   - Click `+` and add `~/.cargo/bin/kanata` and your terminal app
 
 4. **Select the virtual keyboard**
    - System Settings → Keyboard → Keyboard Shortcuts → Modifier Keys
@@ -70,7 +70,7 @@ Modifier layers:
 
 ### Troubleshooting
 
-- **Kanata not working after brew upgrade**: Re-add `/opt/homebrew/bin/kanata` in Input Monitoring (the symlink resolves to a new version path)
+ **Kanata binary changed after `cargo install` upgrade**: Re-add `~/.cargo/bin/kanata` in Input Monitoring
 - **Check logs**: `sudo cat /Library/Logs/Kanata/kanata.err.log`
 - **Test manually**: `sudo kanata -c ~/.config/kanata/kanata.kbd`
 - **Restart service**: `sudo launchctl stop com.nick.kanata && sudo launchctl start com.nick.kanata`

@@ -35,16 +35,16 @@ Multi-layered dotfiles repository managed by chezmoi, combining:
 #### Kanata macOS Manual Steps (cannot be automated)
 After `chezmoi apply`, user must manually:
 1. Install Karabiner-DriverKit-VirtualHIDDevice .pkg from GitHub
-2. System Settings → Privacy & Security → Input Monitoring → add `/opt/homebrew/bin/kanata` + terminal
+2. System Settings → Privacy & Security → Input Monitoring → add `~/.cargo/bin/kanata` + terminal
 3. System Settings → Privacy & Security → Accessibility → add kanata + terminal
 4. System Settings → Keyboard → Modifier Keys → select Karabiner VirtualHIDKeyboard
 5. Start services or reboot (see README.md)
 
 #### Kanata Troubleshooting
-- After `brew upgrade kanata`, re-add kanata in Input Monitoring (symlink target changes)
+ After `cargo install kanata --features cmd`, re-add kanata in Input Monitoring if the binary changed
 - Logs: `/Library/Logs/Kanata/kanata.{out,err}.log`
 - Manual test: `sudo kanata -c ~/.config/kanata/kanata.kbd`
-- Brew build disables shell command execution (`cmd` feature) for security
+ Kanata is installed via `cargo install kanata --features cmd` (NOT Homebrew) to enable shell command execution
 
 ## Common Commands
 ### Chezmoi Operations
@@ -127,6 +127,7 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply NickSeagull/dotfiles
 - **Kanata config**: `dot_config/kanata/kanata.kbd.tmpl` (template) → `~/.config/kanata/kanata.kbd`
 - **Kanata plists**: `dot_config/kanata/launchdaemons/*.plist` → `/Library/LaunchDaemons/` (via run_once script)
 - **Ghostty config**: `dot_config/ghostty/config`
+ **Kanata cheatsheet**: `KANATA-CHEATSHEET.md` (must be updated when kanata config changes)
 - **Environment variable**: `CHEZMOI_DIR=$HOME/.local/share/chezmoi`
 - **Bitwarden integration**: Enabled for secrets management
 ## Implementation Details
@@ -147,8 +148,8 @@ chezmoi apply --force
 ```
 This deploys changes from the source directory (`~/.local/share/chezmoi/`) to their target locations (e.g., `~/.config/`, `~/.zshrc`, etc.). Without this step, edits only exist in the source repo and are NOT active on the system.
 
-**Kanata config changes**: After editing `dot_config/kanata/kanata.kbd.tmpl`, also run:
-```bash
-kanata --check --cfg ~/.config/kanata/kanata.kbd
-```
-to validate syntax. Then tell the user to press `s+p` (hold s, tap p) to live-reload the config.
+**Kanata config changes**: After editing `dot_config/kanata/kanata.kbd.tmpl`:
+1. Run `chezmoi apply --force` to deploy
+2. Run `kanata --check --cfg ~/.config/kanata/kanata.kbd` to validate syntax
+3. **Update `KANATA-CHEATSHEET.md`** to reflect any shortcut/layer/binding changes
+4. Tell the user to press `s+p` (hold s, tap p) to live-reload the config

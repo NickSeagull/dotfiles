@@ -155,6 +155,46 @@ Hold `w` to launch apps:
 | / | Sublime Merge |
 | c | Conar |
 
+### f-mode — Communication + AI (from config.ts)
+
+Hold `f` for communication apps, AI tools, and design:
+
+| Key | App/Action | Notes |
+|---|---|---|
+| h | Telegram (nikivdev chat) | Primary comms via `seqSocket` |
+| u | Telegram (log channel) | |
+| i | Telegram (nikivdev channel) | |
+| g | Discord (in Arc) | Temporary binding |
+| d | ChatGPT | |
+| l | Claude | |
+| w | Figma Beta | |
+| a | Google Chrome Canary | |
+| s | Eagle | Asset management |
+| j | Preview | |
+| o | x.com (in Arc) | Opens via seq macro |
+| tab | tldraw | |
+
+### d-mode — Media + Mouse Controls (from config.ts)
+
+Hold `d` for media playback, volume, brightness, and mouse:
+
+| Key | Action | Notes |
+|---|---|---|
+| ; | Spotify (or search) | via `seqSocket` |
+| h | Previous track | |
+| k | Play/Pause | |
+| l | Next track | |
+| n | Volume down | |
+| m | Volume up | |
+| tab | Mute | |
+| q | Brightness down (keyboard) | |
+| w | Brightness up (keyboard) | |
+| e | Brightness down (display) | |
+| esc | Brightness up (display) | |
+| v | Mouse click (button 1) | |
+| b | Mouse middle click (button 3) | |
+| z | Mouse right click (button 2) | |
+
 ### r-mode — Secondary Apps
 
 Hold `r` to launch less-used apps:

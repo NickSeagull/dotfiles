@@ -9,6 +9,9 @@
 ;;   Caps Lock = Escape (tap), Ctrl (hold)
 ;;
 ;; Layer keys (tap = letter, hold = activate layer):
+;;   w = App launcher (focus or start apps)
+;;   f = Communication (Brave, Telegram, Discord, WhatsApp, Claude)
+;;   d = Media controls (play/pause, prev/next, volume, YouTube Music)
 ;;   z = Zellij navigation (hjkl panes, n new, p session, xcv/6-0 quick-switch sessions, space command layer)
 ;;   s = Utility (p = live reload kanata config)
 ;;
@@ -16,6 +19,7 @@
 
 (defcfg
   process-unmapped-keys yes
+  danger-enable-cmd yes
 )
 
 (defvar
@@ -25,10 +29,17 @@
 
 ;; Only intercept the keys we remap — everything else passes through
 (defsrc
-  caps e a q ; z s h j k l n p = - spc x c v 6 7 8 9 0
+  caps esc w e a q ; z s d f t r h j k l n p = - spc x c v 6 7 8 9 0
 )
 (deflayer base
-  @cap @emod @amod @qmod @semi @zmod @smod _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+  @cap _    @wmod @emod @amod @qmod @semi @zmod @smod
+  @dmod @fmod _    _                ;; d/f=layer triggers, t/r=passthrough
+  _    _    _    _                   ;; hjkl
+  _    _                             ;; n/p
+  _    _                             ;; =/-
+  _                                  ;; space
+  _    _    _                        ;; x/c/v
+  _    _    _    _    _              ;; 6-0
 )
 
 (defalias
@@ -57,6 +68,13 @@
   ;; z: tap = z, hold = activate Zellij layer
   zmod (tap-hold-release $tt $ht z (layer-toggle zellij))
   ;; s: tap = s, hold = activate utility layer
+  smod (tap-hold-release $tt $ht s (layer-toggle util))
+  ;; w: tap = w, hold = activate app launcher layer
+  wmod (tap-hold-release $tt $ht w (layer-toggle apps))
+  ;; f: tap = f, hold = activate communication layer
+  fmod (tap-hold-release $tt $ht f (layer-toggle comm))
+  ;; d: tap = d, hold = activate media layer
+  dmod (tap-hold-release $tt $ht d (layer-toggle media))
 
   ;; Zellij session quick-switch macros
   ;; Opens session manager (Alt+p), types name prefix, Enter
@@ -69,30 +87,118 @@
   ;; zs6 (macro A-p 500 ... 200 ret)       ;; 8 → (unassigned)
   ;; zs7 (macro A-p 500 ... 200 ret)       ;; 9 → (unassigned)
   zs8 (macro A-p 500 d o t f 200 ret)     ;; 0 → dotfiles
-  smod (tap-hold-release $tt $ht s (layer-toggle util))
+
+  ;; ── App launcher aliases (w-mode) ────────────────────────
+{{ if eq .chezmoi.os "darwin" }}
+  fo-ghostty (cmd {{ .chezmoi.homeDir }}/.config/kanata/scripts/focus-or-start.sh Ghostty)
+  fo-firefox (cmd {{ .chezmoi.homeDir }}/.config/kanata/scripts/focus-or-start.sh Firefox)
+  fo-bw      (cmd {{ .chezmoi.homeDir }}/.config/kanata/scripts/focus-or-start.sh Bitwarden)
+  fo-spark   (cmd {{ .chezmoi.homeDir }}/.config/kanata/scripts/focus-or-start.sh Spark)
+  fo-tick    (cmd {{ .chezmoi.homeDir }}/.config/kanata/scripts/focus-or-start.sh TickTick)
+  fo-actmon  (cmd {{ .chezmoi.homeDir }}/.config/kanata/scripts/focus-or-start.sh Activity Monitor)
+  fo-finder  (cmd {{ .chezmoi.homeDir }}/.config/kanata/scripts/focus-or-start.sh Finder)
+{{ else }}
+  fo-ghostty (cmd powershell -WindowStyle Hidden -File {{ .chezmoi.homeDir }}\.config\kanata\scripts\Focus-Or-Start.ps1 Ghostty)
+  fo-firefox (cmd powershell -WindowStyle Hidden -File {{ .chezmoi.homeDir }}\.config\kanata\scripts\Focus-Or-Start.ps1 Firefox)
+  fo-bw      (cmd powershell -WindowStyle Hidden -File {{ .chezmoi.homeDir }}\.config\kanata\scripts\Focus-Or-Start.ps1 Bitwarden)
+  fo-spark   (cmd powershell -WindowStyle Hidden -File {{ .chezmoi.homeDir }}\.config\kanata\scripts\Focus-Or-Start.ps1 Spark)
+  fo-tick    (cmd powershell -WindowStyle Hidden -File {{ .chezmoi.homeDir }}\.config\kanata\scripts\Focus-Or-Start.ps1 TickTick)
+  fo-actmon  (cmd powershell -WindowStyle Hidden -File {{ .chezmoi.homeDir }}\.config\kanata\scripts\Focus-Or-Start.ps1 taskmgr)
+  fo-finder  (cmd powershell -WindowStyle Hidden -File {{ .chezmoi.homeDir }}\.config\kanata\scripts\Focus-Or-Start.ps1 explorer)
+{{ end }}
+
+  ;; ── Communication aliases (f-mode) ─────────────────────
+{{ if eq .chezmoi.os "darwin" }}
+  fo-brave  (cmd {{ .chezmoi.homeDir }}/.config/kanata/scripts/focus-or-start.sh Brave Browser)
+  fo-tg     (cmd {{ .chezmoi.homeDir }}/.config/kanata/scripts/focus-or-start.sh Telegram)
+  fo-disc   (cmd {{ .chezmoi.homeDir }}/.config/kanata/scripts/focus-or-start.sh Discord)
+  fo-wa     (cmd {{ .chezmoi.homeDir }}/.config/kanata/scripts/focus-or-start.sh WhatsApp)
+  fo-claude (cmd {{ .chezmoi.homeDir }}/.config/kanata/scripts/focus-or-start.sh Claude)
+{{ else }}
+  fo-brave  (cmd powershell -WindowStyle Hidden -File {{ .chezmoi.homeDir }}\.config\kanata\scripts\Focus-Or-Start.ps1 Brave)
+  fo-tg     (cmd powershell -WindowStyle Hidden -File {{ .chezmoi.homeDir }}\.config\kanata\scripts\Focus-Or-Start.ps1 Telegram)
+  fo-disc   (cmd powershell -WindowStyle Hidden -File {{ .chezmoi.homeDir }}\.config\kanata\scripts\Focus-Or-Start.ps1 Discord)
+  fo-wa     (cmd powershell -WindowStyle Hidden -File {{ .chezmoi.homeDir }}\.config\kanata\scripts\Focus-Or-Start.ps1 WhatsApp)
+  fo-claude (cmd powershell -WindowStyle Hidden -File {{ .chezmoi.homeDir }}\.config\kanata\scripts\Focus-Or-Start.ps1 Claude)
+{{ end }}
+
+  ;; ── Media/YouTube Music alias (d-mode) ─────────────────
+{{ if eq .chezmoi.os "darwin" }}
+  fo-ytm    (cmd {{ .chezmoi.homeDir }}/.config/kanata/scripts/focus-or-start.sh YouTube Music)
+{{ else }}
+  fo-ytm    (cmd powershell -WindowStyle Hidden -File {{ .chezmoi.homeDir }}\.config\kanata\scripts\Focus-Or-Start.ps1 YouTube Music)
+{{ end }}
 )
 
+;; ── w-mode: App launcher ─────────────────────────────────
+;; Hold w, press key → focus or start app
+;;   j = Ghostty     k = Firefox     r = Bitwarden
+;;   d = Spark       f = TickTick    t = Activity Monitor
+;;   esc = Finder
+(deflayer apps
+  _    @fo-finder _    _    _    _    _    _    _
+  @fo-spark @fo-tick @fo-actmon @fo-bw
+  _    @fo-ghostty @fo-firefox _
+  _    _
+  _    _
+  _
+  _    _    _
+  _    _    _    _    _
+)
+
+;; ── f-mode: Communication ──────────────────────────────
+;; Hold f, press key → focus communication/browser app
+;;   j = Brave       h = Telegram    k = Discord
+;;   l = Claude      d = WhatsApp
+(deflayer comm
+  _    _    _    _    _    _    _    _    _
+  @fo-wa _    _    _                ;; d=WhatsApp, f/t/r=passthrough
+  @fo-tg @fo-brave @fo-disc @fo-claude  ;; h=Telegram j=Brave k=Discord l=Claude
+  _    _                             ;; n/p
+  _    _                             ;; =/-
+  _                                  ;; space
+  _    _    _                        ;; x/c/v
+  _    _    _    _    _              ;; 6-0
+)
+
+;; ── d-mode: Media controls ─────────────────────────────
+;; Hold d, press key → media control (vim-spatial layout)
+;;   h = prev track  j = play/pause  k = vol up
+;;   l = next track  n = vol down    ; = YouTube Music
+(deflayer media
+  _    _    _    _    _    _    @fo-ytm _    _
+  _    _    _    _                   ;; d/f/t/r
+  prev pp   volu next               ;; hjkl → media controls
+  vold                               ;; n → volume down
+  _                                  ;; p
+  _    _                             ;; =/-
+  _                                  ;; space
+  _    _    _                        ;; x/c/v
+  _    _    _    _    _              ;; 6-0
+)
 ;; ── s-mode: Utility ──────────────────────────────────────
 ;; Hold s, press key → utility actions
 (deflayer util
-  _    _    _    _    _    _    _
-  _    _    _    _              ;; hjkl (reserved for future nav)
-  _                             ;; n
-  lrld                          ;; p → live reload kanata config
-  _    _                        ;; =/-
-  _                             ;; space
-  _    _    _                   ;; x/c/v
-  _    _    _    _    _          ;; 6-0
+  _    _    _    _    _    _    _    _    _
+  _    _    _    _                   ;; d/f/t/r
+  _    _    _    _                   ;; hjkl (reserved for future nav)
+  _                                  ;; n
+  lrld                               ;; p → live reload kanata config
+  _    _                             ;; =/-
+  _                                  ;; space
+  _    _    _                        ;; x/c/v
+  _    _    _    _    _              ;; 6-0
 )
 ;; ── z-mode: Zellij navigation ─────────────────────────────
 ;; Hold z, press key → Zellij shortcut (no Alt/Ctrl stretching)
 (deflayer zellij
-  _    _    _    _    _    _    _
-  A-h  A-j  A-k  A-l           ;; hjkl → Alt+hjkl (pane nav)
-  A-n                           ;; n → Alt+n (new pane)
-  A-p                           ;; p → Alt+p (session manager)
-  A-=  A--                      ;; =/- → Alt+=/- (resize)
-  C-g                           ;; space → Ctrl+g (command layer)
-  @zs1 @zs2 @zs3                ;; x/c/v → neohaskell/neclau/CIOS
-  @zs4 _    _    _    @zs8      ;; 6-0 → nh-website/_/_/_/dotfiles
+  _    _    _    _    _    _    _    _    _
+  _    _    _    _                   ;; d/f/t/r
+  A-h  A-j  A-k  A-l                ;; hjkl → Alt+hjkl (pane nav)
+  A-n                                ;; n → Alt+n (new pane)
+  A-p                                ;; p → Alt+p (session manager)
+  A-=  A--                           ;; =/- → Alt+=/- (resize)
+  C-g                                ;; space → Ctrl+g (command layer)
+  @zs1 @zs2 @zs3                    ;; x/c/v → neohaskell/neclau/CIOS
+  @zs4 _    _    _    @zs8           ;; 6-0 → nh-website/_/_/_/dotfiles
 )
