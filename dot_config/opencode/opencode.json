@@ -1,0 +1,43 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "lmstudio": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LM Studio (local - Qwen 30B)",
+      "options": {
+        "baseURL": "http://100.98.196.101:1234/v1"
+      },
+      "models": {
+        "qwen/qwen3-coder-30b": {
+          "name": "Qwen3-Coder 30B A3B (local)"
+        },
+        "glm-4.7-flash-claude-opus-4.5-high-reasoning-distill": {
+          "name": "GLM 4.7"
+        },
+        "gemma-3-4b-it-qat": {
+          "name": "Gemma 3"
+        },
+        "deepseek-coder-v2-lite-instruct-mlx": {
+          "name": "Deepseek coder v2"
+        }
+      }
+    }
+  },
+  "plugin": [
+    "oh-my-opencode@latest",
+    "octto",
+    "opencode-openai-codex-auth",
+    "opencode-anthropic-auth@latest"
+  ],
+  "mode": {
+    "build": {
+      "prompt": "You are Claude Code, Anthropic's official CLI for Claude."
+    },
+    "sisyphus": {
+      "prompt": "You are Claude Code, Anthropic's official CLI for Claude."
+    },
+    "plan": {
+      "prompt": "You are Claude Code, Anthropic's official CLI for Claude."
+    }
+  }
+}

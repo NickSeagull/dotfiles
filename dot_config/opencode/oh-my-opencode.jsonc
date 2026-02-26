@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
+
+  "agents": {
+    // Orquestador principal: Usamos Qwen3 30B por su gran ventana de contexto y razonamiento
+    "sisyphus": {
+      "model": "lmstudio/qwen/qwen3-coder-30b",
+      "ultrawork": {
+        "model": "lmstudio/qwen/qwen3-coder-30b",
+        "variant": "max"
+      }
+    },
+
+    // Investigación y Planificación: GLM 4.7 es excelente siguiendo instrucciones complejas
+    "librarian": {
+      "model": "lmstudio/glm-4.7-flash-claude-opus-4.5-high-reasoning-distill"
+    },
+    // Exploración rápida de código: Deepseek Lite es imbatible en velocidad/eficiencia
+    "explore": {
+      "model": "lmstudio/deepseek-coder-v2-lite-instruct-mlx"
+    },
+
+    // Consultoría de arquitectura: Qwen3 30B de nuevo por su capacidad analítica
+    "oracle": {
+      "model": "lmstudio/qwen/qwen3-coder-30b",
+      "variant": "high"
+    },
+
+    "prometheus": {
+      "prompt_append": "Leverage deep & quick agents heavily, always in parallel. Use Deepseek for snippets and Qwen for architecture."
+    }
+  },
+
+  "categories": {
+    // Tareas triviales y rápidas: Gemma 3 4B es perfecta y consume pocos recursos
+    "quick": { "model": "lmstudio/gemma-3-4b-it-qat" },
+
+    // Tareas moderadas: Deepseek Coder V2
+    "unspecified-low": {
+      "model": "lmstudio/deepseek-coder-v2-lite-instruct-mlx"
+    },
+
+    // Trabajo complejo: Qwen3 30B
+    "unspecified-high": {
+      "model": "lmstudio/qwen/qwen3-coder-30b",
+      "variant": "max"
+    },
+
+    // Documentación y prosa: GLM 4.7 suele tener un tono más natural
+    "writing": {
+      "model": "lmstudio/glm-4.7-flash-claude-opus-4.5-high-reasoning-distill"
+    },
+
+    // Tareas visuales: Al ser local, usamos el modelo más capaz (aunque sea texto-a-texto)
+    "visual-engineering": { "model": "lmstudio/qwen/qwen3-coder-30b" },
+
+    // Operaciones de Git: Gemma 3 sobra para esto
+    "git": {
+      "model": "lmstudio/gemma-3-4b-it-qat",
+      "description": "All git operations",
+      "prompt_append": "Focus on atomic commits, clear messages, and safe operations."
+    }
+  },
+
+  "background_task": {
+    "providerConcurrency": {
+      // Como todo corre en LM Studio (local), no conviene saturar tu GPU/RAM
+      "lmstudio": 4
+    },
+    "modelConcurrency": {
+      "lmstudio/qwen/qwen3-coder-30b": 1, // El 30B es pesado, mejor uno a la vez
+      "lmstudio/gemma-3-4b-it-qat": 3 // Los pequeños pueden ir en paralelo
+    }
+  },
+
+  "experimental": { "aggressive_truncation": true, "task_system": true },
+  "tmux": { "enabled": false }
+}
