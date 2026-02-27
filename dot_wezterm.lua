@@ -26,9 +26,12 @@ config.freetype_load_target = "Light"
 config.freetype_load_flags = "NO_HINTING"
 
 -- ── Window ──────────────────────────────────────────────────
--- Matches Ghostty: window-width = 80, window-height = 25
-config.initial_cols = 80
-config.initial_rows = 25
+-- Start maximized (overrides initial_cols/rows)
+local mux = wezterm.mux
+wezterm.on("gui-startup", function()
+  local _, _, window = mux.spawn_window({})
+  window:gui_window():maximize()
+end)
 
 -- Matches Ghostty: window-padding-x = 24, window-padding-y = 24
 config.window_padding = {
@@ -55,11 +58,12 @@ config.check_for_updates = false
 
 -- ── Multiplexer ─────────────────────────────────────────────
 -- WezTerm replaces Zellij on Windows — built-in splits/tabs
--- Tab bar: bottom, minimal, hidden when only one tab
+-- Tab bar: bottom, always visible (doubles as status bar like zjstatus)
 config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
-config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = false
+config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 32
 
 -- ── Leader Key: Ctrl+g ──────────────────────────────────────
@@ -158,30 +162,14 @@ config.colors = {
   selection_fg = "#ff6270",
   selection_bg = "#2a1b1e",
 
-  -- Tab bar (bloodcode-tinted)
+  -- Tab bar (zjstatus Cyberpunk CJK HUD colors)
   tab_bar = {
-    background = "#0e0a0a",
-    active_tab = {
-      bg_color = "#2a1b1e",
-      fg_color = "#ff6270",
-      intensity = "Bold",
-    },
-    inactive_tab = {
-      bg_color = "#130d0e",
-      fg_color = "#a3918c",
-    },
-    inactive_tab_hover = {
-      bg_color = "#1c1214",
-      fg_color = "#ff6270",
-    },
-    new_tab = {
-      bg_color = "#0e0a0a",
-      fg_color = "#a3918c",
-    },
-    new_tab_hover = {
-      bg_color = "#2a1b1e",
-      fg_color = "#ff2e3a",
-    },
+    background = "#181825",
+    active_tab = { bg_color = "#181825", fg_color = "#F8F8F2", intensity = "Bold" },
+    inactive_tab = { bg_color = "#181825", fg_color = "#6C7086" },
+    inactive_tab_hover = { bg_color = "#181825", fg_color = "#F8F8F2" },
+    new_tab = { bg_color = "#181825", fg_color = "#6C7086" },
+    new_tab_hover = { bg_color = "#181825", fg_color = "#F8F8F2" },
   },
 
   -- ANSI Normal (0-7)
@@ -208,5 +196,112 @@ config.colors = {
     "#fff0ee", -- bright white
   },
 }
+
+-- ── Zjstatus-matching Tab Bar ────────────────────────────────
+-- Replicates the Cyberpunk CJK HUD status bar from Zellij zjstatus.
+-- Left:  mode indicator + session/workspace name + tabs
+-- Right: git branch + datetime
+
+local BAR = {
+  bg        = "#181825",
+  separator = "#3B3D4E",
+  muted     = "#6C7086",
+  text      = "#F8F8F2",
+  mode_lock = "#CF433E",
+  mode_lead = "#AEE239",
+  session   = "#4ECDC4",
+  git       = "#89B4FA",
+  datetime  = "#9399B2",
+}
+
+-- Git branch cache (refreshes every 10s, matching zjstatus interval)
+local git_cache = { branch = "", updated = 0 }
+
+local function get_git_branch(pane)
+  local now = os.time()
+  if now - git_cache.updated < 10 then return git_cache.branch end
+  git_cache.updated = now
+
+  local cwd_uri = pane:get_current_working_dir()
+  if not cwd_uri then git_cache.branch = "" return "" end
+
+  local cwd = cwd_uri.file_path
+  if not cwd then git_cache.branch = "" return "" end
+
+  local ok, stdout = wezterm.run_child_process({ "git", "-C", cwd, "rev-parse", "--abbrev-ref", "HEAD" })
+  git_cache.branch = ok and stdout:gsub("%s+$", "") or ""
+  return git_cache.branch
+end
+
+-- Left + Right status (mode, workspace, git branch, datetime)
+wezterm.on("update-status", function(window, pane)
+  -- Mode indicator: leader active = NORM (green), otherwise LOCK (red)
+  local mode_text, mode_color
+  if window:leader_is_active() then
+    mode_text = "\u{300c}\u{26a1} NORM\u{300d}"
+    mode_color = BAR.mode_lead
+  else
+    mode_text = "\u{300c}\u{27c1} LOCK\u{300d}"
+    mode_color = BAR.mode_lock
+  end
+
+  local workspace = window:active_workspace()
+
+  window:set_left_status(wezterm.format({
+    { Background = { Color = BAR.bg } },
+    { Foreground = { Color = mode_color } },
+    { Attribute = { Intensity = "Bold" } },
+    { Text = mode_text },
+    "ResetAttributes",
+    { Background = { Color = BAR.bg } },
+    { Foreground = { Color = BAR.session } },
+    { Attribute = { Intensity = "Bold" } },
+    { Text = " \u{25c8} " .. workspace .. " " },
+    { Foreground = { Color = BAR.separator } },
+    { Text = "\u{2503}" },
+  }))
+
+  -- Right: git branch + separator + datetime
+  local right = {}
+  local branch = get_git_branch(pane)
+  if branch ~= "" then
+    table.insert(right, { Background = { Color = BAR.bg } })
+    table.insert(right, { Foreground = { Color = BAR.git } })
+    table.insert(right, { Text = "  " .. branch .. " " })
+  end
+  table.insert(right, { Background = { Color = BAR.bg } })
+  table.insert(right, { Foreground = { Color = BAR.separator } })
+  table.insert(right, { Text = "\u{2503} " })
+  table.insert(right, { Foreground = { Color = BAR.datetime } })
+  table.insert(right, { Text = " " .. wezterm.strftime("%d\u{00b7}%b %H:%M") .. " " })
+
+  window:set_right_status(wezterm.format(right))
+end)
+
+-- Tab titles: CJK「brackets」for active, plain for inactive
+wezterm.on("format-tab-title", function(tab, tabs, panes, cfg, hover, max_width)
+  local index = tab.tab_index + 1
+  local title = tab.active_pane.title
+  if #title > 20 then title = title:sub(1, 20) .. "\u{2026}" end
+
+  if tab.is_active then
+    return {
+      { Background = { Color = BAR.bg } },
+      { Foreground = { Color = BAR.separator } },
+      { Text = " \u{2503} " },
+      { Foreground = { Color = BAR.text } },
+      { Attribute = { Intensity = "Bold" } },
+      { Text = "\u{300c}" .. index .. " " .. title .. "\u{300d}" },
+    }
+  else
+    return {
+      { Background = { Color = BAR.bg } },
+      { Foreground = { Color = BAR.separator } },
+      { Text = " \u{2503} " },
+      { Foreground = { Color = BAR.muted } },
+      { Text = index .. " " .. title },
+    }
+  end
+end)
 
 return config
