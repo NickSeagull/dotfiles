@@ -42,27 +42,8 @@ font-feature = +ss01, +ss02, +ss03, +ss04, +ss05, +ss06, +ss07, +ss08, +ss09, +l
 # background = #123abc
 background-opacity = 1
 
-# Freshcut Contrast color scheme (rainglow)
-background = #000000
-foreground = #f8f8f2
-cursor-color = #f8f8f0
-selection-background = #008097
-palette = 0=#000000
-palette = 1=#cf433e
-palette = 2=#aee239
-palette = 3=#e9ee00
-palette = 4=#00a8c6
-palette = 5=#c8d7e8
-palette = 6=#4ecdc4
-palette = 7=#f8f8f2
-palette = 8=#737b84
-palette = 9=#e61f44
-palette = 10=#8fbe00
-palette = 11=#f7b83d
-palette = 12=#00a8c6
-palette = 13=#c8d7e8
-palette = 14=#4ecdc4
-palette = 15=#ffffff
+# Bloodcode theme (red-toned hacker theme)
+theme = bloodcode
 #
 # # Empty values are used to reset config keys to default.
 # key =

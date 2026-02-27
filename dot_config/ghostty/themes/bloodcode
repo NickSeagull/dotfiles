@@ -1,0 +1,30 @@
+# Bloodcode — red-toned hacker theme
+# Derived from OpenCode's "matrix" theme concept
+# Reference: dot_config/themes/bloodcode.json
+
+background = #0e0a0a
+foreground = #ff6270
+cursor-color = #ff2e3a
+cursor-text = #0e0a0a
+selection-background = #2a1b1e
+selection-foreground = #ff6270
+
+# ANSI Normal (0-7)
+palette = 0=#0e0a0a
+palette = 1=#ff2e3a
+palette = 2=#c21c28
+palette = 3=#ffaf00
+palette = 4=#bf4bff
+palette = 5=#ff70c7
+palette = 6=#f6c524
+palette = 7=#e8bfbf
+
+# ANSI Bright (8-15)
+palette = 8=#a3918c
+palette = 9=#ff6270
+palette = 10=#ffa83d
+palette = 11=#ffe657
+palette = 12=#30e5ff
+palette = 13=#ff9bdb
+palette = 14=#ffaf00
+palette = 15=#fff0ee
