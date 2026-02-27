@@ -13,6 +13,7 @@ continuation_prompt = "[▸▹ ](dimmed white)"
 
 # ── Format: Two-line HUD ─────────────────────────────────────
 format = """\
+$os\
 $directory\
 $git_branch\
 $git_status\
@@ -55,6 +56,16 @@ vimcmd_replace_symbol = "[□](italic #F7B83D)"
 vimcmd_visual_symbol = "[▼](italic #00A8C6)"
 
 # ── Fill ─────────────────────────────────────────────────────
+# ── OS Icon (persistent anchor — prompt never looks empty) ──
+[os]
+disabled = false
+format = "[$symbol](bold dimmed #6C7086) "
+
+[os.symbols]
+Windows = "⊞"
+Macos = "⌘"
+Linux = "◆"
+
 [fill]
 symbol = ' '
 
@@ -62,7 +73,7 @@ symbol = ' '
 # CJK corner brackets: 「path」 — the HUD "location readout"
 [directory]
 format = "[「](dimmed #3B3D4E)[$path](italic #89B4FA)[」](dimmed #3B3D4E)[$read_only]($read_only_style)"
-home_symbol = "⌂"
+home_symbol = "~"
 truncation_length = 3
 truncation_symbol = "□ "
 read_only = " ◈"
