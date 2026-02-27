@@ -4,11 +4,15 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 local act = wezterm.action
 
+-- ── Shell ───────────────────────────────────────────────────
+-- WezTerm defaults to cmd.exe on Windows; use PowerShell instead
+config.default_prog = { "powershell.exe" }
+
 -- ── Font ────────────────────────────────────────────────────
 -- Matches Ghostty: font-family = IosevkaTerm Nerd Font, font-size = 16
 -- On Windows, Nerd Font Mono variant is registered as "Iosevka Nerd Font Mono"
 config.font = wezterm.font("Iosevka Nerd Font Mono")
-config.font_size = 16.0
+config.font_size = 14.0
 
 -- Matches Ghostty: font-feature = +ss01..+ss09, +liga, +calt
 config.harfbuzz_features = {
@@ -17,8 +21,8 @@ config.harfbuzz_features = {
   "liga", "calt",
 }
 
--- Matches Ghostty: freetype-load-flags = no-hinting,monochrome
-config.freetype_load_target = "Mono"
+-- Antialiased rendering with no hinting for smooth glyphs
+config.freetype_load_target = "Light"
 config.freetype_load_flags = "NO_HINTING"
 
 -- ── Window ──────────────────────────────────────────────────
