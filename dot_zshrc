@@ -66,3 +66,5 @@ export PATH=/Users/nick/.opencode/bin:$PATH
 
 # platformio
 export PATH="$HOME/.platformio/penv/bin:$PATH"
+
+export GH_TOKEN=$(cat ~/.gh-token)

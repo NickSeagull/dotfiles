@@ -1,0 +1,6 @@
+[user]
+  name = Nikita Tchayka
+  email = github@nickseagull.dev
+
+[init]
+  defaultBranch = main
