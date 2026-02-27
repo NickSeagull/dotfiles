@@ -1,0 +1,243 @@
+# ── Cyberpunk CJK HUD Prompt ──────────────────────────────────
+# 「 」 bracket framing · ┃ industrial separators · ◈ hex nodes
+# Matches Zellij zjstatus aesthetic — Ghost in the Shell HUD
+#
+# Two-line layout:
+#   Line 1: 「directory」┃ git ┃ language ┃ duration   (data readout)
+#   Line 2: ◈                                          (input cursor)
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+continuation_prompt = "[▸▹ ](dimmed white)"
+
+# ── Format: Two-line HUD ─────────────────────────────────────
+format = """\
+$directory\
+$git_branch\
+$git_status\
+$c\
+$dotnet\
+$golang\
+$haskell\
+$java\
+$kotlin\
+$lua\
+$nodejs\
+$python\
+$ruby\
+$rust\
+$swift\
+$zig\
+$nix_shell\
+$docker_context\
+$package\
+$cmd_duration\
+$fill\
+$jobs\
+$status\
+$line_break\
+$character"""
+
+right_format = """$time"""
+
+# ── Prompt Character ─────────────────────────────────────────
+# ◈ = cyberpunk hexagon (matches Zellij session glyph)
+# ○ = hollow circle on error (something missing/broken)
+# ■ = solid block in vim command mode
+[character]
+format = "$symbol "
+success_symbol = "[◈](bold italic bright-yellow)"
+error_symbol = "[○](italic #CF433E)"
+vimcmd_symbol = "[■](italic dimmed green)"
+vimcmd_replace_one_symbol = "[◌](italic #F7B83D)"
+vimcmd_replace_symbol = "[□](italic #F7B83D)"
+vimcmd_visual_symbol = "[▼](italic #00A8C6)"
+
+# ── Fill ─────────────────────────────────────────────────────
+[fill]
+symbol = ' '
+
+# ── Directory ────────────────────────────────────────────────
+# CJK corner brackets: 「path」 — the HUD "location readout"
+[directory]
+format = "[「](dimmed #3B3D4E)[$path](italic #89B4FA)[」](dimmed #3B3D4E)[$read_only]($read_only_style)"
+home_symbol = "⌂"
+truncation_length = 3
+truncation_symbol = "□ "
+read_only = " ◈"
+read_only_style = "italic #CF433E"
+use_os_path_sep = true
+repo_root_style = "bold #89B4FA"
+repo_root_format = "[「](dimmed #3B3D4E)[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path](italic #89B4FA)[」](dimmed #3B3D4E)[$read_only]($read_only_style) [△](bold bright-blue)"
+
+# ── Git Branch ───────────────────────────────────────────────
+[git_branch]
+format = "[┃](dimmed #3B3D4E) [△](bold bright-blue) [$branch(:$remote_branch)]($style) "
+symbol = ""
+style = "italic bright-blue"
+truncation_symbol = "⋯"
+truncation_length = 24
+ignore_branches = ["main", "master"]
+only_attached = true
+
+# ── Git Status ───────────────────────────────────────────────
+[git_status]
+format = "([⎪$ahead_behind$staged$modified$untracked$renamed$deleted$conflicted$stashed⎥]($style))"
+style = "bold italic bright-blue"
+conflicted = "[◪](italic bright-magenta)"
+ahead = "[▴${count}](italic green)"
+behind = "[▿${count}](italic #CF433E)"
+diverged = "[◇▴${ahead_count}▿${behind_count}](italic bright-magenta)"
+untracked = "[◌${count}](italic bright-yellow)"
+stashed = "[◃◈](italic white)"
+modified = "[●${count}](italic yellow)"
+staged = "[▪${count}](italic bright-cyan)"
+renamed = "[◎](italic bright-blue)"
+deleted = "[✕${count}](italic #CF433E)"
+
+# ── Git Metrics ──────────────────────────────────────────────
+[git_metrics]
+format = "([▴$added]($added_style))([▿$deleted]($deleted_style)) "
+added_style = "italic dimmed green"
+deleted_style = "italic dimmed #CF433E"
+disabled = false
+
+# ── Command Duration ─────────────────────────────────────────
+[cmd_duration]
+min_time = 500
+format = "[┃](dimmed #3B3D4E) [◄ $duration](italic white) "
+
+# ── Jobs ─────────────────────────────────────────────────────
+[jobs]
+format = "[┃](dimmed #3B3D4E) [▶$number]($style) "
+style = "bold #00A8C6"
+
+# ── Status (exit code on error) ──────────────────────────────
+[status]
+format = "[┃](dimmed #3B3D4E) [$status](bold #CF433E) "
+disabled = false
+
+# ── Time (right prompt, dimmed HUD readout) ──────────────────
+[time]
+disabled = false
+format = "[ $time]($style)"
+time_format = "%H:%M"
+utc_time_offset = "local"
+style = "italic dimmed white"
+
+# ── Nix Shell ────────────────────────────────────────────────
+[nix_shell]
+format = "[┃](dimmed #3B3D4E) [✶ nix⎪$state](bold italic dimmed blue) "
+impure_msg = "[⌽](bold dimmed #CF433E)"
+pure_msg = "[⌾](bold dimmed green)"
+unknown_msg = "[◌](bold dimmed yellow)"
+
+# ── Docker ───────────────────────────────────────────────────
+[docker_context]
+format = "[┃](dimmed #3B3D4E) [◧ $context]($style) "
+symbol = ""
+style = "italic #00A8C6"
+
+# ── Package ──────────────────────────────────────────────────
+[package]
+format = "[┃](dimmed #3B3D4E) [◨ $version]($style) "
+style = "italic dimmed yellow"
+version_format = "${raw}"
+
+# ── Languages (dense, abbreviated, with ┃ separator) ─────────
+
+[nodejs]
+format = "[┃](dimmed #3B3D4E) [◫ $version](bold bright-green) "
+version_format = "${raw}"
+detect_files = ["package-lock.json", "yarn.lock"]
+detect_folders = ["node_modules"]
+detect_extensions = []
+
+[python]
+format = "[┃](dimmed #3B3D4E) [⌉⌊ $version$virtualenv]($style) "
+symbol = ""
+version_format = "${raw}"
+style = "bold bright-yellow"
+
+[rust]
+format = "[┃](dimmed #3B3D4E) [⊃ $version]($style) "
+symbol = ""
+version_format = "${raw}"
+style = "bold #CF433E"
+
+[golang]
+format = "[┃](dimmed #3B3D4E) [∩ $version]($style) "
+symbol = ""
+version_format = "${raw}"
+style = "bold bright-cyan"
+
+[dotnet]
+format = "[┃](dimmed #3B3D4E) [◇ $version$tfm]($style) "
+symbol = ""
+version_format = "${raw}"
+style = "bold #89B4FA"
+
+[lua]
+format = "[┃](dimmed #3B3D4E) [⨀ $version]($style) "
+symbol = ""
+version_format = "${raw}"
+style = "bold bright-yellow"
+
+[haskell]
+format = "[┃](dimmed #3B3D4E) [λ $version]($style) "
+symbol = ""
+version_format = "${raw}"
+style = "bold bright-magenta"
+
+[java]
+format = "[┃](dimmed #3B3D4E) [∪ $version]($style) "
+symbol = ""
+version_format = "${raw}"
+style = "bold #CF433E"
+
+[kotlin]
+format = "[┃](dimmed #3B3D4E) [κ $version]($style) "
+symbol = ""
+version_format = "${raw}"
+style = "bold bright-magenta"
+
+[ruby]
+format = "[┃](dimmed #3B3D4E) [◆ $version]($style) "
+symbol = ""
+version_format = "${raw}"
+style = "bold #CF433E"
+
+[swift]
+format = "[┃](dimmed #3B3D4E) [◁ $version]($style) "
+symbol = ""
+version_format = "${raw}"
+style = "bold bright-red"
+
+[c]
+format = "[┃](dimmed #3B3D4E) [ℂ $version(-$name)]($style) "
+symbol = ""
+
+[zig]
+format = "[┃](dimmed #3B3D4E) [⚡$version]($style) "
+symbol = ""
+style = "bold bright-yellow"
+
+# ── Disabled modules (reduce noise) ─────────────────────────
+[username]
+disabled = true
+
+[hostname]
+disabled = true
+
+[aws]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[azure]
+disabled = true
+
+[battery]
+disabled = true
