@@ -40,7 +40,7 @@ font-feature = +ss01, +ss02, +ss03, +ss04, +ss05, +ss06, +ss07, +ss08, +ss09, +l
 # # a comment after a config option, since it would be interpreted as a
 # # part of the value. For example, this will have a value of "#123abc":
 # background = #123abc
-background-opacity = 0.9
+background-opacity = 1
 
 # Freshcut Contrast color scheme (rainglow)
 background = #000000
@@ -82,6 +82,7 @@ window-height = 25
 # Add some nice looking padding
 window-padding-x = 24
 window-padding-y = 24
+window-padding-balance = true
 
 # Don't hang around
 quit-after-last-window-closed = true
