@@ -19,8 +19,8 @@
 # # The config file consists of simple key-value pairs,
 # # separated by equals signs.
 # font-family = Iosevka Nerd Font
-font-family = JetBrainsMono Nerd Font
-font-size = 13
+font-family = IosevkaTerm Nerd Font
+font-size = 16
 font-thicken = false
 freetype-load-flags = no-hinting,monochrome
 
