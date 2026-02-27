@@ -67,79 +67,60 @@ config.hide_tab_bar_if_only_one_tab = true
 config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 32
 
--- ── Leader Key: Ctrl+g ──────────────────────────────────────
--- Mirrors Zellij: Ctrl+g enters command layer, single key executes, back to normal
-config.leader = { key = "g", mods = "CTRL", timeout_milliseconds = 1000 }
+-- ── Leader Key: Ctrl+b ──────────────────────────────────────
+-- Uses Ctrl+b (tmux-style) to avoid clashing with Zellij's Ctrl+g.
+-- Zellij runs inside WSL in WezTerm, so all Alt+hjkl and Ctrl+g keys
+-- must pass through to Zellij untouched.
+config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
 
 -- ── Keybindings ─────────────────────────────────────────────
--- Designed so kanata z-mode shortcuts work identically to Zellij.
---
--- Kanata z-mode sends:          WezTerm action:
---   z+h/j/k/l → Alt+hjkl       pane navigation
---   z+y/u/i/o → Alt+Shift+hjkl pane resize (Zellij=move, WezTerm=resize)
---   z+n       → Alt+n           new pane (split right)
---   z+=/-     → Alt+=/Alt+-     resize panes
---   z+p       → Alt+p           tab/workspace switcher
---   z+space   → Ctrl+g          leader key (command layer)
---
--- Then Ctrl+g (leader) sub-keys mirror Zellij's command layer:
---   s = split down    v = split right    n = new pane
---   x = close pane    f = fullscreen     w = tab switcher
---   h/j/k/l = navigate panes    t = new tab    1-9 = jump to tab
---   q = quit
+-- WezTerm uses Ctrl+Shift and Ctrl+b leader to avoid clashing with Zellij.
+-- Zellij owns: Ctrl+g (leader), Alt+hjkl (nav), Alt+Shift+HJKL (move),
+--              Alt+n (new pane), Alt+=/-  (resize), Alt+p (session mgr)
+-- WezTerm uses: Ctrl+b (leader), Ctrl+Shift+hjkl (nav),
+--               Ctrl+Shift+arrows (resize)
 
 config.keys = {
-  -- ── Alt+hjkl: pane navigation (always available) ────────
-  -- Kanata z+h/j/k/l sends Alt+h/j/k/l
-  { key = "h", mods = "ALT", action = act.ActivatePaneDirection("Left") },
-  { key = "j", mods = "ALT", action = act.ActivatePaneDirection("Down") },
-  { key = "k", mods = "ALT", action = act.ActivatePaneDirection("Up") },
-  { key = "l", mods = "ALT", action = act.ActivatePaneDirection("Right") },
+  -- ── Ctrl+Shift+hjkl: pane navigation (always available) ───
+  { key = "h", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Left") },
+  { key = "j", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Down") },
+  { key = "k", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Up") },
+  { key = "l", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Right") },
 
-  -- ── Alt+Shift+hjkl: resize panes (always available) ────
-  -- Kanata z+y/u/i/o sends Alt+Shift+h/j/k/l
-  -- Zellij uses these for move-pane; WezTerm maps to resize instead
-  { key = "h", mods = "ALT|SHIFT", action = act.AdjustPaneSize({ "Left", 5 }) },
-  { key = "j", mods = "ALT|SHIFT", action = act.AdjustPaneSize({ "Down", 5 }) },
-  { key = "k", mods = "ALT|SHIFT", action = act.AdjustPaneSize({ "Up", 5 }) },
-  { key = "l", mods = "ALT|SHIFT", action = act.AdjustPaneSize({ "Right", 5 }) },
+  -- ── Ctrl+Shift+Arrows: resize panes (always available) ────
+  { key = "LeftArrow",  mods = "CTRL|SHIFT", action = act.AdjustPaneSize({ "Left", 5 }) },
+  { key = "DownArrow",  mods = "CTRL|SHIFT", action = act.AdjustPaneSize({ "Down", 5 }) },
+  { key = "UpArrow",    mods = "CTRL|SHIFT", action = act.AdjustPaneSize({ "Up", 5 }) },
+  { key = "RightArrow", mods = "CTRL|SHIFT", action = act.AdjustPaneSize({ "Right", 5 }) },
 
-  -- ── Alt+n: new pane (always available) ──────────────────
-  -- Kanata z+n sends Alt+n
-  { key = "n", mods = "ALT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+  -- ── Ctrl+Shift+Enter: new pane (split right) ─────────────
+  { key = "Enter", mods = "CTRL|SHIFT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 
-  -- ── Alt+=/Alt+-: resize panes (always available) ────────
-  -- Kanata z+=/z+- sends Alt+=/Alt+-
-  { key = "=", mods = "ALT", action = act.AdjustPaneSize({ "Right", 5 }) },
-  { key = "-", mods = "ALT", action = act.AdjustPaneSize({ "Left", 5 }) },
+  -- ── Ctrl+Shift+p: tab/workspace switcher ──────────────────
+  { key = "p", mods = "CTRL|SHIFT", action = act.ShowLauncherArgs({ flags = "FUZZY|TABS|WORKSPACES" }) },
 
-  -- ── Alt+p: tab/workspace switcher (always available) ────
-  -- Kanata z+p sends Alt+p (Zellij session manager equivalent)
-  { key = "p", mods = "ALT", action = act.ShowLauncherArgs({ flags = "FUZZY|TABS|WORKSPACES" }) },
-
-  -- ── Leader (Ctrl+g) → split ─────────────────────────────
-  -- Mirrors Zellij: Ctrl+g → s (split down), v (split right)
+  -- ── Leader (Ctrl+b) → split ───────────────────────────────
   { key = "s", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
   { key = "v", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 
-  -- ── Leader (Ctrl+g) → pane actions ──────────────────────
+  -- ── Leader (Ctrl+b) → pane actions ────────────────────────
   { key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = false }) },
   { key = "f", mods = "LEADER", action = act.TogglePaneZoomState },
   { key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
 
-  -- ── Leader (Ctrl+g) → pane navigation ───────────────────
+  -- ── Leader (Ctrl+b) → pane navigation ─────────────────────
   { key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
   { key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
   { key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
   { key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
 
-  -- ── Leader (Ctrl+g) → tab management ────────────────────
+  -- ── Leader (Ctrl+b) → tab management ──────────────────────
   { key = "t", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
   { key = "n", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
   { key = "w", mods = "LEADER", action = act.ShowLauncherArgs({ flags = "FUZZY|TABS|WORKSPACES" }) },
   { key = "q", mods = "LEADER", action = act.QuitApplication },
 
-  -- ── Leader (Ctrl+g) → jump to tab by number ────────────
+  -- ── Leader (Ctrl+b) → jump to tab by number ──────────────
   { key = "1", mods = "LEADER", action = act.ActivateTab(0) },
   { key = "2", mods = "LEADER", action = act.ActivateTab(1) },
   { key = "3", mods = "LEADER", action = act.ActivateTab(2) },
