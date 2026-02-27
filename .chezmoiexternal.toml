@@ -1,0 +1,8 @@
+# Zellij plugins — zjstatus (status bar) and zjframes (smart pane frames)
+[".config/zellij/plugins/zjstatus.wasm"]
+    type = "file"
+    url = "https://github.com/dj95/zjstatus/releases/download/v0.22.0/zjstatus.wasm"
+
+[".config/zellij/plugins/zjframes.wasm"]
+    type = "file"
+    url = "https://github.com/dj95/zjstatus/releases/download/v0.22.0/zjframes.wasm"

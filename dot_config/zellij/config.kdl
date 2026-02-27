@@ -4,11 +4,12 @@
 //   Locked (default) — terminal gets all keys, Zellij is invisible
 //   Ctrl+g           — enter command layer (like SPC in spacemacs)
 //   Alt+h/j/k/l      — quick pane nav, always available
+//   Alt+Shift+h/j/k/l — move panes, always available
 //
 // COMMAND LAYER (Normal mode, after Ctrl+g):
 //   p → Pane    t → Tab      r → Resize
-//   m → Move    s → Scroll   o → Session
-//   n → new pane   - → split ↓   | → split →
+//   m → Move    S → Scroll   o → Session
+//   s → split ↓   v → split →   n → new pane
 //   x → close      f → fullscreen w → float
 //   h/j/k/l → navigate panes   1-9 → jump to tab
 //   Esc or Ctrl+g → cancel, back to locked
@@ -16,15 +17,26 @@
 // ── Options ──────────────────────────────────────────────────
 
 default_mode "locked"
-default_layout "compact"
-simplified_ui true
-pane_frames true
+default_layout "default"
+// simplified_ui not set — zjstatus handles the status bar rendering
+pane_frames false
 theme "adaptive"
 show_startup_tips false
 // session_name not set — managed by `zj` shell function
 attach_to_session true
 session_serialization true
 on_force_close "detach"
+
+// ── Plugins (background) ────────────────────────────────────
+// zjframes: auto-toggle pane frames based on context
+load_plugins {
+    "file:~/.config/zellij/plugins/zjframes.wasm" {
+        hide_frame_for_single_pane       "true"
+        hide_frame_except_for_search     "true"
+        hide_frame_except_for_scroll     "true"
+        hide_frame_except_for_fullscreen "true"
+    }
+}
 
 // ── Keybindings ──────────────────────────────────────────────
 
@@ -44,10 +56,12 @@ keybinds clear-defaults=true {
         bind "t" { SwitchToMode "tab"; }
         bind "r" { SwitchToMode "resize"; }
         bind "m" { SwitchToMode "move"; }
-        bind "s" { SwitchToMode "scroll"; }
+        bind "S" { SwitchToMode "scroll"; }
         bind "o" { SwitchToMode "session"; }
 
         // Quick actions (execute → return to locked)
+        bind "s" { NewPane "down"; SwitchToMode "locked"; }
+        bind "v" { NewPane "right"; SwitchToMode "locked"; }
         bind "n" { NewPane; SwitchToMode "locked"; }
         bind "-" { NewPane "down"; SwitchToMode "locked"; }
         bind "|" { NewPane "right"; SwitchToMode "locked"; }
@@ -222,6 +236,10 @@ keybinds clear-defaults=true {
         bind "Alt n" { NewPane; }
         bind "Alt =" "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
+        bind "Alt H" { MovePane "left"; }
+        bind "Alt J" { MovePane "down"; }
+        bind "Alt K" { MovePane "up"; }
+        bind "Alt L" { MovePane "right"; }
         bind "Alt p" {
             LaunchOrFocusPlugin "session-manager" {
                 floating true

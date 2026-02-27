@@ -1,0 +1,118 @@
+// ── Cyberpunk CJK HUD Layout ─────────────────────────────────
+// 「 」 bracket framing · ┃ industrial separators · ◈ hex nodes
+// Ghost in the Shell meets eDEX-UI
+
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
+
+                // ── Format: Left / Center / Right ──────────────
+                format_left   "{mode} #[fg=#4ECDC4,bold]◈ {session} #[fg=#3B3D4E]┃{tabs}"
+                format_center ""
+                format_right  "{command_git_branch}#[fg=#3B3D4E]┃ #[fg=#6C7086] {datetime}"
+                format_space  "#[bg=#181825]"
+
+                // ── Border ─────────────────────────────────────
+                border_enabled  "true"
+                border_char     "─"
+                border_format   "#[fg=#3B3D4E]{char}"
+                border_position "top"
+
+                // ── Frame Control ──────────────────────────────
+                hide_frame_for_single_pane "true"
+
+                // ── Mode Indicators ────────────────────────────
+                // CJK corner brackets: 「 」 — Ghost in the Shell HUD framing
+                mode_locked       "#[fg=#CF433E,bold]「⟁ LOCK」"
+                mode_normal       "#[fg=#AEE239,bold]「⚡ NORM」"
+                mode_pane         "#[fg=#00A8C6,bold]「◈ PANE」"
+                mode_tab          "#[fg=#F7B83D,bold]「◇ TAB 」"
+                mode_resize       "#[fg=#F7B83D,bold]「↔ SIZE」"
+                mode_move         "#[fg=#C8D7E8,bold]「⇄ MOVE」"
+                mode_scroll       "#[fg=#C8D7E8,bold]「▼ SCRL」"
+                mode_search       "#[fg=#C8D7E8,bold]「⌕ SRCH」"
+                mode_enter_search "#[fg=#C8D7E8,bold]「⌕ SRCH」"
+                mode_session      "#[fg=#C8D7E8,bold]「◎ SESS」"
+                mode_rename_tab   "#[fg=#F7B83D,bold]「✎ NAME」"
+                mode_rename_pane  "#[fg=#F7B83D,bold]「✎ NAME」"
+                mode_tmux         "#[fg=#F7B83D,bold]「⚙ TMUX」"
+                mode_prompt       "#[fg=#C8D7E8,bold]「▸ PRMT」"
+                mode_default_to_mode "locked"
+
+                // ── Tabs ───────────────────────────────────────
+                // Active tab: bright, CJK bracket framed
+                // Inactive tab: dimmed, subtle bracket
+                tab_normal              "#[fg=#3B3D4E] ┃ #[fg=#6C7086]{index} {name} {floating_indicator}{sync_indicator}{fullscreen_indicator}"
+                tab_active              "#[fg=#3B3D4E] ┃ #[fg=#F8F8F2,bold]「{index} {name}」{floating_indicator}{sync_indicator}{fullscreen_indicator}"
+
+                tab_normal_fullscreen   "#[fg=#3B3D4E] ┃ #[fg=#6C7086]{index} {name} {fullscreen_indicator}"
+                tab_active_fullscreen   "#[fg=#3B3D4E] ┃ #[fg=#F8F8F2,bold]「{index} {name}」{fullscreen_indicator}"
+                tab_normal_sync         "#[fg=#3B3D4E] ┃ #[fg=#6C7086]{index} {name} {sync_indicator}"
+                tab_active_sync         "#[fg=#3B3D4E] ┃ #[fg=#F8F8F2,bold]「{index} {name}」{sync_indicator}"
+
+                tab_separator           ""
+                tab_rename              "#[fg=#F7B83D,bg=#181825,italic] {index} {name} "
+
+                // Tab state indicators (Nerd Font icons)
+                tab_floating_indicator   "󰉈 "
+                tab_fullscreen_indicator "□ "
+                tab_sync_indicator       " "
+
+                // ── Git Branch ─────────────────────────────────
+                command_git_branch_command     "git rev-parse --abbrev-ref HEAD"
+                command_git_branch_format      "#[fg=#89B4FA]  {stdout} "
+                command_git_branch_interval    "10"
+                command_git_branch_rendermode  "static"
+
+                // ── DateTime ───────────────────────────────────
+                datetime          "#[fg=#9399B2]{format}"
+                datetime_format   "%d·%b %H:%M"
+                datetime_timezone "Atlantic/Canary"
+            }
+        }
+    }
+
+    // ── Swap Layouts ───────────────────────────────────────────
+    // Required to keep swap layout functionality with custom layouts
+    swap_tiled_layout name="SPREAD" {
+        tab max_panes=5 {
+            pane
+            pane { pane; pane; pane; pane; }
+        }
+        tab max_panes=8 {
+            pane { pane; pane; pane; pane; }
+            pane { pane; pane; pane; pane; }
+        }
+        tab max_panes=12 {
+            pane { pane; pane; pane; pane; }
+            pane { pane; pane; pane; pane; }
+            pane { pane; pane; pane; pane; }
+        }
+    }
+
+    swap_tiled_layout name="STACK" {
+        tab min_panes=2 {
+            pane split_direction="vertical" {
+                pane
+                pane stacked=true { children; }
+            }
+        }
+    }
+
+    swap_floating_layout name="FLOAT" {
+        floating_panes max_panes=1 {
+            pane { x "10%"; y "10%"; width "80%"; height "80%"; }
+        }
+        floating_panes max_panes=2 {
+            pane { x "1%"; y "10%"; width "45%"; height "80%"; }
+            pane { x "50%"; y "10%"; width "45%"; height "80%"; }
+        }
+        floating_panes max_panes=3 {
+            pane { x "1%"; y "10%"; width "32%"; height "80%"; }
+            pane { x "34%"; y "10%"; width "32%"; height "80%"; }
+            pane { x "67%"; y "10%"; width "32%"; height "80%"; }
+        }
+    }
+}
