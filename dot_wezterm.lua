@@ -13,6 +13,7 @@ config.default_prog = { "powershell.exe", "-NoLogo" }
 -- On Windows, Nerd Font Mono variant is registered as "Iosevka Nerd Font Mono"
 config.font = wezterm.font("Iosevka Nerd Font Mono")
 config.font_size = 14.0
+config.cell_width = 0.9
 
 -- Matches Ghostty: font-feature = +ss01..+ss09, +liga, +calt
 config.harfbuzz_features = {
