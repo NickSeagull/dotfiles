@@ -6,7 +6,8 @@ local act = wezterm.action
 
 -- ── Font ────────────────────────────────────────────────────
 -- Matches Ghostty: font-family = IosevkaTerm Nerd Font, font-size = 16
-config.font = wezterm.font("IosevkaTerm Nerd Font")
+-- On Windows, Nerd Font Mono variant is registered as "Iosevka Nerd Font Mono"
+config.font = wezterm.font("Iosevka Nerd Font Mono")
 config.font_size = 16.0
 
 -- Matches Ghostty: font-feature = +ss01..+ss09, +liga, +calt
