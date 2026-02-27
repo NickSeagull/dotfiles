@@ -42,6 +42,7 @@ n = Volume down       ; = YouTube Music
 Hold z + tap key for Zellij shortcut
 
 h/j/k/l = Pane nav (Alt+hjkl)
+y/u/i/o = Move pane (Alt+Shift+hjkl)
 n = New pane          p = Session manager
 = / - = Resize         Space = Command layer
 
