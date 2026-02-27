@@ -10,10 +10,10 @@ switch ($Layer) {
         $Text = @"
 Hold w + tap key to focus/launch app
 
-j = Ghostty          k = Firefox
+j = WezTerm           k = Firefox
 r = Bitwarden        d = Spark (email)
-f = TickTick          t = Activity Monitor
-Esc = Finder
+f = TickTick          t = Task Manager
+Esc = Explorer
 "@
     }
     'f' {

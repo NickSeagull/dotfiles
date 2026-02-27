@@ -109,7 +109,7 @@
   fo-actmon  (cmd {{ .chezmoi.homeDir }}/.config/kanata/scripts/focus-or-start.sh Activity Monitor)
   fo-finder  (cmd {{ .chezmoi.homeDir }}/.config/kanata/scripts/focus-or-start.sh Finder)
 {{ else }}
-  fo-ghostty (cmd powershell -WindowStyle Hidden -File {{ .chezmoi.homeDir }}\.config\kanata\scripts\Focus-Or-Start.ps1 Ghostty)
+  fo-ghostty (cmd powershell -WindowStyle Hidden -File {{ .chezmoi.homeDir }}\.config\kanata\scripts\Focus-Or-Start.ps1 wezterm-gui)
   fo-firefox (cmd powershell -WindowStyle Hidden -File {{ .chezmoi.homeDir }}\.config\kanata\scripts\Focus-Or-Start.ps1 Firefox)
   fo-bw      (cmd powershell -WindowStyle Hidden -File {{ .chezmoi.homeDir }}\.config\kanata\scripts\Focus-Or-Start.ps1 Bitwarden)
   fo-spark   (cmd powershell -WindowStyle Hidden -File {{ .chezmoi.homeDir }}\.config\kanata\scripts\Focus-Or-Start.ps1 Spark)
