@@ -1,20 +1,23 @@
 {{- if ne .chezmoi.os "darwin" }}
-dot_Brewfile
-dot_hammerspoon
+.Brewfile
+.hammerspoon
+.aerospace.toml
+.config/sketchybar
+.config/kanata/launchdaemons
 {{- end }}
 
 {{- if eq .chezmoi.os "windows" }}
 *.sh
 .zprofile
 .zshrc
-.Brewfile
-.config
+.config/ghostty
+.config/keymapper
 {{- end }}
 
 chezmoi.toml
 nix
-dot_doom.d/config.el
+.doom.d/config.el
 README.md
 CLAUDE.md
+AGENTS.md
 flake.*
-
