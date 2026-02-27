@@ -1,3 +1,6 @@
+# Fix Zellij flickering over SSH — Windows SSH doesn't set TERM
+$env:TERM = "xterm-256color"
+
 # Starship prompt
 Invoke-Expression (&starship init powershell)
 

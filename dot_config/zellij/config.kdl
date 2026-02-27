@@ -18,7 +18,7 @@
 
 default_mode "locked"
 default_layout "default"
-// simplified_ui not set — zjstatus handles the status bar rendering
+simplified_ui true  // ASCII-only UI chrome — prevents flicker over SSH from Windows
 pane_frames false
 theme "adaptive"
 show_startup_tips false
