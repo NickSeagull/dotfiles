@@ -6,7 +6,7 @@ local act = wezterm.action
 
 -- ── Shell ───────────────────────────────────────────────────
 -- WezTerm defaults to cmd.exe on Windows; use PowerShell instead
-config.default_prog = { "powershell.exe" }
+config.default_prog = { "powershell.exe", "-NoLogo" }
 
 -- ── Font ────────────────────────────────────────────────────
 -- Matches Ghostty: font-family = IosevkaTerm Nerd Font, font-size = 16
@@ -58,11 +58,11 @@ config.check_for_updates = false
 
 -- ── Multiplexer ─────────────────────────────────────────────
 -- WezTerm replaces Zellij on Windows — built-in splits/tabs
--- Tab bar: bottom, always visible (doubles as status bar like zjstatus)
+-- Tab bar: bottom, hidden when only one tab
 config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
-config.hide_tab_bar_if_only_one_tab = false
+config.hide_tab_bar_if_only_one_tab = true
 config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 32
 

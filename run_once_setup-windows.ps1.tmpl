@@ -1,0 +1,78 @@
+{{ if eq .chezmoi.os "windows" -}}
+# Windows setup script — runs once via chezmoi
+# Installs core tools, sets environment variables, configures shell.
+# Each step checks if already done and skips if so.
+
+$ErrorActionPreference = "Continue"
+
+function Install-WingetPackage {
+    param([string]$Id, [string]$Name)
+    $check = winget list --id $Id --accept-source-agreements 2>&1 | Out-String
+    if ($check -match [regex]::Escape($Id)) {
+        Write-Host "[setup] $Name already installed, skipping" -ForegroundColor DarkGray
+    } else {
+        Write-Host "[setup] Installing $Name..." -ForegroundColor Cyan
+        winget install --id $Id --accept-source-agreements --accept-package-agreements --silent
+        if ($LASTEXITCODE -eq 0) {
+            Write-Host "[setup] $Name installed" -ForegroundColor Green
+        } else {
+            Write-Host "[setup] WARNING: $Name install returned exit code $LASTEXITCODE" -ForegroundColor Yellow
+        }
+    }
+}
+
+# ── Core Tools ──────────────────────────────────────────────
+Write-Host "`n[setup] Core tools" -ForegroundColor White
+Install-WingetPackage "gerardog.gsudo" "gsudo"
+Install-WingetPackage "Bitwarden.CLI" "Bitwarden CLI"
+
+# ── Terminal & Editor ────────────────────────────────────────
+Write-Host "`n[setup] Terminal and editor" -ForegroundColor White
+Install-WingetPackage "wez.wezterm" "WezTerm"
+Install-WingetPackage "Neovim.Neovim" "Neovim"
+
+# ── Shell Tools ──────────────────────────────────────────────
+Write-Host "`n[setup] Shell tools" -ForegroundColor White
+Install-WingetPackage "Starship.Starship" "Starship prompt"
+Install-WingetPackage "sharkdp.bat" "bat (cat replacement)"
+Install-WingetPackage "eza-community.eza" "eza (ls replacement)"
+
+# ── Dev Tools ────────────────────────────────────────────────
+Write-Host "`n[setup] Dev tools" -ForegroundColor White
+Install-WingetPackage "OpenJS.NodeJS.LTS" "Node.js LTS"
+Install-WingetPackage "Git.Git" "Git"
+
+# ── Environment: XDG_CONFIG_HOME ─────────────────────────────
+Write-Host "`n[setup] Environment variables" -ForegroundColor White
+$xdg = [Environment]::GetEnvironmentVariable('XDG_CONFIG_HOME', 'User')
+if (-not $xdg) {
+    $val = "$env:USERPROFILE\.config"
+    [Environment]::SetEnvironmentVariable('XDG_CONFIG_HOME', $val, 'User')
+    $env:XDG_CONFIG_HOME = $val
+    Write-Host "[setup] Set XDG_CONFIG_HOME=$val" -ForegroundColor Green
+} else {
+    Write-Host "[setup] XDG_CONFIG_HOME already set to $xdg, skipping" -ForegroundColor DarkGray
+}
+
+# ── Execution Policy ────────────────────────────────────────
+$policy = Get-ExecutionPolicy -Scope CurrentUser
+if ($policy -eq 'Restricted' -or $policy -eq 'Undefined') {
+    Write-Host "[setup] Setting execution policy to RemoteSigned (CurrentUser)..." -ForegroundColor Cyan
+    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+    Write-Host "[setup] Execution policy set to RemoteSigned" -ForegroundColor Green
+} else {
+    Write-Host "[setup] Execution policy already $policy, skipping" -ForegroundColor DarkGray
+}
+
+# ── Summary ─────────────────────────────────────────────────
+Write-Host ""
+Write-Host "========================================" -ForegroundColor Cyan
+Write-Host " Windows setup complete!" -ForegroundColor Green
+Write-Host "========================================" -ForegroundColor Cyan
+Write-Host ""
+Write-Host "MANUAL STEPS REMAINING:" -ForegroundColor Yellow
+Write-Host "  1. Install Iosevka Nerd Font:" -ForegroundColor White
+Write-Host "     https://github.com/ryanoasis/nerd-fonts/releases (download Iosevka.zip)" -ForegroundColor Gray
+Write-Host "  2. Install Kanata (keyboard remapper) - see README.md Step 6" -ForegroundColor White
+Write-Host "  3. Restart your terminal for environment changes to take effect" -ForegroundColor White
+{{ end -}}
