@@ -1,4 +1,4 @@
-# Show kanata layer cheatsheet as a Windows popup (auto-dismiss after 3s)
+# Show kanata layer cheatsheet as a Windows popup (press OK or Enter/Space to dismiss)
 # Usage: Show-Cheatsheet.ps1 <layer>
 # Layers: w, f, d, z, s
 
@@ -72,4 +72,4 @@ s = Utility
 }
 
 $wsh = New-Object -ComObject WScript.Shell
-$wsh.Popup($Text, 3, $Title, 0) | Out-Null
+$wsh.Popup($Text, 0, $Title, 0) | Out-Null

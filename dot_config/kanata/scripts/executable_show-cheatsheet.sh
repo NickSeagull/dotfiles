@@ -1,5 +1,5 @@
 #!/bin/bash
-# Show kanata layer cheatsheet as a macOS dialog (auto-dismiss after 3s, ESC to close)
+# Show kanata layer cheatsheet as a macOS dialog (press OK or Enter/Space to dismiss)
 # Usage: show-cheatsheet.sh <layer>
 # Layers: w, f, d, z, s
 
@@ -60,4 +60,4 @@ s = Utility"
     ;;
 esac
 
-osascript -e "display dialog \"$TEXT\" with title \"$TITLE\" buttons {\"OK\"} giving up after 3" &>/dev/null &
+osascript -e "display dialog \"$TEXT\" with title \"$TITLE\" buttons {\"OK\"}" &>/dev/null &
