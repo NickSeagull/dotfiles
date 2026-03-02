@@ -27,16 +27,6 @@ attach_to_session true
 session_serialization true
 on_force_close "detach"
 
-// ── Plugins (background) ────────────────────────────────────
-// zjframes: auto-toggle pane frames based on context
-load_plugins {
-    "file:~/.config/zellij/plugins/zjframes.wasm" {
-        hide_frame_for_single_pane       "true"
-        hide_frame_except_for_search     "true"
-        hide_frame_except_for_scroll     "true"
-        hide_frame_except_for_fullscreen "true"
-    }
-}
 
 // ── Keybindings ──────────────────────────────────────────────
 
