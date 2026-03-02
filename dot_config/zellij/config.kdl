@@ -17,7 +17,7 @@
 // ── Options ──────────────────────────────────────────────────
 
 default_mode "locked"
-default_layout "default"
+default_layout "cyberpunk"
 simplified_ui true  // ASCII-only UI chrome — prevents flicker over SSH from Windows
 pane_frames false
 theme "adaptive"
