@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+MANIFEST=".locked-files"
+
+die() {
+	printf "error: %s\n" "$1" >&2
+	exit 1
+}
+
+cmd_lock() {
+	[ -z "${1:-}" ] && die "usage: lock.sh lock <filepath>"
+	local filepath="$1"
+
+	git rev-parse --show-toplevel >/dev/null 2>&1 || die "not a git repository"
+	local root
+	root=$(git rev-parse --show-toplevel)
+	cd "$root"
+
+	git ls-files --error-unmatch "$filepath" >/dev/null 2>&1 ||
+		die "'$filepath' is not tracked by git"
+
+	if [ -f "$MANIFEST" ] && grep -qxF "$filepath" "$MANIFEST"; then
+		echo "already locked: $filepath"
+		return 0
+	fi
+
+	echo "$filepath" >>"$MANIFEST"
+	git add "$MANIFEST"
+	git commit -m "lock: $filepath"
+}
+
+cmd_install() {
+	git rev-parse --show-toplevel >/dev/null 2>&1 || die "not a git repository"
+	local hook
+	hook="$(git rev-parse --show-toplevel)/.git/hooks/pre-commit"
+
+	cat >"$hook" <<'HOOK'
+#!/usr/bin/env bash
+# lock.sh pre-commit hook — rejects changes to locked files
+
+locked=$(git show HEAD:.locked-files 2>/dev/null) || exit 0
+[ -z "$locked" ] && exit 0
+
+staged=$(git diff --cached --name-only)
+violations=""
+
+while IFS= read -r file; do
+  [ -z "$file" ] && continue
+  [ "$file" = ".locked-files" ] && continue
+  echo "$locked" | grep -qxF "$file" && violations="$violations  - $file
+"
+done <<< "$staged"
+
+if [ -n "$violations" ]; then
+  printf "\033[31mCommit rejected — the following locked files were modified:\033[0m\n"
+  printf "%s" "$violations"
+  printf "\nThese files are immutable. Create a new versioned file instead.\n"
+  printf "See: .locked-files\n"
+  exit 1
+fi
+HOOK
+
+	chmod +x "$hook"
+	echo "pre-commit hook installed at $hook"
+}
+
+case "${1:-}" in
+lock)
+	shift
+	cmd_lock "$@"
+	;;
+install) cmd_install ;;
+*)
+	echo "usage: lock.sh <lock <filepath>|install>" >&2
+	exit 1
+	;;
+esac
