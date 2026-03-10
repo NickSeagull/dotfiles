@@ -5,6 +5,7 @@
 //   Ctrl+g           — enter command layer (like SPC in spacemacs)
 //   Alt+h/j/k/l      — quick pane nav, always available
 //   Alt+Shift+h/j/k/l — move panes, always available
+//   Alt+y/u/i        — swap layout / toggle float, always available
 //
 // COMMAND LAYER (Normal mode, after Ctrl+g):
 //   p → Pane    t → Tab      r → Resize
@@ -230,6 +231,9 @@ keybinds clear-defaults=true {
         bind "Alt J" { MovePane "down"; }
         bind "Alt K" { MovePane "up"; }
         bind "Alt L" { MovePane "right"; }
+        bind "Alt y" { PreviousSwapLayout; }
+        bind "Alt u" { NextSwapLayout; }
+        bind "Alt i" { ToggleFloatingPanes; }
         bind "Alt p" {
             LaunchOrFocusPlugin "session-manager" {
                 floating true

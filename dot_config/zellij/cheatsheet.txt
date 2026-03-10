@@ -3,6 +3,7 @@
   ─────────────────────────────────────────────────────────
   ALWAYS AVAILABLE
     Alt+h/j/k/l  navigate panes    Alt+Shift+h/j/k/l  move panes
+    Alt+y prev layout  Alt+u next layout  Alt+i toggle float
     Alt+n  new pane   Alt+±  resize   Ctrl+g toggle command mode
 
   COMMAND LAYER  (Ctrl+g, then key)
