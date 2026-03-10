@@ -12,7 +12,7 @@
 ;;   w = App launcher (focus or start apps)
 ;;   f = Communication (Brave, Telegram, Discord, WhatsApp, Claude)
 ;;   d = Media controls (play/pause, prev/next, volume, YouTube Music)
-;;   z = Zellij navigation (hjkl panes, yuio move panes, n new, p session, xcv/6-0 quick-switch sessions, space command layer)
+;;   z = Zellij navigation (hjkl panes, nm,. move panes, yui layout, t new, p session, xcv/6-0 quick-switch sessions, space command layer)
 ;;   s = Utility (p = live reload kanata config)
 ;;   / = Cheatsheet (show layer help popup)
 ;;
@@ -30,7 +30,7 @@
 
 ;; Only intercept the keys we remap — everything else passes through
 (defsrc
-  caps esc w e a q ; z s d f t r h j k l n p = - spc x c v 6 7 8 9 0 y u i o /
+  caps esc w e a q ; z s d f t r h j k l n p = - spc x c v 6 7 8 9 0 y u i o / m , .
 )
 (deflayer base
   @cap _    @wmod @emod @amod @qmod @semi @zmod @smod
@@ -43,6 +43,7 @@
   _    _    _    _    _              ;; 6-0
   _    _    _    _                   ;; y/u/i/o
   @slmod                             ;; / = cheatsheet layer
+  _    _    _                        ;; m/,/.
 )
 
 (defalias
@@ -172,6 +173,7 @@
   _    _    _    _    _
   _    _    _    _                   ;; y/u/i/o
   _                                  ;; /
+  _    _    _                        ;; m/,/.
 )
 
 ;; ── f-mode: Communication ──────────────────────────────
@@ -189,6 +191,7 @@
   _    _    _    _    _              ;; 6-0
   _    _    _    _                   ;; y/u/i/o
   _                                  ;; /
+  _    _    _                        ;; m/,/.
 )
 
 ;; ── d-mode: Media controls ─────────────────────────────
@@ -207,6 +210,7 @@
   _    _    _    _    _              ;; 6-0
   _    _    _    _                   ;; y/u/i/o
   _                                  ;; /
+  _    _    _                        ;; m/,/.
 )
 ;; ── s-mode: Utility ──────────────────────────────────────
 ;; Hold s, press key → utility actions
@@ -222,21 +226,23 @@
   _    _    _    _    _              ;; 6-0
   _    _    _    _                   ;; y/u/i/o
   _                                  ;; /
+  _    _    _                        ;; m/,/.
 )
 ;; ── z-mode: Zellij navigation ─────────────────────────────
 ;; Hold z, press key → Zellij shortcut (no Alt/Ctrl stretching)
 (deflayer zellij
   _    _    _    _    _    _    _    _    _
-  _    _    _    _                   ;; d/f/t/r
+  _    _    A-n  _                   ;; d/f/t/r — t → new pane (Alt+n)
   A-h  A-j  A-k  A-l                ;; hjkl → Alt+hjkl (pane nav)
-  A-n                                ;; n → Alt+n (new pane)
+  @zmh                               ;; n → move pane left
   A-p                                ;; p → Alt+p (session manager)
   A-=  A--                           ;; =/- → Alt+=/- (resize)
   C-g                                ;; space → Ctrl+g (command layer)
   @zs1 @zs2 @zs3                    ;; x/c/v → neohaskell/neclau/CIOS
   @zs4 _    _    _    @zs8           ;; 6-0 → nh-website/_/_/_/dotfiles
-  @zmh @zmj @zmk @zml              ;; y/u/i/o → Alt+Shift+hjkl (move pane)
+  A-y  A-u  A-i  _                   ;; y/u/i/o → layout (prev/next/float/—)
   _                                  ;; /
+  @zmj @zmk @zml                     ;; m/,/. → move pane (down/up/right)
 )
 
 ;; ── /-mode: Cheatsheet ────────────────────────────────────
@@ -252,4 +258,5 @@
   _    _    _    _    _              ;; 6-0
   _    _    _    _                   ;; y/u/i/o
   _                                  ;; /
+  _    _    _                        ;; m/,/.
 )

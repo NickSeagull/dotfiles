@@ -36,14 +36,16 @@ n = Volume down       ; = YouTube Music"
     TEXT="Hold z + tap key for Zellij shortcut
 
 h/j/k/l = Pane nav (Alt+hjkl)
-y/u/i/o = Move pane (Alt+Shift+hjkl)
-n = New pane          p = Session manager
+n/m/,/. = Move pane (L/D/U/R)
+y = Prev layout       u = Next layout
+i = Toggle float
+t = New pane          p = Session manager
 = / - = Resize         Space = Command layer
 
 Session quick-switch:
 x = neohaskell        c = neclau
 v = CIOS                6 = nh-website
-0 = dotfiles"
+0 = dotfiles
     ;;
   s)
     TITLE="s-mode — Utility"
