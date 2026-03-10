@@ -1,0 +1,23 @@
+{
+  "name": "bloodcode-theme",
+  "displayName": "Bloodcode",
+  "description": "A red-toned dark hacker colorscheme. Like The Matrix, but red.",
+  "version": "1.0.0",
+  "publisher": "NickSeagull",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Bloodcode",
+        "uiTheme": "vs-dark",
+        "path": "./themes/bloodcode-color-theme.json"
+      }
+    ]
+  }
+}
