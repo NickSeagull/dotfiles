@@ -26,7 +26,8 @@
 
   m MOVE              S SCROLL (copy)     o SESSION
     hjkl  direction     j/k line            d detach
-    n/Tab cycle fwd     d/u half-page       w session tree
+    n/Tab cycle fwd     d/u half-page       n new session
+    p cycle back        C-f/C-b page        w session tree
     p cycle back        C-f/C-b page
                         / search  ? search up
                         v select  y copy
