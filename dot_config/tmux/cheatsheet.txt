@@ -1,0 +1,36 @@
+
+  TMUX CHEATSHEET                           Leader: Ctrl+g
+  ─────────────────────────────────────────────────────────
+  ALWAYS AVAILABLE
+    Alt+h/j/k/l  navigate panes    Alt+Shift+h/j/k/l  move panes
+    Alt+n  new pane   Alt+±  zoom toggle   Ctrl+g toggle command mode
+
+  COMMAND LAYER  (Ctrl+g, then key)
+  ─────────────────────────────────────────────────────────
+    h/j/k/l  navigate       n  new pane       d  detach
+    s split down            v  split right     q  kill session
+    - split down (alt)      |  split right (alt)
+    x close pane            f  zoom toggle     ?  this
+    z toggle pane borders   1-9  jump to window
+    S scroll/copy mode
+
+  SUB-MODES  (Ctrl+g, then letter to enter mode)
+  ─────────────────────────────────────────────────────────
+  p PANE              t TAB (window)      r RESIZE
+    hjkl  focus         h/l prev/next       hjkl  grow (2 cells)
+    n new  x close      n new  x close      HJKL  grow (5 cells)
+    - dn  | right       r rename            ± zoom
+    f zoom  c name      Tab last  b break
+    p last pane         1-9 jump
+
+  m MOVE              S SCROLL (copy)     o SESSION
+    hjkl  direction     j/k line            d detach
+    n/Tab cycle fwd     d/u half-page       w session tree
+    p cycle back        C-f/C-b page
+                        / search  ? search up
+                        v select  y copy
+                        q exit
+
+  Esc or Ctrl+g  →  cancel, back to terminal
+  ─────────────────────────────────────────────────────────
+                                          press q to close
