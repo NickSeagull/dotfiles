@@ -3,7 +3,8 @@
   ─────────────────────────────────────────────────────────
   ALWAYS AVAILABLE
     Alt+h/j/k/l  navigate panes    Alt+Shift+h/j/k/l  move panes
-    Alt+n  new pane   Alt+±  zoom toggle   Ctrl+g toggle command mode
+    Alt+n  new pane   Alt+±  zoom     Alt+p  session navigator
+    Ctrl+g toggle command mode
 
   COMMAND LAYER  (Ctrl+g, then key)
   ─────────────────────────────────────────────────────────
