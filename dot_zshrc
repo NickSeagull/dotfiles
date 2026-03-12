@@ -4,7 +4,7 @@ alias ls='eza --hyperlink'
 alias cat='bat'
 alias cf='claude-flow'
 cmcd() { cd $(chezmoi source-path); }
-zj() { zellij attach --create "${1:-main}"; }
+tj() { tmux new-session -A -s "${1:-main}"; }
 
 # worktrees — centralized in ~/.worktrees/<repo>/<branch>
 wt() {

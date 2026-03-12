@@ -6,3 +6,11 @@
 [".config/zellij/plugins/zjframes.wasm"]
     type = "file"
     url = "https://github.com/dj95/zjstatus/releases/download/v0.22.0/zjframes.wasm"
+
+
+# TPM — tmux plugin manager
+[".tmux/plugins/tpm"]
+    type = "archive"
+    url = "https://github.com/tmux-plugins/tpm/archive/refs/heads/master.tar.gz"
+    stripComponents = 1
+    refreshPeriod = "168h"
