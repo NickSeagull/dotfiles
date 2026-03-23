@@ -1,64 +1,90 @@
 {
   "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
-
-  "agents": {
-    "sisyphus": {
-      "model": "anthropic/claude-opus-4-6",
-      "ultrawork": { "model": "anthropic/claude-opus-4-6", "variant": "max" },
-    },
-    "librarian": { "model": "anthropic/claude-haiku-4-5" },
-    "explore": { "model": "anthropic/claude-haiku-4-5" },
-    "oracle": { "model": "anthropic/claude-opus-4-6", "variant": "high" },
-    "prometheus": {
-      "prompt_append": "Leverage deep & quick agents heavily, always in parallel.",
-    },
-    "metis": { "model": "openai/gpt-5.3-codex", "variant": "medium" },
-    "momus": { "model": "openai/gpt-5.3-codex", "variant": "high" },
-  },
-
   "categories": {
-    "quick": { "model": "anthropic/claude-haiku-4-5" },
-    "unspecified-low": { "model": "anthropic/claude-sonnet-4-5" },
-    "unspecified-high": {
-      "model": "anthropic/claude-sonnet-4-5",
-      "variant": "max",
-    },
-    "writing": { "model": "anthropic/claude-sonnet-4-5" },
     "visual-engineering": {
-      "model": "anthropic/claude-sonnet-4-5",
-      "variant": "high",
-    },
-    "git": {
-      "model": "anthropic/claude-haiku-4-5",
-      "description": "All git operations",
-      "prompt_append": "Focus on atomic commits, clear messages, and safe operations.",
+      "model": "openai/gpt-5.4",
+      "variant": "high"
     },
     "ultrabrain": {
-      "model": "openai/gpt-5.3-codex",
-      "variant": "xhigh",
-      "description": "Genuinely hard, logic-heavy tasks requiring deep reasoning",
+      "model": "openai/gpt-5.4",
+      "variant": "xhigh"
     },
     "deep": {
       "model": "openai/gpt-5.3-codex",
-      "variant": "high",
-      "description": "Goal-oriented autonomous problem-solving with thorough research",
+      "variant": "high"
     },
-    "artistry": {
-      "model": "openai/gpt-5.3-codex",
-      "variant": "high",
-      "description": "Complex problems requiring unconventional, creative approaches",
+    "quick": {
+      "model": "openai/gpt-5-nano"
     },
+    "unspecified-low": {
+      "model": "openai/gpt-5.4"
+    },
+    "unspecified-high": {
+      "model": "openai/gpt-5.4",
+      "variant": "xhigh"
+    },
+    "writing": {
+      "model": "openai/gpt-5.4"
+    },
+    "git": {
+      "model": "openai/gpt-5-nano",
+      "description": "All git operations",
+      "prompt_append": "Focus on atomic commits, clear messages, and safe operations."
+    }
   },
-
   "background_task": {
-    "providerConcurrency": { "anthropic": 5, "openai": 3 },
-    "modelConcurrency": {
-      "anthropic/claude-opus-4-6": 2,
-      "anthropic/claude-haiku-4-5": 20,
-      "openai/gpt-5.3-codex": 2,
+    "providerConcurrency": {
+      "openai": 6,
+      "zai-coding-plan": 10
     },
+    "modelConcurrency": {
+      "openai/gpt-5.4": 3,
+      "openai/gpt-5.4-mini": 8,
+      "openai/gpt-5-nano": 20,
+      "opencode-go/kimi-k2.5": 5
+    }
   },
-
-  "experimental": { "aggressive_truncation": true, "task_system": true },
-  "tmux": { "enabled": false },
+  "experimental": {
+    "aggressive_truncation": true,
+    "task_system": true
+  },
+  "agents": {
+    "sisyphus": {
+      "model": "openai/gpt-5.4"
+    },
+    "hephaestus": {
+      "model": "openai/gpt-5.3-codex",
+      "variant": "high"
+    },
+    "oracle": {
+      "model": "openai/gpt-5.4",
+      "variant": "xhigh"
+    },
+    "momus": {
+      "model": "openai/gpt-5.4",
+      "variant": "xhigh"
+    },
+    "librarian": {
+      "model": "openai/gpt-5.4"
+    },
+    "explore": {
+      "model": "openai/gpt-5-nano"
+    },
+    "atlas": {
+      "model": "opencode-go/kimi-k2.5"
+    },
+    "general": {
+      "model": "opencode-go/kimi-k2.5"
+    },
+    "prometheus": {
+      "model": "opencode-go/kimi-k2.5",
+      "prompt_append": "Leverage deep & quick agents heavily, always in parallel."
+    },
+    "metis": {
+      "model": "opencode-go/kimi-k2.5"
+    },
+    "multimodal-looker": {
+      "model": "openai/gpt-5.4"
+    }
+  }
 }
