@@ -26,7 +26,7 @@ Useful reference: wallpaper exposure, separate control popups and compact worksp
 
 ## Remaining interaction decision
 
-Keyboard-driven navigation and manual zone placement are agreed. Nick prefers PowerToys/FancyZones-style halves, thirds, quarters and custom regions, currently uses Raycast, and explicitly dislikes automatic tiling. Windows should remain where placed until a deliberate shortcut or snap action moves them. Workspace behavior, exact bindings and final tools remain open. See [manual window arrangement](manual-window-arrangement.md) for the researched candidates.
+Keyboard-driven navigation and manual drop-zone placement are agreed. Nick prefers PowerToys/FancyZones-style halves, thirds, quarters and custom regions, currently uses Raycast, and explicitly dislikes automatic tiling. He prefers dragging into zones over placement shortcuts. Windows should remain where placed until a deliberate action moves them. Workspace behavior, exact activation controls and final tools remain open. See [manual window arrangement](manual-window-arrangement.md) for the researched candidates.
 
 The Dock concept was rejected and is not included as a candidate. No software or system settings were installed or activated.
 
@@ -34,4 +34,4 @@ The Dock concept was rejected and is not included as a candidate. No software or
 
 Generated using the built-in image-generation tool. The inspected end-4 widgets screenshot served as a visual reference: https://github.com/user-attachments/assets/6a32395f-9437-4192-8faf-2951a9e84cbe . Prompts are preserved in [prompts.json](prompts.json).
 
-Next: compare Rectangle Pro's custom snap targets with Moom's saved-layout drop zones before adopting a window tool.
+Next: try Moom's saved-layout drop zones; it is the current recommendation after the preference for drop zones was clarified.
