@@ -34,4 +34,4 @@ The Dock concept was rejected and is not included as a candidate. No software or
 
 Generated using the built-in image-generation tool. The inspected end-4 widgets screenshot served as a visual reference: https://github.com/user-attachments/assets/6a32395f-9437-4192-8faf-2951a9e84cbe . Prompts are preserved in [prompts.json](prompts.json).
 
-Next: try Moom's saved-layout drop zones; it is the current recommendation after the preference for drop zones was clarified.
+Moom is Nick's provisional preference for manual drop-zone placement. Next: validate its saved-layout drop zones during the later setup trial.

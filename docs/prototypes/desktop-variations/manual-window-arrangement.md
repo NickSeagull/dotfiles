@@ -4,14 +4,14 @@
 
 The modern scarlet/teal visual direction and no-dock requirement remain agreed. Window placement is independent of the visual shell. No automatic tiler is required to create the selected look.
 
-## Current recommendation
+## Preferred tool
 
-**Moom is now the leading candidate for saved-layout drop zones.** This supersedes the earlier Rectangle Pro recommendation, which prioritized placement shortcuts. Moom can show a saved layout's zones while dragging, activated by an assigned modifier or by dragging to a configured screen edge. Different modifiers can expose different layout families, with no shortcut required for each individual zone. This is a recommendation, not an accepted tool choice, purchase or installation. Current official documentation was inspected on 14 October 2026; no candidate has been exercised on this Mac.
+**Moom is Nick's provisional preference for saved-layout drop zones.** Nick explicitly asked to record Moom as the preference for now. This supersedes the earlier Rectangle Pro recommendation, which prioritized placement shortcuts. Moom can show a saved layout's zones while dragging, activated by an assigned modifier or by dragging to a configured screen edge. Different modifiers can expose different layout families, with no shortcut required for each individual zone. The preference remains subject to a later trial; purchase and installation have not been requested. Current official documentation was inspected on 14 October 2026; no candidate has been exercised on this Mac.
 
 | Candidate | Relevant documented capabilities | Fit for Nick |
 | --- | --- | --- |
 | Rectangle Pro | Stock keyboard actions for halves, thirds, fourths and more; custom fractional or pixel positions; repeated-shortcut cycles; custom snap targets and an optional snap panel | Strongest initial candidate for familiar direct shortcuts with custom regions. Its Pin Mode and other rearrangement features are outside this plan. |
-| Moom | Saved layouts provide visual drop zones; reveal them via a modifier while dragging or a configured screen edge; switch layout modifiers mid-drag | Leading candidate for Nick's clarified preference: visually choose a zone from halves, thirds, quarters or a custom layout. |
+| Moom | Saved layouts provide visual drop zones; reveal them via a modifier while dragging or a configured screen edge; switch layout modifiers mid-drag | Nick's provisional preference: visually choose a zone from halves, thirds, quarters or a custom layout. |
 | Lasso | Visual grid; saved custom layouts; per-layout global shortcuts; layout import/export | Strong alternative if drawing placements on a grid is the desired interaction. |
 
 Sources: [Rectangle Pro keyboard actions](https://rectangleapp.com/pro/docs/keyboard-shortcuts/), [custom sizes and positions](https://rectangleapp.com/pro/docs/custom-size-position/), [snap targets and panel](https://rectangleapp.com/pro/docs/snap-areas/), [Moom official features](https://manytricks.com/moom/), [Moom drop-zone activation and options](https://manytricks.com/moom/help/snap.html), [Lasso official features](https://www.thelasso.app/).
