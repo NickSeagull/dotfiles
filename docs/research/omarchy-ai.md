@@ -1,12 +1,12 @@
 # Omarchy's AI experience and useful macOS agent workflows
 
-**Research finding:** Herdr is the correct name, and it is genuinely bundled with Omarchy. The most useful transferable idea is an integrated place for projects, running agents, and attention—not installing every available model client. For Nick, the strongest trial candidate is **Herdr inside existing Ghostty**, compared against **the existing Codex app workflow** and **cmux** before choosing a terminal architecture.
+**Research finding:** Herdr is the correct name, and it is genuinely bundled with Omarchy. The most useful transferable idea is an integrated place for projects, running agents, and attention—not installing every available model client. For Nick, the strongest trial candidate is **Herdr inside existing Ghostty**, compared against **Nick’s existing Codex workflow and the optional Codex desktop app** and **cmux** before choosing a terminal architecture.
 
-Research completed 2026-10-14 for [Identify Omarchy’s AI tools and useful macOS agent workflows](https://plane.p.egregore.io/egregore/projects/e4709aa7-c911-4a7b-a9ec-f9eaa2bb905b/work-items/43cc8090-926f-44b2-99f2-fc87541a9ba7). This is decision evidence, not an accepted installation plan. No software, agent hooks, account configuration, or desktop settings were installed or activated.
+Research completed 2026-10-14 for [Identify Omarchy’s AI tools and useful macOS agent workflows](https://plane.p.egregore.io/egregore/projects/e4709aa7-c911-4a7b-a9ec-f9eaa2bb905b/issues/43cc8090-926f-44b2-99f2-fc87541a9ba7/). This is decision evidence, not an accepted installation plan. No software, agent hooks, account configuration, or desktop settings were installed or activated.
 
 ## Evidence boundaries
 
-The baseline supplied by the coordinating investigation is an M4 Max MacBook Pro with 48 GB unified memory, macOS 26.5.1, Ghostty, Raycast, Codex, VS Code, and Zen already present. Nick prioritizes moving between code, terminals, browser, and agents, and accepts custom scripts and regular tweaking. Presence does not establish usage, versions, subscriptions, permissions, or pain points.
+The baseline supplied by the coordinating investigation is an M4 Max MacBook Pro with 48 GB unified memory, macOS 26.5.1, Ghostty 1.3.1, Raycast, VS Code, and Zen already present, with Codex CLI observed on PATH. A Codex desktop app installation was not established. Nick prioritizes moving between code, terminals, browser, and agents, and accepts custom scripts and regular tweaking. Presence does not establish usage, versions, subscriptions, permissions, or pain points.
 
 | Source | Pinned evidence | Interpretation |
 |---|---|---|
@@ -103,15 +103,15 @@ Herdr's [plugins](https://github.com/herdrdev/herdr/blob/6521382dbed36f2d0014171
 
 | Candidate | Best fit | Additional cost or responsibility |
 |---|---|---|
-| Existing Codex app + Ghostty + Raycast | Predominantly Codex work; review and task management already live in the app | First learn what the existing app already provides; do not build a second task list by default. |
+| Existing Codex CLI + Ghostty + Raycast; optional Codex desktop app | Predominantly Codex work, with a possible app-based review/worktree workflow | Establish Nick’s current workflow and whether the desktop app is desired; do not assume it is installed. |
 | Ghostty + Herdr | Multiple CLI agents/projects, SSH continuity, terminal-first work | Another navigation layer, server lifecycle, integration hooks and state-detection maintenance. Strongest direct Omarchy transfer. |
 | cmux | Native macOS terminal workspaces with integrated browser and attention UI | Separate terminal application replacing Ghostty's role for these sessions, despite sharing its rendering technology. |
 | Ghostty with a small notification/project launcher layer | Few simultaneous agents; current friction is mostly opening/finding things | Less unified agent state, but fewer moving parts. |
 | Local runner as an optional adjunct | A concrete offline/privacy/small-assistance task | Model downloads, unified-memory contention, power use, quality evaluation and endpoint management. |
 
-### Existing Codex may already cover the hard isolation problem
+### The Codex desktop app is another option for worktree isolation
 
-Official [worktree documentation](https://learn.chatgpt.com/docs/environments/git-worktrees) describes managed task checkouts, handoff between local and worktree environments, setup-file copying, cleanup, and restoration snapshots. That makes “give every task its own checkout” available without buying or configuring another orchestration app. Managed worktrees can be automatically cleaned up; permanent/pinned work has different treatment. Nick's actual installed build and preferred workflow still need inspection.
+Official [worktree documentation](https://learn.chatgpt.com/docs/environments/git-worktrees) describes managed task checkouts, handoff between local and worktree environments, setup-file copying, cleanup, and restoration snapshots. That makes “give every task its own checkout” a capability to assess in the Codex desktop app before choosing a separate orchestration layer. The app was not found in the baseline inspection. Managed worktrees can be automatically cleaned up; permanent/pinned work has different treatment. Nick's CLI version, desktop-app availability and preferred workflow still need inspection.
 
 A Herdr UI would be most valuable for terminal agents and processes outside that app. It should not claim to observe every Codex desktop conversation merely because it recognizes the CLI. Nor should both systems independently manage deletion of the same checkout. Choose a worktree owner and have other tools open that owner's directories.
 
@@ -125,7 +125,7 @@ Its [notification documentation](https://cmux.com/docs/notifications) covers pan
 
 [Script Commands](https://manual.raycast.com/script-commands) can expose local scripts with metadata and arguments. Proposed commands could open a chosen project, focus an existing agent workspace, or list tasks needing input. This does not require adopting Raycast AI. A first version can use an explicit project registry and Herdr IDs, rather than scraping arbitrary window titles. A graphical roster may warrant a proper extension later; begin with a few named actions.
 
-Ghostty's [configuration reference](https://ghostty.org/docs/config/reference#notify-on-command-finish) documents command-finish notifications since 1.3.0, conditional on focus and shell integration/OSC 133. These are useful for builds and tests, but an interactive agent can remain running through many completed turns. Shell-command completion therefore does not replace agent lifecycle notifications. The installed Ghostty version must be checked before choosing those settings.
+Ghostty's [configuration reference](https://ghostty.org/docs/config/reference#notify-on-command-finish) documents command-finish notifications since 1.3.0, conditional on focus and shell integration/OSC 133. These are useful for builds and tests, but an interactive agent can remain running through many completed turns. Shell-command completion therefore does not replace agent lifecycle notifications. The baseline inspection found Ghostty 1.3.1, which meets that documented version threshold; notification delivery and focus behavior remain untested.
 
 ## Local models on this M4 Max
 
@@ -161,7 +161,7 @@ These are acceptance scenarios for later trials, not passing test results. They 
 
 ## Decisions still owned by Nick
 
-1. Are most active sessions in the Codex app or CLI, and how many unrelated tasks commonly run simultaneously?
+1. Are active sessions primarily in the Codex CLI, an IDE, or a desktop app, and how many unrelated tasks commonly run simultaneously?
 2. Should a project contain browser/editor/agent windows at the desktop level, or should a terminal workspace own most of that context?
 3. Is an always-awake remote machine part of the intended routine, or is local suspend/resume sufficient?
 4. What should interrupt immediately, and what should wait in a quiet review queue? Is usage tracking important enough to read provider state?
