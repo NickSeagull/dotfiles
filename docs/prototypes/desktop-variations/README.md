@@ -30,6 +30,10 @@ Keyboard-driven navigation and manual drop-zone placement are agreed. Nick prefe
 
 The Dock concept was rejected and is not included as a candidate. No software or system settings were installed or activated.
 
+## Existing theme investigation
+
+Nick is considering an existing theme to reduce maintenance, while retaining the original saturated scarlet/cyan appearance. He rejected Catppuccin and Gruvbox as too subdued and declined a comparison viewer. [Cyberdream research and regenerated concepts](cyberdream.md) show the closest existing palette and a version with one scarlet accent override. This is a recommendation awaiting Nick's reaction; it does not replace the accepted visual direction yet.
+
 ## Provenance
 
 Generated using the built-in image-generation tool. The inspected end-4 widgets screenshot served as a visual reference: https://github.com/user-attachments/assets/6a32395f-9437-4192-8faf-2951a9e84cbe . Prompts are preserved in [prompts.json](prompts.json).
