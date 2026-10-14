@@ -32,7 +32,7 @@ The Dock concept was rejected and is not included as a candidate. No software or
 
 ## Existing theme investigation
 
-Nick is considering an existing theme to reduce maintenance, while retaining the original saturated scarlet/cyan appearance. He rejected Catppuccin and Gruvbox as too subdued and declined a comparison viewer. [Cyberdream research and regenerated concepts](cyberdream.md) show the closest existing palette and a version with one scarlet accent override. This is a recommendation awaiting Nick's reaction; it does not replace the accepted visual direction yet.
+Nick chose Cyberdream with the scarlet red override `#FF493D`, keeping upstream bright cyan `#5EF1FF` and neutral charcoal surfaces. He rejected Catppuccin and Gruvbox as too subdued and declined a comparison viewer. [Cyberdream research and regenerated concepts](cyberdream.md) document the selected theme foundation. VS Code coverage is not a priority; Neovim is his likely next editor, though the migration details are not yet settled.
 
 ## Provenance
 
