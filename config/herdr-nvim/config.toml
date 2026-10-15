@@ -1,0 +1,3 @@
+[sidebar]
+nvim_bin = "/opt/homebrew/bin/nvim"
+position = "right"

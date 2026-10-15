@@ -1,0 +1,3 @@
+# Let Herdr receive Cmd+E instead of searching the selected text in Ghostty.
+keybind = cmd+e=unbind
+keybind = cmd+o=unbind

@@ -18,9 +18,23 @@ when available. Node.js is in `home.packages` for Mason's npm-based tools.
 
 Herdr's Neovim integration is `ChmaraX/herdr-nvim`, declared in
 `config/nvim/lua/plugins/herdr.lua` with `opts = {}` to enable its default
-annotation keymaps under `<leader>a`. The Herdr plugin and sidebar/picker
-bindings are already configured separately; preserve them when maintaining
-the Neovim half. Verify the `:Herdr` command and annotation keymaps after
+annotation keymaps under `<leader>a`. Home Manager force-links
+`config/herdr/config.toml` and `config/herdr-nvim/config.toml` into their XDG
+config directories. Keep Herdr's mutable plugins, sessions, sockets, and logs
+outside the repository. The Herdr plugin itself is already installed.
+
+The user prefers direct `cmd+e` / `cmd+o` for the sidebar/file picker; retain
+`prefix+e` / `prefix+o` as fallbacks. Herdr's built-in `edit_scrollback` and
+`open_notification_target` default to those prefix bindings and take priority
+over plugin commands, so move them to `prefix+shift+e` / `prefix+shift+o`.
+Pico appearing on `prefix+e` means scrollback editing won, not that Neovim failed.
+The sidebar explicitly uses `/opt/homebrew/bin/nvim`. Home Manager also
+force-links `config/ghostty/config.ghostty` at Ghostty's native macOS config
+path to free Cmd+E/O for Herdr. Reload Ghostty after changing its keybindings.
+Validate with `HERDR_CONFIG_PATH="$PWD/config/herdr/config.toml" herdr config check`
+and `ghostty +validate-config`, then reload Herdr with `herdr server reload-config`.
+
+Verify the `:Herdr` command and annotation keymaps after
 installing with `:Lazy install`. Existing persistent Herdr Neovim daemons
 keep their loaded configuration until restarted; save buffers before restarting.
 Upstream setup: https://github.com/ChmaraX/herdr-nvim#install.
