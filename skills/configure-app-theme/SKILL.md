@@ -78,6 +78,16 @@ The CLI theme colors code blocks and diffs; it does not recolor the full TUI.
 Already-running CLI sessions can select the installed theme with `/theme`;
 preserve active work instead of restarting them.
 
+Wallpaper concepts live in `assets/wallpapers/cyberdream-scarlet/`, with their
+generation prompts alongside the PNGs. The connected Samsung LC34G55T ultrawide
+was verified at 3440 × 1440 on 2026-10-15; recheck connected displays before
+future exports. Keep scarlet dominant and cyan restrained, with dark breathing
+room behind windows. These are concepts, not a selected wallpaper: do not
+change the desktop background without a selection or an explicit request.
+The initial concepts were generated at 1935 × 812, then upscaled and slightly
+cropped to the monitor's exact dimensions; do not call them native-resolution
+generations.
+
 There is no universal macOS application-theme switch. If this flake later adopts
 [Stylix](https://nix-community.github.io/stylix/), reuse its shared palette and
 supported targets, adding app-specific overrides where needed. Do not add a
