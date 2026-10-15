@@ -10,6 +10,10 @@ Default to managing everything through nix, even external configuration files, t
 
 this config IS THE SOURCE OF TRUTH, so enable everything that ensures that home-manager overwrites files and so on.
 
+Do not suggest that the user review plans, skills, documents, code, or other artifacts. Perform the necessary reviews and checks yourself. When the task is complete, report the result without inventing a next action for the user.
+
+After configuration changes, automatically build and activate the nix-darwin/Home Manager configuration so the change is picked up. Use `skills/activate-darwin/SKILL.md` for the native macOS authorization dialog, reload affected apps when safe, and verify the running settings. Building without activation is not completion. Do not ask for activation permission again; this is standing authorization. Respect a cancelled authorization dialog and preserve unsaved work.
+
 When installing an app or changing its theme, use `skills/configure-app-theme/SKILL.md` to apply Cyberdream dark with scarlet accents wherever supported. Theme configuration is part of installation; an explicit theme choice in the current request takes precedence.
 
 commit and push everything (icluding the unrelated changes in the branch) once a task is finished. When the task is finished and merge to main directly, no need to make PRs

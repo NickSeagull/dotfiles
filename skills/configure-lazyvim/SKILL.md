@@ -12,6 +12,11 @@ all with `force = true`, so this repository stays the source of truth.
 For installation or theme changes, apply
 [configure-app-theme](../configure-app-theme/SKILL.md): Cyberdream default dark
 with scarlet `#FF493D` and upstream cyan `#5EF1FF`.
+The plugin and LazyVim colorscheme override live in `lua/plugins/theme.lua`;
+the bootstrap's install colorscheme must also prefer Cyberdream. Scarlet UI
+highlights and lualine's normal mode accent preserve upstream syntax colors.
+After activation, install the newly declared plugin and apply the theme to
+existing Neovim servers through RPC, preserving buffers and sessions.
 
 The user prefers long lines to wrap instead of scrolling horizontally. Keep
 `wrap` and `linebreak` enabled in `config/nvim/lua/config/options.lua` so lines

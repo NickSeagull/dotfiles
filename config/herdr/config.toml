@@ -1,8 +1,30 @@
 onboarding = false
 
 [theme]
-name = "gruvbox"
+# Herdr has no built-in Cyberdream; map its custom tokens to the dark palette.
+name = "terminal"
 auto_switch = false
+
+[theme.custom]
+accent = "#FF493D"
+panel_bg = "#16181A"
+sidebar_bg = "#16181A"
+active_row_bg = "#1E2124"
+selection_bg = "#3C4048"
+surface0 = "#1E2124"
+surface1 = "#3C4048"
+surface_dim = "#16181A"
+overlay0 = "#7B8496"
+overlay1 = "#7B8496"
+text = "#FFFFFF"
+subtext0 = "#7B8496"
+mauve = "#BD5EFF"
+green = "#5EFF6C"
+yellow = "#F1FF5E"
+red = "#FF493D"
+blue = "#5EA1FF"
+teal = "#5EF1FF"
+peach = "#FFBD5E"
 
 [keys]
 # Free the plugin's prefix bindings from built-in actions.

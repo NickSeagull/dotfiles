@@ -7,6 +7,10 @@ Use this for authorized installations and configuration activations in this
 dotfiles repository. The user prefers entering their password in the system
 authorization dialog so the agent can finish activation itself.
 
+`AGENTS.md` grants standing authorization to build and activate configuration
+changes automatically. Complete activation and safe app reloads before calling
+the task done; do not end by asking the user to rebuild or review an artifact.
+
 Build and inspect the change before requesting elevated execution. From the
 repository, build with `darwin-rebuild build --flake '.#corthan'`. Nix flakes
 ignore untracked files: include newly referenced configuration files in Git's

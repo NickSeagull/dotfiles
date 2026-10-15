@@ -54,9 +54,19 @@ The palette above makes routine installs independent of tracker access.
    the requested app.
 4. Validate the app's config using its available checker and build the affected
    Darwin configuration with `darwin-rebuild build --flake '.#corthan'`. Check
-   the selected theme and accent after an authorized activation/reload. Report
-   what was verified and any remaining runtime limitation. Editing config alone
-   does not authorize system activation or restarting unsaved app sessions.
+   the selected theme and accent after automatically activating the successful
+   build with [activate-darwin](../activate-darwin/SKILL.md), as authorized by
+   this repository's `AGENTS.md`. Reload affected apps safely and preserve
+   unsaved work. Report what actually activated and any runtime limitation.
+
+Herdr uses `config/herdr/config.toml`: `name = "terminal"` plus a full
+`[theme.custom]` Cyberdream palette, because there is no built-in Cyberdream.
+Keep `accent` and `red` scarlet, `teal` upstream cyan, and `auto_switch = false`.
+LazyVim uses `config/nvim/lua/plugins/theme.lua` to install Cyberdream, select it
+through LazyVim's `colorscheme` option, and apply the red override plus scarlet
+interface highlights. Keep lazy.nvim's install colorscheme aligned in
+`config/nvim/lua/config/lazy.lua`. Theme changes in existing Neovim servers
+should be applied through RPC without discarding buffers or restarting sessions.
 
 There is no universal macOS application-theme switch. If this flake later adopts
 [Stylix](https://nix-community.github.io/stylix/), reuse its shared palette and

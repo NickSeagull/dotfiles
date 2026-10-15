@@ -26,7 +26,7 @@ require("lazy").setup({
   -- Home Manager owns the config; keep the mutable plugin lockfile in state.
   lockfile = vim.fn.stdpath("state") .. "/lazy-lock.json",
   defaults = { lazy = false, version = false },
-  install = { colorscheme = { "tokyonight", "habamax" } },
+  install = { colorscheme = { "cyberdream", "habamax" } },
   checker = { enabled = true, notify = false },
   performance = {
     rtp = {
