@@ -59,3 +59,17 @@ and the cask's `codexbar` CLI after activation. The user needs several distinct
 ChatGPT subscription accounts. CodexBar's managed Codex accounts support that;
 account authentication is completed in the app. Research notes belong under the
 Git-ignored `.agents-state/docs/` directory, per `AGENTS.md`.
+
+CodexBar normally has no Dock icon or main window; a live process alone does not
+prove its menu is accessible. If the icon is missing, quit and relaunch once,
+waiting for the old process to exit before reopening (otherwise LaunchServices
+can return -600). Bartender can verify and reveal the item without GUI scripting:
+
+```sh
+osascript -e 'tell application id "com.surteesstudios.Bartender" to list menu bar items'
+osascript -e 'tell application id "com.surteesstudios.Bartender" to activate "com.steipete.codexbar-codexbar-codex"'
+```
+
+Use the ID returned by Bartender; the example is the separate Codex icon. Confirm
+the menu appears. `NSStatusItem VisibleCC codexbar-merged = 0` is normal when
+separate provider icons are in use; do not treat it alone as a visibility fault.
