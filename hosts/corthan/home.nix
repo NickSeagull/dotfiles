@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  imports = [ ../../config/codex ];
+  imports = [
+    ../../config/codex
+    ../../config/wallpaper.nix
+  ];
 
   home.username = "nick";
   home.homeDirectory = "/Users/nick";

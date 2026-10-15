@@ -82,8 +82,13 @@ Wallpaper concepts live in `assets/wallpapers/cyberdream-scarlet/`, with their
 generation prompts alongside the PNGs. The connected Samsung LC34G55T ultrawide
 was verified at 3440 × 1440 on 2026-10-15; recheck connected displays before
 future exports. Keep scarlet dominant and cyan restrained, with dark breathing
-room behind windows. These are concepts, not a selected wallpaper: do not
-change the desktop background without a selection or an explicit request.
+room behind windows. Nick selected **Cinder Horizon** as the persistent wallpaper.
+`config/wallpaper.nix` force-links it at
+`~/Pictures/Wallpapers/cinder-horizon.png` and uses `programs.desktoppr` with
+`scale = "fill"` and `setOnlyOnce = false`. Its activation waits for the image
+link, and the `org.nix-community.home.wallpaper` LaunchAgent reapplies it at
+login. Use the module's `desktoppr` binary to verify the current image. Keep
+future wallpaper changes tied to an explicit selection or request.
 The initial concepts were generated at 1935 × 812, then upscaled and slightly
 cropped to the monitor's exact dimensions; do not call them native-resolution
 generations.
