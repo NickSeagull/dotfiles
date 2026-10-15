@@ -15,14 +15,24 @@ wrap visually at word boundaries without changing the file's contents.
 
 lazy.nvim manages downloaded plugins in Neovim's data directory. Its mutable
 lockfile belongs in `stdpath("state")`, not beside the Nix-owned config files.
-Preserve this separation when changing the bootstrap.
+Preserve this separation when changing the bootstrap. Set `vim.g.mapleader`
+and `vim.g.maplocalleader` at the start of `config/lazy.lua`, before loading
+lazy.nvim; keep LazyVim's space and backslash defaults.
 
 Use Home Manager program modules for additional Nix-managed supporting tools
 when available. Node.js is in `home.packages` for Mason's npm-based tools.
 
 Herdr's Neovim integration is `ChmaraX/herdr-nvim`, declared in
-`config/nvim/lua/plugins/herdr.lua` with `opts = {}` to enable its default
-annotation keymaps under `<leader>a`. Home Manager force-links
+`config/nvim/lua/plugins/herdr.lua` with `opts = { keymaps = false }` and
+explicit lazy.nvim-managed annotation keymaps under `<leader>a`. Keep
+`lazy = false` so `:Herdr` is available immediately even with `keys`.
+Herdr's sidebar daemon calls `require("herdr-nvim").setup()` again on `VimEnter`;
+plugin-owned maps then warn about every existing mapping. Keep keymap ownership
+in lazy.nvim so repeated setup stays quiet. Keep separate normal and visual
+callbacks for comments and references so character selections retain columns.
+Reproduce sidebar startup in checks by registering its second setup with a
+pre-init `--cmd` VimEnter autocmd; a plain headless launch misses the bug.
+Home Manager force-links
 `config/herdr/config.toml` and `config/herdr-nvim/config.toml` into their XDG
 config directories. Keep Herdr's mutable plugins, sessions, sockets, and logs
 outside the repository. The Herdr plugin itself is already installed.
