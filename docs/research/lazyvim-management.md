@@ -2,7 +2,7 @@
 
 **Use Home Manager for Neovim and external tools, repo Lua for configuration, and lazy.nvim for plugins. Keep both `lazy-lock.json` and `lazyvim.json` writable. Automatic update checking does not install updates.**
 
-Research completed 2026-10-15 for [Verify LazyVim integration and automatic update mechanisms](https://plane.p.egregore.io/egregore/projects/e4709aa7-c911-4a7b-a9ec-f9eaa2bb905b/issues/115e1ae1-e058-4e1e-91b8-3e59401d32bf/), a child of [Define a repository-local LazyVim management skill](https://plane.p.egregore.io/egregore/projects/e4709aa7-c911-4a7b-a9ec-f9eaa2bb905b/issues/1fa08275-767b-46c6-a808-a6b2b08a3bb9/). This report resolves technical facts, not Nick's update cadence, unattended scope, or failure policy. The intended skill is `.agents/skills/lazyvim/SKILL.md`; implementation and installation have not started.
+Research completed 2026-10-15 for [Verify LazyVim integration and automatic update mechanisms](https://plane.p.egregore.io/egregore/projects/e4709aa7-c911-4a7b-a9ec-f9eaa2bb905b/issues/115e1ae1-e058-4e1e-91b8-3e59401d32bf/), a child of [Define a LazyVim management skill for these dotfiles](https://plane.p.egregore.io/egregore/projects/e4709aa7-c911-4a7b-a9ec-f9eaa2bb905b/issues/1fa08275-767b-46c6-a808-a6b2b08a3bb9/). This report resolves technical facts, not Nick's update cadence, unattended scope, or failure policy. The intended skill is `.agents/skills/lazyvim/SKILL.md`; implementation and installation have not started.
 
 ## Observed starting point
 
