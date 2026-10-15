@@ -9,6 +9,10 @@ The user chose Homebrew for Neovim: declare it in `homebrew.brews` in
 Home Manager owns `nvim/init.lua` and recursively links `config/nvim/lua/`,
 all with `force = true`, so this repository stays the source of truth.
 
+The user prefers long lines to wrap instead of scrolling horizontally. Keep
+`wrap` and `linebreak` enabled in `config/nvim/lua/config/options.lua` so lines
+wrap visually at word boundaries without changing the file's contents.
+
 lazy.nvim manages downloaded plugins in Neovim's data directory. Its mutable
 lockfile belongs in `stdpath("state")`, not beside the Nix-owned config files.
 Preserve this separation when changing the bootstrap.
