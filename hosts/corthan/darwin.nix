@@ -1,5 +1,7 @@
+{ lib, ... }:
 {
   nixpkgs.hostPlatform = "aarch64-darwin";
+  nixpkgs.config.allowUnfreePredicate = pkg: lib.getName pkg == "bartender";
 
   # Determinate manages Nix, its daemon, and /etc/nix/nix.conf.
   nix.enable = false;

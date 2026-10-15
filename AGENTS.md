@@ -1,4 +1,4 @@
-This is a dotfiles repo that manages configuration of a macbook via nix-darwin and home manager.
+This is a dotfiles repo that manages configuration of a macbook via nix-darwin and home manager. Assume that any request is geared towards this repo files, unless stated otherwise.
 
 After each completed task, ensure that you either maintain the agent skills in this codebase with the user preferences and learnings.
 
@@ -8,5 +8,5 @@ Default to managing everything through nix, even external configuration files, t
 
 this config IS THE SOURCE OF TRUTH, so enable everything that ensures that home-manager overwrites files and so on.
 
-commit and push everything (icluding the unrelated changes in the branch) once a task is finished. When the task is finished make a PR and merge to main
+commit and push everything (icluding the unrelated changes in the branch) once a task is finished. When the task is finished and merge to main directly, no need to make PRs
 

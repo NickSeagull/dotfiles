@@ -41,3 +41,14 @@ retrying. Verify `/run/current-system` and the requested application after a
 successful switch; report only what actually activated.
 
 Reference: [Apple Technical Note TN2065](https://developer.apple.com/library/archive/technotes/tn2065/_index.html).
+
+For GUI apps, check compatibility against the running macOS before choosing a
+package: the newest Homebrew cask can target a newer OS even when its declared
+minimum allows installation. This Mac runs macOS 26; Bartender's vendor currently
+recommends version 6 for it. `home.packages` overrides `pkgs.bartender` to 6.6.2
+with a checksummed archive from `downloads.macbartender.com`; the locked package's
+older `www.macbartender.com` URL returns 404. There is no Bartender Home Manager
+program module. Its unfree
+permission is scoped to Bartender in `hosts/corthan/darwin.nix`. Recheck these
+facts when updating the flake or macOS. Home Manager copies apps into
+`~/Applications/Home Manager Apps`; verify that location as well as system state.

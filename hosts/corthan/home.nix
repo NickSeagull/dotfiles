@@ -4,8 +4,20 @@
   home.homeDirectory = "/Users/nick";
   home.stateVersion = "26.05";
 
-  # Runtime for LazyVim tools installed through Mason (e.g. npm-based servers).
-  home.packages = [ pkgs.nodejs ];
+  home.packages = [
+    # Bartender 6 supports macOS 26; nixpkgs' older download URL returns 404.
+    (pkgs.bartender.overrideAttrs (finalAttrs: _: {
+      version = "6.6.2";
+      src = pkgs.fetchzip {
+        url = "https://downloads.macbartender.com/B2/updates/${
+          builtins.replaceStrings [ "." ] [ "-" ] finalAttrs.version
+        }/Bartender%206.zip";
+        hash = "sha256-anIvq/M0/LcnRfVcOq0F7LWx5NSNVyqjfpWfmC/XmkY=";
+      };
+    }))
+    # Runtime for LazyVim tools installed through Mason (e.g. npm-based servers).
+    pkgs.nodejs
+  ];
   home.file = {
     "Library/Application Support/com.mitchellh.ghostty/config.ghostty" = {
       source = ../../config/ghostty/config.ghostty;
