@@ -16,6 +16,15 @@ Preserve this separation when changing the bootstrap.
 Use Home Manager program modules for additional Nix-managed supporting tools
 when available. Node.js is in `home.packages` for Mason's npm-based tools.
 
+Herdr's Neovim integration is `ChmaraX/herdr-nvim`, declared in
+`config/nvim/lua/plugins/herdr.lua` with `opts = {}` to enable its default
+annotation keymaps under `<leader>a`. The Herdr plugin and sidebar/picker
+bindings are already configured separately; preserve them when maintaining
+the Neovim half. Verify the `:Herdr` command and annotation keymaps after
+installing with `:Lazy install`. Existing persistent Herdr Neovim daemons
+keep their loaded configuration until restarted; save buffers before restarting.
+Upstream setup: https://github.com/ChmaraX/herdr-nvim#install.
+
 Build the combined system with `darwin-rebuild build --flake '.#corthan'`, then
 use [activate-darwin](../activate-darwin/SKILL.md) for the user's preferred native
 macOS authorization dialog. Verify with `nvim` and `:LazyHealth` after activation.
