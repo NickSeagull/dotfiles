@@ -68,6 +68,16 @@ interface highlights. Keep lazy.nvim's install colorscheme aligned in
 `config/nvim/lua/config/lazy.lua`. Theme changes in existing Neovim servers
 should be applied through RPC without discarding buffers or restarting sessions.
 
+Codex CLI uses the pinned official TextMate export in `config/codex/default.nix`,
+with the red override and the filename `cyberdream-scarlet.tmTheme`. Home Manager
+force-links it under `~/.codex/themes/` and reapplies `tui.theme` on activation.
+Its config also stores mutable trust/plugin/onboarding state: keep that file
+writable and use the TOML-preserving activation helper for the owned theme key.
+Do not migrate the standalone Codex installation or overwrite unrelated config.
+The CLI theme colors code blocks and diffs; it does not recolor the full TUI.
+Already-running CLI sessions can select the installed theme with `/theme`;
+preserve active work instead of restarting them.
+
 There is no universal macOS application-theme switch. If this flake later adopts
 [Stylix](https://nix-community.github.io/stylix/), reuse its shared palette and
 supported targets, adding app-specific overrides where needed. Do not add a
