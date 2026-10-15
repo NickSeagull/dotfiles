@@ -1,0 +1,1 @@
+-- Options here load before LazyVim starts.

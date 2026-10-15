@@ -5,7 +5,24 @@
   nix.enable = false;
 
   system.stateVersion = 6;
+  system.primaryUser = "nick";
   users.users.nick.home = "/Users/nick";
+
+  homebrew = {
+    enable = true;
+    taps = [ "sozercan/repo" ];
+    brews = [
+      "direnv"
+      "neovim"
+    ];
+    casks = [
+      "azure-cli"
+      "ghostty"
+      "sozercan/repo/kaset"
+      "muesli"
+      "raycast"
+    ];
+  };
 
   home-manager = {
     useGlobalPkgs = true;
