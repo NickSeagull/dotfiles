@@ -1,0 +1,1 @@
+-- Custom autocommands here load on LazyVim's VeryLazy event.
