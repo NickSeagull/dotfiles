@@ -52,3 +52,10 @@ program module. Its unfree
 permission is scoped to Bartender in `hosts/corthan/darwin.nix`. Recheck these
 facts when updating the flake or macOS. Home Manager copies apps into
 `~/Applications/Home Manager Apps`; verify that location as well as system state.
+
+CodexBar is declared in nix-darwin's `homebrew.casks`: the locked Home Manager
+and nixpkgs do not supply a module or package. Verify `/Applications/CodexBar.app`
+and the cask's `codexbar` CLI after activation. The user needs several distinct
+ChatGPT subscription accounts. CodexBar's managed Codex accounts support that;
+account authentication is completed in the app. Research notes belong under the
+Git-ignored `.agents-state/docs/` directory, per `AGENTS.md`.

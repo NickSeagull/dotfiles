@@ -19,6 +19,7 @@
     ];
     casks = [
       "azure-cli"
+      "codexbar"
       "ghostty"
       "sozercan/repo/kaset"
       "muesli"
