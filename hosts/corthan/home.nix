@@ -7,6 +7,10 @@
   # Runtime for LazyVim tools installed through Mason (e.g. npm-based servers).
   home.packages = [ pkgs.nodejs ];
   home.file = {
+    "Library/Application Support/com.mitchellh.ghostty/config.ghostty" = {
+      source = ../../config/ghostty/config.ghostty;
+      force = true;
+    };
     ".codex/skills/activate-darwin" = {
       source = ../../skills/activate-darwin;
       recursive = true;
@@ -37,6 +41,14 @@
   programs.lazygit.enable = true;
 
   xdg.configFile = {
+    "herdr/config.toml" = {
+      source = ../../config/herdr/config.toml;
+      force = true;
+    };
+    "herdr-nvim/config.toml" = {
+      source = ../../config/herdr-nvim/config.toml;
+      force = true;
+    };
     "nvim/init.lua" = {
       text = ''
         require("config.lazy")
