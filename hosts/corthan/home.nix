@@ -33,6 +33,11 @@
       recursive = true;
       force = true;
     };
+    ".codex/skills/configure-app-theme" = {
+      source = ../../skills/configure-app-theme;
+      recursive = true;
+      force = true;
+    };
   };
 
   programs.gh = {

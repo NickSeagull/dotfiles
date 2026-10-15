@@ -10,5 +10,7 @@ Default to managing everything through nix, even external configuration files, t
 
 this config IS THE SOURCE OF TRUTH, so enable everything that ensures that home-manager overwrites files and so on.
 
+When installing an app or changing its theme, use `skills/configure-app-theme/SKILL.md` to apply Cyberdream dark with scarlet accents wherever supported. Theme configuration is part of installation; an explicit theme choice in the current request takes precedence.
+
 commit and push everything (icluding the unrelated changes in the branch) once a task is finished. When the task is finished and merge to main directly, no need to make PRs
 
