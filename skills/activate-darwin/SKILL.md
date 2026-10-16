@@ -64,6 +64,17 @@ ChatGPT subscription accounts. CodexBar's managed Codex accounts support that;
 account authentication is completed in the app. Research notes belong under the
 Git-ignored `.agents-state/docs/` directory, per `AGENTS.md`.
 
+Codex shortcuts live in `config/codex/default.nix` as Home Manager-owned
+executables under `~/.local/bin`, so they work without replacing shell startup
+files. `cx` runs `codex --approve-for-me`; `cxh` uses the same flag with
+`CODEX_HOME=~/.codex-h` and file credential storage. The alternate home shares
+the default home's config, skills, and themes through managed links, while its
+`auth.json` and session state stay separate. Use `cxh login` for the second
+ChatGPT subscription; never copy credentials from the default home. Codex
+`--profile` selects configuration overrides and does not provide a separate
+login store. Verify both wrappers' argument forwarding and separate login
+status after activation without logging out or interrupting active sessions.
+
 CodexBar normally has no Dock icon or main window; a live process alone does not
 prove its menu is accessible. If the icon is missing, quit and relaunch once,
 waiting for the old process to exit before reopening (otherwise LaunchServices

@@ -1,5 +1,7 @@
 { config, lib, pkgs, ... }:
 let
+  codexHome = "${config.home.homeDirectory}/.codex";
+  alternateHome = "${config.home.homeDirectory}/.codex-h";
   themeName = "cyberdream-scarlet";
   cyberdream = pkgs.fetchzip {
     url = "https://github.com/scottmckendry/cyberdream.nvim/archive/642c55ad2225f9f4809905918121b2c6d252ad58.tar.gz";
@@ -13,10 +15,32 @@ let
   python = pkgs.python3.withPackages (ps: [ ps.tomlkit ]);
 in
 {
-  home.file.".codex/themes/${themeName}.tmTheme" = {
-    source = theme;
-    force = true;
-  };
+  # Shell-independent shortcuts, available through the existing ~/.local/bin PATH.
+  home.file = {
+    ".local/bin/cx" = {
+      source = pkgs.writeShellScript "cx" ''
+        exec codex --approve-for-me "$@"
+      '';
+      force = true;
+    };
+    ".local/bin/cxh" = {
+      source = pkgs.writeShellScript "cxh" ''
+        export CODEX_HOME=${lib.escapeShellArg alternateHome}
+        exec codex --approve-for-me -c 'cli_auth_credentials_store="file"' "$@"
+      '';
+      force = true;
+    };
+    ".codex/themes/${themeName}.tmTheme" = {
+      source = theme;
+      force = true;
+    };
+  } // lib.genAttrs
+    # Share preferences and resources; keep auth.json and sessions separate.
+    (map (name: ".codex-h/${name}") [ "config.toml" "skills" "themes" ])
+    (path: {
+      source = config.lib.file.mkOutOfStoreSymlink "${codexHome}/${baseNameOf path}";
+      force = true;
+    });
 
   # Codex also writes trust, plugin, and onboarding state to config.toml.
   # Reapply the owned theme setting while preserving that mutable state.
