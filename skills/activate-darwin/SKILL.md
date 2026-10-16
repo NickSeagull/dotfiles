@@ -88,3 +88,20 @@ osascript -e 'tell application id "com.surteesstudios.Bartender" to activate "co
 Use the ID returned by Bartender; the example is the separate Codex icon. Confirm
 the menu appears. `NSStatusItem VisibleCC codexbar-merged = 0` is normal when
 separate provider icons are in use; do not treat it alone as a visibility fault.
+
+Azure Repos Git authentication is managed in `hosts/corthan/home.nix` for
+`https://dev.azure.com` and `https://*.visualstudio.com`. Preserve each host's
+empty credential-helper reset, `useHttpPath`, Bearer capability negotiation,
+and fallback for older Git clients. The helper resolves `az` from
+`osConfig.homebrew.prefix`, matching the existing Homebrew-managed Azure CLI.
+Strip the inline helper's final newline: Git appends the operation argument,
+which must reach the final function call rather than become a separate command.
+It uses the existing `az login` session; tokens and Azure caches stay outside
+the repository and Nix store. Keep GitHub's `gh` helpers and Git identity intact.
+When migrating local overrides, first verify the activated managed config with
+`GIT_CONFIG_GLOBAL="$HOME/.config/git/config" GIT_TERMINAL_PROMPT=0` and
+`git ls-remote --exit-code "$AZURE_REPOS_URL" HEAD`, using the repository URL
+provided in the current task. Keep private project URLs out of published docs.
+Then remove only the migrated keys from `~/.gitconfig` and repeat without
+`GIT_CONFIG_GLOBAL`.
+Never print credential-helper output containing a real token.

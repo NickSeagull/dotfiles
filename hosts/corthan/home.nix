@@ -1,4 +1,24 @@
-{ pkgs, ... }:
+{ lib, osConfig, pkgs, ... }:
+let
+  # Use the Azure CLI already managed by nix-darwin's Homebrew configuration.
+  # Git appends the operation argument; the helper must end at `f`, without a newline.
+  azureCredentialHelper = lib.removeSuffix "\n" ''
+    !f() {
+      test "$1" = get || return 0
+      bearer=
+      while IFS= read -r line && test -n "$line"; do
+        case "$line" in 'capability[]=authtype') bearer=1 ;; esac
+      done
+      token=$(${lib.escapeShellArg "${osConfig.homebrew.prefix}/bin/az"} account get-access-token --resource 499b84ac-1321-427f-aa17-267ca6975798 --query accessToken --output tsv --only-show-errors) || return $?
+      test -n "$token" || return 1
+      if test "$bearer" = 1; then
+        printf 'capability[]=authtype\nauthtype=Bearer\ncredential=%s\n' "$token"
+      else
+        printf 'username=azure-cli\npassword=%s\n' "$token"
+      fi
+    }; f
+  '';
+in
 {
   imports = [
     ../../config/codex
@@ -52,9 +72,16 @@
 
   programs.git = {
     enable = true;
-    settings.user = {
-      name = "Nick Seagull";
-      email = "github@nickseagull.dev";
+    settings = {
+      user = {
+        name = "Nick Seagull";
+        email = "github@nickseagull.dev";
+      };
+      credential = lib.genAttrs [ "https://dev.azure.com" "https://*.visualstudio.com" ] (_: {
+        # Reset inherited helpers so Azure tokens never enter another helper's store.
+        helper = [ "" azureCredentialHelper ];
+        useHttpPath = true;
+      });
     };
   };
 
@@ -63,6 +90,7 @@
   programs.lazygit.enable = true;
 
   xdg.configFile = {
+    "git/config".force = true;
     "herdr/config.toml" = {
       source = ../../config/herdr/config.toml;
       force = true;

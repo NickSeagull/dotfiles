@@ -4,6 +4,8 @@ After each completed task, ensure that you either maintain the agent skills in t
 
 Keep research documents under `.agents-state/docs/`, not the repository's top-level `docs/` folder. `.agents-state/` is local agent state and must remain ignored by Git.
 
+This is a public GitHub repository. Before every commit and push, inspect all changes being published, including unrelated changes, for tokens, passwords, API keys, private keys, credential files, token caches, private repository URLs, and other private or sensitive information. Keep credentials and authentication caches outside the repository and Nix store; publish only configuration that refers to them safely. If sensitive information is found, exclude it from publication, report its location without exposing its value, and resolve it before pushing.
+
 If the task is ambiguous or you require knowing user's preferences, grill the user.
 
 Default to managing everything through nix, even external configuration files, those should be linked by home-manager.
