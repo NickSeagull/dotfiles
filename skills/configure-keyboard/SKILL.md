@@ -184,3 +184,35 @@ and respect cancellation of the native authorization dialog.
 Keep local research under Git-ignored `.agents-state/docs/`. Publish durable
 findings and citations in the relevant research ticket resolution. Review every
 tracked change for sensitive information before the authorized commit and push.
+
+## Implemented stack and operating commands
+
+The macOS implementation lives in `config/keyboard/`; `default.nix` is imported by
+`hosts/corthan/darwin.nix`. Read its README for service, permission and verification
+details. Keep shared bindings in `layout.json` and platform details in `macos.json`.
+Telegram's installed bundle is `com.tdesktop.Telegram`; do not assume the App Store
+bundle identifier. App launch requests must not block runner health checks during
+slow startup. Preserve the helper's executable identity when its source does not
+need to change, because macOS permissions are granted to actual executables.
+
+Use `keyboard status`, `keyboard disable`, `keyboard enable` and
+`keyboard permissions`. Disable state and the crash journal are root-owned under
+`/var/db/org.nick.keyboard`; authenticate the user control socket with Darwin peer
+credentials. Never clear disable state during activation. Explicit enable can
+restart the failed runner and requests native authorization if the supervisor
+itself needs restarting. Distinguish status `starting` from `running`.
+
+Root launchd labels are `org.nick.keyboard` and `org.nick.keyboard-driver`; the
+user LaunchAgent is `org.nick.keyboard-actions`. All use `KeepAlive = false`.
+A matching signed DriverKit manager is copied under `/Applications` for system
+extension registration; retain its signature and keep the source receipt outside
+the app bundle. Nix remains the source of that copied payload. Home Manager forces
+the remaining managed files and this skill.
+
+The pinned engine's TCP interface is patched to reject mutating commands while
+retaining push-msg notifications. Use Kanata's actual upstream simulator for
+timing, collision, repeat and release tests; lifecycle tests use real sockets and
+child processes with a fake engine. Run those lifecycle tests as the console user,
+outside a socket-restricting sandbox. A reset/closed runner connection must disable
+capture while leaving the supervisor's status/control socket available. Do not
+replace these checks with a hand-written timing model.

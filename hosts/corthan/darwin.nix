@@ -1,5 +1,7 @@
 { lib, ... }:
 {
+  imports = [ ../../config/keyboard ];
+
   nixpkgs.hostPlatform = "aarch64-darwin";
   nixpkgs.config.allowUnfreePredicate = pkg: lib.getName pkg == "bartender";
 

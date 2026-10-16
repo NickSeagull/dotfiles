@@ -1,0 +1,12 @@
+{
+  "hold_ms": 200,
+  "modifiers": {"a": "lsft", ";": "rsft", "s": "lctl", "l": "rctl", "d": "lalt", "k": "ralt", "f": "lmet", "j": "rmet"},
+  "layers": {"text": ["z", "/"], "windows": ["x", "."], "common": ["c", ","], "messaging": ["v", "m"], "notes": ["b", "n"], "selection": ["g", "h"]},
+  "movement": {"h": "left", "j": "down", "k": "up", "l": "right", "b": "word-back", "w": "word-forward", "e": "word-forward", "0": "line-start", "4": "line-end"},
+  "actions": {
+    "windows": {"h": "app.previous", "l": "app.next", "j": "window.next", "k": "window.previous"},
+    "common": {"b": "launch.browser", "t": "launch.terminal", "e": "launch.editor"},
+    "messaging": {"t": "launch.telegram", "e": "launch.element"},
+    "notes": {"n": "launch.notion", "o": "launch.obsidian"}
+  }
+}

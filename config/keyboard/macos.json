@@ -1,0 +1,4 @@
+{
+  "movement": {"left": "left", "down": "down", "up": "up", "right": "rght", "word-back": "A-left", "word-forward": "A-rght", "line-start": "M-left", "line-end": "M-rght"},
+  "apps": {"browser": "app.zen-browser.zen", "terminal": "com.mitchellh.ghostty", "editor": "com.microsoft.VSCode", "telegram": "com.tdesktop.Telegram", "element": "im.riot.app", "notion": "notion.id", "obsidian": "md.obsidian"}
+}
