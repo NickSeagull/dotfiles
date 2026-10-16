@@ -16,9 +16,9 @@ Confirmed scope for this effort:
    Windows later. Later-platform deployment is not part of the first version.
 2. Cover app launching/focusing, text navigation and window management. Exact
    trigger letters, actions, timing and exceptions still require decisions.
-3. Prefer a portable mapping engine. Kanata is a candidate, not an accepted
-   selection. A dependency on Karabiner's macOS input driver is acceptable;
-   this does not select Karabiner's mapping engine or Goku.
+3. Use Kanata as the mapping engine, with a small action runner in the signed-in
+   user's session. Karabiner's macOS input driver is acceptable; Karabiner's
+   mapping engine and Goku are not the chosen mapping stack.
 4. Preserve the existing desktop effort's provisional Moom manual placement/drop
    zones, no automatic tiling, and keyboard window switching/navigation unless
    the user explicitly changes those choices. Raycast is the existing launcher
@@ -28,11 +28,19 @@ Confirmed scope for this effort:
    verification of running behavior under the standing authorization in
    `AGENTS.md`.
 
+Kanata owns letter layers, timing and navigation keystrokes. For app and window
+actions, send named messages through Kanata's supported messaging interface to
+the user-session runner. Keep the layer layout shared, with platform-specific
+shortcuts and commands in adapters. Nix owns both Kanata and the runner. This
+accepts one additional user-session service; exact action names, adapter details
+and transport recovery remain implementation work to verify.
+
 When invoked through Wayfinder, keep planning separate from installation. Read
 the current decision records in [Plan portable held-letter action layers for this
 Mac](https://plane.p.egregore.io/egregore/projects/e4709aa7-c911-4a7b-a9ec-f9eaa2bb905b/issues/d4071ffd-1238-4f47-bc7d-f573f2260f7e/)
-before choosing an engine, dispatch mechanism or starter bindings. Those records
-supersede the initial pending choices above. Finish the map with a verified standalone execution task;
+before changing the agreed architecture or selecting starter bindings. Those
+records supersede the initial pending choices above. Finish the map with a
+verified standalone execution task;
 do not deploy a remapper merely to finish charting the map.
 
 Verify the repository-pinned package, matching macOS virtual driver, available
