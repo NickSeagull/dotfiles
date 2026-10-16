@@ -10,3 +10,6 @@ _Avoid_: Chord, when referring to the entire layer rather than a specific key co
 
 **Home-row modifier**:
 A home-row key that types its ordinary character when tapped and acts as a modifier while intentionally held. Matching fingers on the two hands provide the same modifier.
+
+**Emergency disable**:
+A keyboard-workflow state in which remapping is off and ordinary typing is restored. It persists until remapping is explicitly enabled again.

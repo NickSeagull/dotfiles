@@ -17,7 +17,7 @@ Confirmed scope for this effort:
    Windows later. Later-platform deployment is not part of the first version.
 2. Cover category-based app launching/focusing, Vim-inspired native text movement
    and selection, window navigation, and mirrored home-row modifiers. The starter
-   contract below is agreed; recovery and activation remain a separate decision.
+   contract and recovery policy below are agreed.
 3. Use Kanata as the mapping engine, with a small action runner in the signed-in
    user's session. Karabiner's macOS input driver is acceptable; Karabiner's
    mapping engine and Goku are not the chosen mapping stack.
@@ -134,6 +134,40 @@ Raycast stays on Command+Space. Preserve the separate Moom placement preference.
 
 ## Verification and delivery
 
+The canonical recovery decision is [Agree activation recovery and verification
+for action layers](https://plane.p.egregore.io/egregore/projects/e4709aa7-c911-4a7b-a9ec-f9eaa2bb905b/issues/083edfd9-5154-41dd-8141-fd4869bb1dee/).
+
+Emergency recovery is keyboard-only. Use Kanata's raw physical Left
+Control+Space+Escape exit, accepted as an emergency-only exception to one key per
+hand. Do not add a mouse/menu control or require a custom GUI. If either the
+engine or action runner fails, restore ordinary typing, notify once and leave
+remapping disabled until explicitly re-enabled. Emergency/failure disable must
+survive service restarts and login; provide managed keyboard-accessible status
+and re-enable commands. Keep mutable disable state outside the repository and
+Nix store, separate from the forced managed configuration.
+
+Do not use unconditional launchd KeepAlive or a crash-restart loop that defeats
+disable. Verify wrapper exit-status handling: Kanata 1.11's default macOS raw
+emergency exit is successful, and merely restarting on nonzero exits would still
+violate the accepted fail-off policy. A TCP ChangeLayer to a passthrough layer is
+not an emergency reset: it does not clear currently held layers/key state.
+Verify ordinary input, modifier release and pending-repeat cleanup on stopping.
+
+Build and validate before cutover. Prepare emergency/failure handling before
+enabling remapping. Use `skills/activate-darwin/SKILL.md` for the automatic build
+and native authorization workflow; respect cancellation and preserve unsaved
+work. Verify services, dispatch, input behavior and stop/re-enable recovery in
+the running system. Do not force a reboot or logout to obtain evidence.
+
+The user explicitly declined a two-minute hardware check and user-run testing.
+All required checks are agent-run: offline input/timing traces, available native
+runtime checks, actions, selection and repeat cleanup, service failures/restarts,
+and safe wake/reconnection coverage where available. Report physical-key/HID or
+other untested coverage honestly without making user testing a completion gate.
+Do not claim a synthetic test proves physical input capture or raw-key emergency
+handling. OS-required permission/driver approvals remain genuine operational
+prerequisites; they are not invitations to ask for activation permission again.
+
 Verify the repository-pinned package, matching macOS virtual driver, available
 modules, permissions and service integration against primary sources. Treat
 documented platform support separately from a working deployment on this Mac.
@@ -144,7 +178,7 @@ Test held-key behavior against ordinary fast typing and intentional actions,
 including punctuation, mirrored triggers, role collisions such as b+n and z+j,
 selection release, repeated app/window presses and existing modified shortcuts.
 Simple tap/hold support does not establish exact Goku simlayer behavior.
-Agree emergency stop/recovery behavior before activation, preserve unsaved work,
+Apply the agreed emergency policy before activation, preserve unsaved work,
 and respect cancellation of the native authorization dialog.
 
 Keep local research under Git-ignored `.agents-state/docs/`. Publish durable
