@@ -29,8 +29,31 @@ Verify the active system, `/Applications/Orca.app`, `orca --version`, and the
 settings domain's owned keys after activation and first launch. Recheck the
 schema whenever upgrading Orca.
 
+## Agent integration preference
+
+Nick wants Orca agent guidance available across projects, preferably supplied
+by Orca itself, otherwise as global skills. Do not copy Orca skills into each
+project. Keep any persistent installation managed through Home Manager.
+
+Verified with Orca 1.4.230: `orca skills install --all` installs globally by
+default and targets detected agents plus the shared skills directory. Use
+`--agent universal` for only `~/.agents/skills`. The installed skills are small
+discovery stubs; `orca skills get <topic>` serves the version-matched guide from
+the executable. `orca skills update --all` refreshes stubs to the installed build.
+No general automatic skill-injection switch was established by this investigation.
+
+For supervised delegation, load `orca skills get orchestration` and use its
+Run/Task/Dispatch lifecycle with `orca orchestration worker-start`. Provider
+subagent tools do not establish Orca orchestration provenance. Ordinary agent
+launches and ownership handoffs use `orca agent launch` or
+`orca worktree create --agent`; browser and terminal controls use `orca-cli`.
+Skills teach the CLI workflow; they do not register an MCP server or configure
+credentials for unrelated tools. Recheck these contracts after Orca upgrades.
+
 Sources: [installation](https://www.onorca.dev/docs/install),
 [settings](https://www.onorca.dev/docs/settings),
 [settings types](https://github.com/stablyai/orca/blob/v1.4.229/src/shared/global-settings-types.ts),
 [state schema](https://github.com/stablyai/orca/blob/v1.4.229/src/main/persistence/profile-state/profile-state-database-schema.ts),
-[domain writes](https://github.com/stablyai/orca/blob/v1.4.229/src/main/persistence/profile-state/profile-state-documents.ts).
+[domain writes](https://github.com/stablyai/orca/blob/v1.4.229/src/main/persistence/profile-state/profile-state-documents.ts),
+[global skill installation](https://github.com/stablyai/orca/blob/b2879bd5aaac5d27c101ccf4171faa25d9f0bb1e/src/cli/specs/skills.ts),
+[orchestration discovery stub](https://github.com/stablyai/orca/blob/b2879bd5aaac5d27c101ccf4171faa25d9f0bb1e/skills/orchestration/SKILL.md).
