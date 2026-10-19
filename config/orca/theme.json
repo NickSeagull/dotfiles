@@ -1,0 +1,29 @@
+{
+  "theme": "dark",
+  "terminalUseSeparateLightTheme": false,
+  "terminalDividerColorDark": "#3C4048",
+  "terminalColorOverrides": {
+    "background": "#16181A",
+    "foreground": "#FFFFFF",
+    "cursor": "#FFFFFF",
+    "cursorAccent": "#16181A",
+    "selectionBackground": "#3C4048",
+    "selectionForeground": "#FFFFFF",
+    "black": "#16181A",
+    "red": "#FF493D",
+    "green": "#5EFF6C",
+    "yellow": "#F1FF5E",
+    "blue": "#5EA1FF",
+    "magenta": "#FF5EF1",
+    "cyan": "#5EF1FF",
+    "white": "#FFFFFF",
+    "brightBlack": "#3C4048",
+    "brightRed": "#FF493D",
+    "brightGreen": "#5EFF6C",
+    "brightYellow": "#F1FF5E",
+    "brightBlue": "#5EA1FF",
+    "brightMagenta": "#FF5EF1",
+    "brightCyan": "#5EF1FF",
+    "brightWhite": "#FFFFFF"
+  }
+}

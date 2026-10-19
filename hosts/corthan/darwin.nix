@@ -14,7 +14,7 @@
 
   homebrew = {
     enable = true;
-    taps = [ "sozercan/repo" ];
+    taps = [ "sozercan/repo" "stablyai/orca" ];
     brews = [
       "direnv"
       "neovim"
@@ -25,6 +25,7 @@
       "ghostty"
       "sozercan/repo/kaset"
       "muesli"
+      "stablyai/orca/orca"
       "raycast"
     ];
   };

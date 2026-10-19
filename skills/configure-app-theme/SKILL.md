@@ -35,6 +35,9 @@ The palette above makes routine installs independent of tracker access.
 
 ## Apply the theme
 
+For Orca installation, palette ownership, mutable profile storage, and runtime
+verification, read [Orca appearance](references/orca.md).
+
 1. Inspect the app's existing configuration and current official theme docs.
    Check its native theme, custom palette, and accent support. Prefer the
    [official Cyberdream plugin or app export](https://github.com/scottmckendry/cyberdream.nvim#-extras)

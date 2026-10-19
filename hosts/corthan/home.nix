@@ -22,6 +22,7 @@ in
 {
   imports = [
     ../../config/codex
+    ../../config/orca
     ../../config/wallpaper.nix
   ];
 
