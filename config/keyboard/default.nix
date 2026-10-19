@@ -91,6 +91,11 @@ in
         recursive = true;
         force = true;
       };
+      ".codex/skills/keyboard-reference" = {
+        source = ../../skills/keyboard-reference;
+        recursive = true;
+        force = true;
+      };
     };
     launchd.agents.keyboard-actions = {
       enable = true;

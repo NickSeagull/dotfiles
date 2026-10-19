@@ -1,6 +1,6 @@
 ---
 name: configure-keyboard
-description: Adjust or troubleshoot this dotfiles repo's Kanata keyboard layers, home-row modifiers, app/window actions, persistent disable, services, and macOS permissions. Also use when planning changes to the accepted keyboard contract.
+description: Adjust or troubleshoot this dotfiles repo's Kanata keyboard layers, home-row modifiers, app/window actions, persistent disable, services, and macOS permissions. Keep the keyboard-reference skill synchronized when these controls change. Also use when planning changes to the accepted keyboard contract.
 ---
 
 # Keyboard action layers
@@ -14,6 +14,7 @@ forced Home Manager links. The vocabulary is in the repository's `GLOSSARY.md`.
 
 | Work | Read |
 | --- | --- |
+| Show the user's keyboard/chord reference | [Keyboard reference skill](../keyboard-reference/SKILL.md) |
 | Bindings, timing, selection, hand rules, or scope | [Accepted contract](references/bindings.md) |
 | Generator, transport, action runner, services, state, or driver changes | [Mechanisms and ownership](references/mechanisms.md) |
 | Status, recovery, permissions, safe adjustment, or tests | [Operations and verification](references/operations.md) |
@@ -23,6 +24,25 @@ Reference paths such as `config/keyboard/` are relative to the working dotfiles
 repository. The skill may be installed under `~/.codex/skills/configure-keyboard`;
 that installation is a managed copy/link, not the repository to edit. Keep durable
 operational documentation here in `references/`, never in the runtime folder.
+
+## Maintain the user-facing reference
+
+The user's "keyboard" scope is home-row modifiers, text navigation/selection,
+app/window layers, and disable/recovery. App-specific shortcuts belong in other
+references unless explicitly requested.
+
+Whenever an implemented change affects those controls, update
+`skills/keyboard-reference/references/keyboard.md` in the same change, alongside
+the accepted contract and relevant operations/mechanism documentation here.
+Check the reference against `config/keyboard/layout.json`, `macos.json`, the
+generator's timing/precedence behavior, and `service.py`'s recovery commands.
+Keep opposite-hand examples, mirrored triggers, action names, timing, and recovery
+accurate. If the scope or presentation rules change, update the companion
+`SKILL.md` too. Planning alone must not present proposed bindings as deployed.
+
+Edit repository sources rather than installed skill links. Both skills are
+Home Manager-managed; build/activate their updates with the existing activation
+skill and verify the installed reference matches the repository.
 
 ## Essential constraints
 

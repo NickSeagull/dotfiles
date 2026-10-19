@@ -1,5 +1,6 @@
 """Reconcile Orca appearance without replacing sessions or credentials."""
 
+import argparse
 import hashlib
 import json
 import os
@@ -11,14 +12,20 @@ import tempfile
 import time
 
 
+class OrcaRunningError(RuntimeError):
+    pass
+
+
 def require_stopped():
     result = subprocess.run(
         ["/usr/bin/pgrep", "-f", "/Orca.app/Contents/MacOS/"],
         capture_output=True,
         check=False,
     )
+    if result.returncode == 0:
+        raise OrcaRunningError("Orca must be closed before changing its saved appearance")
     if result.returncode != 1:
-        raise RuntimeError("Orca must be closed before changing its saved appearance")
+        raise RuntimeError("Could not determine whether Orca is running")
 
 
 def update_json(path, preferences):
@@ -102,4 +109,14 @@ def set_theme(root, preferences):
 
 
 if __name__ == "__main__":
-    set_theme(Path(sys.argv[1]), json.loads(Path(sys.argv[2]).read_text()))
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("root", type=Path)
+    parser.add_argument("preferences", type=Path)
+    parser.add_argument("--defer-if-running", action="store_true")
+    args = parser.parse_args()
+    try:
+        set_theme(args.root, json.loads(args.preferences.read_text()))
+    except OrcaRunningError:
+        if not args.defer_if_running:
+            raise
+        print("Orca appearance deferred: app is open; close it before the next activation.", file=sys.stderr)

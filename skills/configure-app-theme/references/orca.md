@@ -21,8 +21,15 @@ JSON exports unchanged after SQLite takes ownership. Never link profile state
 to the Nix store or commit it: it can contain credentials and repository paths.
 
 No write occurs when the owned keys already match. If settings must change,
-Orca must be closed; preserve active sessions and unsaved work. Future database
-schemas fail explicitly and require checking upstream before updating the helper.
+Orca must be closed; preserve active sessions and unsaved work. Home Manager
+passes `--defer-if-running` so an unrelated activation reports the pending theme
+update and continues without writing live appearance state. The next activation
+with Orca closed applies it; this deferral does not establish theme completion.
+Direct helper calls remain strict unless that flag is explicitly supplied. Only
+the app-running condition is deferred; invalid data or unsupported schemas still
+fail. Never quit Orca solely to complete an unrelated configuration activation.
+Future database schemas fail explicitly and require checking upstream before
+updating the helper.
 Do not reset profiles or use recovery rollback just to change a theme.
 
 Verify the active system, `/Applications/Orca.app`, `orca --version`, and the

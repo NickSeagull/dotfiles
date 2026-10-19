@@ -12,6 +12,6 @@ in
   home.activation.orcaTheme = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
     run ${pkgs.python3}/bin/python3 ${./set-theme.py} \
       ${lib.escapeShellArg "${config.home.homeDirectory}/Library/Application Support/orca"} \
-      ${preferences}
+      ${preferences} --defer-if-running
   '';
 }
