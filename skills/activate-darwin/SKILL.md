@@ -11,6 +11,11 @@ authorization dialog so the agent can finish activation itself.
 changes automatically. Complete activation and safe app reloads before calling
 the task done; do not end by asking the user to rebuild or review an artifact.
 
+For exact-target handling, pending dialogs, input/focus coordination and batching
+changes, read [native authorization](references/authorization.md). Finish GUI
+checks before opening that dialog; await activation completion before resuming
+focus-changing work.
+
 Build and inspect the change before requesting elevated execution. From the
 repository, build with `darwin-rebuild build --flake '.#corthan'`. Nix flakes
 ignore untracked files: include newly referenced configuration files in Git's

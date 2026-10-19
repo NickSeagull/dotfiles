@@ -2,6 +2,8 @@ This is a dotfiles repo that manages configuration of a macbook via nix-darwin a
 
 After each completed task, ensure that you either maintain the agent skills in this codebase with the user preferences and learnings.
 
+Keep durable agent documentation, operational runbooks, mechanism descriptions, and session learnings beside their owning skill under `skills/<skill-name>/references/`, linked from that skill's `SKILL.md`. Update existing skills before creating a new one. Do not scatter these documents under `config/`, the repository root, or top-level `docs/`, and do not duplicate them in runtime configuration folders. Keep the established glossary/ADR layout for domain records; transient research and execution evidence still belong in ignored `.agents-state/`.
+
 Keep research documents under `.agents-state/docs/`, not the repository's top-level `docs/` folder. `.agents-state/` is local agent state and must remain ignored by Git.
 
 This is a public GitHub repository. Before every commit and push, inspect all changes being published, including unrelated changes, for tokens, passwords, API keys, private keys, credential files, token caches, private repository URLs, and other private or sensitive information. Keep credentials and authentication caches outside the repository and Nix store; publish only configuration that refers to them safely. If sensitive information is found, exclude it from publication, report its location without exposing its value, and resolve it before pushing.
