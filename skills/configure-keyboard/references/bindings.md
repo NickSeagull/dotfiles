@@ -4,16 +4,18 @@ The canonical decision is [Define held-letter behavior and the starter action
 layers](https://plane.p.egregore.io/egregore/projects/e4709aa7-c911-4a7b-a9ec-f9eaa2bb905b/issues/ce516f80-0377-43e1-ba25-f5dd27575e81/).
 Apply these requirements to this effort, not unrelated keyboard projects.
 
-Use one key per hand: no starter action may require holding two keys with the
-same hand. Choose the layer trigger opposite the action key. Do not stack
-home-row modifiers or require Shift as a third physical key for selection.
-Additional generic modifier-combination holds are deferred; a layer action may
-emit a combined shortcut internally. Existing physical modifier keys remain
-available.
+For action layers, use one key per hand: choose the layer trigger opposite the
+action key. Selection emits Shift internally. Home-row modifiers may stack,
+including on the same hand, as requested on 2026-10-20; this supersedes the
+original deferral of generic modifier combinations. Existing physical modifier
+keys remain available and preserve ordinary modified shortcuts.
 
 Use deliberate 200 ms tap/hold behavior. Taps type their ordinary characters.
 Another key before the threshold commits ordinary typing and cancels the hold
 until the trigger is released; it must not activate later during that press.
+Exception: another home-row modifier key does not interrupt a pending modifier
+hold. Each modifier needs its own full 200 ms, whether pressed together or
+staggered. A non-modifier key before that threshold still cancels pending holds.
 Never activate a hold early merely because another key is pressed or released.
 Releasing a trigger exits its layer or modifier role immediately. Holding a
 trigger alone does not repeat its character. Test this behavior; rare trigger
@@ -36,6 +38,10 @@ action key is held; app/window actions fire once per physical press.
 | Control | s | l |
 | Option | d | k |
 | Command | f | j |
+
+Hold j+k for at least 200 ms after the last press for Command+Option, then press
+the shortcut key. Both press orders and independently releasing either modifier
+are supported. Quick j/k taps still type j/k; h remains the selection trigger.
 
 ### Mirrored action layers
 

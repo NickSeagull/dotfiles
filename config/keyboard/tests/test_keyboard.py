@@ -70,6 +70,49 @@ class Traces(unittest.TestCase):
             self.assertEqual(out[0], "↓LGui")
             self.assertEqual(out[-1], "↑LGui")
             self.assertNotIn("↓RGui", out)
+        # Every physical modifier bypasses home-row hold roles, even across
+        # overlapping physical modifiers and releases of their separate markers.
+        for modifier in ("lsft", "rsft", "lctl", "rctl", "lalt", "ralt", "lmet", "rmet"):
+            for key in ("a", "s", "d", "f", "j", "k", "l", ";"):
+                out, _ = self.trace(f"↓{modifier} 🕐5 ↓{key} 🕐250 ↑{key} ↑{modifier} 🕐20")
+                self.assertEqual(len(out), 4, (modifier, key, out))
+                self.assertEqual(out[1], "↓SColon" if key == ";" else f"↓{key.upper()}")
+        out, _ = self.trace("↓lmet ↓lalt 🕐5 ↑lmet 🕐5 ↓j 🕐250 ↑j ↑lalt 🕐20")
+        self.assertEqual(out, ["↓LGui", "↓LAlt", "↑LGui", "↓J", "↑J", "↑LAlt"])
+
+    def test_home_row_modifiers_stack_in_either_order_and_release_independently(self):
+        for first, second, first_mod, second_mod in (
+            ("j", "k", "RGui", "RAlt"), ("k", "j", "RAlt", "RGui"),
+            ("f", "d", "LGui", "LAlt"), ("d", "f", "LAlt", "LGui"),
+            ("j", "d", "RGui", "LAlt"), ("a", "l", "LShift", "RCtrl"),
+        ):
+            for delay in (0, 30, 210):
+                for released_first in (first, second):
+                    remaining = second if released_first == first else first
+                    released_mod = first_mod if released_first == first else second_mod
+                    remaining_mod = second_mod if released_first == first else first_mod
+                    out, _ = self.trace(
+                        f"↓{first} 🕐{delay} ↓{second} 🕐210 ↓p 🕐20 ↑p "
+                        f"↑{released_first} 🕐20 ↓q 🕐20 ↑q ↑{remaining} 🕐20")
+                    self.assertEqual(out, [f"↓{first_mod}", f"↓{second_mod}",
+                        "↓P", "↑P", f"↑{released_mod}", "↓Q", "↑Q", f"↑{remaining_mod}"],
+                        (first, second, delay, released_first))
+
+    def test_simultaneous_modifier_taps_and_early_shortcuts_remain_letters(self):
+        out, _ = self.trace("↓j 🕐30 ↓k 🕐30 ↑j 🕐20 ↑k 🕐20")
+        self.assertEqual(out, ["↓J", "↓K", "↑J", "↑K"])
+        out, _ = self.trace("↓j 🕐30 ↓k 🕐30 ↓p 🕐250 ↑p ↑k ↑j 🕐20")
+        self.assertFalse(any("Gui" in k or "Alt" in k for k in out), out)
+        out, _ = self.trace("↓j 🕐210 ↓k 🕐30 ↓p 🕐250 ↑p ↑k ↑j 🕐20")
+        self.assertEqual(out, ["↓RGui", "↓K", "↓P", "↑P", "↑K", "↑RGui"])
+
+    def test_four_modifiers_stack_without_entering_layers(self):
+        out, log = self.trace("↓j ↓k ↓l ↓; 🕐210 ↓p 🕐20 ↑p ↑; ↑l ↑k ↑j 🕐20")
+        self.assertEqual(out, ["↓RGui", "↓RAlt", "↓RCtrl", "↓RShift", "↓P", "↑P",
+                               "↑RShift", "↑RCtrl", "↑RAlt", "↑RGui"])
+        out, log = self.trace("↓j 🕐210 ↓c 🕐250 ↑c ↑j 🕐20")
+        self.assertEqual(out, ["↓RGui", "↓C", "↑C", "↑RGui"])
+        self.assertNotIn("SIM_MESSAGE", log)
 
     def test_mirrored_navigation_and_trigger_release_cleanup(self):
         for trigger in ("z", "/"):

@@ -2,7 +2,8 @@
 
 Hold the first key for **200 ms**, then press the action key with the opposite
 hand. Tapping types the ordinary character. Another key before the threshold
-cancels that hold until release. Existing physical modifier shortcuts still work.
+cancels that hold until release, except another home-row modifier can join a
+pending modifier hold. Existing physical modifier shortcuts still work.
 
 ## Home-row modifiers
 
@@ -13,8 +14,11 @@ cancels that hold until release. Existing physical modifier shortcuts still work
 | Option ⌥ | `d` | `k` |
 | Command ⌘ | `f` | `j` |
 
-For example, hold `j`, then tap `c` to copy with Command+C. Do not stack home-row
-modifier holds.
+For example, hold `j`, then tap `c` to copy with Command+C. Modifiers also stack:
+hold **`j` + `k`** for **Command+Option**, then press the shortcut key. Each key
+needs its own 200 ms hold; press them together or in either order. Releasing one
+leaves the other active. Same-hand combinations are supported. `h` is selection,
+not Option.
 
 ## Text navigation and selection
 

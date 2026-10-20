@@ -12,6 +12,7 @@ KEYS = ("esc f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12 f13 f14 f15 f16 f17 f18 f19 
         "slck pause nlck kp/ kp* kp- kp+ kprt kp. kp0 kp1 kp2 kp3 kp4 kp5 kp6 kp7 kp8 kp9 "
         "mute vold volu prev pp next eject bldn blup").split()
 MODIFIERS = "lsft rsft lctl rctl lalt ralt lmet rmet".split()
+PHYSICAL_MODIFIERS = {mod: f"nop{index}" for index, mod in enumerate(MODIFIERS)}
 
 
 def generate(layout=None, adapter=None):
@@ -36,12 +37,24 @@ def generate(layout=None, adapter=None):
     for key in KEYS:
         hold = base.get(key)
         if hold:
+            is_modifier = key in layout["modifiers"]
+            # Modifier keys may wait out their own holds together. Other keys
+            # still cancel pending holds, so rolling text stays ordinary typing.
+            interrupts = [k for k in KEYS if k != key and
+                          (not is_modifier or k not in layout["modifiers"])]
             # Zero repress window: double-tapping must not bypass intentional holds.
-            tap_hold = f"(tap-hold-tap-keys 0 {layout['hold_ms']} {key} {hold} ({' '.join(k for k in KEYS if k != key)}))"
-            # Physical or already-active modifiers preserve existing shortcuts.
-            entries.append(f"(fork {tap_hold} {key} ({' '.join(MODIFIERS)}))")
+            tap_hold = f"(tap-hold-tap-keys 0 {layout['hold_ms']} {key} {hold} ({' '.join(interrupts)}))"
+            if is_modifier:
+                # Physical keys carry private no-op markers. Keep fork directly
+                # around tap-hold so concurrent-tap-hold can resolve each hold.
+                physical = " ".join(PHYSICAL_MODIFIERS.values())
+                entries.append(f"(fork {tap_hold} {key} ({physical}))")
+            else:
+                # Modified shortcuts must never enter an action layer.
+                entries.append(f"(fork {tap_hold} {key} ({' '.join(MODIFIERS)}))")
         else:
-            entries.append(key)
+            marker = PHYSICAL_MODIFIERS.get(key)
+            entries.append(f"(multi {key} {marker})" if marker else key)
     lines += ["(deflayer base\n " + "\n ".join(entries) + ")"]
     for layer in layout["layers"]:
         actions = {}

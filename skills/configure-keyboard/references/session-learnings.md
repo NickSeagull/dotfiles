@@ -8,6 +8,7 @@ implementation session, not permanent assumptions about today's live processes.
 | Finding | Guidance for the next adjustment |
 | --- | --- |
 | A conventional delayed hold or early-hold variant is insufficient | Preserve `tap-hold-tap-keys`, its cancellation semantics and zero repress window; verify with upstream event traces. |
+| The output-modifier bypass also blocked intentional home-row stacks | Use separate no-op markers for physical modifiers; exclude home-row modifier peers from modifier interruption lists. Preserve layer-trigger shortcut bypass. A `switch` wrapper hid pending holds from concurrent handling in the pinned simulator; direct `fork` passes simultaneous, staggered, release and boundary traces. |
 | Popping a layer does not release an already-held action output | Keep trigger-release virtual cleanup; test trigger release before action release and subsequent repeat events. |
 | A closed runner can fail on reads or during event forwarding | Route EOF, reset and failed writes through the same runner-drop path. Keep the supervisor/control socket alive, persist disable and stop capture. |
 | One passing lifecycle run missed a timing race | After a lifecycle fix, repeat the focused suite when timing remains uncertain; stop broad retesting once the concern is resolved. |

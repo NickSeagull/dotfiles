@@ -27,12 +27,22 @@ store config, not a user-editable replacement under the home directory.
 hold timeout. A listed interrupting key selects ordinary typing before timeout;
 that press cannot later turn into a hold. Zero repress prevents a quick second
 press from bypassing a deliberate hold. `concurrent-tap-hold` preserves each key's
-own timing. The interrupt list comes from `KEYS`: adding a physical key requires
+own timing. Modifier holds exclude other home-row modifier keys from their
+interrupt lists so simultaneous holds can mature independently; action-layer
+triggers retain the full interrupt list. The list comes from `KEYS`: adding a physical key requires
 checking both processing and interruption coverage, not only an active-layer map.
 
-A `fork` around each dual-role base key returns its ordinary character when an
-output modifier is already active. This preserves physical modifier shortcuts and
-prevents stacking another held role through a modified base key.
+A `fork` around home-row modifier keys bypasses their held role only when a
+physical modifier is down. Physical modifiers emit their normal output plus
+distinct `nop0`–`nop7` markers, which produce no OS key events. Synthetic home-row
+modifiers emit no markers and therefore allow other modifier holds to stack.
+Distinct markers keep the bypass active when one of several physical modifiers
+is released. Layer triggers retain their output-modifier `fork`, so modified
+shortcuts never enter action layers.
+
+Keep `fork` directly around `tap-hold-tap-keys`: wrapping it in `switch` prevented
+the pinned Kanata's concurrent hold handling from resolving simultaneous modifier
+holds independently and delayed the 200 ms boundary in simulator traces.
 
 Held layers map action keys directly, so `z+j` moves down and `b+n` focuses Notion
 instead of invoking base modifier/trigger roles. `deflayermap` ends with `___ XX`:

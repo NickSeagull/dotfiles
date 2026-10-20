@@ -117,7 +117,8 @@ package logs `SIM_MESSAGE` to expose named-action dispatch while preserving the
 same Kanata state machine. Do not substitute a hand-written timing model.
 
 Regression areas: 200 ms boundaries; early cancellation that remains cancelled;
-fast typing/punctuation; physical modifier shortcuts; mirrored triggers; `z+j`
+fast typing/punctuation; physical modifier shortcuts; simultaneous/staggered
+home-row modifier stacks in either order with independent release; mirrored triggers; `z+j`
 and `b+n` precedence; inert unassigned/extended keys; selection and repeat cleanup;
 once-per-press actions; successful/unexpected engine exit; runner EOF/reset, hang,
 and notification-write failure; disable persistence and explicit recovery.
