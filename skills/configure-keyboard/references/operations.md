@@ -123,6 +123,15 @@ and `b+n` precedence; inert unassigned/extended keys; selection and repeat clean
 once-per-press actions; successful/unexpected engine exit; runner EOF/reset, hang,
 and notification-write failure; disable persistence and explicit recovery.
 
+The build-time `Dispatch` tests validate every configured named action against
+Kanata's single-string array payload and reject malformed/unknown payloads.
+`RunnerTransport` in `test_lifecycle.py` additionally runs production `runner.py`
+over a real Unix socket with a fake native helper. It checks repeated Telegram
+dispatch, window-session boundaries, pings, malformed payloads and helper failure
+reporting. Run these with the full suite above; they require local sockets and
+are intentionally outside the Nix build-account checks. Simulator `SIM_MESSAGE`
+counts and direct helper calls alone do not establish runner protocol decoding.
+
 ## Native and live checks when the change needs them
 
 Inspect the actual configured helper path rather than guessing a store path or

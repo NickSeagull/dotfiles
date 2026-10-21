@@ -12,6 +12,21 @@ import time
 from service import SOCKET, packet
 
 
+def dispatch_message(payload, actions, adapter):
+    # Kanata serializes push-msg's arguments as a JSON array, even for the
+    # single named action emitted by our generator. Reject other shapes before
+    # invoking the native helper; never flatten or execute multiple arguments.
+    if not isinstance(payload, list) or len(payload) != 1 or not isinstance(payload[0], str):
+        raise RuntimeError("invalid named action payload: expected one string in an array")
+    action = payload[0]
+    if action.startswith("launch."):
+        actions.call("launch", bundle=adapter["apps"][action.split(".", 1)[1]])
+    elif action in ("app.next", "app.previous", "window.next", "window.previous"):
+        actions.call(action)
+    else:
+        raise RuntimeError("unknown named action")
+
+
 class Actions:
     def __init__(self, executable):
         self.process = subprocess.Popen([executable], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
@@ -102,14 +117,8 @@ def main():
                                 actions.call("begin" if is_windows else "end")
                                 window_session = is_windows
                         if "MessagePush" in event:
-                            action = event["MessagePush"]["message"]
                             try:
-                                if action.startswith("launch."):
-                                    actions.call("launch", bundle=adapter["apps"][action.split(".", 1)[1]])
-                                elif action in ("app.next", "app.previous", "window.next", "window.previous"):
-                                    actions.call(action)
-                                else:
-                                    raise RuntimeError("unknown named action")
+                                dispatch_message(event["MessagePush"]["message"], actions, adapter)
                             except (RuntimeError, KeyError) as error:
                                 packet(conn, {"failure": str(error)})
                         packet(conn, {"ack": True})

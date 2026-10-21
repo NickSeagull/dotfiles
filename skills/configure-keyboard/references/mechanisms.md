@@ -90,7 +90,13 @@ Supervisor envelopes include `event`, `ping`, and permission requests; runner
 replies include `ack`, current `accessibility`, or `failure`.
 
 The runner refreshes Accessibility on pings and dispatches allowlisted semantic
-actions. A window-layer `LayerChange` starts/ends the native snapshot. The helper
+actions. Kanata serializes `push-msg` arguments as an array: the generator's
+`(push-msg "launch.telegram")` arrives as
+`{"MessagePush":{"message":["launch.telegram"]}}`, wrapped in the supervisor's
+`event` envelope. `runner.py` accepts exactly one string in that array before
+dispatch; scalar, nested, multi-item and unknown actions report a failure to the
+supervisor without invoking the helper. Do not call string methods on the array
+or flatten it into multiple commands. A window-layer `LayerChange` starts/ends the native snapshot. The helper
 uses newline JSON over stdin/stdout. Its call timeout is 3.5 seconds; supervisor
 health checks stop capture after four seconds without acknowledgement. Revisit
 both budgets when changing action execution. Do not block them on cold app startup.

@@ -15,7 +15,33 @@ from unittest.mock import Mock, patch
 SOURCE = Path(os.environ.get("KEYBOARD_SOURCE", Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(SOURCE))
 from generate import generate
+from runner import dispatch_message
 from service import State, Supervisor, peer_uid
+
+
+class Dispatch(unittest.TestCase):
+    def test_every_configured_named_action_uses_kanata_array_payload(self):
+        layout = json.loads((SOURCE / "layout.json").read_text())
+        adapter = json.loads((SOURCE / "macos.json").read_text())
+        for bindings in layout["actions"].values():
+            for action in bindings.values():
+                with self.subTest(action=action):
+                    helper = Mock()
+                    dispatch_message([action], helper, adapter)
+                    if action.startswith("launch."):
+                        helper.call.assert_called_once_with("launch", bundle=adapter["apps"][action.split(".", 1)[1]])
+                    else:
+                        helper.call.assert_called_once_with(action)
+
+    def test_malformed_and_unknown_actions_never_reach_native_helper(self):
+        adapter = json.loads((SOURCE / "macos.json").read_text())
+        for payload in (None, "launch.telegram", {}, [], [42], [["launch.telegram"]],
+                        ["launch.telegram", "app.next"], ["launch.unknown"], ["unknown"]):
+            with self.subTest(payload=payload):
+                helper = Mock()
+                with self.assertRaises((RuntimeError, KeyError)):
+                    dispatch_message(payload, helper, adapter)
+                helper.call.assert_not_called()
 
 
 class Traces(unittest.TestCase):
