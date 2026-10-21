@@ -45,6 +45,7 @@ release the trigger to stop immediately.
 | `,` + `b` | Launch or focus Zen |
 | `,` + `t` | Launch or focus Ghostty |
 | `,` + `e` | Launch or focus VS Code |
+| `c` + `o` | Launch or focus Orca |
 | `m` + `t` | Launch or focus Telegram |
 | `m` + `e` | Launch or focus Element |
 | `b` + `n` | Launch or focus Notion |

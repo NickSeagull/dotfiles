@@ -79,6 +79,7 @@ tests instead of silently adding app-specific exceptions.
 ### App and window actions
 
 Common apps: comma+b = Zen, comma+t = Ghostty, comma+e = VS Code.
+Common apps also includes c+o = Orca (opposite hands); comma mirrors c.
 Messaging: m+t = Telegram, m+e = Element.
 Notes/reference: b+n = Notion, b+o = Obsidian.
 Each action launches its target or focuses it if running. It must not hide or

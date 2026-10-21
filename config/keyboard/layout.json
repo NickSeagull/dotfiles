@@ -5,7 +5,7 @@
   "movement": {"h": "left", "j": "down", "k": "up", "l": "right", "b": "word-back", "w": "word-forward", "e": "word-forward", "0": "line-start", "4": "line-end"},
   "actions": {
     "windows": {"h": "app.previous", "l": "app.next", "j": "window.next", "k": "window.previous"},
-    "common": {"b": "launch.browser", "t": "launch.terminal", "e": "launch.editor"},
+    "common": {"b": "launch.browser", "t": "launch.terminal", "e": "launch.editor", "o": "launch.orca"},
     "messaging": {"t": "launch.telegram", "e": "launch.element"},
     "notes": {"n": "launch.notion", "o": "launch.obsidian"}
   }
