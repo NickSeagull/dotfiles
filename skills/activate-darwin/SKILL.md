@@ -11,6 +11,10 @@ authorization dialog so the agent can finish activation itself.
 changes automatically. Complete activation and safe app reloads before calling
 the task done; do not end by asking the user to rebuild or review an artifact.
 
+For a source-linked explanation of the repository, start with the
+[codebase map](references/codebase-map.md). It includes standalone Archify maps
+of configuration ownership and the keyboard runtime, plus their editable sources.
+
 For exact-target handling, pending dialogs, input/focus coordination and batching
 changes, read [native authorization](references/authorization.md). Finish GUI
 checks before opening that dialog; await activation completion before resuming

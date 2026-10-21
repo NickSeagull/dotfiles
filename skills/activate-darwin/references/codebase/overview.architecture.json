@@ -1,0 +1,357 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "How this Mac is configured",
+    "locale": "en",
+    "output": "skills/activate-darwin/references/codebase/overview.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/NickSeagull/dotfiles.git",
+      "revision": "835bfdd7486985c9cc9165e92595bafb4c8a337b"
+    }
+  },
+  "components": [
+    {
+      "id": "inputs",
+      "type": "cloud",
+      "label": "Locked Nix inputs",
+      "sublabel": "nixpkgs, nix-darwin, Home Manager",
+      "pos": [
+        40,
+        40
+      ],
+      "size": [
+        240,
+        72
+      ],
+      "sources": [
+        {
+          "path": "flake.nix",
+          "line": 4,
+          "end_line": 10
+        },
+        {
+          "path": "flake.lock",
+          "line": 1,
+          "end_line": 71
+        }
+      ]
+    },
+    {
+      "id": "flake",
+      "type": "backend",
+      "label": "flake.nix",
+      "sublabel": "Entry point: corthan",
+      "pos": [
+        440,
+        40
+      ],
+      "size": [
+        240,
+        72
+      ],
+      "sources": [
+        {
+          "path": "flake.nix",
+          "line": 12,
+          "end_line": 19
+        }
+      ]
+    },
+    {
+      "id": "darwin",
+      "type": "backend",
+      "label": "System configuration",
+      "sublabel": "hosts/corthan/darwin.nix",
+      "pos": [
+        440,
+        230
+      ],
+      "size": [
+        240,
+        72
+      ],
+      "sources": [
+        {
+          "path": "hosts/corthan/darwin.nix",
+          "line": 1,
+          "end_line": 38
+        }
+      ]
+    },
+    {
+      "id": "brew",
+      "type": "backend",
+      "label": "Homebrew applications",
+      "sublabel": "GUI apps, Neovim, direnv, Azure CLI",
+      "pos": [
+        40,
+        230
+      ],
+      "size": [
+        240,
+        72
+      ],
+      "sources": [
+        {
+          "path": "hosts/corthan/darwin.nix",
+          "line": 15,
+          "end_line": 31
+        }
+      ]
+    },
+    {
+      "id": "keyboard",
+      "type": "backend",
+      "label": "Keyboard subsystem",
+      "sublabel": "Kanata + supervisor + user actions",
+      "pos": [
+        840,
+        230
+      ],
+      "size": [
+        240,
+        72
+      ],
+      "sources": [
+        {
+          "path": "config/keyboard/default.nix",
+          "line": 5,
+          "end_line": 33
+        },
+        {
+          "path": "config/keyboard/default.nix",
+          "line": 59,
+          "end_line": 83
+        },
+        {
+          "path": "config/keyboard/default.nix",
+          "line": 85,
+          "end_line": 115
+        }
+      ]
+    },
+    {
+      "id": "home",
+      "type": "backend",
+      "label": "User configuration",
+      "sublabel": "hosts/corthan/home.nix",
+      "pos": [
+        440,
+        440
+      ],
+      "size": [
+        240,
+        72
+      ],
+      "sources": [
+        {
+          "path": "hosts/corthan/darwin.nix",
+          "line": 33,
+          "end_line": 37
+        },
+        {
+          "path": "hosts/corthan/home.nix",
+          "line": 23,
+          "end_line": 66
+        },
+        {
+          "path": "hosts/corthan/home.nix",
+          "line": 69,
+          "end_line": 114
+        }
+      ]
+    },
+    {
+      "id": "workspace",
+      "type": "frontend",
+      "label": "Terminal and editor",
+      "sublabel": "Ghostty, Herdr, LazyVim, Git tools",
+      "pos": [
+        40,
+        660
+      ],
+      "size": [
+        240,
+        72
+      ],
+      "sources": [
+        {
+          "path": "hosts/corthan/home.nix",
+          "line": 47,
+          "end_line": 51
+        },
+        {
+          "path": "hosts/corthan/home.nix",
+          "line": 69,
+          "end_line": 114
+        },
+        {
+          "path": "config/nvim/lua/config/lazy.lua",
+          "line": 5,
+          "end_line": 30
+        }
+      ]
+    },
+    {
+      "id": "appearance",
+      "type": "frontend",
+      "label": "Appearance and shortcuts",
+      "sublabel": "Cyberdream dark + scarlet accents",
+      "pos": [
+        440,
+        660
+      ],
+      "size": [
+        240,
+        72
+      ],
+      "sources": [
+        {
+          "path": "config/codex/default.nix",
+          "line": 3,
+          "end_line": 51
+        },
+        {
+          "path": "config/orca/default.nix",
+          "line": 3,
+          "end_line": 16
+        },
+        {
+          "path": "config/wallpaper.nix",
+          "line": 3,
+          "end_line": 35
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "database",
+      "label": "Managed agent skills",
+      "sublabel": "Runbooks linked into ~/.codex/skills",
+      "pos": [
+        840,
+        660
+      ],
+      "size": [
+        240,
+        72
+      ],
+      "sources": [
+        {
+          "path": "hosts/corthan/home.nix",
+          "line": 52,
+          "end_line": 66
+        },
+        {
+          "path": "config/keyboard/default.nix",
+          "line": 89,
+          "end_line": 98
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "inputs",
+      "to": "flake",
+      "label": "pinned inputs",
+      "variant": "default"
+    },
+    {
+      "from": "flake",
+      "to": "darwin",
+      "label": "imports",
+      "variant": "emphasis"
+    },
+    {
+      "from": "darwin",
+      "to": "brew",
+      "label": "declares installs",
+      "variant": "default"
+    },
+    {
+      "from": "darwin",
+      "to": "keyboard",
+      "label": "imports module",
+      "variant": "default"
+    },
+    {
+      "from": "darwin",
+      "to": "home",
+      "label": "integrates",
+      "variant": "emphasis"
+    },
+    {
+      "from": "home",
+      "to": "workspace",
+      "label": "forces config links",
+      "variant": "default"
+    },
+    {
+      "from": "home",
+      "to": "appearance",
+      "label": "imports modules",
+      "variant": "default"
+    },
+    {
+      "from": "home",
+      "to": "skills",
+      "label": "forces skill links",
+      "variant": "default"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Read the repository in this order",
+      "items": [
+        "1. flake.nix chooses inputs and exports darwinConfigurations.corthan.",
+        "2. hosts/corthan/darwin.nix sets aarch64-darwin, packages and system services.",
+        "3. hosts/corthan/home.nix chooses user packages, imports and forced file links.",
+        "4. config/ contains the implementation; skills/ contains the operating instructions."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "How a change reaches the Mac",
+      "items": [
+        "1. Edit repository sources; include new referenced files in Git before the build.",
+        "2. darwin-rebuild build --flake .#corthan builds an immutable system generation.",
+        "3. skills/activate-darwin/scripts/activate.applescript activates that exact store path using native administrator authorization.",
+        "4. Verify /run/current-system and the affected settings. Build success alone does not activate changes."
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "What is declarative; what remains mutable",
+      "items": [
+        "Home Manager force=true makes the repository authoritative for managed config and skill links.",
+        "Codex and Orca activation hooks reconcile owned appearance keys while preserving application state; Orca defers when open.",
+        "cx and cxh share configuration, skills and themes; their authentication and sessions remain separate.",
+        "LazyVim downloads plugins at runtime and keeps its lockfile in Neovim state; flake.lock pins the Nix inputs."
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Where to make common changes",
+      "items": [
+        "Add system/Homebrew apps in hosts/corthan/darwin.nix; add Nix user tools in hosts/corthan/home.nix.",
+        "Edit held-key actions in config/keyboard/layout.json and macOS bindings in macos.json; use the keyboard detail map for ownership.",
+        "Edit Neovim Lua under config/nvim/lua/ and terminal integrations under config/ghostty/ and config/herdr*/.",
+        "Theme modules live in config/codex/, config/orca/ and config/wallpaper.nix; operating knowledge belongs beside the owning skill."
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Scope and boundaries",
+      "items": [
+        "This is one personal workstation configuration, corthan, for the user nick on Apple Silicon.",
+        "Determinate owns Nix and its daemon: nix-darwin sets nix.enable=false.",
+        "Homebrew is declared through nix-darwin; Bartender, Node.js and enabled CLI programs use Nix/Home Manager.",
+        "The diagram summarizes configuration ownership. Keyboard runtime services are expanded in keyboard.html; configured launch targets do not prove an app is installed."
+      ]
+    }
+  ]
+}

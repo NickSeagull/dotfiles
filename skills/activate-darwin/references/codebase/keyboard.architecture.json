@@ -1,0 +1,385 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Keyboard: build inputs, root capture, user actions",
+    "locale": "en",
+    "output": "skills/activate-darwin/references/codebase/keyboard.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/NickSeagull/dotfiles.git",
+      "revision": "835bfdd7486985c9cc9165e92595bafb4c8a337b"
+    }
+  },
+  "components": [
+    {
+      "id": "definitions",
+      "type": "database",
+      "label": "Keyboard definitions",
+      "sublabel": "layout.json + macos.json",
+      "pos": [
+        40,
+        40
+      ],
+      "size": [
+        240,
+        72
+      ],
+      "sources": [
+        {
+          "path": "config/keyboard/layout.json",
+          "line": 1,
+          "end_line": 12
+        },
+        {
+          "path": "config/keyboard/generate.py",
+          "line": 18,
+          "end_line": 23
+        }
+      ]
+    },
+    {
+      "id": "generator",
+      "type": "backend",
+      "label": "Build-time generator",
+      "sublabel": "generate.py + Kanata checks",
+      "pos": [
+        440,
+        40
+      ],
+      "size": [
+        240,
+        72
+      ],
+      "sources": [
+        {
+          "path": "config/keyboard/default.nix",
+          "line": 21,
+          "end_line": 30
+        },
+        {
+          "path": "config/keyboard/generate.py",
+          "line": 58,
+          "end_line": 72
+        }
+      ]
+    },
+    {
+      "id": "config",
+      "type": "database",
+      "label": "Immutable Kanata config",
+      "sublabel": "Nix store: kanata.kbd",
+      "pos": [
+        840,
+        40
+      ],
+      "size": [
+        240,
+        72
+      ],
+      "sources": [
+        {
+          "path": "config/keyboard/default.nix",
+          "line": 21,
+          "end_line": 25
+        },
+        {
+          "path": "config/keyboard/default.nix",
+          "line": 72,
+          "end_line": 76
+        }
+      ]
+    },
+    {
+      "id": "state",
+      "type": "database",
+      "label": "Persistent disable state",
+      "sublabel": "/var/db/org.nick.keyboard",
+      "pos": [
+        40,
+        280
+      ],
+      "size": [
+        240,
+        72
+      ],
+      "sources": [
+        {
+          "path": "config/keyboard/service.py",
+          "line": 19,
+          "end_line": 20
+        },
+        {
+          "path": "config/keyboard/service.py",
+          "line": 43,
+          "end_line": 76
+        }
+      ]
+    },
+    {
+      "id": "supervisor",
+      "type": "backend",
+      "label": "Root supervisor",
+      "sublabel": "service.py: lifecycle + event relay",
+      "pos": [
+        440,
+        280
+      ],
+      "size": [
+        240,
+        72
+      ],
+      "sources": [
+        {
+          "path": "config/keyboard/service.py",
+          "line": 130,
+          "end_line": 164
+        },
+        {
+          "path": "config/keyboard/service.py",
+          "line": 257,
+          "end_line": 279
+        },
+        {
+          "path": "config/keyboard/service.py",
+          "line": 281,
+          "end_line": 328
+        }
+      ]
+    },
+    {
+      "id": "engine",
+      "type": "backend",
+      "label": "Kanata + virtual HID",
+      "sublabel": "Native text keys and action events",
+      "pos": [
+        840,
+        280
+      ],
+      "size": [
+        240,
+        72
+      ],
+      "sources": [
+        {
+          "path": "config/keyboard/default.nix",
+          "line": 5,
+          "end_line": 6
+        },
+        {
+          "path": "config/keyboard/packages.nix",
+          "line": 3,
+          "end_line": 10
+        },
+        {
+          "path": "config/keyboard/generate.py",
+          "line": 59,
+          "end_line": 67
+        }
+      ]
+    },
+    {
+      "id": "runner",
+      "type": "backend",
+      "label": "User-session runner",
+      "sublabel": "runner.py: allowlisted action dispatch",
+      "pos": [
+        440,
+        530
+      ],
+      "size": [
+        240,
+        72
+      ],
+      "sources": [
+        {
+          "path": "config/keyboard/runner.py",
+          "line": 15,
+          "end_line": 54
+        },
+        {
+          "path": "config/keyboard/runner.py",
+          "line": 81,
+          "end_line": 124
+        },
+        {
+          "path": "config/keyboard/default.nix",
+          "line": 100,
+          "end_line": 113
+        }
+      ]
+    },
+    {
+      "id": "helper",
+      "type": "backend",
+      "label": "Native action helper",
+      "sublabel": "actions.m: Cocoa + Accessibility",
+      "pos": [
+        840,
+        530
+      ],
+      "size": [
+        240,
+        72
+      ],
+      "sources": [
+        {
+          "path": "config/keyboard/actions.m",
+          "line": 48,
+          "end_line": 102
+        },
+        {
+          "path": "config/keyboard/runner.py",
+          "line": 30,
+          "end_line": 54
+        }
+      ]
+    },
+    {
+      "id": "apps",
+      "type": "external",
+      "label": "macOS apps and windows",
+      "sublabel": "Launch, focus and cycle windows",
+      "pos": [
+        840,
+        740
+      ],
+      "size": [
+        240,
+        72
+      ],
+      "sources": [
+        {
+          "path": "config/keyboard/actions.m",
+          "line": 64,
+          "end_line": 102
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "security-group",
+      "label": "Root services: capture and lifecycle",
+      "wraps": [
+        "supervisor",
+        "engine"
+      ],
+      "pad": 28
+    },
+    {
+      "kind": "region",
+      "label": "Signed-in user: GUI actions",
+      "wraps": [
+        "runner",
+        "helper"
+      ],
+      "pad": 28
+    }
+  ],
+  "connections": [
+    {
+      "from": "definitions",
+      "to": "generator",
+      "label": "reads JSON",
+      "variant": "default"
+    },
+    {
+      "from": "generator",
+      "to": "config",
+      "label": "generates + tests",
+      "variant": "default"
+    },
+    {
+      "from": "engine",
+      "to": "config",
+      "label": "loads at start",
+      "variant": "default"
+    },
+    {
+      "from": "supervisor",
+      "to": "state",
+      "label": "persists disable",
+      "variant": "default"
+    },
+    {
+      "from": "supervisor",
+      "to": "engine",
+      "label": "starts if ready",
+      "variant": "emphasis"
+    },
+    {
+      "from": "engine",
+      "to": "supervisor",
+      "label": "TCP events",
+      "variant": "default"
+    },
+    {
+      "from": "supervisor",
+      "to": "runner",
+      "label": "UNIX events + health",
+      "variant": "default"
+    },
+    {
+      "from": "runner",
+      "to": "helper",
+      "label": "newline JSON",
+      "variant": "emphasis"
+    },
+    {
+      "from": "helper",
+      "to": "apps",
+      "label": "NSWorkspace + AX",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Ordinary typing and held-key actions",
+      "items": [
+        "layout.json defines 200 ms deliberate holds, home-row modifiers and mirrored action-layer triggers.",
+        "generate.py emits native movement/selection shortcuts directly into Kanata. App/window layers emit named push-msg actions.",
+        "macos.json maps portable movement names to macOS shortcuts and application names to bundle identifiers."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Two routes after a keypress",
+      "items": [
+        "Text or selection: Kanata emits native keyboard output through the virtual HID driver.",
+        "App/window action: Kanata emits a TCP notification; the supervisor relays it to the authenticated user runner.",
+        "The runner accepts only launch.* and the supported app/window cycling actions, then talks to the native helper over stdin/stdout.",
+        "Kanata rejects mutating TCP commands. GUI automation runs as the signed-in user, with Accessibility permission."
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "When capture is allowed",
+      "items": [
+        "starts if ready means: no persistent disable, connected runner, matching console user, approved virtual HID driver, and runner Accessibility permission.",
+        "Root launchd jobs run the supervisor and matching driver; Home Manager creates the keyboard-actions user agent.",
+        "The UNIX socket is restricted to the configured user; peer credentials authenticate requests. Runner registration and replies report permissions and health."
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Failure returns to ordinary input",
+      "items": [
+        "The supervisor durably records disable before stopping capture on an engine exit, stream failure or runner failure.",
+        "An active journal left by an interrupted supervisor also latches disable; KeepAlive is false rather than an unconditional restart loop.",
+        "Physical Left Control+Space+Escape exits the engine; the supervisor records the exit as persistent disable.",
+        "Recovery is explicit: keyboard status, keyboard permissions, and keyboard enable. Service startup does not clear intentional disable."
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "Build checks and evidence limits",
+      "items": [
+        "The Nix keyboard-support derivation generates kanata.kbd, runs kanata --check and executes test_keyboard.py with the patched simulator.",
+        "test_lifecycle.py covers supervisor/runner behavior separately; operations.md describes when those checks are appropriate.",
+        "This map traces committed source. It does not demonstrate live physical HID capture, the emergency chord, sleep/wake or device reconnection."
+      ]
+    }
+  ]
+}
