@@ -21,6 +21,7 @@ let
 in
 {
   imports = [
+    ../../config/agent-skills
     ../../config/codex
     ../../config/orca
     ../../config/wallpaper.nix
