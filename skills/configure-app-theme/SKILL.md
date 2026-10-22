@@ -37,6 +37,8 @@ The palette above makes routine installs independent of tracker access.
 
 For Orca installation, palette ownership, mutable profile storage, and runtime
 verification, read [Orca appearance](references/orca.md).
+For Discord's account-owned themes and Nitro requirement, read
+[Discord appearance](references/discord.md).
 
 1. Inspect the app's existing configuration and current official theme docs.
    Check its native theme, custom palette, and accent support. Prefer the
