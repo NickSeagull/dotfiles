@@ -66,13 +66,13 @@ class Traces(unittest.TestCase):
         outputs = re.findall(r"out:([↓↑][A-Za-z0-9]+)", result.stdout)
         return outputs, result.stdout + result.stderr
 
-    def test_125ms_boundary_and_no_solo_repeat(self):
-        for delay in (1, 100, 123):
+    def test_150ms_boundary_and_no_solo_repeat(self):
+        for delay in (1, 100, 148):
             out, _ = self.trace(f"↓z 🕐{delay} ↑z 🕐10")
             self.assertEqual(out, ["↓Z", "↑Z"], delay)
-        out, _ = self.trace("↓z 🕐126 ↑z 🕐20")
+        out, _ = self.trace("↓z 🕐151 ↑z 🕐20")
         self.assertEqual(out, [])
-        out, _ = self.trace("↓a 🕐126 ↑a 🕐20")
+        out, _ = self.trace("↓a 🕐151 ↑a 🕐20")
         self.assertEqual(out, ["↓LShift", "↑LShift"])
 
     def test_interruption_cancels_until_release(self):
@@ -81,7 +81,7 @@ class Traces(unittest.TestCase):
         out, _ = self.trace("↓a 🕐40 ↓q 🕐20 ↑q 🕐300 ↑a 🕐20")
         self.assertEqual(out, ["↓A", "↓Q", "↑Q", "↑A"])
         # An interruption 1 ms before threshold must not turn into a layer.
-        out, _ = self.trace("↓z 🕐123 ↓q 🕐30 ↑q ↑z 🕐20")
+        out, _ = self.trace("↓z 🕐148 ↓q 🕐30 ↑q ↑z 🕐20")
         self.assertEqual(out, ["↓Z", "↓Q", "↑Q", "↑Z"])
 
     def test_fast_rolling_typing_and_punctuation(self):
@@ -112,13 +112,13 @@ class Traces(unittest.TestCase):
             ("f", "d", "LGui", "LAlt"), ("d", "f", "LAlt", "LGui"),
             ("j", "d", "RGui", "LAlt"), ("a", "l", "LShift", "RCtrl"),
         ):
-            for delay in (0, 30, 135):
+            for delay in (0, 30, 160):
                 for released_first in (first, second):
                     remaining = second if released_first == first else first
                     released_mod = first_mod if released_first == first else second_mod
                     remaining_mod = second_mod if released_first == first else first_mod
                     out, _ = self.trace(
-                        f"↓{first} 🕐{delay} ↓{second} 🕐135 ↓p 🕐20 ↑p "
+                        f"↓{first} 🕐{delay} ↓{second} 🕐160 ↓p 🕐20 ↑p "
                         f"↑{released_first} 🕐20 ↓q 🕐20 ↑q ↑{remaining} 🕐20")
                     self.assertEqual(out, [f"↓{first_mod}", f"↓{second_mod}",
                         "↓P", "↑P", f"↑{released_mod}", "↓Q", "↑Q", f"↑{remaining_mod}"],
@@ -129,66 +129,66 @@ class Traces(unittest.TestCase):
         self.assertEqual(out, ["↓J", "↓K", "↑J", "↑K"])
         out, _ = self.trace("↓j 🕐30 ↓k 🕐30 ↓p 🕐250 ↑p ↑k ↑j 🕐20")
         self.assertFalse(any("Gui" in k or "Alt" in k for k in out), out)
-        out, _ = self.trace("↓j 🕐135 ↓k 🕐30 ↓p 🕐250 ↑p ↑k ↑j 🕐20")
+        out, _ = self.trace("↓j 🕐160 ↓k 🕐30 ↓p 🕐250 ↑p ↑k ↑j 🕐20")
         self.assertEqual(out, ["↓RGui", "↓K", "↓P", "↑P", "↑K", "↑RGui"])
 
     def test_four_modifiers_stack_without_entering_layers(self):
-        out, log = self.trace("↓j ↓k ↓l ↓; 🕐135 ↓p 🕐20 ↑p ↑; ↑l ↑k ↑j 🕐20")
+        out, log = self.trace("↓j ↓k ↓l ↓; 🕐160 ↓p 🕐20 ↑p ↑; ↑l ↑k ↑j 🕐20")
         self.assertEqual(out, ["↓RGui", "↓RAlt", "↓RCtrl", "↓RShift", "↓P", "↑P",
                                "↑RShift", "↑RCtrl", "↑RAlt", "↑RGui"])
-        out, log = self.trace("↓j 🕐135 ↓c 🕐250 ↑c ↑j 🕐20")
+        out, log = self.trace("↓j 🕐160 ↓c 🕐250 ↑c ↑j 🕐20")
         self.assertEqual(out, ["↓RGui", "↓C", "↑C", "↑RGui"])
         self.assertNotIn("SIM_MESSAGE", log)
 
     def test_mirrored_navigation_and_trigger_release_cleanup(self):
         for trigger in ("z", "/"):
-            out, _ = self.trace(f"↓{trigger} 🕐135 ↓j 🕐50 ↑{trigger} 🕐50 ↑j 🕐20")
+            out, _ = self.trace(f"↓{trigger} 🕐160 ↓j 🕐50 ↑{trigger} 🕐50 ↑j 🕐20")
             self.assertEqual(out, ["↓Down", "↑Down"])
-        out, _ = self.trace("↓z 🕐135 ↓q 🕐30 ↑q ↑z 🕐20")
+        out, _ = self.trace("↓z 🕐160 ↓q 🕐30 ↑q ↑z 🕐20")
         self.assertEqual(out, [])
 
     def test_selection_cleanup_before_action_key_release(self):
         for trigger in ("g", "h"):
-            out, _ = self.trace(f"↓{trigger} 🕐135 ↓w 🕐50 ↑{trigger} 🕐50 ↑w 🕐20")
+            out, _ = self.trace(f"↓{trigger} 🕐160 ↓w 🕐50 ↑{trigger} 🕐50 ↑w 🕐20")
             self.assertEqual(set(out), {"↓LShift", "↓LAlt", "↓Right", "↑LShift", "↑LAlt", "↑Right"})
             self.assertEqual(len(out), 6)
-        out, _ = self.trace("↓g 🕐135 ↓j 🕐50 ↑g 🕐30 ↓q 🕐20 ↑j ↑q 🕐20")
+        out, _ = self.trace("↓g 🕐160 ↓j 🕐50 ↑g 🕐30 ↓q 🕐20 ↑j ↑q 🕐20")
         self.assertIn("↓Q", out)
         self.assertLess(out.index("↑LShift"), out.index("↓Q"))
 
     def test_repeat_stops_with_trigger_and_unassigned_extended_keys_are_inert(self):
-        out, _ = self.trace("↓z 🕐135 ↓j 🕐20 r:j 🕐20 ↑z 🕐20 r:j 🕐20 ↑j 🕐20")
+        out, _ = self.trace("↓z 🕐160 ↓j 🕐20 r:j 🕐20 ↑z 🕐20 r:j 🕐20 ↑j 🕐20")
         self.assertEqual(out, ["↓Down", "↓Down", "↑Down"])
         self.assertNotIn("↓RGui", out)
         self.assertNotIn("↓J", out)
         # 102d is deliberately absent from defsrc: the layer wildcard must
         # suppress it rather than fall back to ordinary typing.
-        out, _ = self.trace("↓z 🕐135 ↓102d 🕐20 ↑102d ↑z 🕐20")
+        out, _ = self.trace("↓z 🕐160 ↓102d 🕐20 ↑102d ↑z 🕐20")
         self.assertEqual(out, [])
 
     def test_word_aliases_line_bounds_and_modifiers(self):
         for key in ("w", "e"):
-            out, _ = self.trace(f"↓/ 🕐135 ↓{key} 🕐30 ↑{key} ↑/ 🕐20")
+            out, _ = self.trace(f"↓/ 🕐160 ↓{key} 🕐30 ↑{key} ↑/ 🕐20")
             self.assertEqual(out, ["↓LAlt", "↓Right", "↑LAlt", "↑Right"])
         for trigger, key, arrow in (("z", "0", "Left"), ("/", "4", "Right")):
-            out, _ = self.trace(f"↓{trigger} 🕐135 ↓{key} 🕐30 ↑{key} ↑{trigger} 🕐20")
+            out, _ = self.trace(f"↓{trigger} 🕐160 ↓{key} 🕐30 ↑{key} ↑{trigger} 🕐20")
             self.assertEqual(set(out), {"↓LGui", f"↓{arrow}", "↑LGui", f"↑{arrow}"})
         for trigger, output in (("s", "LCtrl"), ("l", "RCtrl"), ("d", "LAlt"), ("k", "RAlt"), ("f", "LGui"), ("j", "RGui"), (";", "RShift")):
-            out, _ = self.trace(f"↓{trigger} 🕐135 ↑{trigger} 🕐20")
+            out, _ = self.trace(f"↓{trigger} 🕐160 ↑{trigger} 🕐20")
             self.assertEqual(out, [f"↓{output}", f"↑{output}"])
 
     def test_app_precedence_mirroring_and_once_per_press(self):
         for trigger in ("b", "n"):
-            out, log = self.trace(f"↓{trigger} 🕐135 ↓o 🕐700 ↑o 🕐20 ↓o 🕐20 ↑o ↑{trigger} 🕐20")
+            out, log = self.trace(f"↓{trigger} 🕐160 ↓o 🕐700 ↑o 🕐20 ↓o 🕐20 ↑o ↑{trigger} 🕐20")
             self.assertEqual(out, [])
             self.assertEqual(log.count("SIM_MESSAGE"), 2, log)
             self.assertIn("launch.obsidian", log)
-        out, log = self.trace("↓b 🕐135 ↓n 🕐600 ↑n ↑b 🕐20")
+        out, log = self.trace("↓b 🕐160 ↓n 🕐600 ↑n ↑b 🕐20")
         self.assertEqual(out, [])
         self.assertEqual(log.count("SIM_MESSAGE"), 1)
         self.assertIn("launch.notion", log)
         for trigger in ("x", "."):
-            out, log = self.trace(f"↓{trigger} 🕐135 ↓j 🕐600 ↑j ↑{trigger} 🕐20")
+            out, log = self.trace(f"↓{trigger} 🕐160 ↓j 🕐600 ↑j ↑{trigger} 🕐20")
             self.assertEqual(out, [])
             self.assertEqual(log.count("SIM_MESSAGE"), 1)
             self.assertIn("window.next", log)
