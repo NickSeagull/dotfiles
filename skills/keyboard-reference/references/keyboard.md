@@ -1,6 +1,6 @@
 # Keyboard reference
 
-Hold the first key for **150 ms**, then press the action key with the opposite
+Hold the first key for **125 ms**, then press the action key with the opposite
 hand. Tapping types the ordinary character. Another key before the threshold
 cancels that hold until release, except another home-row modifier can join a
 pending modifier hold. Existing physical modifier shortcuts still work.
@@ -16,7 +16,7 @@ pending modifier hold. Existing physical modifier shortcuts still work.
 
 For example, hold `j`, then tap `c` to copy with Command+C. Modifiers also stack:
 hold **`j` + `k`** for **Command+Option**, then press the shortcut key. Each key
-needs its own 150 ms hold; press them together or in either order. Releasing one
+needs its own 125 ms hold; press them together or in either order. Releasing one
 leaves the other active. Same-hand combinations are supported. `h` is selection,
 not Option.
 

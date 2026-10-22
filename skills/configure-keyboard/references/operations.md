@@ -116,7 +116,7 @@ verified; the session observed output replacing the trace filename. The simulato
 package logs `SIM_MESSAGE` to expose named-action dispatch while preserving the
 same Kanata state machine. Do not substitute a hand-written timing model.
 
-Regression areas: 150 ms boundaries; early cancellation that remains cancelled;
+Regression areas: 125 ms boundaries; early cancellation that remains cancelled;
 fast typing/punctuation; physical modifier shortcuts; simultaneous/staggered
 home-row modifier stacks in either order with independent release; mirrored triggers; `z+j`
 and `b+n` precedence; inert unassigned/extended keys; selection and repeat cleanup;
