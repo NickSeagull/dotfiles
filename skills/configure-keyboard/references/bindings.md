@@ -10,12 +10,12 @@ including on the same hand, as requested on 2026-10-20; this supersedes the
 original deferral of generic modifier combinations. Existing physical modifier
 keys remain available and preserve ordinary modified shortcuts.
 
-Use deliberate 180 ms tap/hold behavior, reduced from 200 ms at the user’s
+Use deliberate 170 ms tap/hold behavior, reduced from 180 ms at the user’s
 request on 2026-10-22. Taps type their ordinary characters.
 Another key before the threshold commits ordinary typing and cancels the hold
 until the trigger is released; it must not activate later during that press.
 Exception: another home-row modifier key does not interrupt a pending modifier
-hold. Each modifier needs its own full 180 ms, whether pressed together or
+hold. Each modifier needs its own full 170 ms, whether pressed together or
 staggered. A non-modifier key before that threshold still cancels pending holds.
 Never activate a hold early merely because another key is pressed or released.
 Releasing a trigger exits its layer or modifier role immediately. Holding a
@@ -40,7 +40,7 @@ action key is held; app/window actions fire once per physical press.
 | Option | d | k |
 | Command | f | j |
 
-Hold j+k for at least 180 ms after the last press for Command+Option, then press
+Hold j+k for at least 170 ms after the last press for Command+Option, then press
 the shortcut key. Both press orders and independently releasing either modifier
 are supported. Quick j/k taps still type j/k; h remains the selection trigger.
 

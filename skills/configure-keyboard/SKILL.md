@@ -46,10 +46,10 @@ skill and verify the installed reference matches the repository.
 
 ## Essential constraints
 
-1. Preserve deliberate 180 ms holds, permanent cancellation by an early action keypress,
+1. Preserve deliberate 170 ms holds, permanent cancellation by an early action keypress,
    ordinary modified shortcuts, mapped-action precedence, and immediate cleanup on
    trigger release. Home-row modifiers may stack, including on the same hand;
-   each needs its own 180 ms hold. Layer actions use one key per hand and
+   each needs its own 170 ms hold. Layer actions use one key per hand and
    selection emits Shift internally. Physical modifiers bypass held roles.
 2. Keep the engine/runner boundary: root Kanata emits supported `push-msg`
    notifications; only the signed-in user's runner performs GUI actions. Keep
