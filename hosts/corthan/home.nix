@@ -31,6 +31,14 @@ in
   home.homeDirectory = "/Users/nick";
   home.stateVersion = "26.05";
 
+  launchd.agents.easy-move-resize = {
+    enable = true;
+    config = {
+      ProgramArguments = [ "/usr/bin/open" "-a" "/Applications/Easy Move+Resize.app" ];
+      RunAtLoad = true;
+    };
+  };
+
   home.packages = [
     # Bartender 6 supports macOS 26; nixpkgs' older download URL returns 404.
     (pkgs.bartender.overrideAttrs (finalAttrs: _: {

@@ -12,6 +12,8 @@
   system.primaryUser = "nick";
   users.users.nick.home = "/Users/nick";
 
+  system.defaults.CustomUserPreferences."userPrefs".ModifierFlags = "ALT";
+
   homebrew = {
     enable = true;
     taps = [ "sozercan/repo" "stablyai/orca" ];
@@ -23,6 +25,7 @@
       "azure-cli"
       "codexbar"
       "discord"
+      "easy-move+resize"
       "ghostty"
       "sozercan/repo/kaset"
       "muesli"

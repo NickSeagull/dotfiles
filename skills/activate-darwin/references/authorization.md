@@ -25,6 +25,12 @@ to update the installed skill. It does not justify replaying unrelated GUI or
 failure tests. Batch validated edits to reduce repeated administrator dialogs;
 never assume a later invocation will reuse cached authorization.
 
+For Easy Move+Resize, Homebrew owns the app, Home Manager starts it at login,
+and nix-darwin writes `userPrefs.ModifierFlags = ALT`. The upstream app reads
+that suite at launch, so restart it after changing the modifier. Its first
+launch requests macOS Accessibility permission; a successful build and launch
+do not establish that mouse dragging works until that permission is granted.
+
 ## Pending or failed invocation
 
 A yielded tool session or running `osascript` process is not activation success.
