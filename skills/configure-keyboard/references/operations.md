@@ -67,6 +67,7 @@ systemextensionsctl list
 | Driver unavailable | Check extension registration and matching package/daemon. If registration is missing, run the installed manager command below and complete its native OS approval. |
 | Runner disconnected/hung | Inspect the user log and helper timeout. Fix the action/transport problem, then explicitly enable. Runner restart alone must leave persistent disable intact. |
 | `starting` never becomes `running` | Inspect engine exits, capture/driver permissions and TCP startup. Do not add automatic restart as a workaround. |
+| Held home-row key types immediately and types again when another key is pressed, while status says `running` | Confirm the driver reports `connected: true` and the generated layout passes its input traces. If remapping was enabled before the symptom, use `keyboard disable` followed by `keyboard enable` to reacquire physical input; verify the same held key on the actual keyboard. A live TCP connection and output driver do not prove that physical input is still captured. Preserve any pre-existing intentional disable. |
 | Wrong app/window action | Resolve the installed bundle, inspect the adapter and session snapshots. Preserve nonblocking launch, stable cycle order and user-session execution. |
 
 Driver registration, when actually missing:
