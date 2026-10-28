@@ -20,6 +20,10 @@ changes, read [native authorization](references/authorization.md). Finish GUI
 checks before opening that dialog; await activation completion before resuming
 focus-changing work.
 
+For Kaset playlist visibility and sidebar behavior, read
+[Kaset library](references/kaset-library.md) before resetting app data or changing
+its Homebrew cask.
+
 Build and inspect the change before requesting elevated execution. From the
 repository, build with `darwin-rebuild build --flake '.#corthan'`. Nix flakes
 ignore untracked files: include newly referenced configuration files in Git's
