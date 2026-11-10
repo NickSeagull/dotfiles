@@ -72,6 +72,8 @@ through LazyVim's `colorscheme` option, and apply the red override plus scarlet
 interface highlights. Keep lazy.nvim's install colorscheme aligned in
 `config/nvim/lua/config/lazy.lua`. Theme changes in existing Neovim servers
 should be applied through RPC without discarding buffers or restarting sessions.
+For Neovim's terminal-background preference and verification, read
+[Neovim transparency](references/neovim.md).
 
 Codex CLI uses the pinned official TextMate export in `config/codex/default.nix`,
 with the red override and the filename `cyberdream-scarlet.tmTheme`. Home Manager

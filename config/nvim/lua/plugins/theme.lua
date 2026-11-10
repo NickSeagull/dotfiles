@@ -5,7 +5,7 @@ return {
     priority = 1000,
     opts = {
       variant = "default",
-      transparent = false,
+      transparent = true,
       colors = { red = "#FF493D" },
       highlights = {
         FloatBorder = { fg = "#FF493D" },
