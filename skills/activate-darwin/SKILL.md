@@ -118,3 +118,11 @@ provided in the current task. Keep private project URLs out of published docs.
 Then remove only the migrated keys from `~/.gitconfig` and repeat without
 `GIT_CONFIG_GLOBAL`.
 Never print credential-helper output containing a real token.
+
+
+`egregorectl` is a Home Manager-owned wrapper under `~/.local/bin` that runs the
+Home Repo's live `bin/egregorectl` with Nix-managed Python. Its canonical skill
+is linked live into both agent skill roots from the Home Repo's
+`.agents/skills/egregorectl`. This keeps added commands and `--help` available
+without rebuilding dotfiles. Verify `egregorectl --help` and both skill links
+after changing the installation; edit CLI behavior and its skill in the Home Repo.

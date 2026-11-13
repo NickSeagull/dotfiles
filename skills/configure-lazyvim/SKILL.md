@@ -22,13 +22,10 @@ The user prefers long lines to wrap instead of scrolling horizontally. Keep
 `wrap` and `linebreak` enabled in `config/nvim/lua/config/options.lua` so lines
 wrap visually at word boundaries without changing the file's contents.
 
-The Home Repo keeps independent checkouts in its ignored `repos/` directory.
-Snacks Explorer explicitly includes that directory, while other ignored entries
-stay hidden by default. Keep `SnacksPickerPathIgnored` at the normal Cyberdream
-foreground so ignored paths remain readable when shown. Explorer Git status is
-scoped to its current repository: focus a child checkout with `.` to see that
-repo's changes, and use Backspace to go up. Visibility and colour overrides do
-not aggregate Git status across nested repositories.
+Independent checkouts live in `~/Work`. Explorer Git status is scoped to its
+current repository: focus a checkout with `.` to see that repo's changes,
+and use Backspace to go up. Keep `SnacksPickerPathIgnored` at the normal
+Cyberdream foreground so ignored paths remain readable when explicitly shown.
 
 Show hidden entries in Snacks Explorer by default (`hidden = true`), because
 the user routinely works in `.agents`. Keep `SnacksPickerPathHidden` at the
@@ -55,7 +52,8 @@ Reproduce sidebar startup in checks by registering its second setup with a
 pre-init `--cmd` VimEnter autocmd; a plain headless launch misses the bug.
 Home Manager force-links
 `config/herdr/config.toml` and `config/herdr-nvim/config.toml` into their XDG
-config directories. Keep Herdr's mutable plugins, sessions, sockets, and logs
+config directories. The user prefers the Neovim sidebar on the left; keep
+`sidebar.position = "left"` in its TOML configuration. Keep Herdr's mutable plugins, sessions, sockets, and logs
 outside the repository. The Herdr plugin itself is already installed.
 
 The user prefers direct `cmd+e` / `cmd+o` for the sidebar/file picker; retain

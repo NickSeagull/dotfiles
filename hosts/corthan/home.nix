@@ -1,4 +1,4 @@
-{ lib, osConfig, pkgs, ... }:
+{ config, lib, osConfig, pkgs, ... }:
 let
   # Use the Azure CLI already managed by nix-darwin's Homebrew configuration.
   # Git appends the operation argument; the helper must end at `f`, without a newline.
@@ -54,6 +54,12 @@ in
     pkgs.nodejs
   ];
   home.file = {
+    ".local/bin/egregorectl" = {
+      source = pkgs.writeShellScript "egregorectl" ''
+        exec ${pkgs.python3}/bin/python3 ${lib.escapeShellArg "${config.home.homeDirectory}/egregoreOS/bin/egregorectl"} "$@"
+      '';
+      force = true;
+    };
     "Library/Application Support/com.mitchellh.ghostty/config.ghostty" = {
       source = ../../config/ghostty/config.ghostty;
       force = true;

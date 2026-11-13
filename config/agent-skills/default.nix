@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, ... }:
 let
   skills = [ "retro" "writing-for-agents" ];
   # Codex and Orca discover ~/.agents/skills; Claude Code uses ~/.claude/skills.
@@ -13,5 +13,11 @@ in
         force = true;
       };
     }) skills
-  ) roots);
+  ) roots) // lib.genAttrs
+    (map (root: "${root}/egregorectl") roots)
+    (_: {
+      source = config.lib.file.mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/egregoreOS/.agents/skills/egregorectl";
+      force = true;
+    });
 }
