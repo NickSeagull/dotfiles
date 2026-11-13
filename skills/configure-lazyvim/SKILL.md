@@ -30,6 +30,10 @@ scoped to its current repository: focus a child checkout with `.` to see that
 repo's changes, and use Backspace to go up. Visibility and colour overrides do
 not aggregate Git status across nested repositories.
 
+Show hidden entries in Snacks Explorer by default (`hidden = true`), because
+the user routinely works in `.agents`. Keep `SnacksPickerPathHidden` at the
+normal foreground too. Git-ignored entries remain independently filtered.
+
 lazy.nvim manages downloaded plugins in Neovim's data directory. Its mutable
 lockfile belongs in `stdpath("state")`, not beside the Nix-owned config files.
 Preserve this separation when changing the bootstrap. Set `vim.g.mapleader`

@@ -15,6 +15,7 @@ return {
         SnacksPickerTitle = { fg = "#FF493D", bold = true },
         SnacksDashboardHeader = { fg = "#FF493D" },
         SnacksPickerPathIgnored = { fg = "#FFFFFF" },
+        SnacksPickerPathHidden = { fg = "#FFFFFF" },
       },
     },
   },
