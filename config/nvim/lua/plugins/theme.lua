@@ -14,6 +14,7 @@ return {
         TabLineSel = { fg = "#16181A", bg = "#FF493D", bold = true },
         SnacksPickerTitle = { fg = "#FF493D", bold = true },
         SnacksDashboardHeader = { fg = "#FF493D" },
+        SnacksPickerPathIgnored = { fg = "#FFFFFF" },
       },
     },
   },

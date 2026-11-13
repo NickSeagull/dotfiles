@@ -1,4 +1,6 @@
 # Let Herdr receive Cmd+E instead of searching the selected text in Ghostty.
 keybind = cmd+e=unbind
 keybind = cmd+o=unbind
-background-opacity = 0.75
+keybind = cmd+p=unbind
+background-opacity = 0.85
+font-size = 24

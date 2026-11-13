@@ -22,6 +22,14 @@ The user prefers long lines to wrap instead of scrolling horizontally. Keep
 `wrap` and `linebreak` enabled in `config/nvim/lua/config/options.lua` so lines
 wrap visually at word boundaries without changing the file's contents.
 
+The Home Repo keeps independent checkouts in its ignored `repos/` directory.
+Snacks Explorer explicitly includes that directory, while other ignored entries
+stay hidden by default. Keep `SnacksPickerPathIgnored` at the normal Cyberdream
+foreground so ignored paths remain readable when shown. Explorer Git status is
+scoped to its current repository: focus a child checkout with `.` to see that
+repo's changes, and use Backspace to go up. Visibility and colour overrides do
+not aggregate Git status across nested repositories.
+
 lazy.nvim manages downloaded plugins in Neovim's data directory. Its mutable
 lockfile belongs in `stdpath("state")`, not beside the Nix-owned config files.
 Preserve this separation when changing the bootstrap. Set `vim.g.mapleader`
